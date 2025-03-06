@@ -28,8 +28,6 @@ jobs:
       - name: Install dependencies
         uses: ./.github/actions/install
       - run: yarn test
-      - name: Upload Coverage
-        run: npx codecov --disable=gcov
 
   typescript:
     name: 'check_types'
