@@ -13,9 +13,6 @@ import { RneFunctionComponent, defaultTheme } from '../helpers';
 import { ParentProps, TabItemProps } from './Tab.Item';
 
 export interface TabProps extends ViewProps, ParentProps {
-  /** Child position index value. */
-  value?: number;
-
   /** Makes Tab Scrolling */
   scrollable?: boolean;
 
@@ -30,6 +27,9 @@ export interface TabProps extends ViewProps, ParentProps {
 
   /** Define the background Variant. */
   variant?: 'primary' | 'default';
+
+  /** Default active index */
+  defaultActive?: number;
 }
 
 /**
@@ -82,6 +82,7 @@ const TabContext = React.createContext(
     __translateX: React.MutableRefObject<Animated.Value>;
     __currentIndex: React.MutableRefObject<number>;
     changeIndex: (toValue: number) => void;
+    __onIndexChangeRef: React.MutableRefObject<(value: number) => number>;
   }
 );
 
@@ -116,8 +117,10 @@ export const Tabs = forwardRef(
       (toValue: number, onDone = () => {}) => {
         currentIndex.current = toValue;
         onIndexChangeRef.current?.(toValue);
+        //currently we are ignoring the animationConfig types but we need to fix this
         Animated[animationType](translateX.current, {
-          toValue,
+          //@ts-ignore
+          toValue: toValue,
           useNativeDriver: true,
           easing: Easing.inOut(Easing.ease),
           duration: 150,
@@ -148,7 +151,6 @@ export const useTabsInternal = () => React.useContext(TabContext);
 export const TabBase: RneFunctionComponent<TabProps> = ({
   theme = defaultTheme,
   children,
-  value = 0,
   scrollable = false,
   onChange = () => {},
   indicatorStyle,
@@ -175,15 +177,6 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
     () => React.Children.toArray(children),
     [children]
   );
-
-  React.useEffect(() => {
-    if (__onIndexChangeRef) {
-      __onIndexChangeRef.current = (value) => {
-        scrollHandler(value);
-        setActiveIndex(value);
-      };
-    }
-  }, [__onIndexChangeRef, scrollHandler]);
 
   const tabItemPositions = React.useRef<{ position: number; width: number }[]>(
     []
@@ -225,6 +218,16 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
     },
     [tabContainerWidth]
   );
+
+  React.useEffect(() => {
+    if (__onIndexChangeRef) {
+      __onIndexChangeRef.current = (changedIndex) => {
+        scrollHandler(changedIndex);
+        setActiveIndex(changedIndex);
+        return changedIndex;
+      };
+    }
+  }, [__onIndexChangeRef, scrollHandler]);
 
   const onScrollHandler = React.useCallback((event) => {
     scrollViewPosition.current = event.nativeEvent.contentOffset.x;
@@ -323,8 +326,7 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
               >
                 {React.cloneElement(child as React.ReactElement<TabItemProps>, {
                   onPress: () => {
-                    animate(index, setActiveIndex);
-
+                    animate(index); //setActiveIndex removed second parameter
                     onChange?.(index);
                   },
                   active: index === activeIndex,

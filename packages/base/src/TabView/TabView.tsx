@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   Animated,
-  Easing,
   PanResponder,
   View,
   StyleSheet,
@@ -133,7 +132,14 @@ export const TabViewBase: RneFunctionComponent<TabViewProps> = ({
         onPanResponderRelease: releaseResponder,
         onPanResponderTerminate: releaseResponder,
       }),
-    [childCount, containerWidth, onSwipeStart, releaseResponder, translateX]
+    [
+      childCount,
+      containerWidth,
+      onSwipeStart,
+      releaseResponder,
+      translateX,
+      currentIndex,
+    ]
   );
 
   React.useEffect(() => {
@@ -141,7 +147,7 @@ export const TabViewBase: RneFunctionComponent<TabViewProps> = ({
       animate(value);
       currentIndex.current = value;
     }
-  }, [animate, value]);
+  }, [animate, value, currentIndex]);
 
   return (
     <View

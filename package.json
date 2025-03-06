@@ -15,7 +15,7 @@
     "build:docs-api": "yarn workspace @rneui/doc-gen build",
     "create-packages": "yarn run build && yarn workspaces foreach -Ap --include '@rneui/*' pack --out %s-%v.tgz",
     "create-git-packages": "yarn run build && yarn workspaces foreach -Ap --include '@rneui/*' pack --out %s-%v-r$(git log $(git describe --tags --abbrev=0)..HEAD --oneline | wc -l)-$(git rev-parse --short HEAD).tgz",
-    "clean-build": "rm -rf packages/*/dist",
+    "clean-build": "rimraf packages/*/dist",
     "clean-install": "rimraf node_modules && yarn",
     "docs-build-api": "yarn workspace @rneui/doc-gen build",
     "docs-build": "yarn docs-build-api && cd website && yarn run build",
