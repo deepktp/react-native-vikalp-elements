@@ -41,6 +41,6 @@ runs:
 
     - name: Install website dependencies
       if: steps.website_cache.outputs.cache-hit != 'true' && inputs.install_website == 'true'
-      run: YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn install
+      run: yarn install
       working-directory: website
       shell: bash

@@ -12,6 +12,14 @@ jobs:
       - name: 🏗 Setup repo
         uses: actions/checkout@v3
 
+      - name: Enable Corepack
+        run: corepack enable
+        shell: bash
+
+      - name: Enable Yarn with Corepack
+        run: corepack prepare yarn@stable --activate
+        shell: bash
+
       - name: Install dependencies
         uses: ./.github/actions/install
 

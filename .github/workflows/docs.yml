@@ -16,6 +16,14 @@ jobs:
           persist-credentials: false # avoid using GITHUB_TOKEN for push
           fetch-depth: 0 # fetch all history to allow pushing refs to dest repo
 
+      - name: Enable Corepack
+        run: corepack enable
+        shell: bash
+
+      - name: Enable Yarn with Corepack
+        run: corepack prepare yarn@stable --activate
+        shell: bash
+
       - name: Install dependencies
         uses: ./.github/actions/install
         with:
