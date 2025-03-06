@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - name: 🏗 Setup repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install dependencies
         uses: ./.github/actions/install
@@ -28,16 +28,17 @@ jobs:
       - name: Bump docs version
         working-directory: website
         run: |
-          yarn version ${{github.event.inputs.name}}
+          yarn version ${{ github.event.inputs.name }}
 
       - name: Bump base version
         working-directory: packages/base
         run: |
-          npm version v${{github.event.inputs.name}}
+          npm version v${{ github.event.inputs.name }}
+
       - name: Bump themed version
         working-directory: packages/themed
         run: |
-          npm version v${{github.event.inputs.name}}
+          npm version v${{ github.event.inputs.name }}
 
       - name: Config git
         run: |
@@ -47,7 +48,7 @@ jobs:
       - name: Checkout
         run: |
           git add .
-          git commit -m "Bump v${{github.event.inputs.pr}}"
+          git commit -m "Bump v${{ github.event.inputs.name }}"
           git checkout -b ${{ env.BRANCH_NAME }}
           git push --set-upstream origin ${{ env.BRANCH_NAME }} --force
 
@@ -58,7 +59,7 @@ jobs:
           script: |
             const { repo, owner } = context.repo;
             const result = await github.rest.pulls.create({
-              title: 'chore: bump v${{github.event.inputs.pr}}',
+              title: 'chore: bump v${{ github.event.inputs.name }}',
               owner,
               repo,
               head: '${{ env.BRANCH_NAME }}',
