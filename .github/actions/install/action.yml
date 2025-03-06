@@ -24,6 +24,13 @@ runs:
         restore-keys: |
           ${{ runner.os }}-rne-cache-${{ hashFiles('yarn.lock') }}
 
+    - name: Enable Corepack
+      run: corepack enable
+      shell: bash
+    - name: Enable Yarn with Corepack
+      run: corepack prepare yarn@stable --activate
+      shell: bash
+
     - name: Install root dependencies
       if: steps.root_cache.outputs.cache-hit != 'true'
       run: yarn install
