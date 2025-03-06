@@ -561,7 +561,7 @@ export const Slider: RneFunctionComponent<SliderProps> = ({
       accessibilityValue={{
         min: minimumValue,
         max: maximumValue,
-        now: getCurrentValue(),
+        now: Math.floor(getCurrentValue()),
       }}
     >
       <View
