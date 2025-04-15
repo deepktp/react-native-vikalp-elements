@@ -33,7 +33,7 @@ runs:
 
     - name: Install root dependencies
       if: steps.root_cache.outputs.cache-hit != 'true'
-      run: yarn install
+      run: yarn install --verbose
       shell: bash
 
     - name: Cache website dependencies
