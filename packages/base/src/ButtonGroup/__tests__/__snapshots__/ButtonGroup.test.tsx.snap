@@ -65,7 +65,12 @@ exports[`ButtonGroup Component should match snapshot 1`] = `
           }
         >
           <Text
-            accessibilityRole="text"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "selected": false,
+              }
+            }
             style={
               {
                 "color": "pink",
@@ -125,7 +130,12 @@ exports[`ButtonGroup Component should match snapshot 1`] = `
           }
         >
           <Text
-            accessibilityRole="text"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "selected": false,
+              }
+            }
             style={
               {
                 "color": "pink",
@@ -183,7 +193,12 @@ exports[`ButtonGroup Component should match snapshot 1`] = `
           }
         >
           <Text
-            accessibilityRole="text"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "selected": false,
+              }
+            }
             style={
               {
                 "color": "pink",
@@ -267,7 +282,12 @@ exports[`ButtonGroup Component should match snapshot with components 1`] = `
           }
         >
           <Text
-            accessibilityRole="text"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "selected": false,
+              }
+            }
             style={
               {
                 "color": "pink",
@@ -329,7 +349,12 @@ exports[`ButtonGroup Component should match snapshot with components 1`] = `
           }
         >
           <Text
-            accessibilityRole="text"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "selected": false,
+              }
+            }
             style={
               {
                 "color": "pink",
@@ -389,7 +414,12 @@ exports[`ButtonGroup Component should match snapshot with components 1`] = `
           }
         >
           <Text
-            accessibilityRole="text"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "selected": false,
+              }
+            }
             style={
               {
                 "color": "pink",
