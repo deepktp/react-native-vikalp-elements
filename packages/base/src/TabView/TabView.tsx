@@ -8,13 +8,13 @@ import {
   GestureResponderEvent,
   StyleProp,
   ViewStyle,
+  Easing,
 } from 'react-native';
 import { RneFunctionComponent } from '../helpers';
-import { useTabsInternal } from '../Tab/Tab';
 
 export interface TabViewProps {
   /** Child position index value. */
-  value?: number;
+  activeIndex?: number;
 
   /** On Index Change Callback. */
   onChange?: (value: number) => any;
@@ -63,27 +63,46 @@ export interface TabViewProps {
 /** Tabs organize content across different screens, data sets, and other interactions.
  * TabView enables swipeable tabs. */
 export const TabViewBase: RneFunctionComponent<TabViewProps> = ({
-  value = 0,
+  activeIndex = 0,
   children,
-  onChange = () => {},
-  onSwipeStart = () => {},
+  onChange = () => { },
+  onSwipeStart = () => { },
   containerStyle,
   tabItemContainerStyle,
   disableSwipe = false,
   disableTransition = false,
   minSwipeRatio = 0.4,
   minSwipeSpeed = 1,
+  animationType = 'spring',
+  animationConfig = {},
 }) => {
-  const {
-    changeIndex: animate,
-    __translateX: translateX,
-    __currentIndex: currentIndex,
-  } = useTabsInternal();
   const [containerWidth, setContainerWidth] = React.useState(1);
 
   const childCount = React.useMemo(
     () => React.Children.toArray(children).length,
     [children]
+  );
+
+  const translateX = React.useRef(new Animated.Value(0));
+  const currentIndex = React.useRef(0);
+  const onIndexChangeRef = React.useRef((value: number) => value);
+
+  const animate = React.useCallback(
+    (toValue: number, onDone = () => { }) => {
+      currentIndex.current = toValue;
+      onIndexChangeRef.current?.(toValue);
+      //currently we are ignoring the animationConfig types but we need to fix this
+      Animated[animationType](translateX.current, {
+        //@ts-ignore
+        toValue: toValue,
+        useNativeDriver: true,
+        easing: Easing.inOut(Easing.ease),
+        duration: 150,
+        ...animationConfig,
+      }).start();
+      onDone?.(toValue);
+    },
+    [animationConfig, animationType]
   );
 
   const releaseResponder = React.useCallback(
@@ -143,11 +162,11 @@ export const TabViewBase: RneFunctionComponent<TabViewProps> = ({
   );
 
   React.useEffect(() => {
-    if (Number.isInteger(value) && value !== currentIndex.current) {
-      animate(value);
-      currentIndex.current = value;
+    if (Number.isInteger(activeIndex) && activeIndex !== currentIndex.current) {
+      animate(activeIndex);
+      currentIndex.current = activeIndex;
     }
-  }, [animate, value, currentIndex]);
+  }, [animate, activeIndex, currentIndex]);
 
   return (
     <View
@@ -166,11 +185,11 @@ export const TabViewBase: RneFunctionComponent<TabViewProps> = ({
             transform: [
               {
                 translateX: disableTransition
-                  ? -value * containerWidth
+                  ? -activeIndex * containerWidth
                   : translateX.current.interpolate({
-                      inputRange: [0, 1],
-                      outputRange: [0, -containerWidth],
-                    }),
+                    inputRange: [0, 1],
+                    outputRange: [0, -containerWidth],
+                  }),
               },
             ],
           },

@@ -1,4 +1,4 @@
-import React, { forwardRef, useImperativeHandle } from 'react';
+import React, { useEffect } from 'react';
 import {
   Animated,
   Easing,
@@ -28,8 +28,16 @@ export interface TabProps extends ViewProps, ParentProps {
   /** Define the background Variant. */
   variant?: 'primary' | 'default';
 
-  /** Default active index */
-  defaultActive?: number;
+  /** active index */
+  activeIndex?: number;
+
+  /** Animation type */
+  animationType?: 'timing' | 'spring';
+
+  /** Animation Config */
+  animationConfig?: Partial<
+    Animated.TimingAnimationConfig | Animated.SpringAnimationConfig
+  >;
 }
 
 /**
@@ -77,82 +85,11 @@ export interface TabProps extends ViewProps, ParentProps {
 
  *  */
 
-const TabContext = React.createContext(
-  {} as {
-    __translateX: React.MutableRefObject<Animated.Value>;
-    __currentIndex: React.MutableRefObject<number>;
-    changeIndex: (toValue: number) => void;
-    __onIndexChangeRef: React.MutableRefObject<(value: number) => number>;
-  }
-);
-
-export type TabsRef = {
-  changeIndex: (toValue: number) => void;
-};
-
-interface TabsProps {
-  children: React.ReactNode;
-  animationType?: 'timing' | 'spring';
-  animationConfig?: Partial<
-    Animated.TimingAnimationConfig | Animated.SpringAnimationConfig
-  >;
-}
-
-export const Tabs = forwardRef(
-  (
-    { children, animationType = 'spring', animationConfig = {} }: TabsProps,
-    ref
-  ) => {
-    const translateX = React.useRef(new Animated.Value(0));
-    const currentIndex = React.useRef(0);
-    const onIndexChangeRef = React.useRef((value: number) => value);
-
-    useImperativeHandle(ref, () => ({
-      changeIndex: (toValue: number) => {
-        animate(toValue);
-      },
-    }));
-
-    const animate = React.useCallback(
-      (toValue: number, onDone = () => {}) => {
-        currentIndex.current = toValue;
-        onIndexChangeRef.current?.(toValue);
-        //currently we are ignoring the animationConfig types but we need to fix this
-        Animated[animationType](translateX.current, {
-          //@ts-ignore
-          toValue: toValue,
-          useNativeDriver: true,
-          easing: Easing.inOut(Easing.ease),
-          duration: 150,
-          ...animationConfig,
-        }).start();
-        onDone?.(toValue);
-      },
-      [animationConfig, animationType]
-    );
-
-    return (
-      <TabContext.Provider
-        value={{
-          changeIndex: animate,
-          __translateX: translateX,
-          __currentIndex: currentIndex,
-          __onIndexChangeRef: onIndexChangeRef,
-        }}
-      >
-        {children}
-      </TabContext.Provider>
-    );
-  }
-);
-
-export const useTabsInternal = () => React.useContext(TabContext);
-
 export const TabBase: RneFunctionComponent<TabProps> = ({
   theme = defaultTheme,
   children,
   scrollable = false,
-  onChange = () => {},
+  onChange = () => { },
   indicatorStyle,
   disableIndicator,
   variant = 'primary',
@@ -162,15 +99,32 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
   buttonStyle,
   titleStyle,
   containerStyle,
-  defaultActive = 0,
+  activeIndex = 0,
+  animationType = 'spring',
+  animationConfig = {},
   ...rest
 }) => {
-  const {
-    changeIndex: animate,
-    __translateX: translateX,
-    __currentIndex: currentIndex,
-    __onIndexChangeRef,
-  } = useTabsInternal();
+  const translateX = React.useRef(new Animated.Value(0));
+  const currentIndex = React.useRef(0);
+  const onIndexChangeRef = React.useRef((value: number) => value);
+
+  const animate = React.useCallback(
+    (toValue: number, onDone = () => { }) => {
+      currentIndex.current = toValue;
+      onIndexChangeRef.current?.(toValue);
+      //currently we are ignoring the animationConfig types but we need to fix this
+      Animated[animationType](translateX.current, {
+        //@ts-ignore
+        toValue: toValue,
+        useNativeDriver: true,
+        easing: Easing.inOut(Easing.ease),
+        duration: 150,
+        ...animationConfig,
+      }).start();
+      onDone?.(toValue);
+    },
+    [animationConfig, animationType]
+  );
   const scrollViewRef = React.useRef<ScrollView>(null);
   const scrollViewPosition = React.useRef(0);
   const validChildren = React.useMemo(
@@ -183,6 +137,12 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
   );
 
   const [tabContainerWidth, setTabContainerWidth] = React.useState(0);
+
+  useEffect(() => {
+    if (activeIndex !== currentIndex.current) {
+      animate(activeIndex);
+    }
+  }, [activeIndex, animate]);
 
   const scrollHandler = React.useCallback(
     (currValue: number) => {
@@ -220,20 +180,20 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
   );
 
   React.useEffect(() => {
-    if (__onIndexChangeRef) {
-      __onIndexChangeRef.current = (changedIndex) => {
+    if (onIndexChangeRef) {
+      onIndexChangeRef.current = (changedIndex) => {
         scrollHandler(changedIndex);
-        setActiveIndex(changedIndex);
+        onChange(changedIndex);
         return changedIndex;
       };
     }
-  }, [__onIndexChangeRef, scrollHandler]);
+  }, [onIndexChangeRef, scrollHandler, onChange]);
 
   const onScrollHandler = React.useCallback((event) => {
     scrollViewPosition.current = event.nativeEvent.contentOffset.x;
   }, []);
 
-  const indicatorWidth = tabItemPositions.current[defaultActive]?.width;
+  const indicatorWidth = tabItemPositions.current[activeIndex]?.width;
 
   const indicatorTranslateX = () => {
     const countItems = validChildren.length;
@@ -275,7 +235,7 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
 
       outputRange.push(curr.width / prev.width);
       return prev;
-    }, tabItemPositions.current[defaultActive]);
+    }, tabItemPositions.current[activeIndex]);
 
     return translateX.current.interpolate({
       inputRange,
@@ -283,8 +243,6 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
       extrapolate: 'extend',
     });
   };
-
-  const [activeIndex, setActiveIndex] = React.useState(currentIndex.current);
 
   return (
     <View
