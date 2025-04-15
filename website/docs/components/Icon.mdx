@@ -3,13 +3,13 @@ id: icon
 title: Icon
 ---
 
-import { IconsStyle } from "@site/src/components/Docs_Icons";
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-import CodeBlock from "@theme/CodeBlock";
-import { BiInfoCircle } from "react-icons/bi";
-import Usage from "../component_usage/Icon.mdx";
-import Play from "@site/playground/Icon/icon.playground";
+import { IconsStyle } from '@site/src/components/Docs_Icons';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
+import { BiInfoCircle } from 'react-icons/bi';
+import Usage from '../component_usage/Icon.mdx';
+import Play from '@site/playground/Icon/icon.playground';
 
 <IconsStyle />
 
@@ -25,7 +25,7 @@ They are also used for displaying information.
   </div>
   <div class="col col--3">
     <h4>
-      Theme Key{" "}
+      Theme Key{' '}
       <a href="../customizing#using-themeprovider">
         <BiInfoCircle />
       </a>
@@ -66,7 +66,7 @@ Includes all [Text](https://reactnative.dev/docs/text#props) props.
 | `reverseColor`   | string                               |                                                   | Specify reverse icon color.                                                  |
 | `solid`          | boolean                              | `false`                                           | Uses the solid font.                                                         |
 | `testID`         | string                               | `RNE__ICON__CONTAINER`                            | Test ID of icon.                                                             |
-| `type`           | string                               | `material`                                        | Type of icon set. [Supported sets here](#available-icon-sets).               |
+| `type`           | IconType                             | `material`                                        | Type of icon set. [Supported sets here](#available-icon-sets).               |
 
 </div>
 
