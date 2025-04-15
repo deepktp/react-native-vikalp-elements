@@ -24,7 +24,9 @@ export const PadView: React.FC<PadViewProps> = ({
         (child, index) =>
           child && [
             child,
-            index !== length - 1 && <View style={{ paddingLeft: pad }} />,
+            index !== length - 1 && (
+              <View style={{ paddingLeft: pad }} key={`PadView-${index}`} />
+            ),
           ]
       )}
     </Container>

@@ -7,7 +7,7 @@
       "@rneui/base/dist/*": ["./packages/base/src/*"]
     },
     "removeComments": true,
-    "composite": true,
+    "composite": false, // Set composite to false
     "declaration": true,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
@@ -22,7 +22,7 @@
     "noImplicitUseStrict": false,
     "noStrictGenericChecks": false,
     "resolveJsonModule": true,
-    "skipLibCheck": true,
+    "skipLibCheck": true, // Skip type checking for node_modules
     "target": "ES6",
     "allowJs": true
   },
@@ -32,6 +32,8 @@
     "packages/*/src/**/__tests__",
     "packages/*/coverage/**",
     "packages/*/dist/**",
-    "packages/*/*.config.js"
+    "packages/*/*.config.js",
+    "node_modules", // Ensure node_modules is excluded
+    "**/node_modules"
   ]
 }
