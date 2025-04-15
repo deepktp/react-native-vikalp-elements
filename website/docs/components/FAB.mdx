@@ -13,7 +13,9 @@ import Play from "@site/playground/FAB/fab.playground";
 
 <IconsStyle />
 
-A floating action button (FAB) performs the primary, or most common, action on a screen. It appears in front of all screen content, typically as a circular shape with an icon in its center.
+A floating action button (FAB) performs the primary, or most common, action on a screen.
+It appears in front of all screen content, typically as a circular shape with an icon in its center.
+Also receives all [Button](https://reactnativeelements.com/docs/button#props) props.
 
 <div class="row inline-flex-center">
   <div class="col col--3">
@@ -37,29 +39,6 @@ A floating action button (FAB) performs the primary, or most common, action on a
 
 ## Usage
 
-### Variants
-
-```tsx live
-<Stack row align="center" spacing={4}>
-  <FAB
-    size="small"
-    icon={{
-      name: "place",
-      color: "white",
-    }}
-  />
-  <FAB size="small" title="Solid" />
-  <FAB
-    size="small"
-    title="Extended"
-    icon={{
-      name: "place",
-      color: "white",
-    }}
-  />
-</Stack>
-```
-
 <Usage />
 
 ## Props
@@ -67,19 +46,6 @@ A floating action button (FAB) performs the primary, or most common, action on a
 :::note
 Includes all [Button](button#props) props.
 :::
-
-<div class='table-responsive'>
-
-| Name        | Type               | Default | Description                                                                            |
-| ----------- | ------------------ | ------- | -------------------------------------------------------------------------------------- |
-| `color`     | string             |         | Change the color of the FAB.                                                           |
-| `placement` | `left` \| `right`  |         | FAB placement at bottom, (optional) use [`style`](#style) in case of custom placement. |
-| `size`      | `small` \| `large` | `large` | Change Size of FAB.                                                                    |
-| `style`     | View Style         |         | Style for FAB                                                                          |
-| `upperCase` | boolean            |         | Transform Extended Label text to uppercase.                                            |
-| `visible`   | boolean            | `true`  | Decide the visibility of the FAB.                                                      |
-
-</div>
 
 ## Playground
 
