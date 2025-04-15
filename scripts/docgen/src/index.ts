@@ -7,13 +7,13 @@ import { findIgnoredComponents } from './utils/common';
 import yargs from 'yargs';
 import ora from 'ora';
 
-const rootPath = path.join(__dirname, '../../../packages/');
+const rootPath = path.posix.join(__dirname, '../../../packages/');
 
-async function main({ source = '*/src/**/*.tsx' }: typeof argv) {
+async function main({ source = '**/src/**/*.tsx' }: typeof argv) {
   const ignoredFiles = findIgnoredComponents(rootPath);
   ignoredFiles.push('**/*.usage.tsx');
 
-  const filePaths = glob.sync(path.join(rootPath, source), {
+  const filePaths = glob.sync(path.posix.join(rootPath, source), {
     absolute: true,
     ignore: ignoredFiles,
     onlyFiles: true,

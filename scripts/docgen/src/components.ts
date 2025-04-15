@@ -45,23 +45,23 @@ type TemplateOptionsT = {
   includeProps?: string;
 };
 
-const root = path.join(__dirname, '../../../');
+const root = path.posix.join(__dirname, '../../../');
 // const pkgRegExp = new RegExp('packages/(.*)/src');
-// const pkgPath = path.join(root, 'packages');
-const docsPath = path.join(root, 'website/docs');
-const imgPath = path.join(root, 'website/static/img/anatomy');
-const usagePath = path.join(docsPath, 'component_usage');
-const playgroundPath = path.join(docsPath, '..', 'playground');
+// const pkgPath = path.posix.join(root, 'packages');
+const docsPath = path.posix.join(root, 'website/docs');
+const imgPath = path.posix.join(root, 'website/static/img/anatomy');
+const usagePath = path.posix.join(docsPath, 'component_usage');
+const playgroundPath = path.posix.join(docsPath, '..', 'playground');
 
 const File = {
   exist(...paths: string[]) {
-    return fs.existsSync(path.join(...paths));
+    return fs.existsSync(path.posix.join(...paths));
   },
   read(...paths: string[]) {
-    return String(fs.readFileSync(path.join(...paths)));
+    return String(fs.readFileSync(path.posix.join(...paths)));
   },
   write(content: string, ...paths: string[]) {
-    fs.writeFileSync(path.join(...paths), content);
+    fs.writeFileSync(path.posix.join(...paths), content);
   },
 };
 
@@ -146,7 +146,7 @@ export class Component implements ComponentDoc {
       };
       const mdFile = prettier.format(template(handleBar), { parser: 'mdx' });
 
-      const mdFilePath = path.join(
+      const mdFilePath = path.posix.join(
         docsPath,
         'components',
         `${this.displayName}.mdx`
