@@ -65,8 +65,8 @@ export interface TabViewProps {
 export const TabViewBase: RneFunctionComponent<TabViewProps> = ({
   activeIndex = 0,
   children,
-  onChange = () => { },
-  onSwipeStart = () => { },
+  onChange = () => {},
+  onSwipeStart = () => {},
   containerStyle,
   tabItemContainerStyle,
   disableSwipe = false,
@@ -88,7 +88,7 @@ export const TabViewBase: RneFunctionComponent<TabViewProps> = ({
   const onIndexChangeRef = React.useRef((value: number) => value);
 
   const animate = React.useCallback(
-    (toValue: number, onDone = () => { }) => {
+    (toValue: number, onDone = () => {}) => {
       currentIndex.current = toValue;
       onIndexChangeRef.current?.(toValue);
       //currently we are ignoring the animationConfig types but we need to fix this
@@ -187,9 +187,9 @@ export const TabViewBase: RneFunctionComponent<TabViewProps> = ({
                 translateX: disableTransition
                   ? -activeIndex * containerWidth
                   : translateX.current.interpolate({
-                    inputRange: [0, 1],
-                    outputRange: [0, -containerWidth],
-                  }),
+                      inputRange: [0, 1],
+                      outputRange: [0, -containerWidth],
+                    }),
               },
             ],
           },
