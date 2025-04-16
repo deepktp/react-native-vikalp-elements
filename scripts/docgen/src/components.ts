@@ -93,7 +93,7 @@ export class Component implements ComponentDoc {
   }
 
   extractUsage() {
-    const usageFilePath = path.resolve(
+    const usageFilePath = path.posix.resolve(
       this.filePath,
       '..',
       `${this.displayName}.usage.tsx`
