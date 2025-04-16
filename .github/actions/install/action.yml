@@ -28,7 +28,7 @@ runs:
       run: corepack enable
       shell: bash
     - name: Enable Yarn with Corepack
-      run: corepack prepare yarn@stable --activate
+      run: corepack prepare yarn@3.2.4 --activate
       shell: bash
 
     - name: Install root dependencies
