@@ -50,8 +50,8 @@ jobs:
 
       - name: Config git
         run: |
-          git config --local user.email "104670806+rneui@users.noreply.github.com"
-          git config --local user.name "RNEUI"
+          git config --local user.email "76097094+deepktp@users.noreply.github.com"
+          git config --local user.name "deepktp"
 
       - name: Checkout
         run: |
