@@ -56,7 +56,7 @@
   "author": "RNE Core Team",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/react-native-elements/react-native-elements/issues"
+    "url": "https://github.com/deepktp/react-native-vikalp-elements/issues"
   },
   "homepage": "https://reactnativeelements.com/",
   "collective": {
@@ -81,7 +81,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/react-native-elements/react-native-elements.git"
+    "url": "git+https://github.com/deepktp/react-native-vikalp-elements.git"
   },
   "changelog": {
     "nextVersion": "TODO version name",
