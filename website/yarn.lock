@@ -3750,7 +3750,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-native-vector-icons@npm:^6.4.10, @types/react-native-vector-icons@npm:^6.4.6":
+"@types/react-native-vector-icons@npm:^6.4.10":
+  version: 6.4.18
+  resolution: "@types/react-native-vector-icons@npm:6.4.18"
+  dependencies:
+    "@types/react": "*"
+    "@types/react-native": ^0.70
+  checksum: 1ef458cb5e7a37f41eb400e3153940b1b152e4df76a7c06c7a47c712dbfe46e14b9999f04dde1bd074f338f850e161c6c925174ddea33386b74f8112c940065b
+  languageName: node
+  linkType: hard
+
+"@types/react-native-vector-icons@npm:^6.4.6":
   version: 6.4.12
   resolution: "@types/react-native-vector-icons@npm:6.4.12"
   dependencies:
@@ -3766,6 +3776,15 @@ __metadata:
   dependencies:
     "@types/react": "*"
   checksum: 1b620095ddf2fe85157df9d57435edc619587eacb1a4fadd91c977c200cef8008e7fec4d8c5429ce373e1a2158199f1162f9c84e8e5a7d0b71a2224f31b64dfd
+  languageName: node
+  linkType: hard
+
+"@types/react-native@npm:^0.70":
+  version: 0.70.19
+  resolution: "@types/react-native@npm:0.70.19"
+  dependencies:
+    "@types/react": "*"
+  checksum: 79b504fa56340631079e7c20ea0d9412ec14147b76d0ce189f4403936f529ef1e6fd031383afab117846c5ae039123bcf3afc948bae4432269c6780282726f71
   languageName: node
   linkType: hard
 
@@ -11805,11 +11824,11 @@ __metadata:
   linkType: hard
 
 "react-native-size-matters@npm:^0.4.0":
-  version: 0.4.0
-  resolution: "react-native-size-matters@npm:0.4.0"
+  version: 0.4.2
+  resolution: "react-native-size-matters@npm:0.4.2"
   peerDependencies:
     react-native: "*"
-  checksum: 8ad239c76410968cbf8b5a5ded49e8b08d10aa0c775fad0d074adda409efb571332ccdb24562cae8c8fc95b36af5755b280749b8bd093dc13eb8123a3645b03d
+  checksum: 65dac50cad8d03bd046c62e327edf1c162c650fa3320613343bb978ca4b83c8e4e61b0f528502a154a1d4e4baa6dc296799a57737177e3d3c77b64750f5d8076
   languageName: node
   linkType: hard
 
