@@ -19,30 +19,30 @@
   },
   "dependencies": {
     "@babel/preset-typescript": "^7.16.7",
-    "@expo/vector-icons": "^13.0.0",
+    "@expo/vector-icons": "^14.0.2",
     "@react-native-community/masked-view": "0.1.11",
     "@react-navigation/drawer": "^5.12.9",
     "@react-navigation/native": "^5.9.8",
     "@react-navigation/stack": "^5.14.9",
     "@rneui/layout": "^0.0.0-alpha.4",
-    "expo": "^47.0.0",
-    "expo-asset": "~8.7.0",
-    "expo-font": "~11.0.1",
-    "expo-linear-gradient": "~12.0.1",
-    "expo-splash-screen": "~0.17.5",
-    "expo-updates": "~0.15.6",
-    "react": "18.1.0",
-    "react-native": "0.70.5",
-    "react-native-gesture-handler": "~2.8.0",
-    "react-native-reanimated": "~2.12.0",
-    "react-native-screens": "~3.18.0",
-    "react-native-svg": "13.4.0",
-    "react-native-web": "~0.18.7"
+    "expo": "^52.0.0",
+    "expo-asset": "~11.0.5",
+    "expo-font": "~13.0.4",
+    "expo-linear-gradient": "~14.0.2",
+    "expo-splash-screen": "~0.29.24",
+    "expo-updates": "~0.27.4",
+    "react": "18.3.1",
+    "react-native": "0.76.9",
+    "react-native-gesture-handler": "~2.20.2",
+    "react-native-reanimated": "~3.16.1",
+    "react-native-screens": "~4.4.0",
+    "react-native-svg": "15.8.0",
+    "react-native-web": "~0.19.13"
   },
   "devDependencies": {
     "@expo/webpack-config": "^0.17.2",
     "babel-loader": "^8.2.5",
-    "babel-preset-expo": "~9.2.1",
-    "jest-expo": "^47.0.0"
+    "babel-preset-expo": "~12.0.0",
+    "jest-expo": "^52.0.0"
   }
 }
