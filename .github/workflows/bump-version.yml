@@ -36,17 +36,20 @@ jobs:
       - name: Bump docs version
         working-directory: website
         run: |
-          yarn version ${{ github.event.inputs.name }}
+          yarn install
+          yarn version --new-version v${{ github.event.inputs.name }}
 
       - name: Bump base version
         working-directory: packages/base
         run: |
-          npm version v${{ github.event.inputs.name }}
+          yarn install
+          yarn version --new-version v${{ github.event.inputs.name }}
 
       - name: Bump themed version
         working-directory: packages/themed
         run: |
-          npm version v${{ github.event.inputs.name }}
+          yarn install
+          yarn version --new-version v${{ github.event.inputs.name }}
 
       - name: Config git
         run: |
