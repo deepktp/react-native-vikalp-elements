@@ -32,7 +32,8 @@ jobs:
         working-directory: example
         run: |
           npm --global install expo-cli@latest
-          npx expo upgrade --non-interactive
+          export CI=1 # Set CI environment variable for non-interactive mode
+          expo-cli upgrade
 
       - name: Config git
         run: |
