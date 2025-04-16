@@ -15,8 +15,6 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
 
-            const { context, github } = require('@actions/github');
-
             const user = context.payload.sender?.login;
             const issue = context.payload.issue;
             const comment = context.payload.comment;
