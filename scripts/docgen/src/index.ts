@@ -9,7 +9,7 @@ import ora from 'ora';
 
 const rootPath = path.posix.join(__dirname, '../../../packages/');
 
-async function main({ source = '**/src/**/*.tsx' }: typeof argv) {
+async function main({ source = '*/src/**/*.tsx' }: typeof argv) {
   const ignoredFiles = findIgnoredComponents(rootPath);
   ignoredFiles.push('**/*.usage.tsx');
 
