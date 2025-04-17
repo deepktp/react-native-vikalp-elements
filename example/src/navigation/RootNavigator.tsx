@@ -65,6 +65,7 @@ function RootNavigator() {
             fontSize: 15,
             marginLeft: 0,
           },
+          drawerType: 'front', //for android and ios consistency
           drawerStyle: {
             backgroundColor: theme?.colors?.grey4,
           },
