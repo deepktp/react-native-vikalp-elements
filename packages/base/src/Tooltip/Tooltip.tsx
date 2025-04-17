@@ -11,6 +11,7 @@ import {
   Platform,
   Dimensions,
   Pressable,
+  FlexStyle,
 } from 'react-native';
 import Triangle from './components/Triangle';
 import { ScreenWidth, isIOS, RneFunctionComponent } from '../helpers';
@@ -176,7 +177,7 @@ export const Tooltip: RneFunctionComponent<TooltipProps> = ({
   }, [getElementPosition, onClose, onOpen, toggleOnPress, visible]);
 
   const Pointer: React.FC<{
-    tooltipY: number | string;
+    tooltipY: FlexStyle['top'];
   }> = ({ tooltipY }) => {
     const { yOffset, xOffset, elementHeight, elementWidth } = dimensions;
     const pastMiddleLine = yOffset > (tooltipY as number || 0);
