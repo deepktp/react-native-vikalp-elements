@@ -53,6 +53,6 @@ describe('Dialog Component', () => {
       </Dialog>,
       'Internal__Overlay'
     );
-    expect(wrapper.props.visible).toBeFalsy();
+    expect(wrapper).toBeNull();
   });
 });

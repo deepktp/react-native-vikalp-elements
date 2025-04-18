@@ -92,7 +92,10 @@ function withTheme<P = {}, T = {}>(
   const Component = ThemedComponent(WrappedComponent, themeKey, name);
 
   if (isClassComponent(WrappedComponent)) {
-    return hoistNonReactStatics(React.forwardRef(Component), WrappedComponent);
+    return hoistNonReactStatics(
+      React.forwardRef(Component) as any,
+      WrappedComponent as any
+    );
   }
 
   return React.forwardRef(Component);

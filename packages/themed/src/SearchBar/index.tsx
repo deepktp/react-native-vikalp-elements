@@ -15,4 +15,7 @@ export type {
   SearchBarIosProps,
 };
 
-export default withTheme<SearchBarProps>(SearchBar, 'SearchBar');
+export default withTheme<SearchBarProps>(
+  SearchBar as React.ComponentType<SearchBarProps>,
+  'SearchBar'
+);
