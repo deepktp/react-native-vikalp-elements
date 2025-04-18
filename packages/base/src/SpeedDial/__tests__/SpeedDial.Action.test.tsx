@@ -2,6 +2,7 @@ import React from 'react';
 import { fireEvent } from '@testing-library/react-native';
 import { SpeedDial } from '..';
 import { renderWithWrapper } from '../../../.ci/testHelper';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('Speed Dial Action', () => {
   it('should have onPress event', () => {

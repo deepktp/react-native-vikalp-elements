@@ -1,6 +1,7 @@
 import React from 'react';
 import { FeaturedTile } from '..';
 import { renderWithWrapper } from '../../../.ci/testHelper';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('FeaturedTitle component', () => {
   it('should apply values from theme', () => {

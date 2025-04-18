@@ -2,6 +2,7 @@ import React from 'react';
 import { Animated } from 'react-native';
 import FAB from '..';
 import { renderWithWrapper } from '../../../.ci/testHelper';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('FAB Component', () => {
   it('render with theme', () => {

@@ -2,6 +2,7 @@ import React from 'react';
 import CheckBox from '..';
 import { renderWithWrapper } from '../../../.ci/testHelper';
 import { CreateThemeOptions, FullTheme } from '../../config';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('CheckBox Component', () => {
   it('should use values from theme', () => {
