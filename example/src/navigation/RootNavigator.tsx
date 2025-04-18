@@ -56,12 +56,12 @@ function RootNavigator() {
     >
       <Drawer.Navigator
         drawerContent={DrawerNavigator}
-        screenOptions={{
-          drawerActiveTintColor: theme?.colors?.secondary,
-          drawerActiveBackgroundColor: 'transparent',
-          drawerInactiveTintColor: theme?.colors?.grey0,
-          drawerInactiveBackgroundColor: 'transparent',
-          drawerLabelStyle: {
+        drawerContentOptions={{
+          activeTintColor: theme?.colors?.secondary,
+          activeBackgroundColor: 'transparent',
+          inactiveTintColor: theme?.colors?.grey0,
+          inactiveBackgroundColor: 'transparent',
+          labelStyle: {
             fontSize: 15,
             marginLeft: 0,
           },
@@ -71,7 +71,6 @@ function RootNavigator() {
           },
           headerShown: false,
         }}
-
       >
         <Drawer.Screen name="Avatars" component={Avatars} />
         <Drawer.Screen name="Badge" component={Badge} />

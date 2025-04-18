@@ -5,7 +5,7 @@ import { Header, SubHeader } from '../components/header';
 
 const BadgedIcon = withBadge(15)(Icon);
 
-const BadgeComponent = () => {
+const badgeComponent = () => {
   return (
     <>
       <Header title="Badge" view="badge" />
@@ -93,4 +93,4 @@ const BadgeComponent = () => {
   );
 };
 
-export default BadgeComponent;
+export default badgeComponent;

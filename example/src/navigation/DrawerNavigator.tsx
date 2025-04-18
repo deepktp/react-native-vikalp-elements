@@ -4,12 +4,13 @@ import {
   DrawerContentScrollView,
   DrawerItemList,
   DrawerContentComponentProps,
+  DrawerContentOptions,
 } from '@react-navigation/drawer';
 import { Text, Divider, Switch, useTheme } from '@rneui/themed';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 function CustomContentComponent(
-  props: DrawerContentComponentProps
+  props: DrawerContentComponentProps<DrawerContentOptions>
 ) {
   const { updateTheme, theme } = useTheme();
   // const colorScheme = useColorScheme();
@@ -79,7 +80,7 @@ function CustomContentComponent(
 }
 
 function CustomDrawerContent(
-  props: DrawerContentComponentProps
+  props: DrawerContentComponentProps<DrawerContentOptions>
 ) {
   return (
     <DrawerContentScrollView {...props}>
