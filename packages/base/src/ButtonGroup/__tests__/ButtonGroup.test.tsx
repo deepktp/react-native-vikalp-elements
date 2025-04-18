@@ -72,17 +72,17 @@ describe('ButtonGroup Component', () => {
     expect(component.toJSON()).toMatchSnapshot();
   });
 
-  it('should return index on Press', () => {
+  it('should return index on Press', async () => {
     const onPress = jest.fn();
     const { queryAllByTestId } = renderWithWrapper(
       <ButtonGroup buttons={buttons} onPress={onPress} />
     );
     const buttonComponents = queryAllByTestId('RNE__ButtonGroupItem');
-    fireEvent.press(buttonComponents[1]);
+    await fireEvent.press(buttonComponents[1]);
     expect(onPress).toBeCalledWith(1);
   });
 
-  it('should render selectedIndex', () => {
+  it('should render selectedIndex', async () => {
     const { queryAllByTestId } = renderWithWrapper(
       <ButtonGroup
         buttons={buttons}
@@ -92,10 +92,10 @@ describe('ButtonGroup Component', () => {
       />
     );
     const buttonComponent = queryAllByTestId('RNE__ButtonGroupItem')[1];
-    expect(buttonComponent.findByType(View).props.style).toMatchObject({
+    await expect(buttonComponent.findByType(View).props.style).toMatchObject({
       backgroundColor: 'red',
     });
-    expect(buttonComponent.findByType(Text).props.style).toMatchObject({
+    await expect(buttonComponent.findByType(Text).props.style).toMatchObject({
       fontSize: 12,
     });
   });
