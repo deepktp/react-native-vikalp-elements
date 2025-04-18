@@ -2,6 +2,7 @@ import React from 'react';
 import Dialog from '..';
 import { CreateThemeOptions, darkColors, lightColors } from '../..';
 import { renderWithWrapper } from '../../../.ci/testHelper';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('Dialog Component', () => {
   it('should apply props from theme', () => {

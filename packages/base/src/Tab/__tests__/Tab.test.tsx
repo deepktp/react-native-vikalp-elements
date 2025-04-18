@@ -3,6 +3,8 @@ import { Tab } from '../index';
 import { renderWithWrapper } from '../../../.ci/testHelper';
 import { lightColors } from '../../helpers';
 import { fireEvent } from '@testing-library/react-native';
+import { describe, it, expect, jest } from '@jest/globals';
+
 
 describe('Tab Component', () => {
   const items = ['Tab 1', 'Tab 2', 'Tab 3'];

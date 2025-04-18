@@ -4,6 +4,7 @@ import { makeStyles } from '../makeStyles';
 import Text from '../../Text';
 import { ThemeProps, useTheme } from '../ThemeProvider';
 import { StyleSheet } from 'react-native';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('useTheme()', () => {
   it('should return theme, updateTheme and replaceTheme', () => {

@@ -2,6 +2,7 @@ import React from 'react';
 import BottomSheet from '../index';
 import { renderWithWrapper } from '../../../.ci/testHelper';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('BottomSheet Component', () => {
   it('Should use Theme', () => {

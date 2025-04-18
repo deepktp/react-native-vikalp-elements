@@ -4,6 +4,7 @@ import { Text, TouchableWithoutFeedback, Pressable, View } from 'react-native';
 import { renderWithWrapper } from '../../../.ci/testHelper';
 import { fireEvent } from '@testing-library/react-native';
 import { lightColors } from '../../helpers';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('Badge Component', () => {
   it('should match snapshot', () => {

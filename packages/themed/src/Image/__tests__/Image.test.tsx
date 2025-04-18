@@ -2,6 +2,7 @@ import React from 'react';
 import { Image as RNImage } from 'react-native';
 import Image from '../index';
 import { renderWithWrapper } from '../../../.ci/testHelper';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('Image Component', () => {
   const FAKE_URI = 'https://i.imgur.com/0y8Ftya.jpg';

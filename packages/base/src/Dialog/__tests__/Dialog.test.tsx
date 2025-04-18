@@ -2,6 +2,8 @@ import React from 'react';
 import { Text } from 'react-native';
 import { Dialog } from '..';
 import { renderWithWrapper } from '../../../.ci/testHelper';
+import { describe, it, expect } from '@jest/globals';
+
 
 describe('Dialog Component', () => {
   it('should render without any children', () => {

@@ -2,6 +2,8 @@ import React from 'react';
 import { Header } from '../index';
 import { Button, ImageBackground, StatusBar, View } from 'react-native';
 import { renderWithWrapper } from '../../../.ci/testHelper';
+import { describe, it, expect, jest } from '@jest/globals';
+
 
 const btnCfg = { icon: 'home' };
 const titleCfg = { text: 'This is a title' };
@@ -21,7 +23,7 @@ describe('Header Component', () => {
   it('should render children when passed in', () => {
     const { wrapper } = renderWithWrapper(
       <Header>
-        <Button title="Test button" onPress={() => {}} />
+        <Button title="Test button" onPress={() => { }} />
       </Header>
     );
     expect(wrapper.findAllByType(Button).length).toBe(1);
@@ -31,8 +33,8 @@ describe('Header Component', () => {
   it('should render multiple children when passed in', () => {
     const { wrapper } = renderWithWrapper(
       <Header>
-        <Button title="Test button 1" onPress={() => {}} />
-        <Button title="Test button 2" onPress={() => {}} />
+        <Button title="Test button 1" onPress={() => { }} />
+        <Button title="Test button 2" onPress={() => { }} />
       </Header>
     );
     expect(wrapper.findAllByType(Button).length).toBe(2);
@@ -46,7 +48,7 @@ describe('Header Component', () => {
   it('should render left component by passing a component through props', () => {
     const component = renderWithWrapper(
       <Header
-        leftComponent={<Button title="Test button" onPress={() => {}} />}
+        leftComponent={<Button title="Test button" onPress={() => { }} />}
       />
     );
     expect(component.toJSON()).toMatchSnapshot();
@@ -60,7 +62,7 @@ describe('Header Component', () => {
   it('should render right component by passing a component through props', () => {
     const { wrapper } = renderWithWrapper(
       <Header
-        rightComponent={<Button title="Test button" onPress={() => {}} />}
+        rightComponent={<Button title="Test button" onPress={() => { }} />}
       />
     );
     expect(wrapper.findByType(Button).props.title).toBe('Test button');
@@ -74,7 +76,7 @@ describe('Header Component', () => {
   it('should render center component by passing a component through props', () => {
     const component = renderWithWrapper(
       <Header
-        centerComponent={<Button title="Test button" onPress={() => {}} />}
+        centerComponent={<Button title="Test button" onPress={() => { }} />}
       />
     );
     expect(component.wrapper.findByType(Button).props.title).toBe(

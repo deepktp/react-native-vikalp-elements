@@ -3,6 +3,7 @@ import Skeleton from '..';
 import { StyleSheet } from 'react-native';
 import { renderWithWrapper } from '../../../.ci/testHelper';
 import { CreateThemeOptions, FullTheme } from '../../config';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('Skelton Component', () => {
   it('should apply props from theme', () => {
