@@ -31,7 +31,8 @@
       "package": "com.rneui"
     },
     "plugins": [
-      "expo-font"
+      "expo-font",
+      "expo-asset"
     ]
   }
 }
