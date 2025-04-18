@@ -24,133 +24,115 @@ exports[`SearchBar wrapper component should apply values from theme 1`] = `
       testID="RNE__Input__view-wrapper"
     >
       <View
-        collapsable={false}
         style={
           {
             "alignItems": "center",
-            "borderBottomWidth": 0,
-            "borderColor": "#86939e",
-            "flexDirection": "row",
-            "transform": [
-              {
-                "translateX": 0,
-              },
-            ],
-            "width": "100%",
+            "height": 40,
+            "justifyContent": "center",
+            "marginLeft": 8,
+            "marginVertical": 4,
+            "paddingRight": 4,
           }
         }
       >
         <View
           style={
             {
-              "alignItems": "center",
-              "height": 40,
-              "justifyContent": "center",
-              "marginLeft": 8,
-              "marginVertical": 4,
-              "paddingRight": 4,
+              "overflow": "hidden",
             }
           }
+          testID="RNE__ICON__CONTAINER"
         >
           <View
-            style={
+            accessibilityRole="button"
+            android_ripple={
               {
-                "overflow": "hidden",
+                "borderless": false,
+                "color": "rgba(0, 0, 0, 0.3)",
+                "radius": -5,
               }
             }
-            testID="RNE__ICON__CONTAINER"
+            disabled={false}
+            testID="RNE__ICON__CONTAINER_ACTION"
           >
             <View
-              accessibilityRole="button"
-              android_ripple={
+              style={
                 {
-                  "borderless": false,
-                  "color": "rgba(0, 0, 0, 0.3)",
-                  "radius": -5,
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "justifyContent": "center",
                 }
               }
-              disabled={false}
-              testID="RNE__ICON__CONTAINER_ACTION"
+              testID="RNE__ICON"
             >
-              <View
+              <Text
+                allowFontScaling={false}
+                selectable={false}
                 style={
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "transparent",
-                    "justifyContent": "center",
-                  }
+                  [
+                    {
+                      "color": "rgba(0, 0, 0, 0.54)",
+                      "fontSize": 25,
+                    },
+                    {
+                      "backgroundColor": "transparent",
+                    },
+                    {
+                      "fontFamily": "Material Icons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    {},
+                  ]
                 }
-                testID="RNE__ICON"
+                testID="RNE__ICON__Component"
               >
-                <Text
-                  allowFontScaling={false}
-                  style={
-                    [
-                      {
-                        "color": "rgba(0, 0, 0, 0.54)",
-                        "fontSize": 25,
-                      },
-                      {
-                        "backgroundColor": "transparent",
-                      },
-                      {
-                        "fontFamily": "Material Icons",
-                        "fontStyle": "normal",
-                        "fontWeight": "normal",
-                      },
-                      {},
-                    ]
-                  }
-                  testID="RNE__ICON__Component"
-                >
-                  
-                </Text>
-              </View>
+                
+              </Text>
             </View>
           </View>
         </View>
-        <TextInput
-          editable={true}
-          onBlur={[Function]}
-          onCancel={[Function]}
-          onChangeText={[Function]}
-          onFocus={[Function]}
-          placeholder="Enter search term"
-          placeholderTextColor="#86939e"
-          platform="android"
-          style={
-            {
-              "color": "#242424",
-              "flex": 1,
-              "fontSize": 18,
-              "marginLeft": 24,
-              "marginRight": 8,
-              "minHeight": 40,
-            }
+      </View>
+      <TextInput
+        editable={true}
+        onBlur={[Function]}
+        onChangeText={[Function]}
+        onFocus={[Function]}
+        placeholder="Enter search term"
+        placeholderTextColor="#86939e"
+        platform="android"
+        style={
+          {
+            "color": "#242424",
+            "flex": 1,
+            "fontSize": 18,
+            "marginLeft": 24,
+            "marginRight": 8,
+            "minHeight": 40,
           }
-          testID="RNE__SearchBar"
-          underlineColorAndroid="transparent"
-        />
+        }
+        testID="RNE__SearchBar"
+        underlineColorAndroid="transparent"
+      />
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "height": 40,
+            "justifyContent": "center",
+            "marginRight": 8,
+            "marginVertical": 4,
+            "paddingRight": 4,
+          }
+        }
+      >
         <View
           style={
             {
-              "alignItems": "center",
-              "height": 40,
-              "justifyContent": "center",
-              "marginRight": 8,
-              "marginVertical": 4,
-              "paddingRight": 4,
+              "flexDirection": "row",
             }
           }
-        >
-          <View
-            style={
-              {
-                "flexDirection": "row",
-              }
-            }
-          />
-        </View>
+        />
       </View>
       <Text
         style={

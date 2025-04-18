@@ -197,6 +197,7 @@ exports[`PricingCard component should match snapshot 1`] = `
                 >
                   <Text
                     allowFontScaling={false}
+                    selectable={false}
                     style={
                       [
                         {
@@ -447,6 +448,7 @@ exports[`PricingCard component should render with props 1`] = `
                 >
                   <Text
                     allowFontScaling={false}
+                    selectable={false}
                     style={
                       [
                         {

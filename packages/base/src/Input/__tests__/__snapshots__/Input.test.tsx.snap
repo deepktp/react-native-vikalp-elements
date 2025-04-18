@@ -13,37 +13,20 @@ exports[`Input component should match snapshot 1`] = `
     }
     testID="RNE__Input__view-wrapper"
   >
-    <View
-      collapsable={false}
+    <TextInput
+      editable={true}
+      placeholderTextColor="#86939e"
       style={
         {
-          "alignItems": "center",
-          "borderBottomWidth": 1,
-          "borderColor": "#86939e",
-          "flexDirection": "row",
-          "transform": [
-            {
-              "translateX": 0,
-            },
-          ],
+          "color": "#242424",
+          "flex": 1,
+          "fontSize": 18,
+          "minHeight": 40,
         }
       }
-    >
-      <TextInput
-        editable={true}
-        placeholderTextColor="#86939e"
-        style={
-          {
-            "color": "#242424",
-            "flex": 1,
-            "fontSize": 18,
-            "minHeight": 40,
-          }
-        }
-        testID="RNE__Input__text-input"
-        underlineColorAndroid="transparent"
-      />
-    </View>
+      testID="RNE__Input__text-input"
+      underlineColorAndroid="transparent"
+    />
     <Text
       style={
         {

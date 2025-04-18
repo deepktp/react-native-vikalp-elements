@@ -45,11 +45,12 @@ exports[`Header Component should match snapshot 1`] = `
     />
     <RNCSafeAreaView
       edges={
-        [
-          "left",
-          "top",
-          "right",
-        ]
+        {
+          "bottom": "off",
+          "left": "additive",
+          "right": "additive",
+          "top": "additive",
+        }
       }
       style={
         {
@@ -108,11 +109,12 @@ exports[`Header Component should render center component by passing a config thr
   >
     <RNCSafeAreaView
       edges={
-        [
-          "left",
-          "top",
-          "right",
-        ]
+        {
+          "bottom": "off",
+          "left": "additive",
+          "right": "additive",
+          "top": "additive",
+        }
       }
       style={
         {
@@ -178,11 +180,12 @@ exports[`Header Component should render left component by passing a component th
   >
     <RNCSafeAreaView
       edges={
-        [
-          "left",
-          "top",
-          "right",
-        ]
+        {
+          "bottom": "off",
+          "left": "additive",
+          "right": "additive",
+          "top": "additive",
+        }
       }
       style={
         {
@@ -300,11 +303,12 @@ exports[`Header Component should render left component by passing a config throu
   >
     <RNCSafeAreaView
       edges={
-        [
-          "left",
-          "top",
-          "right",
-        ]
+        {
+          "bottom": "off",
+          "left": "additive",
+          "right": "additive",
+          "top": "additive",
+        }
       }
       style={
         {
@@ -355,6 +359,7 @@ exports[`Header Component should render left component by passing a config throu
             >
               <Text
                 allowFontScaling={false}
+                selectable={false}
                 style={
                   [
                     {
@@ -422,11 +427,12 @@ exports[`Header Component should render right component by passing a config thro
   >
     <RNCSafeAreaView
       edges={
-        [
-          "left",
-          "top",
-          "right",
-        ]
+        {
+          "bottom": "off",
+          "left": "additive",
+          "right": "additive",
+          "top": "additive",
+        }
       }
       style={
         {
@@ -493,6 +499,7 @@ exports[`Header Component should render right component by passing a config thro
             >
               <Text
                 allowFontScaling={false}
+                selectable={false}
                 style={
                   [
                     {

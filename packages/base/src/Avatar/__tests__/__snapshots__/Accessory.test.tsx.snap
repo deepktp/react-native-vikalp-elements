@@ -93,6 +93,7 @@ exports[`Accessory Component should uses Icon 1`] = `
           >
             <Text
               allowFontScaling={false}
+              selectable={false}
               style={
                 [
                   {

@@ -288,6 +288,7 @@ exports[`Speed Dial Component should render 1`] = `
                       >
                         <Text
                           allowFontScaling={false}
+                          selectable={false}
                           style={
                             [
                               {
@@ -517,6 +518,7 @@ exports[`Speed Dial Component should render 1`] = `
                       >
                         <Text
                           allowFontScaling={false}
+                          selectable={false}
                           style={
                             [
                               {
@@ -672,6 +674,7 @@ exports[`Speed Dial Component should render 1`] = `
                   >
                     <Text
                       allowFontScaling={false}
+                      selectable={false}
                       style={
                         [
                           {

@@ -321,6 +321,7 @@ exports[`Tile component should render tile with icon 1`] = `
               >
                 <Text
                   allowFontScaling={false}
+                  selectable={false}
                   style={
                     [
                       {
