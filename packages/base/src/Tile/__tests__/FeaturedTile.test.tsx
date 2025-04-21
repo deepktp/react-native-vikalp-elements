@@ -6,7 +6,6 @@ import { Pressable, Image } from 'react-native';
 import { Icon } from '../../Icon';
 import { describe, it, expect } from '@jest/globals';
 
-
 describe('FeaturedTitle component', () => {
   it('should match snapshot', () => {
     const component = renderWithWrapper(

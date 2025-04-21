@@ -5,7 +5,6 @@ import { renderWithWrapper, fireEvent } from '../../../.ci/testHelper';
 import { Icon } from '../../Icon';
 import { describe, it, expect, jest } from '@jest/globals';
 
-
 describe('FAB Component', () => {
   it('should match snapshot', () => {
     const { toJSON } = renderWithWrapper(<FAB title="Hey" size="small" />);

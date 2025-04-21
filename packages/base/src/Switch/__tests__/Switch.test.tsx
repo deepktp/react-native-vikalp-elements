@@ -3,7 +3,6 @@ import { Switch } from '../index';
 import { renderWithWrapper, fireEvent } from '../../../.ci/testHelper';
 import { describe, it, expect, jest } from '@jest/globals';
 
-
 describe('Switch Component', () => {
   it('should match snapshot', () => {
     const { toJSON } = renderWithWrapper(<Switch value color="green" />);

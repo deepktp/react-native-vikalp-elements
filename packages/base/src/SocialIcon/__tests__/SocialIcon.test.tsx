@@ -6,7 +6,6 @@ import { Icon } from '../../Icon';
 import { fireEvent } from '@testing-library/react-native';
 import { describe, it, expect, jest } from '@jest/globals';
 
-
 describe('SocialIcon component', () => {
   it('should match snapshot', () => {
     const { queryByTestId } = renderWithWrapper(<SocialIcon type="twitter" />);

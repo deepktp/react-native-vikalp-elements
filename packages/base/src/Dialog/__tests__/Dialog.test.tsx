@@ -4,7 +4,6 @@ import { Dialog } from '..';
 import { renderWithWrapper } from '../../../.ci/testHelper';
 import { describe, it, expect } from '@jest/globals';
 
-
 describe('Dialog Component', () => {
   it('should render without any children', () => {
     const component = renderWithWrapper(<Dialog isVisible />);

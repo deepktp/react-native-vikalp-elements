@@ -3,7 +3,7 @@ import { fireEvent } from '@testing-library/react-native';
 import { ActivityIndicator, Text, Pressable, View } from 'react-native';
 import { renderWithWrapper } from '../../../.ci/testHelper';
 import { Icon } from '../../Icon';
-import { it, expect, describe, beforeEach, jest } from "@jest/globals";
+import { it, expect, describe, beforeEach, jest } from '@jest/globals';
 
 const WrapperTestID = 'RNE__SearchBar-wrapper';
 const SearchBarTestID = 'RNE__SearchBar';
@@ -113,7 +113,6 @@ export function commonTests(SearchBar) {
           throw new Error('Wrapper not found');
         }
         expect(Wrapper.findAllByType(View)).not.toBeNull();
-
       });
 
       it('no searchIcon', () => {

@@ -3,7 +3,6 @@ import { SpeedDial } from '..';
 import { renderWithWrapper } from '../../../.ci/testHelper';
 import { describe, it, expect, jest } from '@jest/globals';
 
-
 describe('Speed Dial Component', () => {
   it('should match snapshot', () => {
     const { toJSON } = renderWithWrapper(

@@ -5,7 +5,6 @@ import { Button } from '../../Button';
 import { renderWithWrapper } from '../../../.ci/testHelper';
 import { describe, it, expect, jest } from '@jest/globals';
 
-
 describe('PricingCard component', () => {
   it('should match snapshot', () => {
     const component = renderWithWrapper(

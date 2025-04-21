@@ -4,7 +4,6 @@ import { renderWithWrapper } from '../../../.ci/testHelper';
 import { Pressable, View, Text, Image } from 'react-native';
 import { describe, it, expect } from '@jest/globals';
 
-
 describe('CheckBox Component', () => {
   it('should match snapshot', () => {
     const component = renderWithWrapper(<CheckBox checked />);

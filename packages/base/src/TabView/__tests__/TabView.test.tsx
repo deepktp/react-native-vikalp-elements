@@ -3,7 +3,6 @@ import { TabView } from '../index';
 import { renderWithWrapper } from '../../../.ci/testHelper';
 import { describe, it, expect, jest } from '@jest/globals';
 
-
 describe('Tab Component', () => {
   it('should match snapshot', () => {
     const onValueChange = jest.fn();

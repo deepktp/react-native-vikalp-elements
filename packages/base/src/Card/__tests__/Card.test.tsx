@@ -4,7 +4,6 @@ import { renderWithWrapper } from '../../../.ci/testHelper';
 import { Image } from '../../Image';
 import { describe, it, expect } from '@jest/globals';
 
-
 describe('Card Component', () => {
   it('should match snapshot', () => {
     const component = renderWithWrapper(<Card />);

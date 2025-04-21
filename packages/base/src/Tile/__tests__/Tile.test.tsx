@@ -3,7 +3,7 @@ import { Tile } from '../index';
 import { renderWithWrapper } from '../../../.ci/testHelper';
 import { Image, Pressable } from 'react-native';
 import { Icon } from '../../Icon';
-import { describe, it, expect } from "@jest/globals";
+import { describe, it, expect } from '@jest/globals';
 
 describe('Tile component', () => {
   it('should match snapshot', () => {

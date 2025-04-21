@@ -6,7 +6,6 @@ import { fireEvent, renderWithWrapper } from '../../../.ci/testHelper';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { describe, it, expect, jest } from '@jest/globals';
 
-
 describe('BottomSheet Component', () => {
   it('renders correctly', () => {
     const list = [{ title: 'test' }, { title: 'test2' }];

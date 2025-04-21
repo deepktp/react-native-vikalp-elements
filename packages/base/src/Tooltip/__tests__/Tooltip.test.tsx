@@ -2,7 +2,7 @@ import React from 'react';
 import { Tooltip } from '../index';
 import { Text, Modal, Pressable } from 'react-native';
 import { renderWithWrapper, fireEvent } from '../../../.ci/testHelper';
-import { describe, it, expect, jest } from "@jest/globals";
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('Tooltip component', () => {
   it('should match snapshot', () => {

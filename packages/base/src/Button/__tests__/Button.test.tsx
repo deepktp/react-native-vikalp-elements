@@ -6,7 +6,6 @@ import { Icon } from '../../Icon';
 import { Button } from '../index';
 import { describe, it, expect, jest } from '@jest/globals';
 
-
 describe('Button Component', () => {
   it('should match snapshot', () => {
     const TITLE = 'My Button';

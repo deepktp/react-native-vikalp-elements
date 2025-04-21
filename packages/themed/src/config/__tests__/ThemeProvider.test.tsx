@@ -16,7 +16,6 @@ import {
 } from '../ThemeProvider';
 import { describe, it, expect, jest } from '@jest/globals';
 
-
 declare module '../..' {
   export interface Theme {
     myCustomProperty: string;
