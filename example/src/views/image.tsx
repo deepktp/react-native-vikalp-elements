@@ -1,6 +1,6 @@
 import React from 'react';
 import { FlatList, SafeAreaView, StyleSheet } from 'react-native';
-import { Image } from '@rneui/themed';
+import { Image } from '@rn-vui/themed';
 
 import { Header } from '../components/header';
 

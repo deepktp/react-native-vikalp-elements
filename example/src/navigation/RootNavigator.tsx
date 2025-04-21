@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { Tab, useTheme } from '@rneui/themed';
+import { Tab, useTheme } from '@rn-vui/themed';
 import DrawerNavigator from './DrawerNavigator';
 import Avatars from '../views/avatars';
 import Cards from '../views/cards';

@@ -1,4 +1,4 @@
-import { info, usage, Stack } from '@rneui/doc-gen';
+import { info, usage, Stack } from '@rn-vui/doc-gen';
 import React from 'react';
 import { Text } from '..';
 

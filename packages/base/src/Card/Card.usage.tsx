@@ -1,4 +1,4 @@
-import { info, meta, usage } from '@rneui/doc-gen';
+import { info, meta, usage } from '@rn-vui/doc-gen';
 import React from 'react';
 import { Button, Card, Text } from '..';
 

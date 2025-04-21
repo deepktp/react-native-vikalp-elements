@@ -5,7 +5,7 @@ import {
   DrawerItemList,
   DrawerContentComponentProps
 } from '@react-navigation/drawer';
-import { Text, Divider, Switch, useTheme } from '@rneui/themed';
+import { Text, Divider, Switch, useTheme } from '@rn-vui/themed';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 function CustomContentComponent(

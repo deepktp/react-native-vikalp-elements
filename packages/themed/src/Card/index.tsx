@@ -1,15 +1,15 @@
 import { withTheme } from '../config';
-import { CardBase, CardProps } from '@rneui/base/dist/Card/Card';
+import { CardBase, CardProps } from '@rn-vui/base/dist/Card/Card';
 import {
   CardDivider,
   CardDividerProps,
-} from '@rneui/base/dist/Card/Card.Divider';
-import { CardFeaturedSubtitle } from '@rneui/base/dist/Card/Card.FeaturedSubtitle';
-import { CardFeaturedTitle } from '@rneui/base/dist/Card/Card.FeaturedTitle';
-import { CardImage, CardImageProps } from '@rneui/base/dist/Card/Card.Image';
-import { CardTitle, CardTitleProps } from '@rneui/base/dist/Card/Card.Title';
-import { CardFeaturedSubtitleProps } from '@rneui/base/dist/Card';
-import { CardFeaturedTitleProps } from '@rneui/base/dist/Card';
+} from '@rn-vui/base/dist/Card/Card.Divider';
+import { CardFeaturedSubtitle } from '@rn-vui/base/dist/Card/Card.FeaturedSubtitle';
+import { CardFeaturedTitle } from '@rn-vui/base/dist/Card/Card.FeaturedTitle';
+import { CardImage, CardImageProps } from '@rn-vui/base/dist/Card/Card.Image';
+import { CardTitle, CardTitleProps } from '@rn-vui/base/dist/Card/Card.Title';
+import { CardFeaturedSubtitleProps } from '@rn-vui/base/dist/Card';
+import { CardFeaturedTitleProps } from '@rn-vui/base/dist/Card';
 
 const ThemedCardDivider = withTheme<CardDividerProps>(
   CardDivider,

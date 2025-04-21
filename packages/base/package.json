@@ -1,5 +1,5 @@
 {
-  "name": "@rneui/base",
+  "name": "@rn-vui/base",
   "version": "5.0.0",
   "description": "Cross Platform React Native UI Toolkit",
   "main": "dist/index.js",
@@ -20,7 +20,7 @@
     "native",
     "react native",
     "react native elements",
-    "rneui",
+    "rn-vui",
     "react native ui",
     "react native components",
     "ui library",

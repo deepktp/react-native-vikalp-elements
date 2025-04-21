@@ -2,7 +2,7 @@ import React from 'react';
 import { ScrollView } from 'react-native';
 import colors from '../config/colors';
 import { Header } from '../components/header';
-import { PricingCard } from '@rneui/themed';
+import { PricingCard } from '@rn-vui/themed';
 
 type PricingCardComponentProps = {};
 

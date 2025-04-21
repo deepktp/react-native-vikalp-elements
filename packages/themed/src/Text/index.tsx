@@ -1,4 +1,4 @@
-import { Text, TextProps } from '@rneui/base/dist/Text/Text';
+import { Text, TextProps } from '@rn-vui/base/dist/Text/Text';
 import { withTheme } from '../config';
 
 export { Text };

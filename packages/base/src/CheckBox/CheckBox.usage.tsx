@@ -1,6 +1,6 @@
 import React from 'react';
 import { CheckBox } from '..';
-import { usage, Stack, info } from '@rneui/doc-gen';
+import { usage, Stack, info } from '@rn-vui/doc-gen';
 
 info(
   'CheckBoxes allow users to complete tasks that involve making choices such as selecting options, or switching settings - On or Off. It provides a clear visual of either a true or false choice.'

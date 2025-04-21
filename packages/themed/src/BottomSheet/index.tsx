@@ -1,7 +1,7 @@
 import {
   BottomSheet,
   BottomSheetProps,
-} from '@rneui/base/dist/BottomSheet/BottomSheet';
+} from '@rn-vui/base/dist/BottomSheet/BottomSheet';
 import { withTheme } from '../config';
 
 export { BottomSheet };

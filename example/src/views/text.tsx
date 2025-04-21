@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Text, useTheme } from '@rneui/themed';
+import { Text, useTheme } from '@rn-vui/themed';
 import { Header } from '../components/header';
 
 type TextComponentProps = {};

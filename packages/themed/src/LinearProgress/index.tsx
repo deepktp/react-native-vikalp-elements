@@ -2,7 +2,7 @@ import { withTheme } from '../config';
 import {
   LinearProgress,
   LinearProgressProps,
-} from '@rneui/base/dist/LinearProgress/LinearProgress';
+} from '@rn-vui/base/dist/LinearProgress/LinearProgress';
 
 export { LinearProgress };
 export type { LinearProgressProps };

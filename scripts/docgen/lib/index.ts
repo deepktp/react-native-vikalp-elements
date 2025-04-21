@@ -1,5 +1,5 @@
 import React from 'react';
-import { StackProps } from '@rneui/layout';
+import { StackProps } from '@rn-vui/layout';
 
 declare const Stack: React.FC<StackProps>;
 

@@ -35,7 +35,7 @@ Cross Platform <a href="https://reactnative.dev">React Native</a> UI Toolkit
 
 <div align="center">
 
-<a href="https://reactnativeelements.com">Getting Started 🚀</a> - <a href="https://reactnativeelements.com/docs">Documentation 📚</a> - <a href="https://expo.dev/@rneui/react-native-elements">Expo demo </a> - <a href="https://reactnativeelements.com/blog">Blog</a> - <a href="https://github.com/react-native-elements/react-native-elements/releases">Releases</a>
+<a href="https://reactnativeelements.com">Getting Started 🚀</a> - <a href="https://reactnativeelements.com/docs">Documentation 📚</a> - <a href="https://expo.dev/@rn-vui/react-native-elements">Expo demo </a> - <a href="https://reactnativeelements.com/blog">Blog</a> - <a href="https://github.com/react-native-elements/react-native-elements/releases">Releases</a>
 
 </div>
 
@@ -46,7 +46,7 @@ Cross Platform <a href="https://reactnative.dev">React Native</a> UI Toolkit
 ## Installation
 
 ```bash
-npm install @rneui/themed @rneui/base
+npm install @rn-vui/themed @rn-vui/base
 ```
 
 Follow
@@ -55,10 +55,10 @@ to install React Native Elements!
 
 ### Packages
 
-| Package           | Version                                                                                                                          | Downloads                                                                    |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| **@rneui/base**   | [![badge](https://img.shields.io/npm/v/@rneui/base.svg?style=flat-square-square)](https://www.npmjs.com/package/@rneui/base)     | ![npm](https://img.shields.io/npm/dm/@rneui/base?style=flat-square-square)   |
-| **@rneui/themed** | [![badge](https://img.shields.io/npm/v/@rneui/themed.svg?style=flat-square-square)](https://www.npmjs.com/package/@rneui/themed) | ![npm](https://img.shields.io/npm/dm/@rneui/themed?style=flat-square-square) |
+| Package            | Version                                                                                                                            | Downloads                                                                     |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| **@rn-vui/base**   | [![badge](https://img.shields.io/npm/v/@rn-vui/base.svg?style=flat-square-square)](https://www.npmjs.com/package/@rn-vui/base)     | ![npm](https://img.shields.io/npm/dm/@rn-vui/base?style=flat-square-square)   |
+| **@rn-vui/themed** | [![badge](https://img.shields.io/npm/v/@rn-vui/themed.svg?style=flat-square-square)](https://www.npmjs.com/package/@rn-vui/themed) | ![npm](https://img.shields.io/npm/dm/@rn-vui/themed?style=flat-square-square) |
 
 ## Quick Start
 
@@ -66,7 +66,7 @@ Start using the components or try it on
 [Snack](https://snack.expo.dev/@arpitbhalla/react-native-elements).
 
 ```tsx
-import { Button } from '@rneui/base';
+import { Button } from '@rn-vui/base';
 
 const App = () => <Button title="Hello World!" />;
 ```
@@ -80,7 +80,7 @@ Click [here](https://reactnativeelements.com/blog/2018/12/13/react-native-web) f
 ## Expo demo app
 
 Checkout the official
-[React Native Elements App](https://expo.dev/@rneui/react-native-elements)
+[React Native Elements App](https://expo.dev/@rn-vui/react-native-elements)
 on Expo which uses all of the React Native Elements components.
 
 If you are looking to contribute to the React Native Elements App,

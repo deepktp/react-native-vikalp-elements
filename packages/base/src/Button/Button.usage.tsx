@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Icon } from '..';
-import { usage, Stack, info, meta } from '@rneui/doc-gen';
+import { usage, Stack, info, meta } from '@rn-vui/doc-gen';
 
 info(
   'Buttons are touchable elements used to interact with the screen and to perform and operation.',
