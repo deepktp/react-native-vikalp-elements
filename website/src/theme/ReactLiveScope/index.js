@@ -7,8 +7,8 @@
 
 import React from 'react';
 import * as RNE from 'react-native-elements';
-import * as rn-vui from '@rn-vui/base';
-import * as rn-vui_Layout from '@rn-vui/layout';
+import * as rnvui from '@rn-vui/base';
+import * as rnvui_Layout from '@rn-vui/layout';
 import LinearGradient from 'react-native-linear-gradient';
 
 // Add react-live imports you need here
@@ -16,8 +16,8 @@ const ReactLiveScope = {
   React,
   LinearGradient,
   ...RNE,
-  ...rn - vui,
-  ...rn - vui_Layout,
+  ...rnvui,
+  ...rnvui_Layout,
   ...React,
 };
 

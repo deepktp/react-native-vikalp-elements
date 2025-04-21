@@ -19,7 +19,7 @@ Setting styles in the theme is as simple as using the name of the component, as
 a key and the props you want to change as the value.
 
 ```jsx
-import { ThemeProvider, createTheme } from '@rneui/themed';
+import { ThemeProvider, createTheme } from '@rn-vui/themed';
 
 const theme = createTheme({
   lightColors: {
@@ -43,7 +43,12 @@ using the `colors` object and the `Platform` API.
 
 ```jsx
 import { Platform } from 'react-native';
-import { Button, lightColors, createTheme, ThemeProvider } from '@rneui/themed';
+import {
+  Button,
+  lightColors,
+  createTheme,
+  ThemeProvider,
+} from '@rn-vui/themed';
 
 const theme = createTheme({
   lightColors: {
@@ -92,7 +97,7 @@ instead of the built-in component.
 
 ```tsx
 import React from 'react';
-import { Button } from '@rneui/themed';
+import { Button } from '@rn-vui/themed';
 
 const RaisedButton = (props) => <Button raised {...props} />;
 
@@ -115,7 +120,7 @@ do this for every component you want custom styles for. That could get a bit
 tedious to manage. Thankfully, there's a better way to do this.
 
 ```jsx
-import { ThemeProvider, Button, createTheme } from '@rneui/themed';
+import { ThemeProvider, Button, createTheme } from '@rn-vui/themed';
 
 const theme = createTheme({
   components: {
@@ -151,7 +156,7 @@ Theme styles are the values that are set by the ThemeProvider If present, these
 are applied second.
 
 ```tsx
-import { ThemeProvider, Button, createTheme } from '@rneui/themed';
+import { ThemeProvider, Button, createTheme } from '@rn-vui/themed';
 
 const theme = createTheme({
   components: {
@@ -180,7 +185,7 @@ External styles are the styles which are set through the component props. These
 are applied last and have the highest precedence.
 
 ```tsx
-import { ThemeProvider, Button, createTheme } from '@rneui/themed';
+import { ThemeProvider, Button, createTheme } from '@rn-vui/themed';
 
 const theme = createTheme({
   components: {
