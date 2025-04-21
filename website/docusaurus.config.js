@@ -2,7 +2,7 @@
 const config = {
   title: 'React Native vElements' /* title for your website */,
   tagline: 'Cross Platform React Native UI Toolkit',
-  url: 'https://reactnativeelements.com' /* your website url */,
+  url: 'https://thevikalpui.netlify.app' /* your website url */,
   baseUrl: '/' /* base url for your project */,
   projectName: 'react-native-elements',
   organizationName: 'react-native-elements',

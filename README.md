@@ -35,7 +35,7 @@ Cross Platform <a href="https://reactnative.dev">React Native</a> UI Toolkit
 
 <div align="center">
 
-<a href="https://reactnativeelements.com">Getting Started 🚀</a> - <a href="https://thevikalpui.netlify.app/docs">Documentation 📚</a> - <a href="https://expo.dev/@rn-vui/react-native-elements">Expo demo </a> - <a href="https://thevikalpui.netlify.app/blog">Blog</a> - <a href="https://github.com/react-native-elements/react-native-elements/releases">Releases</a>
+<a href="https://thevikalpui.netlify.app">Getting Started 🚀</a> - <a href="https://thevikalpui.netlify.app/docs">Documentation 📚</a> - <a href="https://expo.dev/@rn-vui/react-native-elements">Expo demo </a> - <a href="https://thevikalpui.netlify.app/blog">Blog</a> - <a href="https://github.com/react-native-elements/react-native-elements/releases">Releases</a>
 
 </div>
 
