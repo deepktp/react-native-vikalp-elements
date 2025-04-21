@@ -1,3 +1,10 @@
+# This is a forked project
+
+> **Note**: This library is a fork of the original [React Native Elements (RNEUI)](https://reactnativeelements.com/). Due to the lack of active maintenance, we have taken the initiative to support it by fixing bugs and ensuring its continued usability.  
+> You can find the original library on [GitHub](https://github.com/react-native-elements/react-native-elements).
+>
+> With some minor changes this library can be used in place of React Native Elements
+
 <p align="center">
   <a href="https://thevikalpui.netlify.app/">
     <img alt="react-native-elements" src="https://user-images.githubusercontent.com/5962998/65694309-a825f000-e043-11e9-8382-db0dba0851e3.png" width="200">
