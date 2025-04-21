@@ -77,8 +77,8 @@ export const FAB: RneFunctionComponent<FABProps> = ({
               ? styles.smallExtendedLabel
               : styles.extendedLabel
             : size === 'small'
-              ? styles.smallFAB
-              : styles.largeFAB,
+            ? styles.smallFAB
+            : styles.largeFAB,
           {
             backgroundColor: color || theme?.colors?.secondary,
           },
@@ -88,8 +88,8 @@ export const FAB: RneFunctionComponent<FABProps> = ({
           rest.title
             ? {}
             : size === 'small'
-              ? styles.smallFAB
-              : styles.largeFAB,
+            ? styles.smallFAB
+            : styles.largeFAB,
           iconContainerStyle,
         ]}
         containerStyle={StyleSheet.flatten([
