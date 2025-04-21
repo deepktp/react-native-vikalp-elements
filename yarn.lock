@@ -5205,7 +5205,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/react-native@npm:^11.5.0":
+"@testing-library/react-native@npm:^11.0.4":
   version: 11.5.4
   resolution: "@testing-library/react-native@npm:11.5.4"
   dependencies:
@@ -5725,7 +5725,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^18, @types/react@npm:^18.3.6":
+"@types/react@npm:^18, @types/react@npm:^18.2.6":
   version: 18.3.20
   resolution: "@types/react@npm:18.3.20"
   dependencies:
@@ -17514,15 +17514,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:18.1.0":
-  version: 18.1.0
-  resolution: "react-dom@npm:18.1.0"
+"react-dom@npm:18.2.0":
+  version: 18.2.0
+  resolution: "react-dom@npm:18.2.0"
   dependencies:
     loose-envify: "npm:^1.1.0"
-    scheduler: "npm:^0.22.0"
+    scheduler: "npm:^0.23.0"
   peerDependencies:
-    react: ^18.1.0
-  checksum: 10/64f7d85c50ea702dcaf746af16dd54554aa05847d5915003ea0ea9d8c44bea72c3b96ba8a13341011bb028b6c2d12bd9b1ab7ede0184ca1a63118fcc3bc958dc
+    react: ^18.2.0
+  checksum: 10/ca5e7762ec8c17a472a3605b6f111895c9f87ac7d43a610ab7024f68cd833d08eda0625ce02ec7178cc1f3c957cf0b9273cdc17aa2cd02da87544331c43b1d21
   languageName: node
   linkType: hard
 
@@ -18519,10 +18519,10 @@ __metadata:
     "@babel/preset-env": "npm:^7.26.9"
     "@react-native/babel-preset": "npm:^0.74.87"
     "@react-native/eslint-config": "npm:^0.74.87"
-    "@testing-library/react-native": "npm:^11.5.0"
+    "@testing-library/react-native": "npm:^11.0.4"
     "@tsconfig/react-native": "npm:^3.0.0"
     "@types/babel__preset-env": "npm:^7"
-    "@types/react": "npm:^18.3.6"
+    "@types/react": "npm:^18.2.6"
     "@types/react-test-renderer": "npm:^18.0.0"
     babel-jest: "npm:^29.6.3"
     codecov: "npm:^3.8.3"
@@ -18537,7 +18537,7 @@ __metadata:
     prettier: "npm:^2.8.8"
     react: "npm:18.2.0"
     react-docgen-typescript: "npm:^2.2.2"
-    react-dom: "npm:18.1.0"
+    react-dom: "npm:18.2.0"
     react-native: "npm:0.74.5"
     react-test-renderer: "npm:18.2.0"
     rimraf: "npm:^3.0.2"
@@ -18673,15 +18673,6 @@ __metadata:
   dependencies:
     loose-envify: "npm:^1.1.0"
   checksum: 10/216dbe36490f8c3133eee8352061803c377de6eb80d4a8f7f290819a721a21135aba145db28ad3e34056115f1a8c0d7e1cd477cebd3d01f6d98e28cc31fc702a
-  languageName: node
-  linkType: hard
-
-"scheduler@npm:^0.22.0":
-  version: 0.22.0
-  resolution: "scheduler@npm:0.22.0"
-  dependencies:
-    loose-envify: "npm:^1.1.0"
-  checksum: 10/6d4753d2710870c71273a4b503fffd2d293f8714b1d32274d08def0377205541309711c13fc4507e9173f16d7e5c1efee731254452ad245eb5681f67b919ef3e
   languageName: node
   linkType: hard
 

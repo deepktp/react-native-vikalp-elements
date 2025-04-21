@@ -9,9 +9,9 @@ const WrapperTestID = 'RNE__SearchBar-wrapper';
 const SearchBarTestID = 'RNE__SearchBar';
 
 export function commonTests(SearchBar) {
-  beforeEach(() => {
-    jest.resetModules();
-  });
+  // beforeEach(() => {
+  //   jest.resetModules();
+  // });
 
   it('should match snapshot', () => {
     const component = renderWithWrapper(<SearchBar />);

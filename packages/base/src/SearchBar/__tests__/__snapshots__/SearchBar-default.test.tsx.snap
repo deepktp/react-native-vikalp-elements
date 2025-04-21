@@ -27,112 +27,133 @@ exports[`Default SearchBar component should match snapshot 1`] = `
       testID="RNE__Input__view-wrapper"
     >
       <View
+        collapsable={false}
         style={
           {
             "alignItems": "center",
-            "height": 40,
-            "justifyContent": "center",
-            "marginLeft": 8,
-            "marginVertical": 4,
-            "paddingRight": 4,
+            "backgroundColor": "#303337",
+            "borderBottomWidth": 0,
+            "borderColor": "#86939e",
+            "borderRadius": 3,
+            "flexDirection": "row",
+            "minHeight": 30,
+            "overflow": "hidden",
+            "transform": [
+              {
+                "translateX": 0,
+              },
+            ],
           }
         }
       >
         <View
           style={
             {
-              "overflow": "hidden",
+              "alignItems": "center",
+              "height": 40,
+              "justifyContent": "center",
+              "marginLeft": 8,
+              "marginVertical": 4,
+              "paddingRight": 4,
             }
           }
-          testID="RNE__ICON__CONTAINER"
         >
           <View
-            accessibilityRole="button"
-            android_ripple={
+            style={
               {
-                "borderless": false,
-                "color": "rgba(0, 0, 0, 0.3)",
-                "radius": -5,
+                "overflow": "hidden",
               }
             }
-            disabled={false}
-            testID="RNE__ICON__CONTAINER_ACTION"
+            testID="RNE__ICON__CONTAINER"
           >
             <View
-              style={
+              accessibilityRole="button"
+              android_ripple={
                 {
-                  "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "justifyContent": "center",
+                  "borderless": false,
+                  "color": "rgba(0, 0, 0, 0.3)",
+                  "radius": -5,
                 }
               }
-              testID="RNE__ICON"
+              disabled={false}
+              testID="RNE__ICON__CONTAINER_ACTION"
             >
-              <Text
-                allowFontScaling={false}
-                selectable={false}
+              <View
                 style={
-                  [
-                    {
-                      "color": "#86939e",
-                      "fontSize": 18,
-                    },
-                    {
-                      "backgroundColor": "transparent",
-                    },
-                    {
-                      "fontFamily": "Material Icons",
-                      "fontStyle": "normal",
-                      "fontWeight": "normal",
-                    },
-                    {},
-                  ]
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "justifyContent": "center",
+                  }
                 }
-                testID="RNE__ICON__Component"
+                testID="RNE__ICON"
               >
-                
-              </Text>
+                <Text
+                  allowFontScaling={false}
+                  selectable={false}
+                  style={
+                    [
+                      {
+                        "color": "#86939e",
+                        "fontSize": 18,
+                      },
+                      {
+                        "backgroundColor": "transparent",
+                      },
+                      {
+                        "fontFamily": "Material Icons",
+                        "fontStyle": "normal",
+                        "fontWeight": "normal",
+                      },
+                      {},
+                    ]
+                  }
+                  testID="RNE__ICON__Component"
+                >
+                  
+                </Text>
+              </View>
             </View>
           </View>
         </View>
-      </View>
-      <TextInput
-        editable={true}
-        onBlur={[Function]}
-        onChangeText={[Function]}
-        onFocus={[Function]}
-        placeholderTextColor="#86939e"
-        style={
-          {
-            "color": "#86939e",
-            "flex": 1,
-            "fontSize": 18,
-            "marginLeft": 10,
-            "minHeight": 40,
+        <TextInput
+          editable={true}
+          onBlur={[Function]}
+          onChangeText={[Function]}
+          onFocus={[Function]}
+          placeholderTextColor="#86939e"
+          style={
+            {
+              "color": "#86939e",
+              "flex": 1,
+              "fontSize": 18,
+              "marginLeft": 10,
+              "minHeight": 40,
+            }
           }
-        }
-        testID="RNE__SearchBar"
-        underlineColorAndroid="transparent"
-      />
-      <View
-        style={
-          {
-            "alignItems": "center",
-            "height": 40,
-            "justifyContent": "center",
-            "marginRight": 8,
-            "marginVertical": 4,
-            "paddingRight": 4,
-          }
-        }
-      >
+          testID="RNE__SearchBar"
+          underlineColorAndroid="transparent"
+        />
         <View
           style={
             {
-              "flexDirection": "row",
+              "alignItems": "center",
+              "height": 40,
+              "justifyContent": "center",
+              "marginRight": 8,
+              "marginVertical": 4,
+              "paddingRight": 4,
             }
           }
-        />
+        >
+          <View
+            style={
+              {
+                "flexDirection": "row",
+              }
+            }
+          />
+        </View>
       </View>
       <Text
         style={

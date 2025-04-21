@@ -1,15 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Android SearchBar component should match snapshot 1`] = `
+exports[`iOS SearchBar component should match snapshot 1`] = `
 <View
   testID="wrapper"
 >
   <View
     style={
       {
+        "alignItems": "center",
         "backgroundColor": "#ffffff",
-        "paddingBottom": 8,
-        "paddingTop": 8,
+        "flexDirection": "row",
+        "overflow": "hidden",
+        "paddingBottom": 13,
+        "paddingTop": 13,
       }
     }
     testID="RNE__SearchBar-wrapper"
@@ -28,15 +31,19 @@ exports[`Android SearchBar component should match snapshot 1`] = `
         style={
           {
             "alignItems": "center",
+            "backgroundColor": "#dcdce1",
             "borderBottomWidth": 0,
             "borderColor": "#86939e",
+            "borderRadius": 9,
             "flexDirection": "row",
+            "marginLeft": 8,
+            "marginRight": 8,
+            "minHeight": 36,
             "transform": [
               {
                 "translateX": 0,
               },
             ],
-            "width": "100%",
           }
         }
       >
@@ -88,14 +95,14 @@ exports[`Android SearchBar component should match snapshot 1`] = `
                   style={
                     [
                       {
-                        "color": "rgba(0, 0, 0, 0.54)",
-                        "fontSize": 25,
+                        "color": "#7d7d7d",
+                        "fontSize": 20,
                       },
                       {
                         "backgroundColor": "transparent",
                       },
                       {
-                        "fontFamily": "Material Icons",
+                        "fontFamily": "Ionicons",
                         "fontStyle": "normal",
                         "fontWeight": "normal",
                       },
@@ -104,7 +111,7 @@ exports[`Android SearchBar component should match snapshot 1`] = `
                   }
                   testID="RNE__ICON__Component"
                 >
-                  
+                  
                 </Text>
               </View>
             </View>
@@ -115,15 +122,15 @@ exports[`Android SearchBar component should match snapshot 1`] = `
           onBlur={[Function]}
           onChangeText={[Function]}
           onFocus={[Function]}
-          placeholderTextColor="#86939e"
+          placeholderTextColor="#7d7d7d"
           style={
             {
               "color": "#242424",
               "flex": 1,
               "fontSize": 18,
-              "marginLeft": 24,
-              "marginRight": 8,
+              "marginLeft": 6,
               "minHeight": 40,
+              "overflow": "hidden",
             }
           }
           testID="RNE__SearchBar"
@@ -161,6 +168,68 @@ exports[`Android SearchBar component should match snapshot 1`] = `
           }
         }
       />
+    </View>
+    <View
+      onLayout={[Function]}
+      style={
+        {
+          "opacity": 0,
+          "position": "absolute",
+          "right": null,
+        }
+      }
+      testID="RNE__SearchBar-cancelButtonContainer"
+    >
+      <View
+        accessibilityRole="button"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+      >
+        <View
+          style={{}}
+          testID="RNE__SearchBar-cancelButton"
+        >
+          <Text
+            style={
+              {
+                "color": "#007aff",
+                "fontSize": 18,
+                "padding": 8,
+                "textAlign": "center",
+              }
+            }
+          >
+            Cancel
+          </Text>
+        </View>
+      </View>
     </View>
   </View>
 </View>

@@ -6,7 +6,6 @@ import { fireEvent } from '@testing-library/react-native';
 import { Icon } from '../../Icon';
 import { describe, it, expect, jest } from '@jest/globals';
 
-
 describe('Input component', () => {
   it('should match snapshot', () => {
     const { toJSON, queryByTestId } = renderWithWrapper(<Input />);
