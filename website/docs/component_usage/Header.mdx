@@ -21,7 +21,7 @@ For react-native-cli users, make sure to follow the
 and use it like this:
 
 ```jsx
-import { Header } from '@rneui/themed';
+import { Header } from '@rn-vui/themed';
 import LinearGradient from 'react-native-linear-gradient';
 
 ...
@@ -47,7 +47,7 @@ StyleProp,
 TextStyle,
 ViewStyle,
 } from 'react-native';
-import { Header as HeaderRNE, HeaderProps, Icon } from '@rneui/themed';
+import { Header as HeaderRNE, HeaderProps, Icon } from '@rn-vui/themed';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
@@ -65,11 +65,11 @@ Detail: {
 const Header: React.FunctionComponent<HeaderComponentProps> = (props) => {
 
 const docsNavigate = () => {
-  Linking.openURL(`https://reactnativeelements.com/docs/${props.view}`);
+  Linking.openURL(`https://thevikalpui.netlify.app/docs/${props.view}`);
 };
 
 const playgroundNavigate = () => {
-  Linking.openURL(`https://@rneui/themed.js.org/#/${props.view}`);
+  Linking.openURL(`https://@rn-vui/themed.js.org/#/${props.view}`);
 };
 
 return (

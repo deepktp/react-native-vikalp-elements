@@ -1,5 +1,5 @@
 import { withTheme } from '../config';
-import { Button, ButtonProps } from '@rneui/base/dist/Button/Button';
+import { Button, ButtonProps } from '@rn-vui/base/dist/Button/Button';
 
 export { Button };
 export type { ButtonProps };

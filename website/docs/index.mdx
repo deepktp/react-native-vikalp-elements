@@ -14,10 +14,10 @@ import Admonition from '@theme/Admonition';
 
 <div className="admonition admonition-info alert alert--info">
   <div className="admonition-content">
-    The aim of React Native Elements is to provide an all-in-one UI kit for
+    The aim of React Native vElements is to provide an all-in-one UI kit for
     creating apps in react native. There are many great ui components made by
-    developers all around open source. React Native Elements takes the hassle of
-    assembling these packages together by giving you a ready made kit with
+    developers all around open source. React Native vElements takes the hassle
+    of assembling these packages together by giving you a ready made kit with
     consistent api and look and feel.
   </div>
 </div>
@@ -80,12 +80,19 @@ import Admonition from '@theme/Admonition';
   </div>
 </div>
 
+# This is a forked project
+
+> **Note**: This library is a fork of the original [React Native Elements (RNEUI)](https://reactnativeelements.com/). Due to the lack of active maintenance, we have taken the initiative to support it by fixing bugs and ensuring its continued usability.  
+> You can find the original library on [GitHub](https://github.com/react-native-elements/react-native-elements).
+>
+> With some minor changes this library can be used in place of React Native Elements
+
 ## Quick start
 
 Here's a quick example to get you started, **it's literally all you need:**
 
 ```ts
-import { Button } from '@rneui/base';
+import { Button } from '@rn-vui/base';
 
 const App = () => {
   return <Button title="Hello World" />;
@@ -104,7 +111,7 @@ defined in one central place? And so the idea behind theming with React Native
 Elements was born!
 
 ```jsx
-import { Button, ThemeProvider } from '@rneui/themed';
+import { Button, ThemeProvider } from '@rn-vui/themed';
 
 const MyApp = () => {
   return (
@@ -116,4 +123,4 @@ const MyApp = () => {
 ```
 
 To customize the theme, or use it within your own components, be sure to check
-the docs on [Customization](https://reactnativeelements.com/docs/customizing).
+the docs on [Customization](https://thevikalpui.netlify.app/docs/customizing).

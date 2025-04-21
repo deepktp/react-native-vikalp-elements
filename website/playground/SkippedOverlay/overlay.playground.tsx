@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
-import { Overlay } from '@rneui/base';
+import { Overlay } from '@rn-vui/base';
 import Modal from 'modal-react-native-web';
 
 import Playground from '../../src/components/Playground';
@@ -63,7 +63,7 @@ const OverlayPlayground = () => {
       TouchableOpacity,
     },
     imports: {
-      '@rneui/base': {
+      '@rn-vui/base': {
         named: ['Overlay', 'Text', 'TouchableOpacity'],
       },
       'modal-react-native-web': {

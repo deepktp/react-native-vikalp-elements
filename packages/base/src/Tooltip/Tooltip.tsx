@@ -261,7 +261,7 @@ export const Tooltip: RneFunctionComponent<TooltipProps> = ({
         // react-native < 0.65.*
         // Dimensions.removeEventListener('change', getElementPosition);
         console.warn(
-          'Deprecated API: React native < 0.71.* are no longer supported please use @rneui/base@^4.0.0-rc8 instead.'
+          'Deprecated API: React native < 0.71.* are no longer supported please use @rn-vui/base@^4.0.0-rc8 instead.'
         );
       }
     };

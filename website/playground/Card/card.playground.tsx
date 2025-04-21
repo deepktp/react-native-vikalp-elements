@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Card } from '@rneui/base';
+import { Card } from '@rn-vui/base';
 import { View, Image, Text } from 'react-native';
 import Playground from '../../src/components/Playground';
 import { useView, PropTypes } from 'react-view';
@@ -44,7 +44,7 @@ const CardPlayground = () => {
       Text,
     },
     imports: {
-      '@rneui/base': {
+      '@rn-vui/base': {
         named: ['Card'],
       },
       // "react-native": {

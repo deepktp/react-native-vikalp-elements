@@ -12,7 +12,7 @@ import {
   ScreenHeight,
   ScreenWidth,
   registerCustomIconType,
-} from '@rneui/base/dist/helpers';
+} from '@rn-vui/base/dist/helpers';
 import { Colors, darkColors, lightColors } from './colors';
 import {
   ReplaceTheme,

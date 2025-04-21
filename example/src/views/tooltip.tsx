@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tooltip, Text, TooltipProps } from '@rneui/themed';
+import { Tooltip, Text, TooltipProps } from '@rn-vui/themed';
 import { Header } from '../components/header';
 import { View, StyleSheet, Dimensions, ScrollView, Modal } from 'react-native';
 import colors from '../config/colors';

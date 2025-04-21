@@ -1,6 +1,6 @@
 {
-  "name": "rneui",
-  "displayName": "React Native Elements UI Toolkit",
+  "name": "rn-vui",
+  "displayName": "React Native vElements UI Toolkit",
   "private": true,
   "packageManager": "yarn@4.5.2",
   "workspaces": {
@@ -12,12 +12,12 @@
   },
   "scripts": {
     "build": "yarn workspaces foreach -Ap --topological-dev run build",
-    "build:docs-api": "yarn workspace @rneui/doc-gen build",
-    "create-packages": "yarn run build && yarn workspaces foreach -Ap --include '@rneui/*' pack --out %s-%v.tgz",
-    "create-git-packages": "yarn run build && yarn workspaces foreach -Ap --include '@rneui/*' pack --out %s-%v-r$(git log $(git describe --tags --abbrev=0)..HEAD --oneline | wc -l)-$(git rev-parse --short HEAD).tgz",
+    "build:docs-api": "yarn workspace @rn-vui/doc-gen build",
+    "create-packages": "yarn run build && yarn workspaces foreach -Ap --include '@rn-vui/*' pack --out %s-%v.tgz",
+    "create-git-packages": "yarn run build && yarn workspaces foreach -Ap --include '@rn-vui/*' pack --out %s-%v-r$(git log $(git describe --tags --abbrev=0)..HEAD --oneline | wc -l)-$(git rev-parse --short HEAD).tgz",
     "clean-build": "rimraf packages/*/dist",
     "clean-install": "rimraf node_modules && yarn",
-    "docs-build-api": "yarn workspace @rneui/doc-gen build",
+    "docs-build-api": "yarn workspace @rn-vui/doc-gen build",
     "docs-build": "yarn docs-build-api && cd website && yarn run build",
     "example:start": "yarn workspace react-native-elements-app start",
     "format": "prettier --check ./packages",
@@ -63,7 +63,7 @@
   "bugs": {
     "url": "https://github.com/deepktp/react-native-vikalp-elements/issues"
   },
-  "homepage": "https://reactnativeelements.com/",
+  "homepage": "https://thevikalpui.netlify.app/",
   "collective": {
     "type": "opencollective",
     "url": "https://opencollective.com/react-native-elements",
@@ -99,8 +99,8 @@
       "PR: Deprecation: :loudspeaker:": ":loudspeaker: Deprecation"
     },
     "scopes": {
-      "base": "@rneui/base",
-      "themed": "@rneui/themed",
+      "base": "@rn-vui/base",
+      "themed": "@rn-vui/themed",
       "website/docs": "Docs"
     }
   },

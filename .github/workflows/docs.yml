@@ -37,6 +37,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./website/build
-          user_name: 'React Native Elements CI'
+          user_name: 'React Native vElements CI'
           user_email: 'react-native-elements-ci@users.noreply.github.com'
-          cname: reactnativeelements.com
+          cname: https://thevikalpui.netlify.app

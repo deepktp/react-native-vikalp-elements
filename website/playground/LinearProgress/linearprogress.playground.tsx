@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { LinearProgress } from '@rneui/base';
+import { LinearProgress } from '@rn-vui/base';
 import Playground from '../../src/components/Playground';
 import { useView, PropTypes } from 'react-view';
 
@@ -33,7 +33,7 @@ const LinearProgressPlayground = () => {
       LinearProgress,
     },
     imports: {
-      '@rneui/base': {
+      '@rn-vui/base': {
         named: ['LinearProgress'],
       },
     },

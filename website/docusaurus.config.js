@@ -1,8 +1,8 @@
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'React Native Elements' /* title for your website */,
+  title: 'React Native vElements' /* title for your website */,
   tagline: 'Cross Platform React Native UI Toolkit',
-  url: 'https://reactnativeelements.com' /* your website url */,
+  url: 'https://thevikalpui.netlify.app' /* your website url */,
   baseUrl: '/' /* base url for your project */,
   projectName: 'react-native-elements',
   organizationName: 'react-native-elements',
@@ -58,7 +58,7 @@ const config = {
     announcementBar: {
       id: 'support_us',
       content:
-        'If you like React Native Elements, give it a  <a target="_blank" rel="noopener noreferrer" href="https://github.com/react-native-elements/react-native-elements">star on GitHub!</a> ⭐' +
+        'If you like React Native vElements, give it a  <a target="_blank" rel="noopener noreferrer" href="https://github.com/react-native-elements/react-native-elements">star on GitHub!</a> ⭐' +
         ' and join the <a target="_blank" rel="noopener noreferrer" href="https://discord.gg/e9RBHjkKHa">Discord server</a>!',
       backgroundColor: 'var(--navbar-background-color)',
       textColor: 'var(--ifm-navbar-link-color)', // Defaults to `#000`.
@@ -69,9 +69,9 @@ const config = {
       disableSwitch: false,
     },
     navbar: {
-      title: 'React Native Elements',
+      title: 'React Native vElements',
       logo: {
-        alt: 'React Native Elements Logo',
+        alt: 'React Native vElements Logo',
         src: '/img/website/logo.png',
       },
       // hideOnScroll: true,

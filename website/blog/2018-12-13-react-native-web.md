@@ -132,7 +132,7 @@ The last part for First Step, make sure it can be run on iOS without any problem
 
 ## 2️⃣ Step Two
 
-Installing React Native Elements (RNE).
+Installing React Native vElements (RNE).
 
 ```
 $ yarn add react-native-elements@beta

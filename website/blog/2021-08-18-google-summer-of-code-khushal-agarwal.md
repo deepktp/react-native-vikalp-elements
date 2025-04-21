@@ -16,7 +16,7 @@ authorURL: https://github.com/khushal87
 	</b>
 </div>
 
-This summer, I was pleased to get selected for Google Summer of Code'21 under the organization [React Native Elements](https://github.com/react-native-elements). Working under the organization, my project was to **generate documentation automatically out of the UI components and present it in the Docusaurus website**.
+This summer, I was pleased to get selected for Google Summer of Code'21 under the organization [React Native vElements](https://github.com/react-native-elements). Working under the organization, my project was to **generate documentation automatically out of the UI components and present it in the Docusaurus website**.
 
 <div  align="center">
 
@@ -28,7 +28,7 @@ The purpose of creating this repository is to maintain a report summary of my GS
 
 ## 📙 Abstract
 
-[React Native Elements](https://www.npmjs.com/package/react-native-elements) is a cross-platform UI toolkit built on/for React Native. With a weekly download by 90k+ users and backed by a huge community, it provides UI components that can be used in your native application for the platform of Android/iOS/Web.
+[React Native vElements](https://www.npmjs.com/package/react-native-elements) is a cross-platform UI toolkit built on/for React Native. With a weekly download by 90k+ users and backed by a huge community, it provides UI components that can be used in your native application for the platform of Android/iOS/Web.
 
 The documentation of the project was maintained manually previously i.e., suppose I want to change/add/remove a prop or a new component to the project the markdown file had to be changed manually. The process is tiring and new contributors may often forget to do so. So, during the summers I took the change this process and make a workflow such that the generation is automatic. This should be **fast and maintainable**.
 
@@ -53,7 +53,7 @@ All of the listed deliverables were completed within the GSoC period. 🎉
 
 ## 📦 Working product
 
-The work can be found here - [Official Website of React native elements](https://reactnativeelements.com/docs/next/). Please refer to the component docs.
+The work can be found here - [Official Website of React Native vElements](https://thevikalpui.netlify.app/docs/next/). Please refer to the component docs.
 
 **I have also written a blog on how it works attached [here](https://deploy-preview-3145--react-native-elements.netlify.app/blog/2021/08/12/auto-generation-of-docs).**
 

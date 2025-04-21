@@ -1,9 +1,9 @@
 {
   "expo": {
-    "name": "React Native Elements",
-    "owner": "rneui",
+    "name": "React Native vElements",
+    "owner": "rn-vui",
     "slug": "react-native-elements",
-    "description": "A demo app for React Native Elements UI Library",
+    "description": "A demo app for React Native vElements UI Library",
     "privacy": "public",
     "platforms": [
       "ios",
@@ -28,7 +28,7 @@
     },
     "userInterfaceStyle": "automatic",
     "android": {
-      "package": "com.rneui"
+      "package": "com.rn-vui"
     },
     "plugins": [
       "expo-font",

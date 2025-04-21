@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, ScrollView, StyleSheet } from 'react-native';
-import { Chip, withTheme } from '@rneui/themed';
+import { Chip, withTheme } from '@rn-vui/themed';
 import colors from '../config/colors';
 import { Header } from '../components/header';
 

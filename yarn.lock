@@ -5061,9 +5061,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rneui/base@npm:5.0.0, @rneui/base@workspace:packages/base":
+"@rn-vui/base@npm:5.0.0, @rn-vui/base@workspace:packages/base":
   version: 0.0.0-use.local
-  resolution: "@rneui/base@workspace:packages/base"
+  resolution: "@rn-vui/base@workspace:packages/base"
   dependencies:
     "@types/color": "npm:^3.0.3"
     "@types/hoist-non-react-statics": "npm:^3.3.1"
@@ -5082,9 +5082,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@rneui/doc-gen@workspace:scripts/docgen":
+"@rn-vui/doc-gen@workspace:scripts/docgen":
   version: 0.0.0-use.local
-  resolution: "@rneui/doc-gen@workspace:scripts/docgen"
+  resolution: "@rn-vui/doc-gen@workspace:scripts/docgen"
   dependencies:
     "@types/dedent": "npm:^0.7.0"
     "@types/lodash.orderby": "npm:^4.6.7"
@@ -5100,20 +5100,20 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@rneui/layout@npm:^0.0.0-alpha.4":
+"@rn-vui/layout@npm:^0.0.0-alpha.4":
   version: 0.0.0-alpha.4
   resolution: "@rneui/layout@npm:0.0.0-alpha.4"
   checksum: 10/adbfd7d00e9f2c9cb7749b113c2838e3af513fb7b6c4d0d69a03152524f06b619760bf62f76556c3d16c0874f27138830c6e647c358bbe19851a4d8b413ba818
   languageName: node
   linkType: hard
 
-"@rneui/themed@workspace:packages/themed":
+"@rn-vui/themed@workspace:packages/themed":
   version: 0.0.0-use.local
-  resolution: "@rneui/themed@workspace:packages/themed"
+  resolution: "@rn-vui/themed@workspace:packages/themed"
   dependencies:
-    "@rneui/base": "npm:5.0.0"
+    "@rn-vui/base": "npm:5.0.0"
   peerDependencies:
-    "@rneui/base": 5.0.0
+    "@rn-vui/base": 5.0.0
   languageName: unknown
   linkType: soft
 
@@ -17558,7 +17558,7 @@ __metadata:
     "@react-navigation/drawer": "npm:^6.6.3"
     "@react-navigation/native": "npm:^6.1.10"
     "@react-navigation/stack": "npm:^6.1.13"
-    "@rneui/layout": "npm:^0.0.0-alpha.4"
+    "@rn-vui/layout": "npm:^0.0.0-alpha.4"
     babel-loader: "npm:^8.2.5"
     babel-plugin-module-resolver: "npm:^5.0.2"
     babel-preset-expo: "npm:~11.0.0"
@@ -18494,9 +18494,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rneui@workspace:.":
+"rn-vui@workspace:.":
   version: 0.0.0-use.local
-  resolution: "rneui@workspace:."
+  resolution: "rn-vui@workspace:."
   dependencies:
     "@babel/eslint-parser": "npm:^7.27.0"
     "@babel/plugin-proposal-private-methods": "npm:^7.18.6"

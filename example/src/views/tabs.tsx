@@ -1,4 +1,4 @@
-import { Button, Tab as TabBar, TabView, Text } from '@rneui/themed';
+import { Button, Tab as TabBar, TabView, Text } from '@rn-vui/themed';
 import React, { useState } from 'react';
 import { ScrollView } from 'react-native';
 import { Header } from '../components/header';

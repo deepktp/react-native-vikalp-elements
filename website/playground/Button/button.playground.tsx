@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button } from '@rneui/base';
+import { Button } from '@rn-vui/base';
 import Icon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import LinearGradient from 'react-native-web-linear-gradient';
 import Playground from '../../src/components/Playground';
@@ -110,7 +110,7 @@ export default () => {
       LinearGradient,
     },
     imports: {
-      '@rneui/base': {
+      '@rn-vui/base': {
         named: ['Button'],
       },
       'react-native-vector-icons/dist/MaterialCommunityIcons': {

@@ -11,7 +11,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **base,example:** Dialog.title not honoring theme in dark mode. ([d87bccc](https://github.com/react-native-elements/react-native-elements/commit/d87bccc9dd7f0225d149dfdeb5e882fa01c40e80))
 * **makeStyles:** Fix object literal outside useMemo causing styles to change on every render ([#3844](https://github.com/react-native-elements/react-native-elements/issues/3844)) ([52056de](https://github.com/react-native-elements/react-native-elements/commit/52056ded1e067061c33af6ab328fcf6168652bb1))
 * **theme:** Dialog.title lint formatting. ([f44d609](https://github.com/react-native-elements/react-native-elements/commit/f44d6092833225610cd4e6c1acab87f8b247bb8a))
-* **themed:** update @rneui/base dependency ([e403afa](https://github.com/react-native-elements/react-native-elements/commit/e403afac80549dfe059a977418fdc0be91306196))
+* **themed:** update @rn-vui/base dependency ([e403afa](https://github.com/react-native-elements/react-native-elements/commit/e403afac80549dfe059a977418fdc0be91306196))
 * update documentations ([807d104](https://github.com/react-native-elements/react-native-elements/commit/807d104e31be11ca6cdb5bf0f846a6a34e2e19a3))
 * update themed package version to latest ([bed3f41](https://github.com/react-native-elements/react-native-elements/commit/bed3f41a0bc67d7aa4bd6cd6924e262b0c88fda7))
 
@@ -125,7 +125,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **base,example:** Dialog.title not honoring theme in dark mode. ([d87bccc](https://github.com/react-native-elements/react-native-elements/commit/d87bccc9dd7f0225d149dfdeb5e882fa01c40e80))
 * **makeStyles:** Fix object literal outside useMemo causing styles to change on every render ([#3844](https://github.com/react-native-elements/react-native-elements/issues/3844)) ([52056de](https://github.com/react-native-elements/react-native-elements/commit/52056ded1e067061c33af6ab328fcf6168652bb1))
 * **theme:** Dialog.title lint formatting. ([f44d609](https://github.com/react-native-elements/react-native-elements/commit/f44d6092833225610cd4e6c1acab87f8b247bb8a))
-* **themed:** update @rneui/base dependency ([e403afa](https://github.com/react-native-elements/react-native-elements/commit/e403afac80549dfe059a977418fdc0be91306196))
+* **themed:** update @rn-vui/base dependency ([e403afa](https://github.com/react-native-elements/react-native-elements/commit/e403afac80549dfe059a977418fdc0be91306196))
 * update themed package version to latest ([bed3f41](https://github.com/react-native-elements/react-native-elements/commit/bed3f41a0bc67d7aa4bd6cd6924e262b0c88fda7))
 
 
@@ -238,7 +238,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **base,example:** Dialog.title not honoring theme in dark mode. ([d87bccc](https://github.com/react-native-elements/react-native-elements/commit/d87bccc9dd7f0225d149dfdeb5e882fa01c40e80))
 * **makeStyles:** Fix object literal outside useMemo causing styles to change on every render ([#3844](https://github.com/react-native-elements/react-native-elements/issues/3844)) ([52056de](https://github.com/react-native-elements/react-native-elements/commit/52056ded1e067061c33af6ab328fcf6168652bb1))
 * **theme:** Dialog.title lint formatting. ([f44d609](https://github.com/react-native-elements/react-native-elements/commit/f44d6092833225610cd4e6c1acab87f8b247bb8a))
-* **themed:** update @rneui/base dependency ([e403afa](https://github.com/react-native-elements/react-native-elements/commit/e403afac80549dfe059a977418fdc0be91306196))
+* **themed:** update @rn-vui/base dependency ([e403afa](https://github.com/react-native-elements/react-native-elements/commit/e403afac80549dfe059a977418fdc0be91306196))
 * update themed package version to latest ([bed3f41](https://github.com/react-native-elements/react-native-elements/commit/bed3f41a0bc67d7aa4bd6cd6924e262b0c88fda7))
 
 

@@ -16,7 +16,7 @@ Firstly you'll want to set up your `ThemeProvider`.
 **Import**
 
 ```tsx
-import { ThemeProvider } from '@rneui/themed';
+import { ThemeProvider } from '@rn-vui/themed';
 ```
 
 **Usage**
@@ -103,7 +103,7 @@ To theme subcomponents such as `ListItem.Title`, in your theme remove the dot an
 Hook returns `theme`, `updateTheme` & `replaceTheme` from ThemeProvider context or default theme if you did not wrap application with ThemeProvider.
 
 ```tsx
-import { useTheme } from '@rneui/themed';
+import { useTheme } from '@rn-vui/themed';
 
 function Demo() {
   const { theme, updateTheme } = useTheme();
@@ -161,7 +161,7 @@ const App = () => {
 You can get current theme mode (light or dark) and update it using setMode function from useThemeMode hook.
 
 ```tsx
-import { useThemeMode } from '@rneui/themed';
+import { useThemeMode } from '@rn-vui/themed';
 
 function Demo() {
   const { mode, setMode } = useThemeMode();
@@ -181,7 +181,7 @@ withTheme<Props>(Component, ?themeKey)
 **Usage**
 
 ```tsx
-import { withTheme, ThemeProps } from '@rneui/themed';
+import { withTheme, ThemeProps } from '@rn-vui/themed';
 
 type CustomComponentProps = {
   title: string;
@@ -205,7 +205,7 @@ which uses render props!
 ```tsx
 import React from 'react';
 import { Text } from 'react-native';
-import { ThemeConsumer } from '@rneui/themed';
+import { ThemeConsumer } from '@rn-vui/themed';
 
 const MyComponent = () => (
   <ThemeConsumer>

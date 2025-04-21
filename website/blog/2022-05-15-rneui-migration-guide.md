@@ -1,7 +1,7 @@
 ---
 title: React Native Elements 4.0
 
-authors: [arpitBhalla, rneui]
+authors: [arpitBhalla, rn-vui]
 ---
 
 <div align='center'>

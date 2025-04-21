@@ -9,7 +9,7 @@ import {
   LayoutAnimation,
   UIManager,
 } from 'react-native';
-import { Input, Button, Icon, InputProps } from '@rneui/themed';
+import { Input, Button, Icon, InputProps } from '@rn-vui/themed';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
@@ -39,7 +39,7 @@ type LoginScreen3Props = {};
 const LoginScreen3: React.FunctionComponent<LoginScreen3State> = (
   props: LoginScreen3Props
 ) => {
-  const {} = props;
+  const { } = props;
   const [isLoading, setLoading] = useState<boolean>(false);
   const [email, setEmail] = useState<string>('');
   const [isEmailValid, setEmailValid] = useState<boolean>(true);

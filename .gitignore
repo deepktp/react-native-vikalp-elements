@@ -20,5 +20,5 @@ build
 .changelog
 .docgen/
 .expo/*
-packages/*/@rneui*.tgz
-scripts/*/@rneui*.tgz
+packages/*/@rn-vui*.tgz
+scripts/*/@rn-vui*.tgz

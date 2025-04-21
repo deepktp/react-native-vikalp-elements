@@ -1,6 +1,6 @@
 import React from 'react';
 import { Avatar } from '..';
-import { usage, Stack, info, meta } from '@rneui/doc-gen';
+import { usage, Stack, info, meta } from '@rn-vui/doc-gen';
 
 info(
   'Avatars are found all over ui design from lists to profile screens.',

@@ -13,7 +13,7 @@ import { SiExpo, SiReact } from 'react-icons/si';
 
 ### Stable
 
-Stable version of React Native Elements available on npm
+Stable version of React Native vElements available on npm
 
 <Tabs
 groupId='pkg'
@@ -24,14 +24,14 @@ values={[
 <TabItem value="npm">
 
 ```bash
-npm install @rneui/themed @rneui/base
+npm install "@rn-vui/themed" "@rn-vui/base"
 ```
 
 </TabItem>
 <TabItem value="yarn">
 
 ```bash
-yarn add @rneui/themed @rneui/base
+yarn add "@rn-vui/themed" "@rn-vui/base"
 ```
 
 </TabItem>
@@ -48,16 +48,16 @@ values={[
 <TabItem value="npm">
 
 ```bash
-npm install @rneui/base@edge @rneui/themed@edge
+npm install "@rn-vui/base@edge" "@rn-vui/themed@edge"
 ```
 
 If you are facing issue while installing from `edge` dist-tag, you can install directly from Github
 
 ```bash
-# @rneui/base
+# @rn-vui/base
 npm install react-native-elements/react-native-elements#base
 
-# @rneui/themed
+# @rn-vui/themed
 npm install react-native-elements/react-native-elements#themed
 ```
 
@@ -65,17 +65,17 @@ npm install react-native-elements/react-native-elements#themed
 <TabItem value="yarn">
 
 ```bash
-yarn add @rneui/base@edge @rneui/themed@edge
+yarn add @rn-vui/base@edge @rn-vui/themed@edge
 ```
 
 If you are facing issue while installing from `edge` dist-tag, you can install directly from Github
 
 ```bash
-# @rneui/base
-yarn add @rneui/base@github:react-native-elements/react-native-elements#base
+# @rn-vui/base
+yarn add @rn-vui/base@github:react-native-elements/react-native-elements#base
 
-# @rneui/themed
-yarn add @rneui/themed@github:react-native-elements/react-native-elements#themed
+# @rn-vui/themed
+yarn add @rn-vui/themed@github:react-native-elements/react-native-elements#themed
 ```
 
 </TabItem>
@@ -202,7 +202,7 @@ function App() {
 
 ### New Expo project
 
-Create a new project with Expo CLI and React Native Elements template
+Create a new project with Expo CLI and React Native vElements template
 
 <Tabs
 defaultValue="stable"
@@ -214,14 +214,14 @@ values={[
 <TabItem value="stable">
 
 ```bash
-npx create-expo-app --template @rneui/template
+npx create-expo-app --template @rn-vui/template
 ```
 
 </TabItem>
 <TabItem value="edge">
 
 ```bash
-npx create-expo-app --template @rneui/template@edge
+npx create-expo-app --template @rn-vui/template@edge
 ```
 
 </TabItem>
@@ -233,13 +233,13 @@ Just install the package and its peer dependencies
 
 ## Using on Web
 
-React Native Elements just like on mobile can be used in your web projects. This is possible using [react-native-web](https://github.com/necolas/react-native-web). We'll highlight how to set this up using create-react-app.
+React Native vElements just like on mobile can be used in your web projects. This is possible using [react-native-web](https://github.com/necolas/react-native-web). We'll highlight how to set this up using create-react-app.
 
 ### Why do I have to set this up?
 
 On the web, you can usually use UI libraries directly from npm without any additional setup. However in react-native, it's a bit different.
 
-The major difference is that React Native can support JSX and advanced javascript out the box. This means that we don't need to transpile our code before we ship it to npm. **We ship JSX and advanced javascript directly to npm** in React Native Elements, so we need to account for this in our web projects.
+The major difference is that React Native can support JSX and advanced javascript out the box. This means that we don't need to transpile our code before we ship it to npm. **We ship JSX and advanced javascript directly to npm** in React Native vElements, so we need to account for this in our web projects.
 
 ### Create React App
 
@@ -248,7 +248,7 @@ The major difference is that React Native can support JSX and advanced javascrip
 After creating a new create-react-app project, run the following commands.
 
 ```bash
-yarn add  @rneui/base @rneui/themed react-native-web react-native-vector-icons
+yarn add  @rn-vui/base @rn-vui/themed react-native-web react-native-vector-icons
 ```
 
 ```bash
@@ -264,8 +264,8 @@ const { override, addBabelPlugins, babelInclude } = require('customize-cra');
 module.exports = override(
   ...addBabelPlugins('@babel/plugin-proposal-class-properties'),
   babelInclude([
-    path.resolve(__dirname, 'node_modules/@rneui/base'),
-    path.resolve(__dirname, 'node_modules/@rneui/themed'),
+    path.resolve(__dirname, 'node_modules/@rn-vui/base'),
+    path.resolve(__dirname, 'node_modules/@rn-vui/themed'),
     path.resolve(__dirname, 'node_modules/react-native-vector-icons'),
     path.resolve(__dirname, 'node_modules/react-native-ratings'),
     path.resolve(__dirname, 'src'),
