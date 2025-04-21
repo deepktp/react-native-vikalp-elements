@@ -89,7 +89,7 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
   theme = defaultTheme,
   children,
   scrollable = false,
-  onChange = () => { },
+  onChange = () => {},
   indicatorStyle,
   disableIndicator,
   variant = 'primary',
@@ -109,7 +109,7 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
   const onIndexChangeRef = React.useRef((value: number) => value);
 
   const animate = React.useCallback(
-    (toValue: number, onDone: (_: number) => void = () => { }) => {
+    (toValue: number, onDone: (_: number) => void = () => {}) => {
       currentIndex.current = toValue;
       onIndexChangeRef.current?.(toValue);
       //currently we are ignoring the animationConfig types but we need to fix this
