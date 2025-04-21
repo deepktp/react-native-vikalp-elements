@@ -3,6 +3,7 @@ import { Animated, View } from 'react-native';
 import { FAB } from '..';
 import { renderWithWrapper, fireEvent } from '../../../.ci/testHelper';
 import { Icon } from '../../Icon';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('FAB Component', () => {
   it('should match snapshot', () => {

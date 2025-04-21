@@ -471,7 +471,7 @@ export const Slider: RneFunctionComponent<SliderProps> = ({
   }, [debugTouchArea, getTouchOverflowSize]);
 
   const renderDebugThumbTouchRect = useCallback(
-    (thumbLeft: Animated.AnimatedInterpolation) => {
+    (thumbLeft: Animated.AnimatedInterpolation<number>) => {
       const thumbTouchRect = getThumbTouchRect();
       const positionStyle = {
         left: thumbLeft,

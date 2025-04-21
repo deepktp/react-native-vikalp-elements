@@ -2,6 +2,7 @@ import React from 'react';
 import Tab from '../index';
 import { renderWithWrapper } from '../../../.ci/testHelper';
 import { fireEvent } from '@testing-library/react-native';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('Tab Component', () => {
   it('should render', () => {

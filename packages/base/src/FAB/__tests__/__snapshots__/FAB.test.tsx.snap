@@ -44,7 +44,18 @@ exports[`FAB Component should match snapshot 1`] = `
         accessibilityState={
           {
             "busy": false,
+            "checked": undefined,
             "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
           }
         }
         accessible={true}

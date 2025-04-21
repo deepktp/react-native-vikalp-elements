@@ -3,6 +3,7 @@ import { Tab } from '../index';
 import { renderWithWrapper } from '../../../.ci/testHelper';
 import { lightColors } from '../../helpers';
 import { fireEvent } from '@testing-library/react-native';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('Tab Component', () => {
   const items = ['Tab 1', 'Tab 2', 'Tab 3'];
@@ -47,7 +48,9 @@ describe('Tab Component', () => {
     const tabs = component.getAllByRole('tab');
     expect(tabs.length).toBe(items.length);
     tabs.forEach((tab, index) => {
-      if (index === 0) return;
+      if (index === 0) {
+        return;
+      }
       expect(tab.props.accessibilityState.selected).toBe(false);
       expect(items.includes(tab.props.accessibilityValue.text)).toBe(true);
     });

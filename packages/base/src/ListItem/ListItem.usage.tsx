@@ -111,51 +111,50 @@ usage('LinearGradient', '', ({ LinearGradient }) => (
 usage(
   'Accordion',
   'Use as a collapsible list item refer props for [ListItem.Accordion](./listItem_accordion#props)',
-  () =>
-    function RNEListItemAccordion() {
-      const [expanded, setExpanded] = React.useState(false);
-      return (
-        <>
-          <ListItem.Accordion
-            content={
-              <ListItem.Content>
-                <ListItem.Title>Top Users</ListItem.Title>
-                <ListItem.Subtitle>Tap to expand</ListItem.Subtitle>
-              </ListItem.Content>
-            }
-            isExpanded={expanded}
-            onPress={() => {
-              setExpanded(!expanded);
-            }}
-          >
-            <ListItem>
-              <Avatar
-                rounded
-                source={{
-                  uri: 'https://randomuser.me/api/portraits/men/32.jpg',
-                }}
-              />
-              <ListItem.Content>
-                <ListItem.Title>John Doe</ListItem.Title>
-                <ListItem.Subtitle>Principle Engineer</ListItem.Subtitle>
-              </ListItem.Content>
-            </ListItem>
-            <ListItem>
-              <Avatar
-                rounded
-                source={{
-                  uri: 'https://randomuser.me/api/portraits/men/36.jpg',
-                }}
-              />
-              <ListItem.Content>
-                <ListItem.Title>Albert</ListItem.Title>
-                <ListItem.Subtitle>Staff Engineer</ListItem.Subtitle>
-              </ListItem.Content>
-            </ListItem>
-          </ListItem.Accordion>
-        </>
-      );
-    }
+  () => {
+    const [expanded, setExpanded] = React.useState(false);
+    return (
+      <>
+        <ListItem.Accordion
+          content={
+            <ListItem.Content>
+              <ListItem.Title>Top Users</ListItem.Title>
+              <ListItem.Subtitle>Tap to expand</ListItem.Subtitle>
+            </ListItem.Content>
+          }
+          isExpanded={expanded}
+          onPress={() => {
+            setExpanded(!expanded);
+          }}
+        >
+          <ListItem>
+            <Avatar
+              rounded
+              source={{
+                uri: 'https://randomuser.me/api/portraits/men/32.jpg',
+              }}
+            />
+            <ListItem.Content>
+              <ListItem.Title>John Doe</ListItem.Title>
+              <ListItem.Subtitle>Principle Engineer</ListItem.Subtitle>
+            </ListItem.Content>
+          </ListItem>
+          <ListItem>
+            <Avatar
+              rounded
+              source={{
+                uri: 'https://randomuser.me/api/portraits/men/36.jpg',
+              }}
+            />
+            <ListItem.Content>
+              <ListItem.Title>Albert</ListItem.Title>
+              <ListItem.Subtitle>Staff Engineer</ListItem.Subtitle>
+            </ListItem.Content>
+          </ListItem>
+        </ListItem.Accordion>
+      </>
+    );
+  }
 );
 
 usage(
@@ -207,42 +206,41 @@ usage(
 usage(
   'Checkbox',
   'Refer props for [ListItem.CheckBox](./listItem_checkbox#props)',
-  () =>
-    function () {
-      const [checked, setChecked] = React.useState([false, false]);
-      return (
-        <>
-          <ListItem bottomDivider>
-            <ListItem.CheckBox
-              // Use ThemeProvider to change the defaults of the checkbox
-              iconType="material-community"
-              checkedIcon="checkbox-marked"
-              uncheckedIcon="checkbox-blank-outline"
-              checked={checked[0]}
-              onPress={() => setChecked([!checked[0], checked[1]])}
-            />
-            <ListItem.Content>
-              <ListItem.Title>User 1</ListItem.Title>
-              <ListItem.Subtitle>CA, US</ListItem.Subtitle>
-            </ListItem.Content>
-            <ListItem.Chevron />
-          </ListItem>
-          <ListItem bottomDivider>
-            <ListItem.CheckBox
-              // Use ThemeProvider to change the defaults of the checkbox
-              iconType="material-community"
-              checkedIcon="checkbox-marked"
-              uncheckedIcon="checkbox-blank-outline"
-              checked={checked[1]}
-              onPress={() => setChecked([checked[0], !checked[1]])}
-            />
-            <ListItem.Content>
-              <ListItem.Title>User 2</ListItem.Title>
-              <ListItem.Subtitle>HR, India</ListItem.Subtitle>
-            </ListItem.Content>
-            <ListItem.Chevron />
-          </ListItem>
-        </>
-      );
-    }
+  () => {
+    const [checked, setChecked] = React.useState([false, false]);
+    return (
+      <>
+        <ListItem bottomDivider>
+          <ListItem.CheckBox
+            // Use ThemeProvider to change the defaults of the checkbox
+            iconType="material-community"
+            checkedIcon="checkbox-marked"
+            uncheckedIcon="checkbox-blank-outline"
+            checked={checked[0]}
+            onPress={() => setChecked([!checked[0], checked[1]])}
+          />
+          <ListItem.Content>
+            <ListItem.Title>User 1</ListItem.Title>
+            <ListItem.Subtitle>CA, US</ListItem.Subtitle>
+          </ListItem.Content>
+          <ListItem.Chevron />
+        </ListItem>
+        <ListItem bottomDivider>
+          <ListItem.CheckBox
+            // Use ThemeProvider to change the defaults of the checkbox
+            iconType="material-community"
+            checkedIcon="checkbox-marked"
+            uncheckedIcon="checkbox-blank-outline"
+            checked={checked[1]}
+            onPress={() => setChecked([checked[0], !checked[1]])}
+          />
+          <ListItem.Content>
+            <ListItem.Title>User 2</ListItem.Title>
+            <ListItem.Subtitle>HR, India</ListItem.Subtitle>
+          </ListItem.Content>
+          <ListItem.Chevron />
+        </ListItem>
+      </>
+    );
+  }
 );

@@ -3,6 +3,7 @@ import Badge from '..';
 import { Text } from 'react-native';
 import { renderWithWrapper } from '../../../.ci/testHelper';
 import { CreateThemeOptions } from '../../config';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('Badge Component', () => {
   it('should use values set by the theme', () => {

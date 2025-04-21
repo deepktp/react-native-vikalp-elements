@@ -81,6 +81,9 @@ export interface TileProps extends PressableProps {
    * @default RNE Image
    */
   ImageComponent?: typeof React.Component;
+
+  /** Children */
+  children?: React.ReactNode;
 }
 
 /** Tiles like Cards, are a convenient way to display related content about a single subject.
@@ -114,6 +117,7 @@ export const Tile: RneFunctionComponent<TileProps> = ({
       title,
       icon,
       caption,
+      children,
       imageSrc,
       onPress,
       activeOpacity,

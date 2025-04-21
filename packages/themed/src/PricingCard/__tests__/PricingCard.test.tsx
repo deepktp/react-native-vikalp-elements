@@ -2,6 +2,7 @@ import React from 'react';
 import PricingCard from '../index';
 import { renderWithWrapper } from '../../../.ci/testHelper';
 import { CreateThemeOptions } from '../..';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('PricingCard component', () => {
   it('should apply values from theme', () => {

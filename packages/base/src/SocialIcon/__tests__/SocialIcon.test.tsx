@@ -4,6 +4,7 @@ import { renderWithWrapper } from '../../../.ci/testHelper';
 import { Text } from '../../Text';
 import { Icon } from '../../Icon';
 import { fireEvent } from '@testing-library/react-native';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('SocialIcon component', () => {
   it('should match snapshot', () => {

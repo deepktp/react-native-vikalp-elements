@@ -2,6 +2,7 @@ import React from 'react';
 import Input from '../index';
 import { renderWithWrapper } from '../../../.ci/testHelper';
 import { CreateThemeOptions, FullTheme } from '../../config';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('Input component', () => {
   it('should apply values from theme', () => {

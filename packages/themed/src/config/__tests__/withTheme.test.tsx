@@ -2,6 +2,7 @@ import React from 'react';
 import { Text } from 'react-native';
 import { render } from '@testing-library/react-native';
 import withTheme from '../withTheme';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('withTheme', () => {
   it('passes theme props to function component', () => {

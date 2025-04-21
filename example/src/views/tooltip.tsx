@@ -1,50 +1,64 @@
 import React from 'react';
 import { Tooltip, Text, TooltipProps } from '@rneui/themed';
 import { Header } from '../components/header';
-import { View, StyleSheet, Dimensions, ScrollView } from 'react-native';
+import { View, StyleSheet, Dimensions, ScrollView, Modal } from 'react-native';
 import colors from '../config/colors';
 
 const { height } = Dimensions.get('window');
 
 type ToolTipComponentProps = {};
 
+const ControlledTooltip: React.FC<TooltipProps> = (props) => {
+  const [open, setOpen] = React.useState(false);
+  return (
+    <Tooltip
+      visible={open}
+      onOpen={() => {
+        setOpen(true);
+      }}
+      onClose={() => {
+        setOpen(false);
+      }}
+      {...props}
+    >
+      {props.children}
+    </Tooltip>
+  );
+};
+
 const TooltipComponent: React.FunctionComponent<ToolTipComponentProps> = () => {
-  const toolProps = {};
+
   return (
     <>
       <Header title="Tooltip" view="tooltip" />
       <ScrollView>
         <View style={{ marginVertical: height / 8 }}>
           <View style={styles.view}>
-            <Tooltip
-              {...(toolProps as TooltipProps)}
+            <ControlledTooltip
               popover={<Text>no caret!</Text>}
               withPointer={false}
             >
               <Text>without caret</Text>
-            </Tooltip>
-            <Tooltip
-              {...(toolProps as TooltipProps)}
+            </ControlledTooltip>
+            <ControlledTooltip
               popover={<Text>Tooltip info goes here</Text>}
               width={200}
               backgroundColor={colors.primary}
             >
               <Text>Press me</Text>
-            </Tooltip>
+            </ControlledTooltip>
           </View>
           <View style={styles.view}>
-            <Tooltip
-              {...(toolProps as TooltipProps)}
+            <ControlledTooltip
               backgroundColor={colors.secondary}
               popover={
                 <Text>Tooltip info goes here too. Find tooltip everywhere</Text>
               }
               containerStyle={{ width: 200, height: 60 }}
             >
-              <Text>Press me</Text>
-            </Tooltip>
-            <Tooltip
-              {...(toolProps as TooltipProps)}
+              <Text>Press me 1</Text>
+            </ControlledTooltip>
+            <ControlledTooltip
               containerStyle={{ width: 145, height: 130 }}
               popover={
                 <Text>
@@ -55,34 +69,31 @@ const TooltipComponent: React.FunctionComponent<ToolTipComponentProps> = () => {
               }
             >
               <Text>HUGE</Text>
-            </Tooltip>
+            </ControlledTooltip>
           </View>
           <View style={styles.view}>
-            <Tooltip
-              {...(toolProps as TooltipProps)}
+            <ControlledTooltip
               width={200}
               backgroundColor={colors.primary1}
               popover={<Text>Tooltip info goes here</Text>}
             >
               <Text>More attention</Text>
-            </Tooltip>
+            </ControlledTooltip>
           </View>
           <View style={styles.view}>
-            <Tooltip
-              {...(toolProps as TooltipProps)}
+            <ControlledTooltip
               width={200}
               backgroundColor={colors.primary2}
               popover={<Text>Tooltip info goes here</Text>}
             >
               <Text>I'm different</Text>
-            </Tooltip>
-            <Tooltip
-              {...(toolProps as TooltipProps)}
+            </ControlledTooltip>
+            <ControlledTooltip
               width={200}
               popover={<Text>Tooltip info goes here</Text>}
             >
               <Text>Press me</Text>
-            </Tooltip>
+            </ControlledTooltip>
           </View>
         </View>
       </ScrollView>

@@ -88,7 +88,7 @@ export const TabViewBase: RneFunctionComponent<TabViewProps> = ({
   const onIndexChangeRef = React.useRef((value: number) => value);
 
   const animate = React.useCallback(
-    (toValue: number, onDone = () => {}) => {
+    (toValue: number, onDone: (_: number) => void = () => {}) => {
       currentIndex.current = toValue;
       onIndexChangeRef.current?.(toValue);
       //currently we are ignoring the animationConfig types but we need to fix this

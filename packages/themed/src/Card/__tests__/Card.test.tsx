@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from '..';
 import { renderWithWrapper } from '../../../.ci/testHelper';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('Card Component', () => {
   it('should render', () => {

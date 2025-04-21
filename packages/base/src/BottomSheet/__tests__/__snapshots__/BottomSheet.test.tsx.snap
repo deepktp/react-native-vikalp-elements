@@ -12,6 +12,23 @@ exports[`BottomSheet Component renders correctly 1`] = `
     visible={true}
   >
     <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
       accessible={true}
       collapsable={false}
       focusable={true}
@@ -39,12 +56,12 @@ exports[`BottomSheet Component renders correctly 1`] = `
     />
     <RNCSafeAreaView
       edges={
-        [
-          "bottom",
-          "left",
-          "right",
-          "top",
-        ]
+        {
+          "bottom": "additive",
+          "left": "additive",
+          "right": "additive",
+          "top": "additive",
+        }
       }
       pointerEvents="box-none"
       style={

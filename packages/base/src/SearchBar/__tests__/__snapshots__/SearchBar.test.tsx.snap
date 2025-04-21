@@ -90,6 +90,7 @@ exports[`SearchBar wrapper component should match snapshot 1`] = `
               >
                 <Text
                   allowFontScaling={false}
+                  selectable={false}
                   style={
                     [
                       {
@@ -121,7 +122,6 @@ exports[`SearchBar wrapper component should match snapshot 1`] = `
           onChangeText={[Function]}
           onFocus={[Function]}
           placeholderTextColor="#86939e"
-          platform="default"
           style={
             {
               "color": "#86939e",
@@ -133,7 +133,6 @@ exports[`SearchBar wrapper component should match snapshot 1`] = `
           }
           testID="RNE__SearchBar"
           underlineColorAndroid="transparent"
-          value=""
         />
         <View
           style={
@@ -256,6 +255,7 @@ exports[`SearchBar wrapper component should render an Android SearchBar 1`] = `
               >
                 <Text
                   allowFontScaling={false}
+                  selectable={false}
                   style={
                     [
                       {
@@ -284,7 +284,6 @@ exports[`SearchBar wrapper component should render an Android SearchBar 1`] = `
         <TextInput
           editable={true}
           onBlur={[Function]}
-          onCancel={[Function]}
           onChangeText={[Function]}
           onFocus={[Function]}
           placeholderTextColor="#86939e"
@@ -430,6 +429,7 @@ exports[`SearchBar wrapper component should render an iOS SearchBar 1`] = `
               >
                 <Text
                   allowFontScaling={false}
+                  selectable={false}
                   style={
                     [
                       {
@@ -449,7 +449,7 @@ exports[`SearchBar wrapper component should render an iOS SearchBar 1`] = `
                   }
                   testID="RNE__ICON__Component"
                 >
-                  
+                  
                 </Text>
               </View>
             </View>
@@ -458,7 +458,6 @@ exports[`SearchBar wrapper component should render an iOS SearchBar 1`] = `
         <TextInput
           editable={true}
           onBlur={[Function]}
-          onCancel={[Function]}
           onChangeText={[Function]}
           onFocus={[Function]}
           placeholderTextColor="#7d7d7d"
@@ -475,7 +474,6 @@ exports[`SearchBar wrapper component should render an iOS SearchBar 1`] = `
           }
           testID="RNE__SearchBar"
           underlineColorAndroid="transparent"
-          value=""
         />
         <View
           style={
@@ -523,6 +521,23 @@ exports[`SearchBar wrapper component should render an iOS SearchBar 1`] = `
     >
       <View
         accessibilityRole="button"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}

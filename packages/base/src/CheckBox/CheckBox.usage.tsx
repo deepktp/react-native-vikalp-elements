@@ -6,42 +6,37 @@ info(
   'CheckBoxes allow users to complete tasks that involve making choices such as selecting options, or switching settings - On or Off. It provides a clear visual of either a true or false choice.'
 );
 
-usage(
-  'Simple',
-  '',
-  () =>
-    function () {
-      const [checked, setChecked] = React.useState(true);
-      const toggleCheckbox = () => setChecked(!checked);
-      return (
-        <Stack row align="center" spacing={1}>
-          <CheckBox
-            checked={checked}
-            onPress={toggleCheckbox}
-            // Use ThemeProvider to make change for all checkbox
-            iconType="material-community"
-            checkedIcon="checkbox-marked"
-            uncheckedIcon="checkbox-blank-outline"
-            checkedColor="red"
-          />
-          <CheckBox
-            checked={checked}
-            onPress={toggleCheckbox}
-            iconType="material-community"
-            checkedIcon="checkbox-outline"
-            uncheckedIcon={'checkbox-blank-outline'}
-          />
-          <CheckBox
-            checked={false}
-            disabled
-            iconType="material-community"
-            checkedIcon="checkbox-outline"
-            uncheckedIcon={'checkbox-blank-outline'}
-          />
-        </Stack>
-      );
-    }
-);
+usage('Simple', '', () => {
+  const [checked, setChecked] = React.useState(true);
+  const toggleCheckbox = () => setChecked(!checked);
+  return (
+    <Stack row align="center" spacing={1}>
+      <CheckBox
+        checked={checked}
+        onPress={toggleCheckbox}
+        // Use ThemeProvider to make change for all checkbox
+        iconType="material-community"
+        checkedIcon="checkbox-marked"
+        uncheckedIcon="checkbox-blank-outline"
+        checkedColor="red"
+      />
+      <CheckBox
+        checked={checked}
+        onPress={toggleCheckbox}
+        iconType="material-community"
+        checkedIcon="checkbox-outline"
+        uncheckedIcon={'checkbox-blank-outline'}
+      />
+      <CheckBox
+        checked={false}
+        disabled
+        iconType="material-community"
+        checkedIcon="checkbox-outline"
+        uncheckedIcon={'checkbox-blank-outline'}
+      />
+    </Stack>
+  );
+});
 
 usage('Label', '', () => (
   <Stack row align="center" spacing={4}>
@@ -50,33 +45,28 @@ usage('Label', '', () => (
   </Stack>
 ));
 
-usage(
-  'Radio',
-  '',
-  () =>
-    function () {
-      const [selectedIndex, setIndex] = React.useState(0);
+usage('Radio', '', () => {
+  const [selectedIndex, setIndex] = React.useState(0);
 
-      return (
-        <Stack row align="center" spacing={4}>
-          <CheckBox
-            checked={selectedIndex === 0}
-            onPress={() => setIndex(0)}
-            iconType="material-community"
-            checkedIcon="radiobox-marked"
-            uncheckedIcon="radiobox-blank"
-          />
-          <CheckBox
-            checked={selectedIndex === 1}
-            onPress={() => setIndex(1)}
-            iconType="material-community"
-            checkedIcon="radiobox-marked"
-            uncheckedIcon="radiobox-blank"
-          />
-        </Stack>
-      );
-    }
-);
+  return (
+    <Stack row align="center" spacing={4}>
+      <CheckBox
+        checked={selectedIndex === 0}
+        onPress={() => setIndex(0)}
+        iconType="material-community"
+        checkedIcon="radiobox-marked"
+        uncheckedIcon="radiobox-blank"
+      />
+      <CheckBox
+        checked={selectedIndex === 1}
+        onPress={() => setIndex(1)}
+        iconType="material-community"
+        checkedIcon="radiobox-marked"
+        uncheckedIcon="radiobox-blank"
+      />
+    </Stack>
+  );
+});
 
 usage('Size', '', () => (
   <Stack row align="center" spacing={4}>
@@ -86,30 +76,25 @@ usage('Size', '', () => (
   </Stack>
 ));
 
-usage(
-  'Custom icon',
-  '',
-  () =>
-    function () {
-      const [checked, setState] = React.useState(true);
-      const toggleCheckbox = () => setState(!checked);
-      return (
-        <Stack row align="center">
-          <CheckBox
-            checked={checked}
-            checkedIcon="heart"
-            uncheckedIcon="heart-o"
-            checkedColor="red"
-            onPress={toggleCheckbox}
-          />
-          <CheckBox
-            checked={checked}
-            checkedIcon="bookmark"
-            uncheckedIcon="bookmark-o"
-            checkedColor="heart"
-            onPress={toggleCheckbox}
-          />
-        </Stack>
-      );
-    }
-);
+usage('Custom icon', '', () => {
+  const [checked, setState] = React.useState(true);
+  const toggleCheckbox = () => setState(!checked);
+  return (
+    <Stack row align="center">
+      <CheckBox
+        checked={checked}
+        checkedIcon="heart"
+        uncheckedIcon="heart-o"
+        checkedColor="red"
+        onPress={toggleCheckbox}
+      />
+      <CheckBox
+        checked={checked}
+        checkedIcon="bookmark"
+        uncheckedIcon="bookmark-o"
+        checkedColor="heart"
+        onPress={toggleCheckbox}
+      />
+    </Stack>
+  );
+});

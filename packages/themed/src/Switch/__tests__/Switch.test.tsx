@@ -2,6 +2,7 @@ import React from 'react';
 import Switch from '../index';
 import { renderWithWrapper } from '../../../.ci/testHelper';
 import { CreateThemeOptions, FullTheme } from '../../config';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('Switch Component', () => {
   it('should apply from theme', () => {

@@ -56,18 +56,22 @@ function RootNavigator() {
     >
       <Drawer.Navigator
         drawerContent={DrawerNavigator}
-        drawerContentOptions={{
-          activeTintColor: theme?.colors?.secondary,
-          activeBackgroundColor: 'transparent',
-          inactiveTintColor: theme?.colors?.grey0,
-          inactiveBackgroundColor: 'transparent',
-          labelStyle: {
+        screenOptions={{
+          headerShown: false,
+          drawerStyle: {
+            backgroundColor: theme?.colors?.grey4,
+            width: '80%',
+          },
+          drawerActiveTintColor: theme?.colors?.secondary,
+          drawerInactiveTintColor: theme?.colors?.grey0,
+          drawerLabelStyle: {
             fontSize: 15,
             marginLeft: 0,
           },
-        }}
-        drawerStyle={{
-          backgroundColor: theme?.colors?.grey4,
+          drawerItemStyle: {
+            backgroundColor: 'transparent',
+          },
+          drawerType: 'front', //for android and ios consistency
         }}
       >
         <Drawer.Screen name="Avatars" component={Avatars} />
