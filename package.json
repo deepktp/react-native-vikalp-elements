@@ -103,5 +103,8 @@
       "themed": "@rneui/themed",
       "website/docs": "Docs"
     }
+  },
+  "dependencies": {
+    "ts-node": "^10.9.2"
   }
 }
