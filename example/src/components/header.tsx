@@ -29,7 +29,7 @@ const Header: React.FunctionComponent<HeaderComponentProps> = (props) => {
 
   const docsNavigate = () => {
     Linking.openURL(
-      `https://reactnativeelements.com/docs/components/${props.view}`
+      `https://thevikalpui.netlify.app/docs/components/${props.view}`
     );
   };
 

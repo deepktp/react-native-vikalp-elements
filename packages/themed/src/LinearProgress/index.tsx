@@ -13,7 +13,7 @@ export type { LinearProgressProps };
  *
  * Usage ```<LinearProgress variant={LinearProgress.INDETERMINATE}  />```
  *
- * [API Documentation](https://reactnativeelements.com/docs/linearProgress)
+ * [API Documentation](https://thevikalpui.netlify.app/docs/linearProgress)
  */
 export default Object.assign(
   withTheme<LinearProgressProps>(LinearProgress, 'LinearProgress'),

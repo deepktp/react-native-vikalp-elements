@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://reactnativeelements.com/">
+  <a href="https://thevikalpui.netlify.app/">
     <img alt="react-native-elements" src="https://user-images.githubusercontent.com/5962998/65694309-a825f000-e043-11e9-8382-db0dba0851e3.png" width="200">
   </a>
 </p>
@@ -35,7 +35,7 @@ Cross Platform <a href="https://reactnative.dev">React Native</a> UI Toolkit
 
 <div align="center">
 
-<a href="https://reactnativeelements.com">Getting Started 🚀</a> - <a href="https://reactnativeelements.com/docs">Documentation 📚</a> - <a href="https://expo.dev/@rn-vui/react-native-elements">Expo demo </a> - <a href="https://reactnativeelements.com/blog">Blog</a> - <a href="https://github.com/react-native-elements/react-native-elements/releases">Releases</a>
+<a href="https://reactnativeelements.com">Getting Started 🚀</a> - <a href="https://thevikalpui.netlify.app/docs">Documentation 📚</a> - <a href="https://expo.dev/@rn-vui/react-native-elements">Expo demo </a> - <a href="https://thevikalpui.netlify.app/blog">Blog</a> - <a href="https://github.com/react-native-elements/react-native-elements/releases">Releases</a>
 
 </div>
 
@@ -50,7 +50,7 @@ npm install @rn-vui/themed @rn-vui/base
 ```
 
 Follow
-[these instructions](https://reactnativeelements.com/docs/installation)
+[these instructions](https://thevikalpui.netlify.app/docs/installation)
 to install React Native vElements!
 
 ### Packages
@@ -75,7 +75,7 @@ const App = () => <Button title="Hello World!" />;
 
 As a cross platform UI Toolkit, you can now use RNE on the web & share your codebase between your React Native + React web apps. RNE components are rendered perfectly on browser. You can achieve this to target iOS, Android and Web by collaborating RNE and [React Native for Web](https://github.com/necolas/react-native-web).
 
-Click [here](https://reactnativeelements.com/blog/2018/12/13/react-native-web) for a full walkthrough using React Native vElements + React Native Web.
+Click [here](https://thevikalpui.netlify.app/blog/2018/12/13/react-native-web) for a full walkthrough using React Native vElements + React Native Web.
 
 ## Expo demo app
 
@@ -97,12 +97,12 @@ Install the [React Native vElements VS Code Extension](https://marketplace.visua
 
 ## Documentation
 
-[View the full docs here](https://reactnativeelements.com/docs)
+[View the full docs here](https://thevikalpui.netlify.app/docs)
 
 ## Contributing
 
 Interested in contributing to this repo? Check out our
-[Contributing Guide](https://reactnativeelements.com/docs/contributing), [Setup Guide](https://reactnativeelements.com/docs/contributing#setup)
+[Contributing Guide](https://thevikalpui.netlify.app/docs/contributing), [Setup Guide](https://thevikalpui.netlify.app/docs/contributing#setup)
 and submit a PR for a new feature/bug fix.
 
 A big shoutout to all our contributors! You could be here too!
@@ -166,7 +166,7 @@ or a
 
 ## Sponsors
 
-Do you use React Native vElements in production? If so, consider supporting this project as it will allow the maintainers to dedicate more time to maintaining this project and also building new features for everyone. Also, your app or company's logo will show [on GitHub](https://github.com/react-native-elements/react-native-elements#sponsors) and link to your website - who doesn't want a little extra exposure? [Here's the info](https://opencollective.com/react-native-elements#sponsor). Check our sponsors on [website](https://reactnativeelements.com/sponsor).
+Do you use React Native vElements in production? If so, consider supporting this project as it will allow the maintainers to dedicate more time to maintaining this project and also building new features for everyone. Also, your app or company's logo will show [on GitHub](https://github.com/react-native-elements/react-native-elements#sponsors) and link to your website - who doesn't want a little extra exposure? [Here's the info](https://opencollective.com/react-native-elements#sponsor). Check our sponsors on [website](https://thevikalpui.netlify.app/sponsor).
 
 [![React Native vElements Backer](https://opencollective.com/react-native-elements/sponsor/0/avatar)](https://opencollective.com/react-native-elements/sponsor/0/website)
 [![React Native vElements Backer](https://opencollective.com/react-native-elements/sponsor/1/avatar)](https://opencollective.com/react-native-elements/sponsor/1/website)

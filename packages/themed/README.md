@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://reactnativeelements.com/">
+  <a href="https://thevikalpui.netlify.app/">
     <img alt="react-native-elements" src="https://user-images.githubusercontent.com/5962998/65694309-a825f000-e043-11e9-8382-db0dba0851e3.png" width="200">
   </a>
 </p>
@@ -39,7 +39,7 @@ npm install @rn-vui/themed
 ```
 
 Follow
-[these instructions](https://reactnativeelements.com/docs/)
+[these instructions](https://thevikalpui.netlify.app/docs/)
 to install React Native vElements!
 
 ## Usage
@@ -57,7 +57,7 @@ import { Button } from '@rn-vui/themed';
 
 As a cross platform UI Toolkit, you can now use RNE on the web & share your codebase between your React Native + React web apps. RNE components are rendered perfectly on browser. You can achieve this to target iOS, Android and Web by collaborating RNE and [React Native for Web](https://github.com/necolas/react-native-web).
 
-Click [here](https://reactnativeelements.com/blog/2018/12/13/react-native-web) for a full walkthrough using React Native vElements + React Native Web.
+Click [here](https://thevikalpui.netlify.app/blog/2018/12/13/react-native-web) for a full walkthrough using React Native vElements + React Native Web.
 
 ## Expo demo app
 
@@ -75,12 +75,12 @@ Install the [React Native vElements VS Code Extension](https://marketplace.visua
 
 ## Documentation
 
-[View the full docs here](https://reactnativeelements.com/docs/overview)
+[View the full docs here](https://thevikalpui.netlify.app/docs/overview)
 
 ## Contributing
 
 Interested in contributing to this repo? Check out our
-[Contributing Guide](https://reactnativeelements.com/docs/contributing)
+[Contributing Guide](https://thevikalpui.netlify.app/docs/contributing)
 and submit a PR for a new feature/bug fix.
 
 A big shoutout to all our contributors! You could be here too!
