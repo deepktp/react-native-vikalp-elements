@@ -29,8 +29,8 @@ const processNode = (node, parent) => {
 
       const dependencies =
         params.dependencies ||
-        '@rneui/themed,@rneui/base' +
-          (name.includes('Tooltip') ? ',modal-react-native-web' : '');
+        '@rn-vui/themed,@rn-vui/base' +
+        (name.includes('Tooltip') ? ',modal-react-native-web' : '');
       const platform = params.platform || 'web';
       const supportedPlatforms = params.supportedPlatforms || 'ios,android,web';
       const theme = params.theme || 'light';

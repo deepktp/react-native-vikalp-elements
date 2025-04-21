@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Divider, defaultTheme as theme } from '@rneui/base';
+import { Divider, defaultTheme as theme } from '@rn-vui/base';
 
 import Playground from '../../src/components/Playground';
 import { useView, PropTypes } from 'react-view';
@@ -54,7 +54,7 @@ const DividerPlayground = () => {
       Divider,
     },
     imports: {
-      '@rneui/base': {
+      '@rn-vui/base': {
         named: ['Divider'],
       },
     },

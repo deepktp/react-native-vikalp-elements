@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AirbnbRating } from '@rneui/base';
+import { AirbnbRating } from '@rn-vui/base';
 import Playground from '../../src/components/Playground';
 import { useView, PropTypes } from 'react-view';
 
@@ -34,7 +34,7 @@ const AirbnbRatingPlayground = () => {
       AirbnbRating,
     },
     imports: {
-      '@rneui/base': {
+      '@rn-vui/base': {
         named: ['AirbnbRating'],
       },
     },

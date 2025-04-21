@@ -33,11 +33,11 @@ export interface TooltipProps {
 
   /** Define type of action that should trigger tooltip. Available options _onPress_, _onLongPress_ */
   toggleAction?:
-  | string
-  | 'onPress'
-  | 'onLongPress'
-  | 'onPressIn'
-  | 'onPressOut';
+    | string
+    | 'onPress'
+    | 'onLongPress'
+    | 'onPressIn'
+    | 'onPressOut';
 
   /** Tooltip container height. Necessary in order to render the container in the correct place. Pass height according to the size of the content rendered inside the container. */
   height?: number;
@@ -123,8 +123,8 @@ export const Tooltip: RneFunctionComponent<TooltipProps> = ({
   backgroundColor = '#617080',
   pointerColor = backgroundColor,
   pointerStyle,
-  onClose = () => { },
-  onOpen = () => { },
+  onClose = () => {},
+  onOpen = () => {},
   visible = false,
   skipAndroidStatusBar = false,
   ModalComponent = Modal,
@@ -159,11 +159,11 @@ export const Tooltip: RneFunctionComponent<TooltipProps> = ({
               isIOS || skipAndroidStatusBar
                 ? pageOffsetY
                 : pageOffsetY -
-                Platform.select({
-                  android: StatusBar.currentHeight,
-                  ios: 20,
-                  default: 0,
-                }),
+                  Platform.select({
+                    android: StatusBar.currentHeight,
+                    ios: 20,
+                    default: 0,
+                  }),
             elementWidth: _width,
             elementHeight: _height,
           });

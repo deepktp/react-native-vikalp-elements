@@ -5102,7 +5102,7 @@ __metadata:
 
 "@rn-vui/layout@npm:^0.0.0-alpha.4":
   version: 0.0.0-alpha.4
-  resolution: "@rn-vui/layout@npm:0.0.0-alpha.4"
+  resolution: "@rneui/layout@npm:0.0.0-alpha.4"
   checksum: 10/adbfd7d00e9f2c9cb7749b113c2838e3af513fb7b6c4d0d69a03152524f06b619760bf62f76556c3d16c0874f27138830c6e647c358bbe19851a4d8b413ba818
   languageName: node
   linkType: hard

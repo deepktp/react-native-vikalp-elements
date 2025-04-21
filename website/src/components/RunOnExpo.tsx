@@ -33,7 +33,7 @@ const Home: React.FunctionComponent<{}> = () => {
               <div className="padding-vert--lg hide-on-small">
                 <SiReact style={{ fontSize: 128, opacity: 0.3 }} />
                 <img
-                  src="https://qr.expo.dev/expo-go?owner=rneui&slug=react-native-elements&releaseChannel=default&host=exp.host"
+                  src="https://qr.expo.dev/expo-go?owner=rn-vui&slug=react-native-elements&releaseChannel=default&host=exp.host"
                   alt="Expo QR Code"
                   width={128}
                   className="margin-horiz--lg"
@@ -45,7 +45,7 @@ const Home: React.FunctionComponent<{}> = () => {
                   className={
                     'button button--secondary button--outline button--sm  margin-horiz--sm margin-vert--sm'
                   }
-                  to={'https://expo.dev/@rneui/react-native-elements'}
+                  to={'https://expo.dev/@rn-vui/react-native-elements'}
                 >
                   Run on Expo Go
                 </Link>

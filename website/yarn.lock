@@ -3154,9 +3154,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rneui/base@file:../packages/base::locator=rne-website%40workspace%3A.":
+"@rn-vui/base@file:../packages/base::locator=rne-website%40workspace%3A.":
   version: 5.0.0
-  resolution: "@rneui/base@file:../packages/base#../packages/base::hash=2cdeb5&locator=rne-website%40workspace%3A."
+  resolution: "@rn-vui/base@file:../packages/base#../packages/base::hash=2cdeb5&locator=rne-website%40workspace%3A."
   dependencies:
     "@types/react-native-vector-icons": "npm:^6.4.10"
     color: "npm:^3.2.1"
@@ -3171,9 +3171,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rneui/layout@npm:^0.0.0-alpha.6":
+"@rn-vui/layout@npm:^0.0.0-alpha.6":
   version: 0.0.0-alpha.6
-  resolution: "@rneui/layout@npm:0.0.0-alpha.6"
+  resolution: "@rn-vui/layout@npm:0.0.0-alpha.6"
   checksum: 10/4355ab7789ded30ca4678e308d34460bc309c8ee1b9d19ad8fc5100c6aa71730e3efad35e05fd4eb559022e6c281571bed7d43f738ed2083b2cb1cc2e44d77d8
   languageName: node
   linkType: hard
@@ -12472,8 +12472,8 @@ __metadata:
     "@docusaurus/preset-classic": "npm:^2.3.0"
     "@docusaurus/theme-live-codeblock": "npm:^2.3.0"
     "@docusaurus/types": "npm:^2.3.0"
-    "@rneui/base": "file:../packages/base"
-    "@rneui/layout": "npm:^0.0.0-alpha.6"
+    "@rn-vui/base": "file:../packages/base"
+    "@rn-vui/layout": "npm:^0.0.0-alpha.6"
     "@tsconfig/docusaurus": "npm:^1.0.4"
     "@types/assert": "npm:^1.5.6"
     "@types/jest": "npm:^27.0.3"

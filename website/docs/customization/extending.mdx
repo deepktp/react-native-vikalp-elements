@@ -4,7 +4,7 @@ title: Extending Theme
 sidebar_position: 4
 ---
 
-TypeScript definitions for your theme can be extended by using TypeScript's [declaration merging](https://www.typescriptlang.org/docs/handbook/declaration-merging.html) feature. First you need to create a declaration file called `themed.d.ts` and then declare the module `@rneui/themed` and 're-export' the types that you want to extend. i.e. below we add a custom `p1Style` to the `Text` theme object and we add a bunch of colors to the `colors` object.
+TypeScript definitions for your theme can be extended by using TypeScript's [declaration merging](https://www.typescriptlang.org/docs/handbook/declaration-merging.html) feature. First you need to create a declaration file called `themed.d.ts` and then declare the module `@rn-vui/themed` and 're-export' the types that you want to extend. i.e. below we add a custom `p1Style` to the `Text` theme object and we add a bunch of colors to the `colors` object.
 
 ### Adding custom colors
 
@@ -12,9 +12,9 @@ TypeScript will only autocomplete RNE's default colors when accessing the theme.
 
 ```tsx
 // themed.d.ts
-import '@rneui/themed';
+import '@rn-vui/themed';
 
-declare module '@rneui/themed' {
+declare module '@rn-vui/themed' {
   export interface Colors {
     tertiary: string;
     accent: string;
@@ -74,9 +74,9 @@ Similar to how you can extend/set custom colors, you can add your own properties
 
 ```tsx
 // themed.d.ts
-import '@rneui/themed';
+import '@rn-vui/themed';
 
-declare module '@rneui/themed' {
+declare module '@rn-vui/themed' {
   export interface Theme {
     myCustomProperty: string;
     myCustomFunction: () => void;
@@ -100,9 +100,9 @@ If you need to extend some props of RNE's default components, you can use TypeSc
 
 ```tsx
 // themed.d.ts
-import '@rneui/themed';
+import '@rn-vui/themed';
 
-declare module '@rneui/themed' {
+declare module '@rn-vui/themed' {
   export interface TextProps {
     bold: boolean;
   }
@@ -144,7 +144,7 @@ const App = () => {
 You may want to make use of the theming utilities in your own components. For this you can use the `withTheme(Component,ComponentThemeKey)` HOC exported from this library. It adds three props to the component it wraps - theme, updateTheme and replaceTheme.
 
 ```tsx
-import { withTheme } from '@rneui/themed';
+import { withTheme } from '@rn-vui/themed';
 
 type CustomComponentProps = {
   title: string;
@@ -159,7 +159,7 @@ const CustomComponent = (props: CustomComponentProps) => {
 
 export default withTheme<CustomComponentProps>(CustomComponent, 'ComponentKey');
 
-declare module '@rneui/themed' {
+declare module '@rn-vui/themed' {
   export interface ComponentTheme {
     ComponentKey: Partial<CustomComponentProps>;
   }
@@ -167,7 +167,7 @@ declare module '@rneui/themed' {
 ```
 
 ```tsx
-import { ThemeProvider, createTheme } from '@rneui/themed';
+import { ThemeProvider, createTheme } from '@rn-vui/themed';
 
 const myTheme = createTheme({
   components: {
