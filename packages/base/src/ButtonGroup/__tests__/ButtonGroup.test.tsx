@@ -2,8 +2,37 @@ import React from 'react';
 import { ButtonGroup } from '../index';
 import { fireEvent, renderWithWrapper } from '../../../.ci/testHelper';
 import { Text, View } from 'react-native';
+import { describe, it, expect, jest } from '@jest/globals';
 
 const buttons = ['Button 1', 'Button 2', 'Button 3'];
+const buttonComponents = [
+  <Text>Button 1</Text>,
+  <Text>Button 2</Text>,
+  <Text>Button 3</Text>,
+];
+const buttonObjects = [
+  {
+    element: () => (
+      <View>
+        <Text>Button 1</Text>
+      </View>
+    ),
+  },
+  {
+    element: () => (
+      <View>
+        <Text>Button 2</Text>
+      </View>
+    ),
+  },
+  {
+    element: () => (
+      <View>
+        <Text>Button 3</Text>
+      </View>
+    ),
+  },
+];
 
 describe('ButtonGroup Component', () => {
   it('should match snapshot', () => {
@@ -18,17 +47,41 @@ describe('ButtonGroup Component', () => {
     expect(component.toJSON()).toMatchSnapshot();
   });
 
-  it('should return index on Press', () => {
+  it('should match snapshot with components', () => {
+    const component = renderWithWrapper(
+      <ButtonGroup
+        buttons={buttonComponents}
+        containerStyle={{ backgroundColor: 'yellow' }}
+        buttonStyle={{ backgroundColor: 'blue' }}
+        textStyle={{ color: 'pink' }}
+      />
+    );
+    expect(component.toJSON()).toMatchSnapshot();
+  });
+
+  it('should match snapshot with objects', () => {
+    const component = renderWithWrapper(
+      <ButtonGroup
+        buttons={buttonObjects}
+        containerStyle={{ backgroundColor: 'yellow' }}
+        buttonStyle={{ backgroundColor: 'blue' }}
+        textStyle={{ color: 'pink' }}
+      />
+    );
+    expect(component.toJSON()).toMatchSnapshot();
+  });
+
+  it('should return index on Press', async () => {
     const onPress = jest.fn();
     const { queryAllByTestId } = renderWithWrapper(
       <ButtonGroup buttons={buttons} onPress={onPress} />
     );
     const buttonComponents = queryAllByTestId('RNE__ButtonGroupItem');
-    fireEvent.press(buttonComponents[1]);
+    await fireEvent.press(buttonComponents[1]);
     expect(onPress).toBeCalledWith(1);
   });
 
-  it('should render selectedIndex', () => {
+  it('should render selectedIndex', async () => {
     const { queryAllByTestId } = renderWithWrapper(
       <ButtonGroup
         buttons={buttons}
@@ -38,10 +91,10 @@ describe('ButtonGroup Component', () => {
       />
     );
     const buttonComponent = queryAllByTestId('RNE__ButtonGroupItem')[1];
-    expect(buttonComponent.findByType(View).props.style).toMatchObject({
+    await expect(buttonComponent.findByType(View).props.style).toMatchObject({
       backgroundColor: 'red',
     });
-    expect(buttonComponent.findByType(Text).props.style).toMatchObject({
+    await expect(buttonComponent.findByType(Text).props.style).toMatchObject({
       fontSize: 12,
     });
   });

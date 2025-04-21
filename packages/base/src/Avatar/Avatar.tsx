@@ -9,7 +9,6 @@ import {
   ViewStyle,
   TextStyle,
   ImageSourcePropType,
-  ImageURISource,
   ImageStyle,
 } from 'react-native';
 import {
@@ -44,56 +43,130 @@ export interface AvatarProps extends InlinePressableProps {
   /** Callback function when long pressing component. */
   onLongPress?(): void;
 
-  /** Styling for outer container. */
+  /** Styling for outer container.
+   *
+   * @default undefined
+   */
   containerStyle?: StyleProp<ViewStyle>;
 
-  /** Image source to be displayed on avatar. */
+  /** Image source to be displayed on avatar.
+   *
+   * @default undefined
+   */
   source?: ImageSourcePropType;
 
-  /** Style for avatar image. */
+  /** Style for avatar image.
+   *
+   * @default undefined
+   */
   avatarStyle?: ImageStyle;
 
-  /** Makes the avatar circular. */
+  /** Makes the avatar circular.
+   *
+   * @default false
+   */
   rounded?: boolean;
 
-  /** Renders title in the placeholder. */
+  /** Renders title in the placeholder.
+   *
+   * @default undefined
+   */
   title?: string;
 
-  /** Style for the title. */
+  /** Style for the title.
+   *
+   * @default undefined
+   */
   titleStyle?: StyleProp<TextStyle>;
 
-  /** Style for the view outside image or icon. */
+  /** Style for the view outside image or icon.
+   *
+   * @default undefined
+   */
   overlayContainerStyle?: StyleProp<TextStyle>;
 
-  /** Opacity when pressed. */
-  activeOpacity?: number;
-
-  /** Displays an icon as the main content of the Avatar. **Cannot be used alongside title**. When used with the `source` prop it will be used as the placeholder. */
+  /** Displays an icon as the main content of the Avatar. **Cannot be used alongside title**. When used with the `source` prop it will be used as the placeholder.
+   *
+   * @default undefined
+   */
   icon?: AvatarIcon;
 
-  /** Extra styling for icon component. */
+  /** Extra styling for icon component.
+   *
+   * @default undefined
+   */
   iconStyle?: StyleProp<TextStyle>;
 
-  /** Size of the avatar. */
+  /** Size of the avatar.
+   *
+   * @default small
+   */
   size?: ('small' | 'medium' | 'large' | 'xlarge') | number;
 
-  /** Adds style to the placeholder wrapper. */
-  placeholderStyle?: StyleProp<ViewStyle>;
+  /** Custom element inside the avatar (by default, it's the title).
+   *
+   * @default undefined
+   */
+  renderCustomContent?: React.ReactElement<{}>;
 
-  /** Custom placeholder element (by default, it's the title). */
-  renderPlaceholderContent?: React.ReactElement<{}>;
-
-  /** Optional properties to pass to the avatar e.g "resizeMode". */
+  /** Optional properties to pass to the avatar e.g "resizeMode".
+   *
+   * @default undefined
+   */
   imageProps?: Partial<ImageProps>;
 
-  /** Custom ImageComponent for Avatar. */
+  /** Custom ImageComponent for Avatar.
+   *
+   * @default undefined
+   */
   ImageComponent?: React.ComponentClass;
 }
+
+const AvatarTitle = ({
+  size,
+  title,
+  titleStyle,
+}: Pick<AvatarProps, 'title' | 'titleStyle' | 'size'>) => {
+  const width =
+    typeof size === 'number' ? size : avatarSizes[size] || avatarSizes.small;
+  const titleSize = width / 2;
+
+  return (
+    <Text
+      style={StyleSheet.flatten([
+        styles.title,
+        { fontSize: titleSize },
+        titleStyle,
+      ])}
+    >
+      {title}
+    </Text>
+  );
+};
+
+const AvatarIcon = ({
+  icon,
+  iconStyle,
+  size,
+}: Pick<AvatarProps, 'icon' | 'iconStyle' | 'size'>) => {
+  const width =
+    typeof size === 'number' ? size : avatarSizes[size] || avatarSizes.small;
+  const iconSize = width / 2;
+
+  return (
+    <Icon
+      style={StyleSheet.flatten([iconStyle])}
+      color={icon.color || 'white'}
+      name={icon.name || 'account'}
+      size={icon.size || iconSize}
+      type={icon.type || 'material-community'}
+    />
+  );
+};
 
 /**
  * Avatars are found all over ui design from lists to profile screens.
  * They are commonly used to represent a user and can contain photos, icons, or even text.
- * @imports Avatar
  * */
 export const Avatar: RneFunctionComponent<AvatarProps> = ({
   onPress,
@@ -114,8 +187,7 @@ export const Avatar: RneFunctionComponent<AvatarProps> = ({
   titleStyle,
   overlayContainerStyle,
   imageProps,
-  placeholderStyle,
-  renderPlaceholderContent,
+  renderCustomContent,
   ImageComponent = RNImage,
   children,
   pressableProps,
@@ -123,36 +195,7 @@ export const Avatar: RneFunctionComponent<AvatarProps> = ({
 }) => {
   const width =
     typeof size === 'number' ? size : avatarSizes[size] || avatarSizes.small;
-
   const height = width;
-  const titleSize = width / 2;
-  const iconSize = width / 2;
-
-  const PlaceholderContent =
-    (renderPlaceholderContent &&
-      renderNode(undefined, renderPlaceholderContent)) ||
-    (title && (
-      <Text
-        style={StyleSheet.flatten([
-          styles.title,
-          { fontSize: titleSize },
-          titleStyle,
-        ])}
-      >
-        {title}
-      </Text>
-    )) ||
-    (icon && (
-      <Icon
-        style={StyleSheet.flatten([iconStyle && iconStyle])}
-        color={icon.color || 'white'}
-        name={icon.name || 'account'}
-        size={icon.size || iconSize}
-        type={icon.type || 'material-community'}
-      />
-    ));
-
-  const hidePlaceholder = !(source && (source as ImageURISource).uri);
 
   const imageContainerStyle = StyleSheet.flatten([
     styles.overlayContainer,
@@ -160,8 +203,49 @@ export const Avatar: RneFunctionComponent<AvatarProps> = ({
     overlayContainerStyle,
     imageProps && imageProps.containerStyle,
   ]);
+
   if (imageProps && imageProps.containerStyle) {
     delete imageProps.containerStyle;
+  }
+
+  let componentToRender;
+
+  if (source) {
+    componentToRender = (
+      <Image
+        testID="RNE__Avatar__Image"
+        containerStyle={imageContainerStyle as StyleProp<TextStyle>}
+        source={source}
+        PlaceholderContent={
+          (title && (
+            <AvatarTitle title={title} titleStyle={titleStyle} size={size} />
+          )) ||
+          (icon && <AvatarIcon icon={icon} iconStyle={iconStyle} size={size} />)
+        }
+        placeholderStyle={StyleSheet.flatten([
+          styles.placeholderStyle,
+          imageProps && imageProps.placeholderStyle,
+        ])}
+        borderRadius={rounded ? width / 2 : undefined}
+        {...imageProps}
+        style={StyleSheet.flatten([
+          styles.avatar,
+          imageProps && imageProps.style,
+          avatarStyle,
+        ])}
+        ImageComponent={ImageComponent}
+      />
+    );
+  } else if (title) {
+    componentToRender = (
+      <AvatarTitle title={title} titleStyle={titleStyle} size={size} />
+    );
+  } else if (icon) {
+    componentToRender = (
+      <AvatarIcon icon={icon} iconStyle={iconStyle} size={size} />
+    );
+  } else if (renderCustomContent) {
+    componentToRender = renderNode(undefined, renderCustomContent);
   }
 
   return (
@@ -181,24 +265,7 @@ export const Avatar: RneFunctionComponent<AvatarProps> = ({
         ...rest,
       }}
     >
-      <Image
-        testID="RNE__Avatar__Image"
-        placeholderStyle={StyleSheet.flatten([
-          placeholderStyle,
-          hidePlaceholder && styles.hiddenPlaceholderStyle,
-        ])}
-        PlaceholderContent={PlaceholderContent}
-        containerStyle={imageContainerStyle as StyleProp<TextStyle>}
-        source={source}
-        borderRadius={rounded ? width / 2 : undefined}
-        {...imageProps}
-        style={StyleSheet.flatten([
-          styles.avatar,
-          imageProps && imageProps.style,
-          avatarStyle,
-        ])}
-        ImageComponent={ImageComponent}
-      />
+      {componentToRender}
       {children}
     </Component>
   );
@@ -206,12 +273,10 @@ export const Avatar: RneFunctionComponent<AvatarProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'transparent',
+    justifyContent: 'center',
   },
   avatar: {
     flex: 1,
-    width: undefined,
-    height: undefined,
   },
   overlayContainer: {
     flex: 1,
@@ -220,8 +285,9 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     backgroundColor: 'transparent',
     textAlign: 'center',
+    zIndex: 1,
   },
-  hiddenPlaceholderStyle: {
+  placeholderStyle: {
     backgroundColor: 'transparent',
   },
 });

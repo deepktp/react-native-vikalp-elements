@@ -1,13 +1,16 @@
 import React from 'react';
 import Dialog from '..';
-import { FullTheme } from '../..';
+import { CreateThemeOptions, darkColors, lightColors } from '../..';
 import { renderWithWrapper } from '../../../.ci/testHelper';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('Dialog Component', () => {
-  it.skip('should apply props from theme', () => {
-    const theme: Partial<FullTheme> = {
-      Dialog: {
-        transparent: false,
+  it('should apply props from theme', () => {
+    const theme: Partial<CreateThemeOptions> = {
+      components: {
+        Dialog: {
+          transparent: false,
+        },
       },
     };
     const { wrapper } = renderWithWrapper(
@@ -16,5 +19,25 @@ describe('Dialog Component', () => {
       theme
     );
     expect(wrapper.props.transparent).toBeFalsy();
+  });
+  it.each`
+    mode       | expectedColor
+    ${'dark'}  | ${darkColors.black}
+    ${'light'} | ${lightColors.black}
+  `('should apply $mode theme mode to Dialog', ({ mode, expectedColor }) => {
+    const theme: Partial<CreateThemeOptions> = {
+      lightColors,
+      darkColors,
+      mode,
+    };
+    const { getByText, toJSON } = renderWithWrapper(
+      <Dialog isVisible={true}>
+        <Dialog.Title title={'Unit Test Title'} />
+      </Dialog>,
+      'Dialog__Title',
+      theme
+    );
+    const textComponent = getByText('Unit Test Title');
+    expect(textComponent.props.style.color).toEqual(expectedColor);
   });
 });

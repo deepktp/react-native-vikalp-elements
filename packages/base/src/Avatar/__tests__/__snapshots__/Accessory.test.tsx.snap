@@ -5,6 +5,23 @@ exports[`Accessory Component should uses Icon 1`] = `
   testID="wrapper"
 >
   <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
     accessible={true}
     collapsable={false}
     focusable={true}
@@ -18,8 +35,8 @@ exports[`Accessory Component should uses Icon 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "backgroundColor": "#aaa",
           "bottom": 0,
@@ -27,14 +44,14 @@ exports[`Accessory Component should uses Icon 1`] = `
           "position": "absolute",
           "right": 0,
           "shadowColor": "#000",
-          "shadowOffset": Object {
+          "shadowOffset": {
             "height": 1,
             "width": 1,
           },
           "shadowOpacity": 0.5,
           "shadowRadius": 2,
         },
-        Object {
+        {
           "borderRadius": 5,
           "height": 10,
           "width": 10,
@@ -46,7 +63,7 @@ exports[`Accessory Component should uses Icon 1`] = `
     <View>
       <View
         style={
-          Object {
+          {
             "overflow": "hidden",
           }
         }
@@ -55,7 +72,7 @@ exports[`Accessory Component should uses Icon 1`] = `
         <View
           accessibilityRole="button"
           android_ripple={
-            Object {
+            {
               "borderless": false,
               "color": "rgba(0, 0, 0, 0.3)",
               "radius": -5,
@@ -66,7 +83,7 @@ exports[`Accessory Component should uses Icon 1`] = `
         >
           <View
             style={
-              Object {
+              {
                 "alignItems": "center",
                 "backgroundColor": "transparent",
                 "justifyContent": "center",
@@ -76,21 +93,22 @@ exports[`Accessory Component should uses Icon 1`] = `
           >
             <Text
               allowFontScaling={false}
+              selectable={false}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "#fff",
                     "fontSize": 8,
                   },
-                  Object {
+                  {
                     "backgroundColor": "transparent",
                   },
-                  Object {
+                  {
                     "fontFamily": "Material Icons",
                     "fontStyle": "normal",
                     "fontWeight": "normal",
                   },
-                  Object {},
+                  {},
                 ]
               }
               testID="RNE__ICON__Component"

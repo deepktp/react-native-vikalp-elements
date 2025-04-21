@@ -1,16 +1,67 @@
-import React from 'react';
-import { Text, Button } from '../..';
-import { colors } from '../colors';
-import { renderWithWrapper } from '../../../.ci/testHelper';
 import { fireEvent, render } from '@testing-library/react-native';
-import { useTheme } from '../makeStyles';
-import { ThemeProvider, createTheme, ThemeConsumer } from '../ThemeProvider';
+import React from 'react';
 import { View } from 'react-native';
+import { ReactTestInstance } from 'react-test-renderer';
+import { lightColors } from '..';
+import { Theme } from '../..';
+import { renderWithWrapper } from '../../../.ci/testHelper';
+import Button, { Button as BaseButton } from '../../Button';
+import Text from '../../Text';
+import { defaultSpacing } from '../theme';
+import {
+  createTheme,
+  ThemeConsumer,
+  ThemeProvider,
+  useTheme,
+} from '../ThemeProvider';
+import { describe, it, expect, jest } from '@jest/globals';
+
+declare module '../..' {
+  export interface Theme {
+    myCustomProperty: string;
+    myCustomFunction: () => void;
+  }
+}
 
 describe('ThemeProvider', () => {
   it('render ThemeProvider', () => {
-    const { toJSON } = renderWithWrapper(<Text />);
-    expect(toJSON).toMatchSnapshot();
+    const { toJSON, queryAllByRole } = render(
+      <>
+        <BaseButton testID="xl" radius={'xl'}>
+          Test
+        </BaseButton>
+        <Button testID="lg" radius={'lg'}>
+          Test
+        </Button>
+        <ThemeProvider
+          theme={createTheme({ components: { Button: { radius: 'md' } } })}
+        >
+          <Button testID="sm" radius={'sm'}>
+            Test
+          </Button>
+          <Button testID="md">Test</Button>
+        </ThemeProvider>
+      </>
+    );
+    const buttons = queryAllByRole('button');
+    buttons.forEach((el) => {
+      const size = el.props.testID;
+      expect((el.children[0] as ReactTestInstance).props?.style).toMatchObject({
+        borderRadius: defaultSpacing[size],
+      });
+    });
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should extends the theme', () => {
+    const theme = createTheme({ myCustomProperty: 'myCustomProperty' });
+    const MyComp = () => {
+      const { theme } = useTheme();
+      return <Text testID="testID">{theme.myCustomProperty}</Text>;
+    };
+
+    const { wrapper } = renderWithWrapper(<MyComp />, 'testID', theme);
+    expect(wrapper.props.children).toBe('myCustomProperty');
   });
 
   it('should update and replace theme', () => {
@@ -22,7 +73,7 @@ describe('ThemeProvider', () => {
             testID="updateTheme"
             onPress={() => {
               updateTheme({
-                colors: {
+                lightColors: {
                   primary: 'red',
                 },
               });
@@ -32,7 +83,7 @@ describe('ThemeProvider', () => {
             testID="replaceThemeButton"
             onPress={() => {
               replaceTheme({
-                colors: {
+                lightColors: {
                   primary: 'purple',
                 },
               });
@@ -44,14 +95,14 @@ describe('ThemeProvider', () => {
     };
 
     const { queryByTestId } = render(
-      <ThemeProvider>
+      <ThemeProvider theme={createTheme({})}>
         <TestComp />
       </ThemeProvider>
     );
-    const updateButton = queryByTestId('updateTheme');
-    const replaceButton = queryByTestId('replaceThemeButton');
-    const textTheme = queryByTestId('themeChild');
-    expect(textTheme.props.children).toEqual(colors.primary);
+    const updateButton = queryByTestId('updateTheme')!;
+    const replaceButton = queryByTestId('replaceThemeButton')!;
+    const textTheme = queryByTestId('themeChild')!;
+    expect(textTheme.props.children).toEqual(lightColors.primary);
 
     fireEvent.press(updateButton);
     expect(textTheme.props.children).toEqual('red');
@@ -70,32 +121,34 @@ describe('ThemeProvider', () => {
         </ThemeConsumer>
       </ThemeProvider>
     );
-    const instance = queryByTestId('viewComp');
+    const instance = queryByTestId('viewComp')!;
     expect(JSON.parse(instance.props.children)).toMatchObject({
-      colors,
+      colors: lightColors,
     });
   });
 
   it('should retain custom theme when switching between light / dark mode', () => {
     const customTheme = createTheme({
-      colors: {
+      lightColors: {
         primary: 'white',
       },
       darkColors: {
         primary: 'black',
       },
       mode: 'light',
-      Text: { accessibilityLabel: 'theme-test' },
+      components: {
+        Text: { accessibilityLabel: 'theme-test' },
+      },
     });
     const TestComp = (): JSX.Element => {
       const { theme, updateTheme } = useTheme();
-
+      // console.log('yo', theme);
       return (
         <>
           <Button
             testID="updateTheme"
             onPress={() =>
-              updateTheme((myTheme) => ({
+              updateTheme!((myTheme) => ({
                 mode: myTheme.mode === 'dark' ? 'light' : 'dark',
               }))
             }
@@ -104,13 +157,13 @@ describe('ThemeProvider', () => {
         </>
       );
     };
-    const { queryByTestId } = render(
-      <ThemeProvider theme={customTheme}>
-        <TestComp />
-      </ThemeProvider>
+    const { queryByTestId } = renderWithWrapper(
+      <TestComp />,
+      undefined,
+      customTheme
     );
-    const updateButton = queryByTestId('updateTheme');
-    const textTheme = queryByTestId('themeChild');
+    const updateButton = queryByTestId('updateTheme')!;
+    const textTheme = queryByTestId('themeChild')!;
 
     expect(textTheme.props.accessibilityLabel).toEqual('theme-test');
 
@@ -123,5 +176,57 @@ describe('ThemeProvider', () => {
     fireEvent.press(updateButton);
     expect(textTheme.props.accessibilityLabel).toEqual('theme-test');
     expect(textTheme.props.children).toEqual('light');
+  });
+
+  it('should reflect change when mode is changed', () => {
+    let customTheme = createTheme({
+      lightColors: {
+        primary: 'white',
+      },
+      darkColors: {
+        primary: 'black',
+      },
+      mode: 'light',
+      components: {
+        Text: { accessibilityLabel: 'theme-test' },
+      },
+    });
+    const TestComp = (): JSX.Element => {
+      const [mode, setMode] = React.useState<'dark' | 'light'>('light');
+
+      customTheme.mode = mode;
+
+      return (
+        <ThemeProvider theme={customTheme}>
+          <ThemeConsumer>
+            {({ theme }) => (
+              <>
+                <Text testID="test-text">{theme.mode}</Text>
+                <Button
+                  testID="test-button"
+                  onPress={() => {
+                    setMode((prevMode) =>
+                      prevMode === 'dark' ? 'light' : 'dark'
+                    );
+                  }}
+                />
+              </>
+            )}
+          </ThemeConsumer>
+        </ThemeProvider>
+      );
+    };
+    const { queryByTestId } = render(<TestComp />);
+
+    const text = queryByTestId('test-text');
+    const button = queryByTestId('test-button')!;
+
+    expect(text?.props.children).toBe('light');
+
+    fireEvent.press(button);
+    expect(text?.props.children).toBe('dark');
+
+    fireEvent.press(button);
+    expect(text?.props.children).toBe('light');
   });
 });

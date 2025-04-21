@@ -1,31 +1,42 @@
-name: Build and Deploy docs
+name: docs
 on:
   push:
     branches:
-      - next
+      - master
     paths:
-      - "website/**"
+      - 'website/**'
 
 jobs:
   docs:
     runs-on: ubuntu-latest
     steps:
-      - name: Build & Deploy Docs
-        uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v3
         with:
-          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
-          fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+          persist-credentials: false # avoid using GITHUB_TOKEN for push
+          fetch-depth: 0 # fetch all history to allow pushing refs to dest repo
+
+      - name: Enable Corepack
+        run: corepack enable
+        shell: bash
+
+      - name: Enable Yarn with Corepack
+        run: corepack prepare yarn@stable --activate
+        shell: bash
+
       - name: Install dependencies
         uses: ./.github/actions/install
         with:
           install_website: true
+
       - name: Build 🔧
         run: yarn docs-build
+
       - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./website/build
-          user_name: "React Native Elements CI"
-          user_email: "react-native-elements-ci@users.noreply.github.com"
+          user_name: 'React Native Elements CI'
+          user_email: 'react-native-elements-ci@users.noreply.github.com'
           cname: reactnativeelements.com

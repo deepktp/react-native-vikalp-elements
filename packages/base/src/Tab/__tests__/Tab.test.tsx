@@ -1,35 +1,36 @@
 import React from 'react';
 import { Tab } from '../index';
 import { renderWithWrapper } from '../../../.ci/testHelper';
-import { colors } from '../../helpers';
+import { lightColors } from '../../helpers';
 import { fireEvent } from '@testing-library/react-native';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('Tab Component', () => {
   const items = ['Tab 1', 'Tab 2', 'Tab 3'];
 
   it('should match snapshot', () => {
-    const { queryByA11yRole } = renderWithWrapper(
+    const { queryByRole } = renderWithWrapper(
       <Tab>
         <Tab.Item title="Tab 1" />
         <Tab.Item title="Tab 2" />
         <Tab.Item title="Tab 3" />
       </Tab>
     );
-    expect(queryByA11yRole('tablist')).toBeDefined();
+    expect(queryByRole('tablist')).toBeDefined();
   });
 
   it('should render primary variant ', () => {
-    const { queryByA11yRole } = renderWithWrapper(
+    const { queryByRole } = renderWithWrapper(
       <Tab variant="primary">
         {items.map((i) => (
           <Tab.Item key={i} />
         ))}
       </Tab>
     );
-    const TabItemComponent = queryByA11yRole('tablist');
+    const TabItemComponent = queryByRole('tablist')!;
 
     expect(TabItemComponent.props.style).toContainEqual({
-      backgroundColor: colors?.primary,
+      backgroundColor: lightColors?.primary,
     });
   });
 
@@ -41,12 +42,15 @@ describe('Tab Component', () => {
         ))}
       </Tab>
     );
-    const tabContainer = component.getByA11yRole('tablist');
+    const tabContainer = component.getByRole('tablist');
     expect(tabContainer).toBeDefined();
 
-    const tabs = component.getAllByA11yRole('tab');
+    const tabs = component.getAllByRole('tab');
     expect(tabs.length).toBe(items.length);
-    tabs.forEach((tab) => {
+    tabs.forEach((tab, index) => {
+      if (index === 0) {
+        return;
+      }
       expect(tab.props.accessibilityState.selected).toBe(false);
       expect(items.includes(tab.props.accessibilityValue.text)).toBe(true);
     });
@@ -94,5 +98,16 @@ describe('Tab Component', () => {
     const tabs = queryAllByRole('tab');
     fireEvent(tabs[1], 'press');
     expect(tabs.length).toBe(2);
+  });
+
+  it('should ignore conditionally unrendered children', () => {
+    const { queryAllByRole } = renderWithWrapper(
+      <Tab>
+        <Tab.Item />
+        {false && <Tab.Item />}
+        <Tab.Item />
+      </Tab>
+    );
+    expect(queryAllByRole('tab').length).toBe(2);
   });
 });

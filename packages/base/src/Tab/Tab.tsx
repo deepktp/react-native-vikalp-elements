@@ -1,21 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
-  View,
   Animated,
-  StyleProp,
-  ViewStyle,
-  ViewProps,
-  StyleSheet,
+  Easing,
   ScrollView,
-  LayoutChangeEvent,
+  StyleProp,
+  StyleSheet,
+  View,
+  ViewProps,
+  ViewStyle,
 } from 'react-native';
-import { defaultTheme, RneFunctionComponent } from '../helpers';
-import { TabItemProps } from './Tab.Item';
+import { RneFunctionComponent, defaultTheme } from '../helpers';
+import { ParentProps, TabItemProps } from './Tab.Item';
 
-export interface TabBaseProps extends ViewProps {
-  /** Child position index value. */
-  value?: number;
-
+export interface TabProps extends ViewProps, ParentProps {
   /** Makes Tab Scrolling */
   scrollable?: boolean;
 
@@ -28,11 +25,19 @@ export interface TabBaseProps extends ViewProps {
   /** Additional styling for tab indicator. */
   indicatorStyle?: StyleProp<ViewStyle>;
 
-  /** Style for Tab container */
-  containerStyle?: StyleProp<ViewStyle>;
-
   /** Define the background Variant. */
   variant?: 'primary' | 'default';
+
+  /** active index */
+  activeIndex?: number;
+
+  /** Animation type */
+  animationType?: 'timing' | 'spring';
+
+  /** Animation Config */
+  animationConfig?: Partial<
+    Animated.TimingAnimationConfig | Animated.SpringAnimationConfig
+  >;
 }
 
 /**
@@ -41,91 +46,203 @@ export interface TabBaseProps extends ViewProps {
  * :::note
  * This component is not for (complex) navigation. Use [React Navigation](https://reactnavigation.org) for that.
  * :::
- * %jsx <Tab.Item title="Tab 1" buttonStyle={(active)=>{backgroundColor: active ? 'red' : 'blue'}} />
+ * @usage
+ * ### Basic Tabs
+ *  ```tsx live
+ *   function RneTab() {
+ *    const [index, setIndex] = React.useState(0);
+ *    return (
+ *      <>
+ *        <Tab value={index} onChange={setIndex} dense>
+ *          <Tab.Item>Tab</Tab.Item>
+ *          <Tab.Item>Tab</Tab.Item>
+ *        </Tab>
+ *      </>
+ *    );
+ *  }
+ * ```
  *
+ * ### Active Tab Items
+ * ```tsx live
+* <Tab value={0} scrollable>
+*   <Tab.Item
+*     containerStyle={(active) => ({
+*       backgroundColor: active ? 'red' : undefined,
+*     })}
+*   >
+*     Tab
+*   </Tab.Item>
+*   <Tab.Item
+*     buttonStyle={(active) => ({
+*       backgroundColor: active ? 'red' : undefined,
+*     })}
+*   >
+*     Tab
+*   </Tab.Item>
+* </Tab>
+* ```
+ *
+
  *  */
-export const TabBase: RneFunctionComponent<TabBaseProps> = ({
+
+export const TabBase: RneFunctionComponent<TabProps> = ({
   theme = defaultTheme,
   children,
-  value,
   scrollable = false,
   onChange = () => {},
   indicatorStyle,
   disableIndicator,
-  variant,
+  variant = 'primary',
+  style,
+  dense,
+  iconPosition,
+  buttonStyle,
+  titleStyle,
   containerStyle,
+  activeIndex = 0,
+  animationType = 'spring',
+  animationConfig = {},
   ...rest
 }) => {
-  const animationRef = React.useRef(new Animated.Value(0));
+  const translateX = React.useRef(new Animated.Value(0));
+  const currentIndex = React.useRef(0);
+  const onIndexChangeRef = React.useRef((value: number) => value);
+
+  const animate = React.useCallback(
+    (toValue: number, onDone: (_: number) => void = () => {}) => {
+      currentIndex.current = toValue;
+      onIndexChangeRef.current?.(toValue);
+      //currently we are ignoring the animationConfig types but we need to fix this
+      Animated[animationType](translateX.current, {
+        //@ts-ignore
+        toValue: toValue,
+        useNativeDriver: true,
+        easing: Easing.inOut(Easing.ease),
+        duration: 150,
+        ...animationConfig,
+      }).start();
+      onDone?.(toValue);
+    },
+    [animationConfig, animationType]
+  );
   const scrollViewRef = React.useRef<ScrollView>(null);
   const scrollViewPosition = React.useRef(0);
+  const validChildren = React.useMemo(
+    () => React.Children.toArray(children),
+    [children]
+  );
 
-  const tabItemsPosition = React.useRef<
-    Array<{ position: number; width: number }>
-  >([]);
+  const tabItemPositions = React.useRef<{ position: number; width: number }[]>(
+    []
+  );
+
   const [tabContainerWidth, setTabContainerWidth] = React.useState(0);
 
-  const scrollHandler = React.useCallback(() => {
-    if (tabItemsPosition.current.length > value) {
-      let itemStartPosition =
-        value === 0 ? 0 : tabItemsPosition.current[value - 1].position;
-      let itemEndPosition = tabItemsPosition.current[value].position;
-
-      const scrollCurrentPosition = scrollViewPosition.current;
-      const tabContainerCurrentWidth = tabContainerWidth;
-
-      let scrollX = scrollCurrentPosition;
-
-      if (itemStartPosition < scrollCurrentPosition) {
-        scrollX += itemStartPosition - scrollCurrentPosition;
-      } else if (
-        scrollCurrentPosition + tabContainerCurrentWidth <
-        itemEndPosition
-      ) {
-        scrollX +=
-          itemEndPosition - (scrollCurrentPosition + tabContainerCurrentWidth);
-      }
-
-      scrollViewRef.current.scrollTo({
-        x: scrollX,
-        y: 0,
-        animated: true,
-      });
+  useEffect(() => {
+    if (activeIndex !== currentIndex.current) {
+      animate(activeIndex);
     }
-  }, [tabContainerWidth, value]);
+  }, [activeIndex, animate]);
+
+  const scrollHandler = React.useCallback(
+    (currValue: number) => {
+      if (tabItemPositions.current.length > currValue) {
+        let itemStartPosition =
+          currValue === 0
+            ? 0
+            : tabItemPositions.current[currValue - 1].position;
+        let itemEndPosition = tabItemPositions.current[currValue].position;
+
+        const scrollCurrentPosition = scrollViewPosition.current;
+        const tabContainerCurrentWidth = tabContainerWidth;
+
+        let scrollX = scrollCurrentPosition;
+
+        if (itemStartPosition < scrollCurrentPosition) {
+          scrollX += itemStartPosition - scrollCurrentPosition;
+        } else if (
+          scrollCurrentPosition + tabContainerCurrentWidth <
+          itemEndPosition
+        ) {
+          scrollX +=
+            itemEndPosition -
+            (scrollCurrentPosition + tabContainerCurrentWidth);
+        }
+
+        scrollViewRef.current?.scrollTo({
+          x: scrollX,
+          y: 0,
+          animated: true,
+        });
+      }
+    },
+    [tabContainerWidth]
+  );
 
   React.useEffect(() => {
-    Animated.timing(animationRef.current, {
-      toValue: value as number,
-      useNativeDriver: true,
-      duration: 170,
-    }).start();
-    scrollable && requestAnimationFrame(scrollHandler);
-  }, [animationRef, scrollHandler, value, scrollable]);
+    if (onIndexChangeRef) {
+      onIndexChangeRef.current = (changedIndex) => {
+        scrollHandler(changedIndex);
+        onChange(changedIndex);
+        return changedIndex;
+      };
+    }
+  }, [onIndexChangeRef, scrollHandler, onChange]);
 
   const onScrollHandler = React.useCallback((event) => {
     scrollViewPosition.current = event.nativeEvent.contentOffset.x;
   }, []);
 
-  const indicatorTransitionInterpolate = React.useMemo(() => {
-    const countItems = React.Children.count(children);
-    if (countItems < 2 || !tabItemsPosition.current.length) {
-      return 0;
-    }
-    const inputRange = [...Array(countItems).keys()];
-    const outputRange = tabItemsPosition.current.map(
-      ({ position }) => position
-    );
-    if (inputRange.length !== outputRange.length) {
-      return 0;
-    }
-    return animationRef.current.interpolate({
-      inputRange,
-      outputRange: [0, ...outputRange].slice(0, -1),
-    });
-  }, [animationRef, children]);
+  const indicatorWidth = tabItemPositions.current[activeIndex]?.width;
 
-  const WIDTH = tabItemsPosition.current[value]?.width;
+  const indicatorTranslateX = () => {
+    const countItems = validChildren.length;
+
+    if (countItems < 2 || tabItemPositions.current.length !== countItems) {
+      return 0;
+    }
+
+    const { inputRange, outputRange } = tabItemPositions.current.reduce(
+      (prev, curr, index) => {
+        prev.inputRange.push(index);
+        prev.outputRange.push(
+          curr.position + curr.width / 2 - indicatorWidth / 2
+        );
+        return prev;
+      },
+      { inputRange: [], outputRange: [] }
+    );
+
+    return translateX.current.interpolate({
+      inputRange,
+      outputRange,
+      extrapolate: 'clamp',
+    });
+  };
+
+  const indicatorScaleX = () => {
+    const countItems = validChildren.length;
+
+    if (countItems < 2 || tabItemPositions.current.length !== countItems) {
+      return 0;
+    }
+
+    const inputRange = [];
+    const outputRange = [];
+
+    tabItemPositions.current.reduce((prev, curr, index) => {
+      inputRange.push(index);
+
+      outputRange.push(curr.width / prev.width);
+      return prev;
+    }, tabItemPositions.current[activeIndex]);
+
+    return translateX.current.interpolate({
+      inputRange,
+      outputRange,
+      extrapolate: 'extend',
+    });
+  };
 
   return (
     <View
@@ -136,7 +253,7 @@ export const TabBase: RneFunctionComponent<TabBaseProps> = ({
           backgroundColor: theme?.colors?.primary,
         },
         styles.viewStyle,
-        containerStyle,
+        style,
       ]}
       onLayout={({ nativeEvent: { layout } }) => {
         setTabContainerWidth(layout.width);
@@ -151,26 +268,37 @@ export const TabBase: RneFunctionComponent<TabBaseProps> = ({
         }),
         children: (
           <>
-            {React.Children.map(children, (child, index) => {
-              return React.cloneElement(
-                child as React.ReactElement<TabItemProps>,
-                {
-                  onPress: () => onChange(index),
-                  onLayout: (event: LayoutChangeEvent) => {
-                    const { width } = event.nativeEvent.layout;
-                    const previousItemPosition =
-                      tabItemsPosition.current[index - 1]?.position || 0;
-
-                    tabItemsPosition.current[index] = {
-                      position: previousItemPosition + width,
-                      width,
-                    };
+            {validChildren.map((child, index) => (
+              <View
+                key={index}
+                style={{
+                  flex: 1,
+                  flexDirection: 'column',
+                }}
+                onLayout={({ nativeEvent: { layout } }) => {
+                  tabItemPositions.current[index] = {
+                    position: layout.x,
+                    width: layout.width,
+                  };
+                }}
+              >
+                {React.cloneElement(child as React.ReactElement<TabItemProps>, {
+                  onPress: () => {
+                    animate(index); //setActiveIndex removed second parameter
+                    onChange?.(index);
                   },
-                  active: index === value,
+                  active: index === activeIndex,
                   variant,
-                }
-              );
-            })}
+                  _parentProps: {
+                    dense,
+                    iconPosition,
+                    buttonStyle,
+                    containerStyle,
+                    titleStyle,
+                  },
+                })}
+              </View>
+            ))}
             {!disableIndicator && (
               <Animated.View
                 style={[
@@ -178,11 +306,10 @@ export const TabBase: RneFunctionComponent<TabBaseProps> = ({
                   {
                     backgroundColor: theme?.colors?.secondary,
                     transform: [
-                      {
-                        translateX: indicatorTransitionInterpolate,
-                      },
+                      { translateX: indicatorTranslateX() },
+                      { scaleX: indicatorScaleX() },
                     ],
-                    width: WIDTH,
+                    width: indicatorWidth,
                   },
                   indicatorStyle,
                 ]}
@@ -196,19 +323,6 @@ export const TabBase: RneFunctionComponent<TabBaseProps> = ({
 };
 
 const styles = StyleSheet.create({
-  buttonStyle: {
-    borderRadius: 0,
-    backgroundColor: 'transparent',
-  },
-  titleStyle: {
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    textTransform: 'uppercase',
-  },
-  containerStyle: {
-    flex: 1,
-    borderRadius: 0,
-  },
   viewStyle: {
     flexDirection: 'row',
     position: 'relative',

@@ -7,18 +7,18 @@ changelog:
     authors:
       - dependabot
   categories:
-    - title: ":boom: Breaking Change"
+    - title: ':boom: Breaking Change'
       labels:
-        - "PR: Breaking Change :boom:"
-    - title: ":rocket: New Feature"
+        - 'PR: Breaking Change :boom:'
+    - title: ':rocket: New Feature'
       labels:
-        - "PR: New Feature :tada:"
-    - title: ":bug: Bug Fix"
+        - 'PR: New Feature :tada:'
+    - title: ':bug: Bug Fix'
       labels:
-        - "PR: Bug Fix :bug:"
-    - title: ":memo: Documentation"
+        - 'PR: Bug Fix :bug:'
+    - title: ':memo: Documentation'
       labels:
-        - "PR: Docs :memo:"
-    - title: Other Changes
+        - 'PR: Docs :memo:'
+    - title: 'Other Changes'
       labels:
-        - "*"
+        - '*'

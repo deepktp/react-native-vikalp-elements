@@ -19,12 +19,12 @@ export interface SkeletonProps extends ViewProps {
   /**
    * Width of Skeleton View
    */
-  width?: number;
+  width?: ViewStyle['width'];
   /**
    * Height of Skeleton View
    * @default 12
    */
-  height?: number;
+  height?: ViewStyle['height'];
   /**
    * Type of animation
    */
@@ -40,19 +40,11 @@ export interface SkeletonProps extends ViewProps {
   LinearGradientComponent?: React.ComponentType<any>;
 }
 
-/**
- * A placeholder preview for content before the data gets loaded, an alternative for spinners.
- *
- * @installation @react-native-elements/skeleton
- * @usage
- * %jsx <Skeleton variant="circular" width={40} height={40} />
- * %jsx <Skeleton variant="rectangular" width={210} height={118} />
- */
 export const Skeleton: RneFunctionComponent<SkeletonProps> = ({
   circle,
   width = '100%',
   height,
-  animation = 'wave',
+  animation = 'pulse',
   style,
   skeletonStyle,
   theme = defaultTheme,

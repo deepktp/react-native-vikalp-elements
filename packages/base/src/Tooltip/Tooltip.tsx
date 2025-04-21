@@ -11,6 +11,7 @@ import {
   Platform,
   Dimensions,
   Pressable,
+  FlexStyle,
 } from 'react-native';
 import Triangle from './components/Triangle';
 import { ScreenWidth, isIOS, RneFunctionComponent } from '../helpers';
@@ -79,9 +80,36 @@ export interface TooltipProps {
 
   /** Style to be applied on the pointer. */
   pointerStyle?: StyleProp<ViewStyle>;
+
+  /** Control tooltip animation */
+  animationType?: 'fade' | 'none';
+
+  /** children */
+
+  children?: React.ReactNode;
 }
 
-/** Tooltips display informative text when users tap on an element. */
+/** Tooltips display informative text when users tap on an element.
+ * @usage
+ * ### Example
+ *```tsx live
+function RNETooltip() {
+  const [open, setOpen] = React.useState(false);
+  return (
+    <Stack row align="center">
+      <Tooltip
+        visible={open}
+        onOpen={() => setOpen(true)}
+        onClose={() => setOpen(false)}
+        popover={<Text style={{color:'#fff'}}>Tooltip text</Text>}
+      >
+        Click me
+      </Tooltip>
+    </Stack>
+  );
+}
+ * ```
+ */
 export const Tooltip: RneFunctionComponent<TooltipProps> = ({
   withOverlay = true,
   overlayColor = '#fafafa14',
@@ -101,6 +129,7 @@ export const Tooltip: RneFunctionComponent<TooltipProps> = ({
   skipAndroidStatusBar = false,
   ModalComponent = Modal,
   closeOnlyOnBackdropPress = false,
+  animationType = 'fade',
   ...props
 }) => {
   const isMounted = React.useRef(false);
@@ -114,33 +143,32 @@ export const Tooltip: RneFunctionComponent<TooltipProps> = ({
   });
 
   const getElementPosition = React.useCallback(() => {
-    renderedElement.current &&
-      renderedElement.current.measure(
-        (
-          _frameOffsetX,
-          _frameOffsetY,
-          _width,
-          _height,
-          pageOffsetX,
-          pageOffsetY
-        ) => {
-          isMounted.current &&
-            setDimensions({
-              xOffset: pageOffsetX,
-              yOffset:
-                isIOS || skipAndroidStatusBar
-                  ? pageOffsetY
-                  : pageOffsetY -
-                    Platform.select({
-                      android: StatusBar.currentHeight,
-                      ios: 20,
-                      default: 0,
-                    }),
-              elementWidth: _width,
-              elementHeight: _height,
-            });
-        }
-      );
+    renderedElement.current?.measure(
+      (
+        _frameOffsetX,
+        _frameOffsetY,
+        _width = 0,
+        _height = 0,
+        pageOffsetX = 0,
+        pageOffsetY = 0
+      ) => {
+        isMounted.current &&
+          setDimensions({
+            xOffset: pageOffsetX,
+            yOffset:
+              isIOS || skipAndroidStatusBar
+                ? pageOffsetY
+                : pageOffsetY -
+                  Platform.select({
+                    android: StatusBar.currentHeight,
+                    ios: 20,
+                    default: 0,
+                  }),
+            elementWidth: _width,
+            elementHeight: _height,
+          });
+      }
+    );
   }, [skipAndroidStatusBar]);
 
   const handleOnPress = React.useCallback(() => {
@@ -149,10 +177,10 @@ export const Tooltip: RneFunctionComponent<TooltipProps> = ({
   }, [getElementPosition, onClose, onOpen, toggleOnPress, visible]);
 
   const Pointer: React.FC<{
-    tooltipY: number | string;
+    tooltipY: FlexStyle['top'];
   }> = ({ tooltipY }) => {
     const { yOffset, xOffset, elementHeight, elementWidth } = dimensions;
-    const pastMiddleLine = yOffset > (tooltipY || 0);
+    const pastMiddleLine = yOffset > ((tooltipY as number) || 0);
     if (!withPointer) {
       return null;
     }
@@ -190,7 +218,7 @@ export const Tooltip: RneFunctionComponent<TooltipProps> = ({
   }, [dimensions, highlightColor]);
 
   const HighlightedButton: React.FC = () => {
-    if (closeOnlyOnBackdropPress) {
+    if (!closeOnlyOnBackdropPress) {
       return (
         <Pressable
           testID="tooltipTouchableHighlightedButton"
@@ -202,7 +230,12 @@ export const Tooltip: RneFunctionComponent<TooltipProps> = ({
       );
     } else {
       return (
-        <View style={TooltipHighlightedButtonStyle}>{props.children}</View>
+        <View
+          testID="tooltipTouchableHighlightedButton"
+          style={TooltipHighlightedButtonStyle}
+        >
+          {props.children}
+        </View>
       );
     }
   };
@@ -214,10 +247,23 @@ export const Tooltip: RneFunctionComponent<TooltipProps> = ({
     isMounted.current = true;
     // Wait till element's position is calculated
     requestAnimationFrame(getElementPosition);
-    Dimensions.addEventListener('change', getElementPosition);
+    const dimensionsListener = Dimensions.addEventListener(
+      'change',
+      getElementPosition
+    );
+
     return () => {
       isMounted.current = false;
-      Dimensions.removeEventListener('change', getElementPosition);
+      if (dimensionsListener?.remove) {
+        // react-native >= 0.65.*
+        dimensionsListener.remove();
+      } else {
+        // react-native < 0.65.*
+        // Dimensions.removeEventListener('change', getElementPosition);
+        console.warn(
+          'Deprecated API: React native < 0.71.* are no longer supported please use @rneui/base@^4.0.0-rc8 instead.'
+        );
+      }
     };
   }, [getElementPosition]);
 
@@ -246,7 +292,7 @@ export const Tooltip: RneFunctionComponent<TooltipProps> = ({
         transparent
         visible={visible}
         onShow={onOpen}
-        animationType="fade"
+        animationType={animationType}
       >
         <TouchableOpacity
           style={{

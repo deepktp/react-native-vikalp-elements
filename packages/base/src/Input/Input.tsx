@@ -13,7 +13,7 @@ import {
   TextInputProps,
 } from 'react-native';
 import { renderNode, patchWebProps, defaultTheme, Theme } from '../helpers';
-import { fonts } from '../helpers/index-config';
+import { fonts } from '../helpers';
 import { Icon, IconNode } from '../Icon';
 
 const renderText = (content: any, defaultProps: any, style: StyleProp<any>) =>
@@ -24,22 +24,83 @@ const renderText = (content: any, defaultProps: any, style: StyleProp<any>) =>
 
 export interface InputProps
   extends React.ComponentPropsWithRef<typeof TextInput> {
+  /**
+   * Shake method
+   */
+  shake?: () => void;
+  /**
+   * Style for container
+   */
   containerStyle?: StyleProp<ViewStyle>;
+  /**
+   * disables the input component
+   */
   disabled?: boolean;
+  /**
+   * disabled styles that will be passed to the style props of the React Native TextInput
+   */
   disabledInputStyle?: StyleProp<TextStyle>;
+  /**
+   * styling for Input Component Container
+   */
   inputContainerStyle?: StyleProp<ViewStyle>;
+  /**
+   * displays an icon on the left
+   */
   leftIcon?: IconNode;
+  /**
+   * styling for left Icon Component container
+   */
   leftIconContainerStyle?: StyleProp<ViewStyle>;
+  /**
+   * displays an icon on the right
+   */
   rightIcon?: IconNode;
+  /**
+   * styling for right Icon Component container
+   */
   rightIconContainerStyle?: StyleProp<ViewStyle>;
+  /**
+   * Style for Input Component
+   */
   inputStyle?: StyleProp<TextStyle>;
+  /**
+   * component that will be rendered in place of the React Native TextInput
+   * @type React Component
+   */
   InputComponent?: React.ComponentType | React.ForwardRefExoticComponent<any>;
+  /**
+   * props to be passed to the React Native Text component used to display the error message
+   */
   errorProps?: object;
+  /**
+   * add styling to error message
+   */
   errorStyle?: StyleProp<TextStyle>;
+  /**
+   * Error message to be displayed under the input field
+   */
   errorMessage?: string;
+  /**
+   * component that will be rendered in place of the error message
+   * @type React Component
+   */
+  ErrorComponent?: React.ComponentType | React.ForwardRefExoticComponent<any>;
+  /**
+   * add a label on top of the input
+   */
   label?: string | React.ReactNode;
+  /**
+   * styling for the label; You can only use this if label is a string
+   */
   labelStyle?: StyleProp<TextStyle>;
+  /**
+   * props to be passed to the React Native Text component used to display the label or React Component used instead of simple string in label prop
+   */
   labelProps?: object;
+  /**
+   * If the error message container should be rendered (take up vertical space). If false, when showing errorMessage, the layout will shift to add it at that time.
+   */
   renderErrorMessage?: boolean;
 }
 
@@ -93,6 +154,7 @@ export class Input extends React.Component<InputProps & { theme?: Theme }> {
       rightIconContainerStyle,
       InputComponent = TextInput,
       inputStyle,
+      ErrorComponent = Text,
       errorProps,
       errorStyle,
       errorMessage,
@@ -192,7 +254,7 @@ export class Input extends React.Component<InputProps & { theme?: Theme }> {
           )}
         </Animated.View>
 
-        <Text
+        <ErrorComponent
           {...errorProps}
           style={StyleSheet.flatten([
             {
@@ -209,7 +271,7 @@ export class Input extends React.Component<InputProps & { theme?: Theme }> {
           ])}
         >
           {errorMessage}
-        </Text>
+        </ErrorComponent>
       </View>
     );
   }

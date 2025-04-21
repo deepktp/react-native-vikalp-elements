@@ -3,34 +3,37 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@react-native-elements/*": ["./packages/*/src"],
-      "@react-native-elements/base/dist/*": ["./packages/base/src/*"]
+      "@rneui/*": ["./packages/*/src"],
+      "@rneui/base/dist/*": ["./packages/base/src/*"]
     },
     "removeComments": true,
-    "composite": true,
+    "composite": false, // Set composite to false
     "declaration": true,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "jsx": "react-native",
+    "jsx": "react",
     "lib": ["esnext", "dom"],
-    "module": "ESnext",
+    "module": "ESNext",
     "moduleResolution": "node",
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
     "noImplicitUseStrict": false,
     "noStrictGenericChecks": false,
     "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "target": "esnext",
+    "skipLibCheck": true, // Skip type checking for node_modules
+    "target": "ES6",
     "allowJs": true
   },
   "exclude": [
-    "node_modules",
     "website",
     "example",
-    "coverage",
-    "packages/*/src/**/__tests__"
+    "packages/*/src/**/__tests__",
+    "packages/*/coverage/**",
+    "packages/*/dist/**",
+    "packages/*/*.config.js",
+    "node_modules", // Ensure node_modules is excluded
+    "**/node_modules"
   ]
 }

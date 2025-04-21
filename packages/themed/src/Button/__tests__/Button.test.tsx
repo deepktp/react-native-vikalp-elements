@@ -1,14 +1,18 @@
 import React from 'react';
 import { ActivityIndicator } from 'react-native';
 import { renderWithWrapper } from '../../../.ci/testHelper';
+import { createTheme, CreateThemeOptions } from '../../config';
 import { FullTheme } from '../../config/theme';
 import Button from '../index';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('Button Component', () => {
   it('should apply props from theme', () => {
-    const testTheme: Partial<FullTheme> = {
-      Button: {
-        loading: true,
+    const testTheme: Partial<CreateThemeOptions> = {
+      components: {
+        Button: {
+          loading: true,
+        },
       },
     };
     const { wrapper } = renderWithWrapper(
@@ -20,12 +24,15 @@ describe('Button Component', () => {
   });
 
   it('should apply title from theme', () => {
-    const testTheme: Partial<FullTheme> = {
-      Button: {
-        title: 'Custom Button',
+    const title = 'Custom Button';
+    const testTheme = {
+      components: {
+        Button: {
+          title,
+        },
       },
     };
     const { queryByText } = renderWithWrapper(<Button />, '', testTheme);
-    expect(queryByText(String(testTheme.Button.title))).toBeTruthy();
+    expect(queryByText(String(title))).toBeTruthy();
   });
 });

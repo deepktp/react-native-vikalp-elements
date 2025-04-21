@@ -1,7 +1,8 @@
 {
   "expo": {
     "name": "React Native Elements",
-    "slug": "react-native-elements-app",
+    "owner": "rneui",
+    "slug": "react-native-elements",
     "description": "A demo app for React Native Elements UI Library",
     "privacy": "public",
     "platforms": [
@@ -9,7 +10,7 @@
       "android",
       "web"
     ],
-    "version": "1.1.0",
+    "version": "4.0.0",
     "orientation": "default",
     "primaryColor": "#cccccc",
     "icon": "./assets/icons/icon.png",
@@ -27,7 +28,11 @@
     },
     "userInterfaceStyle": "automatic",
     "android": {
-      "package": "com.reactnativeelements"
-    }
+      "package": "com.rneui"
+    },
+    "plugins": [
+      "expo-font",
+      "expo-asset"
+    ]
   }
 }

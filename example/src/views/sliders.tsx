@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Slider, Text, Icon } from '@react-native-elements/themed';
+import { Slider, Text, Icon } from '@rneui/themed';
 import { Header, SubHeader } from '../components/header';
 
 type SlidersComponentProps = {};
@@ -30,7 +30,7 @@ const Sliders: React.FunctionComponent<SlidersComponentProps> = () => {
         <Slider
           value={value}
           onValueChange={setValue}
-          maximumValue={10}
+          maximumValue={100}
           minimumValue={0}
           step={1}
           allowTouchTrack

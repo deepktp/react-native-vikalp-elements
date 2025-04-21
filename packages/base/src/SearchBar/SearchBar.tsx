@@ -1,84 +1,41 @@
-import React from 'react';
-import { SearchBarIOS, SearchBarIosProps } from './SearchBar-ios';
-import { SearchBarAndroid, SearchBarAndroidProps } from './SearchBar-android';
-import { SearchBarDefault, SearchBarDefaultProps } from './SearchBar-default';
-import {
-  ActivityIndicatorProps,
-  StyleProp,
-  TextStyle,
-  ViewStyle,
-  TextInput,
-} from 'react-native';
-import { IconNode } from '../Icon';
+import React, { forwardRef, useImperativeHandle, useRef } from 'react';
+import SearchBarIOS from './SearchBar-ios';
+import SearchBarAndroid from './SearchBar-android';
+import SearchBarDefault from './SearchBar-default';
 import { Theme } from '../helpers';
+import { SearchBarProps } from './types';
 
-const SEARCHBAR_COMPONENTS = {
+const SEARCH_BAR_COMPONENTS = {
   ios: SearchBarIOS,
   android: SearchBarAndroid,
   default: SearchBarDefault,
 };
 
-export interface SearchBarBaseProps
-  extends React.ComponentPropsWithRef<typeof TextInput> {
-  platform?: 'default' | 'ios' | 'android';
-  containerStyle?: StyleProp<ViewStyle>;
-  inputContainerStyle?: StyleProp<ViewStyle>;
-  clearIcon?: IconNode;
-  searchIcon?: IconNode;
-  inputStyle?: StyleProp<TextStyle>;
-  loadingProps?: ActivityIndicatorProps;
-  showLoading?: boolean;
-  leftIconContainerStyle?: StyleProp<ViewStyle>;
-  rightIconContainerStyle?: StyleProp<ViewStyle>;
-  onClear?(): void;
-  onFocus?(): void;
-  onBlur?(): void;
-  onChangeText?(text: string): void;
-  onCancel?(): void;
-  theme: Theme;
-}
+export type { SearchBarProps };
 
-export type SearchBarProps =
-  | SearchBarBaseProps
-  | SearchBarDefaultProps
-  | SearchBarAndroidProps
-  | SearchBarIosProps;
+export type SearchBarRef = {
+  focus: () => void;
+  blur: () => void;
+  clear: () => void;
+  cancel: () => void;
+};
 
-export class SearchBar extends React.Component<
+export const SearchBar = forwardRef<
+  SearchBarRef,
   SearchBarProps & { theme?: Theme }
-> {
-  searchbar!: SearchBarIOS;
-  static defaultProps = {
-    platform: 'default' as const,
-  };
+>((props, ref) => {
+  const { platform = 'default' } = props;
+  const searchBarRef = useRef<SearchBarRef>(null);
 
-  focus = () => {
-    this.searchbar.focus();
-  };
+  useImperativeHandle(ref, () => ({
+    focus: () => searchBarRef.current?.focus(),
+    blur: () => searchBarRef.current?.blur(),
+    clear: () => searchBarRef.current?.clear(),
+    cancel: () => searchBarRef.current?.cancel(),
+  }));
 
-  blur = () => {
-    this.searchbar.blur();
-  };
+  const Component: React.ElementType =
+    SEARCH_BAR_COMPONENTS[platform] || SearchBarDefault;
 
-  clear = () => {
-    this.searchbar.clear();
-  };
-
-  cancel = () => {
-    this.searchbar.cancel && this.searchbar.cancel();
-  };
-
-  render() {
-    const Component: typeof React.Component =
-      SEARCHBAR_COMPONENTS[this.props.platform] || SearchBarDefault;
-
-    return (
-      <Component
-        ref={(ref: SearchBarIOS) => {
-          this.searchbar = ref;
-        }}
-        {...this.props}
-      />
-    );
-  }
-}
+  return <Component ref={searchBarRef} {...props} />;
+});

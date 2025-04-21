@@ -1,6 +1,7 @@
 import React from 'react';
 import { Slider } from '../index';
 import { act, fireEvent, renderWithWrapper } from '../../../.ci/testHelper';
+import { describe, it, expect } from '@jest/globals';
 
 describe('Slider component', () => {
   it('should match snapshot', () => {
@@ -74,7 +75,7 @@ describe('Slider component', () => {
     const component = renderWithWrapper(
       <Slider value={15} maximumValue={10} minimumValue={5} />
     );
-    const slider = component.getByA11yRole('adjustable');
+    const slider = component.getByRole('adjustable');
     expect(slider.props.accessibilityValue).toMatchObject({
       min: 5,
       max: 10,

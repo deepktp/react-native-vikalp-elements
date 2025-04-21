@@ -5,15 +5,16 @@ exports[`FAB Component should match snapshot 1`] = `
   testID="wrapper"
 >
   <View
+    collapsable={false}
     style={
-      Object {
+      {
         "alignItems": "center",
         "borderRadius": 28,
         "flexDirection": "row",
         "justifyContent": "center",
         "opacity": 1,
-        "transform": Array [
-          Object {
+        "transform": [
+          {
             "scale": 1,
           },
         ],
@@ -22,12 +23,14 @@ exports[`FAB Component should match snapshot 1`] = `
   >
     <View
       style={
-        Array [
-          Object {
-            "borderRadius": 3,
+        [
+          {
             "overflow": "hidden",
           },
-          Object {
+          {
+            "borderRadius": 2,
+          },
+          {
             "borderRadius": 28,
             "elevation": 4,
           },
@@ -39,12 +42,24 @@ exports[`FAB Component should match snapshot 1`] = `
       <View
         accessibilityRole="button"
         accessibilityState={
-          Object {
+          {
             "busy": false,
+            "checked": undefined,
             "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
           }
         }
         accessible={true}
+        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -54,18 +69,18 @@ exports[`FAB Component should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "opacity": 1,
           }
         }
       >
         <View
           style={
-            Object {
+            {
               "alignItems": "center",
-              "backgroundColor": "#ca71eb",
+              "backgroundColor": "#ad1457",
               "borderColor": "#2089dc",
-              "borderRadius": 3,
+              "borderRadius": 2,
               "borderWidth": 0,
               "flexDirection": "row",
               "height": 40,
@@ -77,7 +92,7 @@ exports[`FAB Component should match snapshot 1`] = `
         >
           <Text
             style={
-              Object {
+              {
                 "color": "#ffffff",
                 "fontSize": 18,
                 "marginHorizontal": 8,

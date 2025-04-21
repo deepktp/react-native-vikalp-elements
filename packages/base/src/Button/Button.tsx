@@ -1,5 +1,5 @@
 import Color from 'color';
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import {
   ActivityIndicator,
   ActivityIndicatorProps,
@@ -20,7 +20,9 @@ import {
   defaultTheme,
   renderNode,
   Theme,
+  StringOmit,
   RneFunctionComponent,
+  ThemeSpacing,
 } from '../helpers';
 import { IconNode, Icon } from '../Icon';
 import { TextProps } from '../Text';
@@ -39,9 +41,7 @@ const positionStyle = {
   left: 'row',
   right: 'row-reverse',
 };
-/**
- * @name BUtton
- */
+
 export interface ButtonProps
   extends TouchableOpacityProps,
     TouchableNativeFeedbackProps {
@@ -81,7 +81,7 @@ export interface ButtonProps
   /** Displays Icon to the right of title. Needs to be used along with `icon` prop. */
   iconRight?: boolean;
 
-  /** Displays a linear gradient. See [usage](#lineargradient-usage). */
+  /** Displays a linear gradient. See [usage](#linear-gradient). */
   linearGradientProps?: object;
 
   /** Component for user interaction. */
@@ -104,41 +104,38 @@ export interface ButtonProps
 
   /** Displays Icon to the position mentioned. Needs to be used along with `icon` prop. */
   iconPosition?: 'left' | 'right' | 'top' | 'bottom';
+
+  /** Uppercase button title*/
+  uppercase?: boolean;
+
+  /** Radius of button
+   * @type   number | sm | md | lg
+   */
+  radius?: number | StringOmit<keyof ThemeSpacing>;
+
+  /** Button size */
+  size?: 'sm' | 'md' | 'lg';
+
+  /**
+   * Color of Button
+   * @type   string | primary | secondary | success | warning | error
+   */
+  color?: StringOmit<'primary' | 'secondary' | 'success' | 'error' | 'warning'>;
 }
 
-/**
- * Buttons are touchable elements used to interact with the screen and to perform and operation.
- * They may display text, icons, or both. Buttons can be styled with several props to look a specific way.
- * Also receives all [TouchableNativeFeedback](http://reactnative.dev/docs/touchablenativefeedback.html#props) (Android) or [TouchableOpacity](http://reactnative.dev/docs/touchableopacity.html#props) (iOS) props.
- *
- * %jsx <Button title="Solid Button" />
- *
- * @include TouchableOpacityProps, TouchableNativeFeedbackProps
- * @imports Button
- * @usage
- * {$+{
- *  'Solid': <Button title="Solid Button" />,
- *  'Clear': <Button title="Clear Button" type="clear" />,
- *  'Outline': <Button title="Outline Button" type="outline" />,
- * }}
- *
- *
- * ### Button with icon
- * %live <Button title="Solid" type="solid" icon="home" />
- * ### Button with right icon
- * %live <Button title="Solid" type="solid" icon="home" iconRight />
- * ### Button with loading spinner
- * %live <Button title="Solid" type="solid" loading />
- */
 export const Button: RneFunctionComponent<ButtonProps> = ({
   TouchableComponent,
   containerStyle,
-  onPress = () => console.log('Please attach a method to this component'),
+  onPress = () => {},
   buttonStyle,
   type = 'solid',
   loading = false,
   loadingStyle,
   loadingProps: passedLoadingProps,
+  size = 'md',
+  radius = 'xs',
+  uppercase = false,
+  color: buttonColor = 'primary',
   title = '',
   titleProps,
   titleStyle: passedTitleStyle,
@@ -153,11 +150,12 @@ export const Button: RneFunctionComponent<ButtonProps> = ({
   ViewComponent = View,
   theme = defaultTheme,
   iconPosition = 'left',
+  children = title,
   ...rest
 }) => {
   useEffect(() => {
     if (linearGradientProps && !ViewComponent) {
-      console.error(
+      console.warn(
         "You need to pass a ViewComponent to use linearGradientProps !\nExample: ViewComponent={require('react-native-linear-gradient')}"
       );
     }
@@ -180,40 +178,68 @@ export const Button: RneFunctionComponent<ButtonProps> = ({
       default: TouchableOpacity,
     });
 
-  const titleStyle: StyleProp<TextStyle> = StyleSheet.flatten([
-    {
-      color: type === 'solid' ? 'white' : theme?.colors?.primary,
-    },
-    styles.title,
-    passedTitleStyle,
-    disabled && {
-      color: color(theme?.colors?.disabled).darken(0.3).string(),
-    },
-    disabled && disabledTitleStyle,
-  ]);
+  const titleStyle: StyleProp<TextStyle> = useMemo(
+    () =>
+      StyleSheet.flatten([
+        {
+          color: type === 'solid' ? 'white' : theme?.colors?.primary,
+        },
+        uppercase && { textTransform: 'uppercase' },
+        styles.title,
+        passedTitleStyle,
+        disabled && {
+          color: color(theme?.colors?.disabled).darken(0.3).string(),
+        },
+        disabled && disabledTitleStyle,
+      ]),
+    [
+      disabled,
+      disabledTitleStyle,
+      passedTitleStyle,
+      theme?.colors?.disabled,
+      theme?.colors?.primary,
+      type,
+      uppercase,
+    ]
+  );
 
   const background =
     Platform.OS === 'android' && Platform.Version >= 21
       ? TouchableNativeFeedback.Ripple(
           Color(titleStyle?.color?.toString()).alpha(0.32).rgb().string(),
-          true
+          false
         )
       : undefined;
 
-  const loadingProps: ActivityIndicatorProps = {
-    ...defaultLoadingProps(type, theme),
-    ...passedLoadingProps,
-  };
+  const loadingProps: ActivityIndicatorProps = useMemo(
+    () => ({
+      ...defaultLoadingProps(type, theme),
+      ...passedLoadingProps,
+    }),
+    [passedLoadingProps, theme, type]
+  );
 
-  const accessibilityState = {
-    disabled: !!disabled,
-    busy: !!loading,
-  };
+  const accessibilityState = useMemo(
+    () => ({
+      disabled: !!disabled,
+      busy: !!loading,
+    }),
+    [disabled, loading]
+  );
+
+  const borderRadius = useMemo(
+    () =>
+      Number(
+        theme.spacing[radius as keyof typeof theme.spacing] ?? (radius || '0')
+      ) || 0,
+    [radius, theme]
+  );
 
   return (
     <View
       style={[
         styles.container,
+        { borderRadius },
         containerStyle,
         raised && !disabled && type !== 'clear' && styles.raised,
       ]}
@@ -233,16 +259,20 @@ export const Button: RneFunctionComponent<ButtonProps> = ({
           {...linearGradientProps}
           style={StyleSheet.flatten([
             styles.button,
-            styles.buttonOrientation,
             {
+              padding: theme.spacing[size],
+              paddingHorizontal: theme.spacing[size] + 2,
+              borderRadius,
               // flex direction based on iconPosition
               // if iconRight is true, default to right
               flexDirection:
                 positionStyle[iconRight ? 'right' : iconPosition] || 'row',
-            },
-            {
               backgroundColor:
-                type === 'solid' ? theme?.colors?.primary : 'transparent',
+                type === 'solid'
+                  ? theme.colors[buttonColor as PropertyKey] ||
+                    buttonColor ||
+                    theme?.colors?.primary
+                  : 'transparent',
               borderColor: theme?.colors?.primary,
               borderWidth: type === 'outline' ? StyleSheet.hairlineWidth : 0,
             },
@@ -280,11 +310,18 @@ export const Button: RneFunctionComponent<ButtonProps> = ({
             })}
           {/* Title for Button, hide while loading */}
           {!loading &&
-            !!title &&
-            renderNode(Text, title, {
-              style: titleStyle,
-              ...titleProps,
-            })}
+            React.Children.toArray(children).map((child, index) => (
+              <React.Fragment key={index}>
+                {typeof child === 'string'
+                  ? renderNode(Text, child, {
+                      style: {
+                        ...titleStyle,
+                      },
+                      ...titleProps,
+                    })
+                  : child}
+              </React.Fragment>
+            ))}
         </ViewComponent>
       </TouchableComponentInternal>
     </View>
@@ -296,18 +333,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 3,
-    padding: 8,
-  },
-  buttonOrientation: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 3,
-    padding: 8,
+    padding: defaultTheme.spacing.md,
+    paddingHorizontal: defaultTheme.spacing.lg,
   },
   container: {
     overflow: 'hidden',
-    borderRadius: 3,
   },
   title: {
     fontSize: 16,

@@ -1,4 +1,9 @@
-import React from 'react';
+import React, {
+  useState,
+  useRef,
+  forwardRef,
+  useImperativeHandle,
+} from 'react';
 import {
   ActivityIndicator,
   StyleSheet,
@@ -9,8 +14,11 @@ import {
 import { defaultTheme, renderNode } from '../helpers';
 import { Input } from '../Input';
 import { Icon } from '../Icon';
-import { SearchBarBaseProps } from './SearchBar';
 import { Theme } from '../helpers';
+import { SearchBarDefaultProps } from './types';
+import { SearchBarRef } from './SearchBar';
+
+export type { SearchBarDefaultProps };
 
 const defaultSearchIcon = (theme: Theme) => ({
   type: 'material',
@@ -26,72 +34,19 @@ const defaultClearIcon = (theme: Theme) => ({
   color: theme?.colors?.grey3,
 });
 
-export type SearchBarDefaultProps = typeof SearchBarDefault.defaultProps &
-  SearchBarBaseProps &
-  TextInputProps;
-
-type SearchBarState = {
-  isEmpty: boolean;
-};
-
-export class SearchBarDefault extends React.Component<
-  SearchBarDefaultProps,
-  SearchBarState
-> {
-  input!: TextInput;
-  static defaultProps = {
-    value: '',
-    loadingProps: {},
-    showLoading: false,
-    lightTheme: false,
-    round: false,
-    onClear: () => null,
-    onFocus: () => null,
-    onBlur: () => null,
-    onChangeText: () => null,
-  };
-
-  constructor(props: SearchBarDefaultProps) {
-    super(props);
-    const { value } = props;
-    this.state = {
-      isEmpty: value ? value === '' : true,
-    };
-  }
-
-  focus = () => {
-    this.input.focus();
-  };
-
-  blur = () => {
-    this.input.blur();
-  };
-
-  clear = () => {
-    this.input.clear();
-    this.onChangeText('');
-    this.props.onClear();
-  };
-
-  onFocus: TextInputProps['onFocus'] = (event) => {
-    this.props.onFocus(event);
-    this.setState({ isEmpty: this.props.value === '' });
-  };
-
-  onBlur: TextInputProps['onBlur'] = (event) => {
-    this.props.onBlur(event);
-  };
-
-  onChangeText = (text: string) => {
-    this.props.onChangeText(text);
-    this.setState({ isEmpty: text === '' });
-  };
-
-  render() {
-    const { theme = defaultTheme, ...rest } = this.props;
+const SearchBarDefault = forwardRef<SearchBarRef, SearchBarDefaultProps>(
+  (props, ref) => {
     const {
-      lightTheme,
-      round,
+      theme = defaultTheme,
+      value = '',
+      loadingProps = {},
+      showLoading = false,
+      lightTheme = false,
+      round = false,
+      onClear = () => null,
+      onFocus = () => null,
+      onBlur = () => null,
+      onChangeText = () => null,
       clearIcon = defaultClearIcon(theme as Theme),
       containerStyle,
       searchIcon = defaultSearchIcon(theme as Theme),
@@ -99,12 +54,38 @@ export class SearchBarDefault extends React.Component<
       rightIconContainerStyle,
       inputContainerStyle,
       inputStyle,
-      showLoading,
-      loadingProps,
       placeholderTextColor = theme?.colors?.grey3,
       ...attributes
-    } = rest;
-    const { isEmpty } = this.state;
+    } = props;
+
+    const [isEmpty, setIsEmpty] = useState(value === '');
+    const inputRef = useRef<TextInput>(null);
+
+    useImperativeHandle(ref, () => ({
+      focus: () => inputRef.current?.focus(),
+      blur: () => inputRef.current?.blur(),
+      clear: () => {
+        inputRef.current?.clear();
+        handleChangeText('');
+        onClear();
+      },
+      cancel: () => {},
+    }));
+
+    const handleFocus: TextInputProps['onFocus'] = (event) => {
+      onFocus(event);
+      setIsEmpty(value === '');
+    };
+
+    const handleBlur: TextInputProps['onBlur'] = (event) => {
+      onBlur(event);
+    };
+
+    const handleChangeText = (text: string) => {
+      onChangeText(text);
+      setIsEmpty(text === '');
+    };
+
     const { style: loadingStyle, ...otherLoadingProps } = loadingProps;
 
     return (
@@ -131,13 +112,11 @@ export class SearchBarDefault extends React.Component<
           testID="RNE__SearchBar"
           renderErrorMessage={false}
           {...attributes}
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
-          onChangeText={this.onChangeText}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          onChangeText={handleChangeText}
           // @ts-ignore
-          ref={(input: TextInput) => {
-            this.input = input;
-          }}
+          ref={inputRef}
           placeholderTextColor={placeholderTextColor}
           inputStyle={StyleSheet.flatten([
             {
@@ -184,7 +163,11 @@ export class SearchBarDefault extends React.Component<
                 renderNode(Icon, clearIcon, {
                   ...defaultClearIcon(theme as Theme),
                   key: 'cancel',
-                  onPress: this.clear,
+                  onPress: () => {
+                    inputRef.current?.clear();
+                    handleChangeText('');
+                    onClear();
+                  },
                 })}
             </View>
           }
@@ -196,7 +179,7 @@ export class SearchBarDefault extends React.Component<
       </View>
     );
   }
-}
+);
 
 const styles = StyleSheet.create({
   rightIconContainerStyle: {
@@ -212,3 +195,5 @@ const styles = StyleSheet.create({
     borderRadius: 15,
   },
 });
+
+export default SearchBarDefault;

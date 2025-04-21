@@ -6,15 +6,15 @@ import {
   StyleSheet,
   PanResponderGestureState,
   GestureResponderEvent,
-  useWindowDimensions,
   StyleProp,
   ViewStyle,
+  Easing,
 } from 'react-native';
 import { RneFunctionComponent } from '../helpers';
 
-export interface TabViewBaseProps {
+export interface TabViewProps {
   /** Child position index value. */
-  value?: number;
+  activeIndex?: number;
 
   /** On Index Change Callback. */
   onChange?: (value: number) => any;
@@ -22,7 +22,10 @@ export interface TabViewBaseProps {
   /** Choose the animation type among `spring` and `timing`. This is visible when there is tab change. */
   animationType?: 'spring' | 'timing';
 
-  /** Define the animation configurations. */
+  /** Define the animation configurations.
+   *
+   * @type AnimationConfig
+   */
   animationConfig?: Omit<
     Animated.SpringAnimationConfig & Animated.TimingAnimationConfig,
     'toValue'
@@ -39,99 +42,174 @@ export interface TabViewBaseProps {
 
   /** Disables transition */
   disableTransition?: Boolean;
+
+  /**
+   * Handler when the user swipes the view.
+   * @type (direction) => void
+   */
+  onSwipeStart?: (dir: 'left' | 'right') => void;
+
+  /**
+   * Minimum distance to swipe before the view changes.
+   */
+  minSwipeRatio?: number;
+
+  /**
+   * Minimum speed to swipe before the view changes.
+   */
+  minSwipeSpeed?: number;
 }
 
 /** Tabs organize content across different screens, data sets, and other interactions.
  * TabView enables swipeable tabs. */
-export const TabViewBase: RneFunctionComponent<TabViewBaseProps> = ({
+export const TabViewBase: RneFunctionComponent<TabViewProps> = ({
+  activeIndex = 0,
   children,
-  onChange,
-  value = 0,
-  animationType = 'spring',
-  animationConfig = {},
+  onChange = () => {},
+  onSwipeStart = () => {},
   containerStyle,
   tabItemContainerStyle,
   disableSwipe = false,
   disableTransition = false,
+  minSwipeRatio = 0.4,
+  minSwipeSpeed = 1,
+  animationType = 'spring',
+  animationConfig = {},
 }) => {
-  const { current: translateX } = React.useRef(new Animated.Value(0));
-  const currentIndex = React.useRef(value);
-  const length = React.Children.count(children);
-  const window = useWindowDimensions();
+  const [containerWidth, setContainerWidth] = React.useState(1);
 
-  const onPanResponderRelease = (
-    _: GestureResponderEvent,
-    { dx, dy }: PanResponderGestureState
-  ) => {
-    if (
-      (dx > 0 && currentIndex.current <= 0) ||
-      (dx < 0 && currentIndex.current >= length - 1)
-    ) {
-      return;
-    }
-    if (Math.abs(dy) > Math.abs(dx)) {
-      return;
-    }
-    const position = dx / -window.width;
-    const next = position > value ? Math.ceil(position) : Math.floor(position);
-    onChange?.(currentIndex.current + next);
-  };
-
-  const { current: panResponder } = React.useRef(
-    PanResponder.create({
-      onMoveShouldSetPanResponder: () => true,
-      onPanResponderGrant: () => true,
-      onPanResponderRelease,
-    })
+  const childCount = React.useMemo(
+    () => React.Children.toArray(children).length,
+    [children]
   );
 
-  const animate = React.useCallback(() => {
-    Animated[animationType](translateX, {
-      toValue: value,
-      useNativeDriver: true,
-      ...animationConfig,
-    }).start();
-  }, [translateX, value, animationType, animationConfig]);
+  const translateX = React.useRef(new Animated.Value(0));
+  const currentIndex = React.useRef(0);
+  const onIndexChangeRef = React.useRef((value: number) => value);
+
+  const animate = React.useCallback(
+    (toValue: number, onDone: (_: number) => void = () => {}) => {
+      currentIndex.current = toValue;
+      onIndexChangeRef.current?.(toValue);
+      //currently we are ignoring the animationConfig types but we need to fix this
+      Animated[animationType](translateX.current, {
+        //@ts-ignore
+        toValue: toValue,
+        useNativeDriver: true,
+        easing: Easing.inOut(Easing.ease),
+        duration: 150,
+        ...animationConfig,
+      }).start();
+      onDone?.(toValue);
+    },
+    [animationConfig, animationType]
+  );
+
+  const releaseResponder = React.useCallback(
+    (_: GestureResponderEvent, { dx, vx }: PanResponderGestureState) => {
+      const position = dx / -containerWidth;
+      const shouldSwipe =
+        Math.abs(position) > minSwipeRatio || Math.abs(vx) > minSwipeSpeed;
+      currentIndex.current += shouldSwipe ? Math.sign(position) : 0;
+      // if (hue?.current) hue.current.setValue(currentIndex.current);
+      animate(currentIndex.current);
+      onChange(currentIndex.current);
+    },
+    [
+      animate,
+      containerWidth,
+      currentIndex,
+      minSwipeRatio,
+      minSwipeSpeed,
+      onChange,
+    ]
+  );
+
+  const panResponder = React.useMemo(
+    () =>
+      PanResponder.create({
+        onPanResponderGrant: (_, { vx }) => {
+          onSwipeStart(vx > 0 ? 'left' : 'right');
+        },
+        onMoveShouldSetPanResponder: (_, { dx, dy, vx, vy }) => {
+          const panXInt = Math.floor(currentIndex.current);
+          return (
+            !(
+              (dx > 0 && panXInt <= 0) ||
+              (dx < 0 && panXInt >= childCount - 1)
+            ) &&
+            Math.abs(dx) > Math.abs(dy) * 2 &&
+            Math.abs(vx) > Math.abs(vy) * 2.5
+          );
+        },
+        onPanResponderMove: (_, { dx }) => {
+          const position = dx / -containerWidth;
+          translateX.current.setValue(
+            Math.floor(currentIndex.current) + position
+          );
+        },
+        onPanResponderRelease: releaseResponder,
+        onPanResponderTerminate: releaseResponder,
+      }),
+    [
+      childCount,
+      containerWidth,
+      onSwipeStart,
+      releaseResponder,
+      translateX,
+      currentIndex,
+    ]
+  );
 
   React.useEffect(() => {
-    animate();
-    currentIndex.current = value;
-  }, [animate, value]);
+    if (Number.isInteger(activeIndex) && activeIndex !== currentIndex.current) {
+      animate(activeIndex);
+      currentIndex.current = activeIndex;
+    }
+  }, [animate, activeIndex, currentIndex]);
 
   return (
-    <Animated.View
-      testID="tabView-test"
-      style={StyleSheet.flatten([
-        styles.container,
-        {
-          width: window.width * length,
-          transform: [
-            {
-              translateX: disableTransition
-                ? -value * window.width
-                : translateX.interpolate({
-                    inputRange: [0, 1],
-                    outputRange: [0, -window.width],
-                  }),
-            },
-          ],
-        },
-        containerStyle,
-      ])}
-      {...(!disableSwipe && panResponder.panHandlers)}
+    <View
+      style={[styles.container, containerStyle]}
+      onLayout={({ nativeEvent: { layout } }) => {
+        setContainerWidth(layout.width);
+      }}
     >
-      {React.Children.map(children, (child) => (
-        <View
-          style={StyleSheet.flatten([
-            styles.container,
-            { width: window.width },
-            tabItemContainerStyle,
-          ])}
-        >
-          {child}
-        </View>
-      ))}
-    </Animated.View>
+      <Animated.View
+        testID="RNE__TabView"
+        style={StyleSheet.flatten([
+          StyleSheet.absoluteFillObject,
+          styles.container,
+          {
+            width: containerWidth * childCount,
+            transform: [
+              {
+                translateX: disableTransition
+                  ? -activeIndex * containerWidth
+                  : translateX.current.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [0, -containerWidth],
+                    }),
+              },
+            ],
+          },
+        ])}
+        {...(!disableSwipe && panResponder.panHandlers)}
+      >
+        {React.Children.toArray(children).map((child, index) => (
+          <View
+            key={index}
+            style={StyleSheet.flatten([
+              styles.container,
+              tabItemContainerStyle,
+              { width: containerWidth },
+            ])}
+          >
+            {child}
+          </View>
+        ))}
+      </Animated.View>
+    </View>
   );
 };
 

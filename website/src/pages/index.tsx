@@ -8,25 +8,23 @@ import StartNow from '../components/StartNow';
 import RunOnExpo from '../components/RunOnExpo';
 import Community from '../components/Community';
 import { FigmaKit, VScodeExt } from '../components/Extentions';
-import OpenCollective from '../components/OpenCollective';
-import Sponsor from '../components/Sponsor';
+import { Sponsors } from '../components/Sponsor';
 import '../../static/css/components.css';
 
 const Home: React.FunctionComponent<{}> = () => {
   const context = useDocusaurusContext();
   const { siteConfig = {} } = context;
   return (
-    <Layout title={siteConfig.title} description={siteConfig.tagline}>
+    <Layout>
       <Hero />
       <Features />
       <Installation />
       <RunOnExpo />
       {/* <FigmaKit /> */}
       <VScodeExt />
-      <Sponsor />
-      {/* <OpenCollective /> */}
+      <Sponsors />
       <Community />
-      <StartNow />
+      {/* <StartNow /> */}
     </Layout>
   );
 };

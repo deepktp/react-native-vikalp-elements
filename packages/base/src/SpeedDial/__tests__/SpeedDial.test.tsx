@@ -1,6 +1,7 @@
 import React from 'react';
 import { SpeedDial } from '..';
 import { renderWithWrapper } from '../../../.ci/testHelper';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('Speed Dial Component', () => {
   it('should match snapshot', () => {
@@ -13,12 +14,12 @@ describe('Speed Dial Component', () => {
         <SpeedDial.Action
           icon={{ name: 'add', color: '#fff' }}
           title="Add"
-          onPress={() => console.log('Add Something')}
+          onPress={() => 'Add Something'}
         />
         <SpeedDial.Action
           icon={{ name: 'delete', color: '#fff' }}
           title="Delete"
-          onPress={() => console.log('Delete Something')}
+          onPress={() => 'Delete Something'}
         />
       </SpeedDial>
     );

@@ -4,6 +4,7 @@ import { FeaturedTile } from '../components/FeaturedTile';
 import { renderWithWrapper } from '../../../.ci/testHelper';
 import { Pressable, Image } from 'react-native';
 import { Icon } from '../../Icon';
+import { describe, it, expect } from '@jest/globals';
 
 describe('FeaturedTitle component', () => {
   it('should match snapshot', () => {

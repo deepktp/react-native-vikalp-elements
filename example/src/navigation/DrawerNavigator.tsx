@@ -3,22 +3,20 @@ import { View, Image } from 'react-native';
 import {
   DrawerContentScrollView,
   DrawerItemList,
-  DrawerContentComponentProps,
-  DrawerContentOptions,
+  DrawerContentComponentProps
 } from '@react-navigation/drawer';
-import { Text, Divider, Switch, useTheme } from '@react-native-elements/themed';
+import { Text, Divider, Switch, useTheme } from '@rneui/themed';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useColorScheme } from 'react-native-appearance';
 
 function CustomContentComponent(
-  props: DrawerContentComponentProps<DrawerContentOptions>
+  props: DrawerContentComponentProps
 ) {
   const { updateTheme, theme } = useTheme();
-  const colorScheme = useColorScheme();
+  // const colorScheme = useColorScheme();
 
-  React.useEffect(() => {
-    updateTheme({ mode: colorScheme === 'dark' ? 'dark' : 'light' });
-  }, [colorScheme, updateTheme]);
+  // React.useEffect(() => {
+  //   updateTheme({ mode: colorScheme === 'dark' ? 'dark' : 'light' });
+  // }, [colorScheme, updateTheme]);
   return (
     <SafeAreaView
       style={{
@@ -81,7 +79,7 @@ function CustomContentComponent(
 }
 
 function CustomDrawerContent(
-  props: DrawerContentComponentProps<DrawerContentOptions>
+  props: DrawerContentComponentProps
 ) {
   return (
     <DrawerContentScrollView {...props}>

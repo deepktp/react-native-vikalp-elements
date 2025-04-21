@@ -6,7 +6,7 @@ exports[`SearchBar wrapper component should match snapshot 1`] = `
 >
   <View
     style={
-      Object {
+      {
         "backgroundColor": "#393e42",
         "borderBottomColor": "#000",
         "borderBottomWidth": 1,
@@ -19,7 +19,7 @@ exports[`SearchBar wrapper component should match snapshot 1`] = `
   >
     <View
       style={
-        Object {
+        {
           "paddingHorizontal": 0,
           "width": "100%",
         }
@@ -27,8 +27,9 @@ exports[`SearchBar wrapper component should match snapshot 1`] = `
       testID="RNE__Input__view-wrapper"
     >
       <View
+        collapsable={false}
         style={
-          Object {
+          {
             "alignItems": "center",
             "backgroundColor": "#303337",
             "borderBottomWidth": 0,
@@ -37,8 +38,8 @@ exports[`SearchBar wrapper component should match snapshot 1`] = `
             "flexDirection": "row",
             "minHeight": 30,
             "overflow": "hidden",
-            "transform": Array [
-              Object {
+            "transform": [
+              {
                 "translateX": 0,
               },
             ],
@@ -47,7 +48,7 @@ exports[`SearchBar wrapper component should match snapshot 1`] = `
       >
         <View
           style={
-            Object {
+            {
               "alignItems": "center",
               "height": 40,
               "justifyContent": "center",
@@ -59,7 +60,7 @@ exports[`SearchBar wrapper component should match snapshot 1`] = `
         >
           <View
             style={
-              Object {
+              {
                 "overflow": "hidden",
               }
             }
@@ -68,7 +69,7 @@ exports[`SearchBar wrapper component should match snapshot 1`] = `
             <View
               accessibilityRole="button"
               android_ripple={
-                Object {
+                {
                   "borderless": false,
                   "color": "rgba(0, 0, 0, 0.3)",
                   "radius": -5,
@@ -79,7 +80,7 @@ exports[`SearchBar wrapper component should match snapshot 1`] = `
             >
               <View
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "backgroundColor": "transparent",
                     "justifyContent": "center",
@@ -89,21 +90,22 @@ exports[`SearchBar wrapper component should match snapshot 1`] = `
               >
                 <Text
                   allowFontScaling={false}
+                  selectable={false}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#86939e",
                         "fontSize": 18,
                       },
-                      Object {
+                      {
                         "backgroundColor": "transparent",
                       },
-                      Object {
+                      {
                         "fontFamily": "Material Icons",
                         "fontStyle": "normal",
                         "fontWeight": "normal",
                       },
-                      Object {},
+                      {},
                     ]
                   }
                   testID="RNE__ICON__Component"
@@ -115,16 +117,13 @@ exports[`SearchBar wrapper component should match snapshot 1`] = `
           </View>
         </View>
         <TextInput
-          allowFontScaling={true}
           editable={true}
           onBlur={[Function]}
           onChangeText={[Function]}
           onFocus={[Function]}
           placeholderTextColor="#86939e"
-          platform="default"
-          rejectResponderTermination={true}
           style={
-            Object {
+            {
               "color": "#86939e",
               "flex": 1,
               "fontSize": 18,
@@ -134,11 +133,10 @@ exports[`SearchBar wrapper component should match snapshot 1`] = `
           }
           testID="RNE__SearchBar"
           underlineColorAndroid="transparent"
-          value=""
         />
         <View
           style={
-            Object {
+            {
               "alignItems": "center",
               "height": 40,
               "justifyContent": "center",
@@ -150,7 +148,7 @@ exports[`SearchBar wrapper component should match snapshot 1`] = `
         >
           <View
             style={
-              Object {
+              {
                 "flexDirection": "row",
               }
             }
@@ -159,7 +157,7 @@ exports[`SearchBar wrapper component should match snapshot 1`] = `
       </View>
       <Text
         style={
-          Object {
+          {
             "color": "#ff190c",
             "fontSize": 12,
             "height": 0,
@@ -179,7 +177,7 @@ exports[`SearchBar wrapper component should render an Android SearchBar 1`] = `
 >
   <View
     style={
-      Object {
+      {
         "backgroundColor": "#ffffff",
         "paddingBottom": 8,
         "paddingTop": 8,
@@ -189,7 +187,7 @@ exports[`SearchBar wrapper component should render an Android SearchBar 1`] = `
   >
     <View
       style={
-        Object {
+        {
           "paddingHorizontal": 0,
           "width": "100%",
         }
@@ -197,14 +195,15 @@ exports[`SearchBar wrapper component should render an Android SearchBar 1`] = `
       testID="RNE__Input__view-wrapper"
     >
       <View
+        collapsable={false}
         style={
-          Object {
+          {
             "alignItems": "center",
             "borderBottomWidth": 0,
             "borderColor": "#86939e",
             "flexDirection": "row",
-            "transform": Array [
-              Object {
+            "transform": [
+              {
                 "translateX": 0,
               },
             ],
@@ -214,7 +213,7 @@ exports[`SearchBar wrapper component should render an Android SearchBar 1`] = `
       >
         <View
           style={
-            Object {
+            {
               "alignItems": "center",
               "height": 40,
               "justifyContent": "center",
@@ -226,7 +225,7 @@ exports[`SearchBar wrapper component should render an Android SearchBar 1`] = `
         >
           <View
             style={
-              Object {
+              {
                 "overflow": "hidden",
               }
             }
@@ -235,7 +234,7 @@ exports[`SearchBar wrapper component should render an Android SearchBar 1`] = `
             <View
               accessibilityRole="button"
               android_ripple={
-                Object {
+                {
                   "borderless": false,
                   "color": "rgba(0, 0, 0, 0.3)",
                   "radius": -5,
@@ -246,7 +245,7 @@ exports[`SearchBar wrapper component should render an Android SearchBar 1`] = `
             >
               <View
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "backgroundColor": "transparent",
                     "justifyContent": "center",
@@ -256,21 +255,22 @@ exports[`SearchBar wrapper component should render an Android SearchBar 1`] = `
               >
                 <Text
                   allowFontScaling={false}
+                  selectable={false}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "rgba(0, 0, 0, 0.54)",
                         "fontSize": 25,
                       },
-                      Object {
+                      {
                         "backgroundColor": "transparent",
                       },
-                      Object {
+                      {
                         "fontFamily": "Material Icons",
                         "fontStyle": "normal",
                         "fontWeight": "normal",
                       },
-                      Object {},
+                      {},
                     ]
                   }
                   testID="RNE__ICON__Component"
@@ -282,17 +282,14 @@ exports[`SearchBar wrapper component should render an Android SearchBar 1`] = `
           </View>
         </View>
         <TextInput
-          allowFontScaling={true}
           editable={true}
           onBlur={[Function]}
-          onCancel={[Function]}
           onChangeText={[Function]}
           onFocus={[Function]}
           placeholderTextColor="#86939e"
           platform="android"
-          rejectResponderTermination={true}
           style={
-            Object {
+            {
               "color": "#242424",
               "flex": 1,
               "fontSize": 18,
@@ -306,7 +303,7 @@ exports[`SearchBar wrapper component should render an Android SearchBar 1`] = `
         />
         <View
           style={
-            Object {
+            {
               "alignItems": "center",
               "height": 40,
               "justifyContent": "center",
@@ -318,7 +315,7 @@ exports[`SearchBar wrapper component should render an Android SearchBar 1`] = `
         >
           <View
             style={
-              Object {
+              {
                 "flexDirection": "row",
               }
             }
@@ -327,7 +324,7 @@ exports[`SearchBar wrapper component should render an Android SearchBar 1`] = `
       </View>
       <Text
         style={
-          Object {
+          {
             "color": "#ff190c",
             "fontSize": 12,
             "height": 0,
@@ -347,7 +344,7 @@ exports[`SearchBar wrapper component should render an iOS SearchBar 1`] = `
 >
   <View
     style={
-      Object {
+      {
         "alignItems": "center",
         "backgroundColor": "#ffffff",
         "flexDirection": "row",
@@ -360,7 +357,7 @@ exports[`SearchBar wrapper component should render an iOS SearchBar 1`] = `
   >
     <View
       style={
-        Object {
+        {
           "paddingHorizontal": 0,
           "width": "100%",
         }
@@ -368,8 +365,9 @@ exports[`SearchBar wrapper component should render an iOS SearchBar 1`] = `
       testID="RNE__Input__view-wrapper"
     >
       <View
+        collapsable={false}
         style={
-          Object {
+          {
             "alignItems": "center",
             "backgroundColor": "#dcdce1",
             "borderBottomWidth": 0,
@@ -379,8 +377,8 @@ exports[`SearchBar wrapper component should render an iOS SearchBar 1`] = `
             "marginLeft": 8,
             "marginRight": 8,
             "minHeight": 36,
-            "transform": Array [
-              Object {
+            "transform": [
+              {
                 "translateX": 0,
               },
             ],
@@ -389,7 +387,7 @@ exports[`SearchBar wrapper component should render an iOS SearchBar 1`] = `
       >
         <View
           style={
-            Object {
+            {
               "alignItems": "center",
               "height": 40,
               "justifyContent": "center",
@@ -401,7 +399,7 @@ exports[`SearchBar wrapper component should render an iOS SearchBar 1`] = `
         >
           <View
             style={
-              Object {
+              {
                 "overflow": "hidden",
               }
             }
@@ -410,7 +408,7 @@ exports[`SearchBar wrapper component should render an iOS SearchBar 1`] = `
             <View
               accessibilityRole="button"
               android_ripple={
-                Object {
+                {
                   "borderless": false,
                   "color": "rgba(0, 0, 0, 0.3)",
                   "radius": -5,
@@ -421,7 +419,7 @@ exports[`SearchBar wrapper component should render an iOS SearchBar 1`] = `
             >
               <View
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "backgroundColor": "transparent",
                     "justifyContent": "center",
@@ -431,43 +429,41 @@ exports[`SearchBar wrapper component should render an iOS SearchBar 1`] = `
               >
                 <Text
                   allowFontScaling={false}
+                  selectable={false}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#7d7d7d",
                         "fontSize": 20,
                       },
-                      Object {
+                      {
                         "backgroundColor": "transparent",
                       },
-                      Object {
+                      {
                         "fontFamily": "Ionicons",
                         "fontStyle": "normal",
                         "fontWeight": "normal",
                       },
-                      Object {},
+                      {},
                     ]
                   }
                   testID="RNE__ICON__Component"
                 >
-                  
+                  
                 </Text>
               </View>
             </View>
           </View>
         </View>
         <TextInput
-          allowFontScaling={true}
           editable={true}
           onBlur={[Function]}
-          onCancel={[Function]}
           onChangeText={[Function]}
           onFocus={[Function]}
           placeholderTextColor="#7d7d7d"
           platform="ios"
-          rejectResponderTermination={true}
           style={
-            Object {
+            {
               "color": "#242424",
               "flex": 1,
               "fontSize": 18,
@@ -478,11 +474,10 @@ exports[`SearchBar wrapper component should render an iOS SearchBar 1`] = `
           }
           testID="RNE__SearchBar"
           underlineColorAndroid="transparent"
-          value=""
         />
         <View
           style={
-            Object {
+            {
               "alignItems": "center",
               "height": 40,
               "justifyContent": "center",
@@ -494,7 +489,7 @@ exports[`SearchBar wrapper component should render an iOS SearchBar 1`] = `
         >
           <View
             style={
-              Object {
+              {
                 "flexDirection": "row",
               }
             }
@@ -503,7 +498,7 @@ exports[`SearchBar wrapper component should render an iOS SearchBar 1`] = `
       </View>
       <Text
         style={
-          Object {
+          {
             "color": "#ff190c",
             "fontSize": 12,
             "height": 0,
@@ -516,7 +511,7 @@ exports[`SearchBar wrapper component should render an iOS SearchBar 1`] = `
     <View
       onLayout={[Function]}
       style={
-        Object {
+        {
           "opacity": 0,
           "position": "absolute",
           "right": null,
@@ -526,6 +521,23 @@ exports[`SearchBar wrapper component should render an iOS SearchBar 1`] = `
     >
       <View
         accessibilityRole="button"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -540,12 +552,12 @@ exports[`SearchBar wrapper component should render an iOS SearchBar 1`] = `
         onStartShouldSetResponder={[Function]}
       >
         <View
-          style={Object {}}
+          style={{}}
           testID="RNE__SearchBar-cancelButton"
         >
           <Text
             style={
-              Object {
+              {
                 "color": "#007aff",
                 "fontSize": 18,
                 "padding": 8,

@@ -1,12 +1,23 @@
 import React, { useState } from 'react';
-import { ThemeProvider, createTheme } from '@react-native-elements/themed';
+import { ThemeProvider, createTheme } from '@rneui/themed';
 import RootNavigator from './src/navigation/RootNavigator';
-import AppLoading from './src/components/AppLoading';
 import { cacheImages, cacheFonts } from './src/helpers/AssetsCaching';
 import vectorFonts from './src/helpers/vector-fonts';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import * as SplashScreen from 'expo-splash-screen';
+import { useColorScheme } from 'react-native';
+
+SplashScreen.preventAutoHideAsync();
 
 export default () => {
   const [isReady, setIsReady] = useState(false);
+
+  const colorScheme = useColorScheme();
+  theme.mode = colorScheme;
+
+  React.useEffect(() => {
+    loadAssetsAsync();
+  }, []);
 
   const loadAssetsAsync = async () => {
     const imageAssets = cacheImages([
@@ -31,29 +42,41 @@ export default () => {
       { UbuntuLightItalic: require('./assets/fonts/Ubuntu-Light-Italic.ttf') },
     ]);
     await Promise.all([...imageAssets, ...fontAssets]);
+    setIsReady(true);
   };
 
+  const onLayoutRootView = React.useCallback(async () => {
+    if (isReady) {
+      await SplashScreen.hideAsync();
+    }
+  }, [isReady]);
+
   if (!isReady) {
-    return (
-      <AppLoading
-        startAsync={loadAssetsAsync}
-        onFinish={() => {
-          setIsReady(true);
-        }}
-        onError={console.warn}
-      />
-    );
+    return null;
   }
 
   return (
-    <ThemeProvider theme={myTheme}>
-      <RootNavigator />
-    </ThemeProvider>
+    <SafeAreaProvider onLayout={onLayoutRootView}>
+      <ThemeProvider theme={theme}>
+        <RootNavigator />
+      </ThemeProvider>
+    </SafeAreaProvider>
   );
 };
-const myTheme = createTheme({
-  colors: {
-    primary: '#00a680',
+
+const theme = createTheme({
+  lightColors: {
+    primary: '#3d5afe',
+  },
+  darkColors: {
+    primary: '#3d5afe',
   },
   mode: 'dark',
+  components: {
+    Text: {
+      h1Style: {
+        fontSize: 80,
+      },
+    },
+  },
 });

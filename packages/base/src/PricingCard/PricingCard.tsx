@@ -8,7 +8,7 @@ import {
   StyleProp,
 } from 'react-native';
 import { defaultTheme, normalizeText, RneFunctionComponent } from '../helpers';
-import { fonts } from '../helpers/index-config';
+import { fonts } from '../helpers';
 import { Text } from '../Text';
 import { ButtonProps } from '../Button';
 import { PricingButton } from './components/PricingButton';
@@ -78,7 +78,7 @@ export const PricingCard: RneFunctionComponent<PricingCardProps> = ({
         {
           margin: 15,
           marginBottom: 15,
-          backgroundColor: theme?.colors?.white,
+          backgroundColor: theme?.colors?.background,
           borderWidth: 1,
           padding: 15,
           borderColor: theme?.colors?.grey5,

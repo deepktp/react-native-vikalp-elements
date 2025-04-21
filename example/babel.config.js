@@ -9,12 +9,24 @@ module.exports = function (api) {
       [
         'module-resolver',
         {
+          extensions: ['.js', '.ios.js', '.android.js', '.json', '.tsx', '.ts'],
           alias: {
-            '@react-native-elements/base/dist': path.resolve(
+            '@rneui/base/dist': path.resolve(
               __dirname,
               '..',
               'packages/base/src'
             ),
+            '@rneui/themed': path.resolve(
+              __dirname,
+              '..',
+              'packages/themed/src'
+            ),
+            '@expo/vector-icons/Icon': path.resolve(
+              __dirname,
+              '..',
+              'node_modules/@expo/vector-icons/build/Icons'
+            ),
+            '@rneui/base': path.resolve(__dirname, '..', 'packages/base/src'),
           },
         },
       ],

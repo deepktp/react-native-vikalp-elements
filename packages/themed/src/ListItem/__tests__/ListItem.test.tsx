@@ -1,14 +1,17 @@
 import React from 'react';
 import ListItem from '..';
 import { renderWithWrapper } from '../../../.ci/testHelper';
-import { FullTheme } from '../../config';
+import { CreateThemeOptions, FullTheme } from '../../config';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('ListItem component', () => {
-  it.skip('should apply values from theme', () => {
-    const theme: Partial<FullTheme> = {
-      ListItemTitle: {
-        style: {
-          color: 'red',
+  it('should apply values from theme', () => {
+    const theme: Partial<CreateThemeOptions> = {
+      components: {
+        ListItemTitle: {
+          style: {
+            color: 'red',
+          },
         },
       },
     };

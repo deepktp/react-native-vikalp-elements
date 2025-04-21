@@ -1,6 +1,7 @@
 import React from 'react';
 import { Icon } from '../index';
 import { renderWithWrapper, fireEvent } from '../../../.ci/testHelper';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('Icon component', () => {
   it('should render with icon type', () => {

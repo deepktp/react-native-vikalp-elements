@@ -5,8 +5,9 @@ import {
   CheckBox,
   ListItem,
   Avatar,
-} from '@react-native-elements/themed';
-import { View, Text, StyleSheet } from 'react-native';
+  Text,
+} from '@rneui/themed';
+import { View, StyleSheet } from 'react-native';
 import { Header } from '../components/header';
 
 type DialogComponentProps = {};
@@ -124,7 +125,7 @@ const Dialogs: React.FunctionComponent<DialogComponentProps> = () => {
           <CheckBox
             key={i}
             title={l}
-            containerStyle={{ backgroundColor: 'white', borderWidth: 0 }}
+            containerStyle={{ borderWidth: 0 }}
             checkedIcon="dot-circle-o"
             uncheckedIcon="circle-o"
             checked={checked === i + 1}

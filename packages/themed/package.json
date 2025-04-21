@@ -1,38 +1,47 @@
 {
-  "name": "@react-native-elements/themed",
-  "version": "4.0.0-rc.0",
-  "description": "React Native Elements & UI Toolkit",
+  "name": "@rneui/themed",
+  "version": "5.0.0",
+  "description": "Cross Platform React Native UI Toolkit",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "react-native": "src/index.ts",
-  "source": "src/index.ts",
   "prepublish": "tsc --composite false",
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/react-native-elements"
+  },
   "keywords": [
-    "react-native",
-    "reactjs",
-    "reactnative",
+    "react",
+    "native",
+    "react native",
+    "react native elements",
+    "rneui",
+    "themed",
+    "react native ui",
+    "react native components",
+    "ui library",
+    "ios",
+    "android",
     "bootstrap"
   ],
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
   "scripts": {
-    "build": "tsc --composite false",
-    "test": "jest",
-    "test:update": "jest -u",
-    "test:ci": "jest --runInBand",
-    "test:watch": "jest --watch",
-    "postinstall": "opencollective-postinstall || exit 0",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "clean-install": "rimraf node_modules && yarn"
+    "build": "yarn run -T tsc --composite false",
+    "test": "yarn run -T jest",
+    "test:update": "yarn run -T jest -u",
+    "test:ci": "yarn run -T jest --runInBand",
+    "test:watch": "yarn run -T jest --watch",
+    "lint": "yarn run -T eslint . --ext .js,.jsx,.ts,.tsx",
+    "clean-install": "yarn run -T rimraf node_modules && yarn"
   },
-  "author": "Nader Dabit & Monte Thakkar",
+  "author": "RNE Core Team",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/react-native-elements/react-native-elements/issues"
+    "url": "https://github.com/deepktp/react-native-vikalp-elements/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A%22pkg%3A+themed%22+"
   },
   "homepage": "https://reactnativeelements.com/",
   "collective": {
@@ -41,44 +50,14 @@
     "logo": "https://opencollective.com/react-native-elements/logo.txt"
   },
   "peerDependencies": {
-    "@react-native-elements/base": "^4.0.0-beta.1"
+    "@rneui/base": "5.0.0"
   },
   "devDependencies": {
-    "@react-native-elements/base": "^4.0.0-rc.0"
-  },
-  "jest": {
-    "displayName": "@react-native-elements/themed",
-    "preset": "react-native",
-    "testPathIgnorePatterns": [
-      "<rootDir>/node_modules",
-      "<rootDir>/dist"
-    ],
-    "moduleNameMapper": {
-      "@react-native-elements/base/dist/([^/]+)": "<rootDir>/../base/src/$1",
-      "@react-native-elements/([^/]+)": "<rootDir>/../$1/src"
-    },
-    "transformIgnorePatterns": [
-      "<rootDir>/../../node_modules/(?!(@react-native|react-native|@react-native-elements/base)/)"
-    ],
-    "coveragePathIgnorePatterns": [],
-    "setupFilesAfterEnv": [
-      "<rootDir>/.ci/setupTests.ts"
-    ],
-    "collectCoverage": true,
-    "globals": {
-      "__DEV__": true
-    },
-    "transform": {
-      ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "jest-transform-stub"
-    },
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx,ts,tsx}",
-      "!src/index.tsx",
-      "!src/helpers/*.tsx"
-    ]
+    "@rneui/base": "5.0.0"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/react-native-elements/react-native-elements.git"
+    "url": "git+https://github.com/deepktp/react-native-vikalp-elements.git",
+    "directory": "packages/themed"
   }
 }

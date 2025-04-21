@@ -1,6 +1,7 @@
 import React from 'react';
 import { Switch } from '../index';
 import { renderWithWrapper, fireEvent } from '../../../.ci/testHelper';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('Switch Component', () => {
   it('should match snapshot', () => {
@@ -40,7 +41,7 @@ describe('Switch Component', () => {
 
   it('should contain the required accessibility properties', () => {
     const enabledComponent = renderWithWrapper(<Switch value />);
-    const enabledSwitch = enabledComponent.getByA11yRole('switch');
+    const enabledSwitch = enabledComponent.getByRole('switch');
     expect(enabledSwitch.props.accessibilityState).toMatchObject({
       checked: true,
       disabled: false,
@@ -49,7 +50,7 @@ describe('Switch Component', () => {
     const disabledComponent = renderWithWrapper(
       <Switch value={false} disabled />
     );
-    const disabledSwitch = disabledComponent.getByA11yRole('switch');
+    const disabledSwitch = disabledComponent.getByRole('switch');
     expect(disabledSwitch.props.accessibilityState).toMatchObject({
       checked: false,
       disabled: true,

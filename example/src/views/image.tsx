@@ -1,10 +1,10 @@
 import React from 'react';
 import { FlatList, SafeAreaView, StyleSheet } from 'react-native';
-import { Image } from '@react-native-elements/themed';
-import AppLoading from 'expo-app-loading';
+import { Image } from '@rneui/themed';
+
 import { Header } from '../components/header';
 
-const BASE_URI = 'https://source.unsplash.com/random?sig=';
+// const BASE_URI = 'https://picsum.photos/200/300';
 
 const ImageAPI = () => {
   return (
@@ -18,9 +18,8 @@ const ImageAPI = () => {
           keyExtractor={(e) => e}
           renderItem={({ item }) => (
             <Image
-              source={{ uri: BASE_URI + item }}
+              source={{ uri: `https://picsum.photos/id/${item * 10}/1024/1025` }}
               containerStyle={styles.item}
-              PlaceholderContent={<AppLoading />}
             />
           )}
         />

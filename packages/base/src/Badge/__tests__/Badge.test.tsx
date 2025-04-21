@@ -3,7 +3,8 @@ import { Badge } from '..';
 import { Text, TouchableWithoutFeedback, Pressable, View } from 'react-native';
 import { renderWithWrapper } from '../../../.ci/testHelper';
 import { fireEvent } from '@testing-library/react-native';
-import { colors } from '../../helpers';
+import { lightColors } from '../../helpers';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('Badge Component', () => {
   it('should match snapshot', () => {
@@ -73,7 +74,7 @@ describe('Badge Component', () => {
         <Badge status={status} />,
         'RNE__Badge'
       );
-      expect(wrapper.props.style.backgroundColor).toBe(colors[status]);
+      expect(wrapper.props.style.backgroundColor).toBe(lightColors[status]);
     });
   });
 });

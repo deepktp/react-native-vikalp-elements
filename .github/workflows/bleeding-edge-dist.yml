@@ -1,0 +1,58 @@
+name: Bleeding Edge version
+
+on:
+  push:
+    branches:
+      - 'next'
+    paths-ignore:
+      - 'website/**'
+      - 'example/**'
+      - 'scripts/**'
+      - '.github/**'
+
+jobs:
+  checks:
+    uses: ./.github/workflows/ci-checks.yml
+
+  build:
+    needs: checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v3 # Updated to v3 for latest improvements
+
+      - name: Enable Corepack
+        run: corepack enable
+        shell: bash
+
+      - name: Enable Yarn with Corepack
+        run: corepack prepare yarn@stable --activate
+        shell: bash
+
+      - name: Install dependencies
+        uses: ./.github/actions/install
+
+      - name: Build packages
+        run: yarn build
+
+      - name: Config git
+        run: |
+          git config --local user.email "react-native-elements-ci@users.noreply.github.com"
+          git config --local user.name "React Native Elements CI"
+
+      - name: Create local changes
+        run: |
+          sed -i -e 's/dist/src/g' .gitignore
+          git rm -rf packages/*/src    
+          jq 'del(.devDependencies."@rneui/base",.peerDependencies."@rneui/base")' packages/themed/package.json > packages/themed/package.json.temp || { echo "Error modifying package.json"; exit 1; }
+          mv packages/themed/package.json.temp packages/themed/package.json || { echo "Error renaming package.json"; exit 1; }
+          git add . 
+          git commit -m "Prepare Bleeding Edge Version" -a --no-verify
+
+      - name: Deploy Bleeding Edge version '@rneui/*' packages
+        run: |
+          for pkg in $(find ./packages -mindepth 1 -maxdepth 1 -type d -printf '%f\n'); do
+               echo "Deploying @rneui/$pkg"
+               git subtree split --prefix packages/$pkg -b $pkg || { echo "Error splitting subtree for $pkg"; exit 1; }
+               git push origin $pkg:refs/heads/$pkg --force || { echo "Error pushing subtree for $pkg"; exit 1; }
+          done

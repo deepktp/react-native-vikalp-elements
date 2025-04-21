@@ -3,6 +3,7 @@ import { PricingCard } from '../index';
 import { Icon } from '../../Icon';
 import { Button } from '../../Button';
 import { renderWithWrapper } from '../../../.ci/testHelper';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('PricingCard component', () => {
   it('should match snapshot', () => {

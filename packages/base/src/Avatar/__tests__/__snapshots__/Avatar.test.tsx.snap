@@ -6,9 +6,9 @@ exports[`Avatar Component should match snapshot 1`] = `
 >
   <View
     style={
-      Object {
-        "backgroundColor": "transparent",
+      {
         "height": 34,
+        "justifyContent": "center",
         "width": 34,
       }
     }
@@ -16,7 +16,7 @@ exports[`Avatar Component should match snapshot 1`] = `
     <View
       accessibilityIgnoresInvertColors={true}
       style={
-        Object {
+        {
           "backgroundColor": "transparent",
           "flex": 1,
           "overflow": "hidden",
@@ -27,20 +27,18 @@ exports[`Avatar Component should match snapshot 1`] = `
       <Image
         onLoad={[Function]}
         source={
-          Object {
+          {
             "uri": "https://i.imgur.com/0y8Ftya.jpg",
           }
         }
         style={
-          Object {
+          {
             "bottom": 0,
             "flex": 1,
-            "height": undefined,
             "left": 0,
             "position": "absolute",
             "right": 0,
             "top": 0,
-            "width": undefined,
           }
         }
         testID="RNE__Avatar__Image"
@@ -48,10 +46,11 @@ exports[`Avatar Component should match snapshot 1`] = `
       />
       <View
         accessibilityElementsHidden={true}
+        collapsable={false}
         importantForAccessibility="no-hide-descendants"
         pointerEvents="none"
         style={
-          Object {
+          {
             "bottom": 0,
             "left": 0,
             "opacity": 1,
@@ -63,13 +62,11 @@ exports[`Avatar Component should match snapshot 1`] = `
       >
         <View
           style={
-            Object {
+            {
               "alignItems": "center",
-              "backgroundColor": "#bdbdbd",
+              "backgroundColor": "transparent",
               "flex": 1,
-              "height": undefined,
               "justifyContent": "center",
-              "width": undefined,
             }
           }
           testID="RNE__Image__placeholder"
@@ -77,10 +74,8 @@ exports[`Avatar Component should match snapshot 1`] = `
       </View>
       <View
         style={
-          Object {
+          {
             "flex": 1,
-            "height": undefined,
-            "width": undefined,
           }
         }
         testID="RNE__Image__children__container"

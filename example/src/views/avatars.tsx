@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, ScrollView } from 'react-native';
 import _ from 'lodash';
-import { Avatar } from '@react-native-elements/themed';
+import { Avatar } from '@rneui/themed';
 import { Header, SubHeader } from '../components/header';
 
 type AvatarData = {
@@ -178,7 +178,6 @@ const Avatars: React.FunctionComponent<AvatarComponentProps> = () => {
             size={64}
             rounded
             source={{ uri: 'https://randomuser.me/api/portraits/women/57.jpg' }}
-            title="Bj"
             containerStyle={{ backgroundColor: 'grey' }}
           >
             <Avatar.Accessory size={23} />

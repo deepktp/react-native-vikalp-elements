@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BottomSheet, Button, ListItem } from '@react-native-elements/themed';
+import { BottomSheet, Button, ListItem } from '@rneui/themed';
 import { StyleSheet } from 'react-native';
 import { Header } from '../components/header';
 
@@ -30,6 +30,8 @@ const BottomSheetComponent: React.FunctionComponent<
       />
       <BottomSheet
         modalProps={{}}
+        animationType="slide"
+        animationDuration={300}
         onBackdropPress={() => setIsVisible(false)}
         isVisible={isVisible}
       >

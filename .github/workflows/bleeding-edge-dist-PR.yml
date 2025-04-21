@@ -1,0 +1,93 @@
+name: (manual) PR's Bleeding Edge Version
+
+on:
+  workflow_dispatch:
+    inputs:
+      pr:
+        type: string
+        description: PR Number
+        required: true
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get PR SHA
+        id: sha
+        uses: actions/github-script@v4
+        with:
+          result-encoding: string
+          script: |
+            const { owner, repo } = context.issue;
+            const pr = await github.pulls.get({
+              owner,
+              repo,
+              pull_number: ${{github.event.inputs.pr}},
+            });
+            return pr.data.head.sha
+
+      - uses: actions/checkout@v3 # Updated to v3 for the latest checkout improvements
+        with:
+          ref: ${{ steps.sha.outputs.result }}
+
+      - name: Enable Corepack
+        run: corepack enable
+        shell: bash
+
+      - name: Enable Yarn with Corepack
+        run: corepack prepare yarn@stable --activate
+        shell: bash
+
+      - name: Install dependencies
+        uses: ./.github/actions/install
+
+      - name: Build packages
+        run: yarn build
+
+      - name: Config git
+        run: |
+          git config --local user.email "104670806+rneui@users.noreply.github.com"
+          git config --local user.name "RNEUI"
+
+      - name: Create local changes
+        run: |
+          sed -i -e 's/dist/src/g' .gitignore
+          git rm -rf packages/*/src
+          jq 'del(.devDependencies."@rneui/base",.peerDependencies."@rneui/base")'  packages/themed/package.json > packages/themed/package.json.temp
+          mv packages/themed/package.json.temp packages/themed/package.json
+          git add .
+          git commit -m "Bleeding Edge Version" -a --no-verify
+
+      - name: Deploy Bleeding Edge version '@rneui/*' packages
+        run: |
+          for pkg in $(find ./packages -mindepth 1 -maxdepth 1 -type d -printf '%f\n'); do
+               echo "Deploying @rneui/$pkg"
+               git subtree split --prefix packages/$pkg -b $pkg-${{ github.event.inputs.pr }} || exit 1  # Added error handling
+               git push origin $pkg-${{ github.event.inputs.pr }}:refs/heads/$pkg-${{ github.event.inputs.pr }} --force
+          done
+
+      - name: Message success
+        if: ${{ success() }}
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{ secrets.RNE_BOT_TOKEN }}
+          script: |
+            github.issues.createComment({
+              issue_number: ${{github.event.inputs.pr}},
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'Hey, @${{github.actor}} PR Preview Build succeeded! ✅\n \n Install using \n```bash\n npm i ${{github.repository}}#base-${{ github.event.inputs.pr }} ${{github.repository}}#themed-${{ github.event.inputs.pr }}\n```',
+            });
+
+      - name: Message failure
+        if: ${{ failure() }}
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{ secrets.RNE_BOT_TOKEN }}
+          script: |
+            github.issues.createComment({
+              issue_number: ${{github.event.inputs.pr}},
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'Deployment failed! ❌',
+            });

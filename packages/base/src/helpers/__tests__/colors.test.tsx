@@ -1,12 +1,12 @@
-import colors from '../colors';
-import colorsDark from '../colorsDark';
+import { darkColors, lightColors } from '../colors';
+import { describe, it, expect } from '@jest/globals';
 
 describe('Color', () => {
   it('Colors (Light) should exist', () => {
-    expect(colors).not.toBe(null);
+    expect(darkColors).not.toBe(null);
   });
 
   it('Colors (Dark) should exist', () => {
-    expect(colorsDark).not.toBe(null);
+    expect(lightColors).not.toBe(null);
   });
 });

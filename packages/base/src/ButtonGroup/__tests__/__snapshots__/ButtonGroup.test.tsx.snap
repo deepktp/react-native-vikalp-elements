@@ -6,7 +6,7 @@ exports[`ButtonGroup Component should match snapshot 1`] = `
 >
   <View
     style={
-      Object {
+      {
         "backgroundColor": "yellow",
         "borderColor": "#e3e3e3",
         "borderRadius": 3,
@@ -22,7 +22,7 @@ exports[`ButtonGroup Component should match snapshot 1`] = `
   >
     <View
       style={
-        Object {
+        {
           "borderRightColor": "#bdc6cf",
           "borderRightWidth": 1,
           "flex": 1,
@@ -31,8 +31,20 @@ exports[`ButtonGroup Component should match snapshot 1`] = `
     >
       <View
         accessibilityState={
-          Object {
+          {
+            "busy": undefined,
+            "checked": undefined,
             "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
           }
         }
         accessible={true}
@@ -48,7 +60,7 @@ exports[`ButtonGroup Component should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "flex": 1,
           }
         }
@@ -56,7 +68,7 @@ exports[`ButtonGroup Component should match snapshot 1`] = `
       >
         <View
           style={
-            Object {
+            {
               "alignItems": "center",
               "backgroundColor": "blue",
               "flex": 1,
@@ -65,9 +77,14 @@ exports[`ButtonGroup Component should match snapshot 1`] = `
           }
         >
           <Text
-            accessibilityRole="text"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "selected": false,
+              }
+            }
             style={
-              Object {
+              {
                 "color": "pink",
                 "fontSize": 16.714285714285715,
                 "fontWeight": "500",
@@ -82,7 +99,7 @@ exports[`ButtonGroup Component should match snapshot 1`] = `
     </View>
     <View
       style={
-        Object {
+        {
           "borderRightColor": "#bdc6cf",
           "borderRightWidth": 1,
           "flex": 1,
@@ -91,8 +108,20 @@ exports[`ButtonGroup Component should match snapshot 1`] = `
     >
       <View
         accessibilityState={
-          Object {
+          {
+            "busy": undefined,
+            "checked": undefined,
             "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
           }
         }
         accessible={true}
@@ -108,7 +137,7 @@ exports[`ButtonGroup Component should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "flex": 1,
           }
         }
@@ -116,7 +145,7 @@ exports[`ButtonGroup Component should match snapshot 1`] = `
       >
         <View
           style={
-            Object {
+            {
               "alignItems": "center",
               "backgroundColor": "blue",
               "flex": 1,
@@ -125,9 +154,14 @@ exports[`ButtonGroup Component should match snapshot 1`] = `
           }
         >
           <Text
-            accessibilityRole="text"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "selected": false,
+              }
+            }
             style={
-              Object {
+              {
                 "color": "pink",
                 "fontSize": 16.714285714285715,
                 "fontWeight": "500",
@@ -142,15 +176,27 @@ exports[`ButtonGroup Component should match snapshot 1`] = `
     </View>
     <View
       style={
-        Object {
+        {
           "flex": 1,
         }
       }
     >
       <View
         accessibilityState={
-          Object {
+          {
+            "busy": undefined,
+            "checked": undefined,
             "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
           }
         }
         accessible={true}
@@ -166,7 +212,7 @@ exports[`ButtonGroup Component should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "flex": 1,
           }
         }
@@ -174,7 +220,7 @@ exports[`ButtonGroup Component should match snapshot 1`] = `
       >
         <View
           style={
-            Object {
+            {
               "alignItems": "center",
               "backgroundColor": "blue",
               "flex": 1,
@@ -183,9 +229,14 @@ exports[`ButtonGroup Component should match snapshot 1`] = `
           }
         >
           <Text
-            accessibilityRole="text"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "selected": false,
+              }
+            }
             style={
-              Object {
+              {
                 "color": "pink",
                 "fontSize": 16.714285714285715,
                 "fontWeight": "500",
@@ -195,6 +246,479 @@ exports[`ButtonGroup Component should match snapshot 1`] = `
           >
             Button 3
           </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`ButtonGroup Component should match snapshot with components 1`] = `
+<View
+  testID="wrapper"
+>
+  <View
+    style={
+      {
+        "backgroundColor": "yellow",
+        "borderColor": "#e3e3e3",
+        "borderRadius": 3,
+        "borderWidth": 1,
+        "flexDirection": "row",
+        "height": 40,
+        "marginHorizontal": 10,
+        "marginVertical": 5,
+        "overflow": "hidden",
+      }
+    }
+    testID="RNE__ButtonGroupContainer"
+  >
+    <View
+      style={
+        {
+          "borderRightColor": "#bdc6cf",
+          "borderRightWidth": 1,
+          "flex": 1,
+        }
+      }
+    >
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "flex": 1,
+          }
+        }
+        testID="RNE__ButtonGroupItem"
+      >
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "blue",
+              "flex": 1,
+              "justifyContent": "center",
+            }
+          }
+        >
+          <Text
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "selected": false,
+              }
+            }
+            style={
+              {
+                "color": "pink",
+                "fontSize": 16.714285714285715,
+                "fontWeight": "500",
+              }
+            }
+            testID="buttonGroupItemText"
+          >
+            <Text>
+              Button 1
+            </Text>
+          </Text>
+        </View>
+      </View>
+    </View>
+    <View
+      style={
+        {
+          "borderRightColor": "#bdc6cf",
+          "borderRightWidth": 1,
+          "flex": 1,
+        }
+      }
+    >
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "flex": 1,
+          }
+        }
+        testID="RNE__ButtonGroupItem"
+      >
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "blue",
+              "flex": 1,
+              "justifyContent": "center",
+            }
+          }
+        >
+          <Text
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "selected": false,
+              }
+            }
+            style={
+              {
+                "color": "pink",
+                "fontSize": 16.714285714285715,
+                "fontWeight": "500",
+              }
+            }
+            testID="buttonGroupItemText"
+          >
+            <Text>
+              Button 2
+            </Text>
+          </Text>
+        </View>
+      </View>
+    </View>
+    <View
+      style={
+        {
+          "flex": 1,
+        }
+      }
+    >
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "flex": 1,
+          }
+        }
+        testID="RNE__ButtonGroupItem"
+      >
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "blue",
+              "flex": 1,
+              "justifyContent": "center",
+            }
+          }
+        >
+          <Text
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "selected": false,
+              }
+            }
+            style={
+              {
+                "color": "pink",
+                "fontSize": 16.714285714285715,
+                "fontWeight": "500",
+              }
+            }
+            testID="buttonGroupItemText"
+          >
+            <Text>
+              Button 3
+            </Text>
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`ButtonGroup Component should match snapshot with objects 1`] = `
+<View
+  testID="wrapper"
+>
+  <View
+    style={
+      {
+        "backgroundColor": "yellow",
+        "borderColor": "#e3e3e3",
+        "borderRadius": 3,
+        "borderWidth": 1,
+        "flexDirection": "row",
+        "height": 40,
+        "marginHorizontal": 10,
+        "marginVertical": 5,
+        "overflow": "hidden",
+      }
+    }
+    testID="RNE__ButtonGroupContainer"
+  >
+    <View
+      style={
+        {
+          "borderRightColor": "#bdc6cf",
+          "borderRightWidth": 1,
+          "flex": 1,
+        }
+      }
+    >
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "flex": 1,
+          }
+        }
+        testID="RNE__ButtonGroupItem"
+      >
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "blue",
+              "flex": 1,
+              "justifyContent": "center",
+            }
+          }
+        >
+          <View>
+            <Text>
+              Button 1
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      style={
+        {
+          "borderRightColor": "#bdc6cf",
+          "borderRightWidth": 1,
+          "flex": 1,
+        }
+      }
+    >
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "flex": 1,
+          }
+        }
+        testID="RNE__ButtonGroupItem"
+      >
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "blue",
+              "flex": 1,
+              "justifyContent": "center",
+            }
+          }
+        >
+          <View>
+            <Text>
+              Button 2
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      style={
+        {
+          "flex": 1,
+        }
+      }
+    >
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "flex": 1,
+          }
+        }
+        testID="RNE__ButtonGroupItem"
+      >
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "blue",
+              "flex": 1,
+              "justifyContent": "center",
+            }
+          }
+        >
+          <View>
+            <Text>
+              Button 3
+            </Text>
+          </View>
         </View>
       </View>
     </View>

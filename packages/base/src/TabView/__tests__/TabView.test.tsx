@@ -1,6 +1,7 @@
 import React from 'react';
 import { TabView } from '../index';
 import { renderWithWrapper } from '../../../.ci/testHelper';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('Tab Component', () => {
   it('should match snapshot', () => {
@@ -35,5 +36,15 @@ describe('Tab Component', () => {
       </TabView>
     );
     expect(queryByTestId('tabView-test')).toBeDefined();
+  });
+  it('should ignore conditionally unrendered children', () => {
+    const { queryAllByTestId } = renderWithWrapper(
+      <TabView>
+        <TabView.Item testID="TabView.Item" />
+        {false && <TabView.Item testID="TabView.Item" />}
+        <TabView.Item testID="TabView.Item" />
+      </TabView>
+    );
+    expect(queryAllByTestId('TabView.Item').length).toBe(2);
   });
 });
