@@ -30,7 +30,7 @@
 
 <br />
 
-![React Native Elements UI Toolkit](https://user-images.githubusercontent.com/5962998/37248832-a7060286-24b1-11e8-94a8-847ab6ded4ec.png)
+![React Native vElements UI Toolkit](https://user-images.githubusercontent.com/5962998/37248832-a7060286-24b1-11e8-94a8-847ab6ded4ec.png)
 
 ## Installation
 
@@ -40,7 +40,7 @@ npm install @rn-vui/themed
 
 Follow
 [these instructions](https://reactnativeelements.com/docs/)
-to install React Native Elements!
+to install React Native vElements!
 
 ## Usage
 
@@ -57,21 +57,21 @@ import { Button } from '@rn-vui/themed';
 
 As a cross platform UI Toolkit, you can now use RNE on the web & share your codebase between your React Native + React web apps. RNE components are rendered perfectly on browser. You can achieve this to target iOS, Android and Web by collaborating RNE and [React Native for Web](https://github.com/necolas/react-native-web).
 
-Click [here](https://reactnativeelements.com/blog/2018/12/13/react-native-web) for a full walkthrough using React Native Elements + React Native Web.
+Click [here](https://reactnativeelements.com/blog/2018/12/13/react-native-web) for a full walkthrough using React Native vElements + React Native Web.
 
 ## Expo demo app
 
 Checkout the official
-[React Native Elements App](https://expo.dev/@rn_elements/react-native-elements)
-on Expo which uses all of the React Native Elements components.
+[React Native vElements App](https://expo.dev/@rn_elements/react-native-elements)
+on Expo which uses all of the React Native vElements components.
 
-If you are looking to contribute to the React Native Elements App, click
+If you are looking to contribute to the React Native vElements App, click
 [here](https://github.com/react-native-elements/react-native-elements/tree/next/example) to
 view the implementation & run the RNE expo app locally.
 
 ## VS Code Extension
 
-Install the [React Native Elements VS Code Extension](https://marketplace.visualstudio.com/items?itemName=rne.snippets) to speed up development.
+Install the [React Native vElements VS Code Extension](https://marketplace.visualstudio.com/items?itemName=rne.snippets) to speed up development.
 
 ## Documentation
 

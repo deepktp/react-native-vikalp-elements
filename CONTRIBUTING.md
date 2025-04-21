@@ -1,4 +1,4 @@
-# Contributing to React Native Elements
+# Contributing to React Native vElements
 
 Thanks for taking the time to checkout this project and being willing to
 contribute!
@@ -13,7 +13,7 @@ Here are some of the ways you can help:
 
 ## Reporting Bugs
 
-React Native Elements has over 9000 users actively developing and using this
+React Native vElements has over 9000 users actively developing and using this
 library in their projects. With that many use cases, bugs are sure to come up
 from time to time. When you think you've found a bug, here's what to do:
 
@@ -43,7 +43,7 @@ guide.
 
 Have a cool idea for a component? Think you can implement an existing feature
 better? Go ahead and open an issue, describe what you want to accomplish and
-lastly, why you think React Native Elements would benefit from it.
+lastly, why you think React Native vElements would benefit from it.
 
 A few things to consider/add:
 

@@ -1,10 +1,10 @@
-![React Native Elements App](https://user-images.githubusercontent.com/5962998/37248832-a7060286-24b1-11e8-94a8-847ab6ded4ec.png)
+![React Native vElements App](https://user-images.githubusercontent.com/5962998/37248832-a7060286-24b1-11e8-94a8-847ab6ded4ec.png)
 
-# React Native Elements App
+# React Native vElements App
 
 **[Mobile App](https://expo.dev/@rn-vui/react-native-elements)**
 
-This is the Demo app for [React Native Elements](https://expo.dev/@rn-vui/react-native-elements) built with [Expo](https://expo.io/). The purpose of this app is to demonstrate the usage of the various UI components that React Native Elements provides out of the box.
+This is the Demo app for [React Native vElements](https://expo.dev/@rn-vui/react-native-elements) built with [Expo](https://expo.io/). The purpose of this app is to demonstrate the usage of the various UI components that React Native vElements provides out of the box.
 
 This app also works on the `web` platform using [React Native Web](https://github.com/necolas/react-native-web). If you are looking to build a React Native mobile app which can reuse the code to deploy it on the web, this is the right place to begin. We decided to use [Expo](https://expo.io/), which reduces the effort required to build an app once and deploy it anywhere.
 
@@ -90,9 +90,9 @@ We highly recommend you read the [official Expo ejection docs](https://docs.expo
 - [@iRoachie](https://github.com/iRoachie) 💯
 - [@monte9](https://github.com/monte9) 🤓
 
-## React Native Elements
+## React Native vElements
 
-This app is built using [React Native Elements](https://github.com/react-native-elements/react-native-elements). React Native Elements is a UI toolkit for React Native that provides you with production ready UI components so that you can focus on building the part that makes your app unique as opposed to reinvent the UI wheel. Aiding rapid development and pragmatic design, React Native Elements is the one-stop shop for all your requirements, making your web and mobile apps look more dynamic and professional.
+This app is built using [React Native vElements](https://github.com/react-native-elements/react-native-elements). React Native vElements is a UI toolkit for React Native that provides you with production ready UI components so that you can focus on building the part that makes your app unique as opposed to reinvent the UI wheel. Aiding rapid development and pragmatic design, React Native vElements is the one-stop shop for all your requirements, making your web and mobile apps look more dynamic and professional.
 
 You can install `react-native-elements` in your app using:
 

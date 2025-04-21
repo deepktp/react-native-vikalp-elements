@@ -1,9 +1,9 @@
 {
   "expo": {
-    "name": "React Native Elements",
+    "name": "React Native vElements",
     "owner": "rn-vui",
     "slug": "react-native-elements",
-    "description": "A demo app for React Native Elements UI Library",
+    "description": "A demo app for React Native vElements UI Library",
     "privacy": "public",
     "platforms": [
       "ios",

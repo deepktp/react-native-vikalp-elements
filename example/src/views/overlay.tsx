@@ -24,7 +24,7 @@ const OverlayComponent: React.FunctionComponent<OverlayComponentProps> = () => {
       <Overlay isVisible={visible} onBackdropPress={toggleOverlay}>
         <Text style={styles.textPrimary}>Hello!</Text>
         <Text style={styles.textSecondary}>
-          Welcome to React Native Elements
+          Welcome to React Native vElements
         </Text>
         <Button
           icon={
