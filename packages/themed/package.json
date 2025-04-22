@@ -1,6 +1,6 @@
 {
   "name": "@rn-vui/themed",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "Cross Platform React Native UI Toolkit",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -55,10 +55,10 @@
     "logo": "https://opencollective.com/react-native-elements/logo.txt"
   },
   "peerDependencies": {
-    "@rn-vui/base": "5.0.0"
+    "@rn-vui/base": "5.0.1"
   },
   "devDependencies": {
-    "@rn-vui/base": "5.0.0"
+    "@rn-vui/base": "5.0.1"
   },
   "repository": {
     "type": "git",
