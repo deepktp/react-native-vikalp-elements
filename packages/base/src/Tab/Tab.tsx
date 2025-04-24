@@ -108,6 +108,8 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
   const currentIndex = React.useRef(0);
   const onIndexChangeRef = React.useRef((value: number) => value);
 
+  const setIndicatorRerenderKey = React.useState<number>(0)[1]; //to force re-render the indicator
+
   const animate = React.useCallback(
     (toValue: number, onDone: (_: number) => void = () => {}) => {
       currentIndex.current = toValue;
@@ -120,8 +122,9 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
         easing: Easing.inOut(Easing.ease),
         duration: 150,
         ...animationConfig,
-      }).start();
-      onDone?.(toValue);
+      }).start(() => {
+        onDone?.(toValue);
+      });
     },
     [animationConfig, animationType]
   );
@@ -138,36 +141,15 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
 
   const [tabContainerWidth, setTabContainerWidth] = React.useState(0);
 
-  useEffect(() => {
-    if (activeIndex !== currentIndex.current) {
-      animate(activeIndex);
-    }
-  }, [activeIndex, animate]);
-
   const scrollHandler = React.useCallback(
     (currValue: number) => {
-      if (tabItemPositions.current.length > currValue) {
-        let itemStartPosition =
-          currValue === 0
-            ? 0
-            : tabItemPositions.current[currValue - 1].position;
-        let itemEndPosition = tabItemPositions.current[currValue].position;
-
-        const scrollCurrentPosition = scrollViewPosition.current;
+      if (tabItemPositions.current.length >= currValue + 1) {
+        const itemPosition = tabItemPositions.current[currValue].position;
+        const itemWidth = tabItemPositions.current[currValue].width;
         const tabContainerCurrentWidth = tabContainerWidth;
 
-        let scrollX = scrollCurrentPosition;
-
-        if (itemStartPosition < scrollCurrentPosition) {
-          scrollX += itemStartPosition - scrollCurrentPosition;
-        } else if (
-          scrollCurrentPosition + tabContainerCurrentWidth <
-          itemEndPosition
-        ) {
-          scrollX +=
-            itemEndPosition -
-            (scrollCurrentPosition + tabContainerCurrentWidth);
-        }
+        const scrollX =
+          itemPosition + itemWidth / 2 - tabContainerCurrentWidth / 2;
 
         scrollViewRef.current?.scrollTo({
           x: scrollX,
@@ -178,6 +160,25 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
     },
     [tabContainerWidth]
   );
+
+  useEffect(() => {
+    if (
+      activeIndex !== currentIndex.current &&
+      tabContainerWidth > 0 &&
+      tabItemPositions.current.length > 0
+    ) {
+      //to force re-render the indicator we are using rerenderKey because on initial render the indicator is not visible
+      setIndicatorRerenderKey((prev) => prev + 1);
+      animate(activeIndex);
+    }
+    //tabContainerWidth is used so that we know that onLayout has completed also if there is any changes in tabs that get reflected.
+  }, [
+    activeIndex,
+    animate,
+    scrollHandler,
+    tabContainerWidth,
+    setIndicatorRerenderKey,
+  ]);
 
   React.useEffect(() => {
     if (onIndexChangeRef) {
@@ -222,7 +223,6 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
 
   const indicatorScaleX = () => {
     const countItems = validChildren.length;
-
     if (countItems < 2 || tabItemPositions.current.length !== countItems) {
       return 0;
     }

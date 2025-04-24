@@ -5100,13 +5100,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@rn-vui/layout@npm:^0.0.0-alpha.4":
-  version: 0.0.0-alpha.4
-  resolution: "@rneui/layout@npm:0.0.0-alpha.4"
-  checksum: 10/adbfd7d00e9f2c9cb7749b113c2838e3af513fb7b6c4d0d69a03152524f06b619760bf62f76556c3d16c0874f27138830c6e647c358bbe19851a4d8b413ba818
-  languageName: node
-  linkType: hard
-
 "@rn-vui/themed@workspace:packages/themed":
   version: 0.0.0-use.local
   resolution: "@rn-vui/themed@workspace:packages/themed"
@@ -5116,6 +5109,13 @@ __metadata:
     "@rn-vui/base": 5.0.1
   languageName: unknown
   linkType: soft
+
+"@rneui/layout@npm:^0.0.0-alpha.4":
+  version: 0.0.0-alpha.6
+  resolution: "@rneui/layout@npm:0.0.0-alpha.6"
+  checksum: 10/4355ab7789ded30ca4678e308d34460bc309c8ee1b9d19ad8fc5100c6aa71730e3efad35e05fd4eb559022e6c281571bed7d43f738ed2083b2cb1cc2e44d77d8
+  languageName: node
+  linkType: hard
 
 "@rnx-kit/chromium-edge-launcher@npm:^1.0.0":
   version: 1.0.0
@@ -17558,7 +17558,7 @@ __metadata:
     "@react-navigation/drawer": "npm:^6.6.3"
     "@react-navigation/native": "npm:^6.1.10"
     "@react-navigation/stack": "npm:^6.1.13"
-    "@rn-vui/layout": "npm:^0.0.0-alpha.4"
+    "@rneui/layout": "npm:^0.0.0-alpha.4"
     babel-loader: "npm:^8.2.5"
     babel-plugin-module-resolver: "npm:^5.0.2"
     babel-preset-expo: "npm:~11.0.0"
