@@ -29,6 +29,7 @@ export type IconType =
   | 'simple-line-icon'
   | 'zocial'
   | 'font-awesome'
+  | 'fa'
   | 'octicon'
   | 'ionicon'
   | 'foundation'
@@ -36,6 +37,9 @@ export type IconType =
   | 'entypo'
   | 'antdesign'
   | 'font-awesome-5'
+  | 'fa-5'
+  | 'font-awesome-6'
+  | 'fa-6'
   | (string & {});
 
 export interface IconObject {
@@ -161,8 +165,8 @@ export const Icon: RneFunctionComponent<IconProps> = ({
         raised && styles.raised,
         iconStyle && iconStyle.borderRadius
           ? {
-              borderRadius: iconStyle.borderRadius,
-            }
+            borderRadius: iconStyle.borderRadius,
+          }
           : {},
         containerStyle && containerStyle,
       ])}
