@@ -4,7 +4,7 @@ import { Button } from '@rn-vui/themed';
 import { ButtonGroup, withTheme, Text, Icon } from '@rn-vui/themed';
 import { Header, SubHeader } from '../components/header';
 import { LinearGradient } from '../components/LinearGradient';
-import { Stack } from '@rn-vui/layout';
+import { Stack } from '@rneui/layout';
 
 type ButtonsComponentProps = {};
 
