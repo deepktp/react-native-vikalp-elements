@@ -165,8 +165,8 @@ export const Icon: RneFunctionComponent<IconProps> = ({
         raised && styles.raised,
         iconStyle && iconStyle.borderRadius
           ? {
-            borderRadius: iconStyle.borderRadius,
-          }
+              borderRadius: iconStyle.borderRadius,
+            }
           : {},
         containerStyle && containerStyle,
       ])}
