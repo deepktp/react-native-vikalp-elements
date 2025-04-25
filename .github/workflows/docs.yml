@@ -50,3 +50,4 @@ jobs:
           branch: docs-update
           title: 'Update Documentation'
           body: 'This PR updates the documentation with the latest changes.'
+          base: gh-pages
