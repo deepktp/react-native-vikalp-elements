@@ -3154,7 +3154,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rn-vui/base@npm:latest":
+"@rn-vui/base@npm:^5.0.1":
   version: 5.0.1
   resolution: "@rn-vui/base@npm:5.0.1"
   dependencies:
@@ -12472,7 +12472,7 @@ __metadata:
     "@docusaurus/preset-classic": "npm:^2.3.0"
     "@docusaurus/theme-live-codeblock": "npm:^2.3.0"
     "@docusaurus/types": "npm:^2.3.0"
-    "@rn-vui/base": "npm:latest"
+    "@rn-vui/base": "npm:^5.0.1"
     "@rneui/layout": "npm:^0.0.0-alpha.6"
     "@tsconfig/docusaurus": "npm:^1.0.4"
     "@types/assert": "npm:^1.5.6"

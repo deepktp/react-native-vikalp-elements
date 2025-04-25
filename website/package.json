@@ -27,7 +27,7 @@
     "@docusaurus/preset-classic": "^2.3.0",
     "@docusaurus/theme-live-codeblock": "^2.3.0",
     "@docusaurus/types": "^2.3.0",
-    "@rn-vui/base": "latest",
+    "@rn-vui/base": "^5.0.1",
     "@rneui/layout": "^0.0.0-alpha.6",
     "assert": "^2.0.0",
     "buffer": "^6.0.3",
