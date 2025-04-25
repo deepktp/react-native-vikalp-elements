@@ -118,6 +118,7 @@ export interface AvatarProps extends InlinePressableProps {
   /** Custom ImageComponent for Avatar.
    *
    * @default undefined
+   * @type `React.ComponentClass`
    */
   ImageComponent?: React.ComponentClass;
 }
