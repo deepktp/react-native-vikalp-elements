@@ -144,6 +144,7 @@ export interface SliderProps {
 
   /** Apply style to the container of the slider.
    * @type Style
+   * @default {}
    */
   containerStyle?: typeof styles;
 }

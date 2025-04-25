@@ -3,12 +3,12 @@ id: dialog
 title: Dialog
 ---
 
-import { IconsStyle } from '@site/src/components/Docs_Icons';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-import CodeBlock from '@theme/CodeBlock';
-import { BiInfoCircle } from 'react-icons/bi';
-import Usage from '../component_usage/Dialog.mdx';
+import { IconsStyle } from "@site/src/components/Docs_Icons";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import { BiInfoCircle } from "react-icons/bi";
+import Usage from "../component_usage/Dialog.mdx";
 
 <IconsStyle />
 
@@ -25,7 +25,7 @@ Also receives all [Overlay](https://thevikalpui.netlify.app/docs/components/over
   </div>
   <div class="col col--3">
     <h4>
-      Theme Key{' '}
+      Theme Key{" "}
       <a href="../customizing#using-themeprovider">
         <BiInfoCircle />
       </a>
@@ -48,13 +48,13 @@ Includes all [Overlay](overlay#props) props.
 
 <div class='table-responsive'>
 
-| Name             | Type                                 | Default | Description                                               |
-| ---------------- | ------------------------------------ | ------- | --------------------------------------------------------- |
-| `children`       | ReactNode                            |         | Add Enclosed components.                                  |
-| `onLongPress`    | GestureResponderEventHandler         |         | Called when a long-tap gesture is detected.               |
-| `onPressIn`      | GestureResponderEventHandler         |         | Called when a touch is engaged before `onPress`.          |
-| `onPressOut`     | GestureResponderEventHandler         |         | Called when a touch is released before `onPress`.         |
-| `overlayStyle`   | View Style                           |         | Add additional styling to the internal Overlay component. |
-| `pressableProps` | PressableProps except click handlers | `None`  |                                                           |
+| Name             | Type                                   | Default | Description                                                 |
+| ---------------- | -------------------------------------- | ------- | ----------------------------------------------------------- |
+| `children`       | `ReactNode`                            | ``      | `Add Enclosed components.`                                  |
+| `onLongPress`    | `GestureResponderEventHandler`         | ``      | `Called when a long-tap gesture is detected.`               |
+| `onPressIn`      | `GestureResponderEventHandler`         | ``      | `Called when a touch is engaged before `onPress`.`          |
+| `onPressOut`     | `GestureResponderEventHandler`         | ``      | `Called when a touch is released before `onPress`.`         |
+| `overlayStyle`   | `View Style`                           | ``      | `Add additional styling to the internal Overlay component.` |
+| `pressableProps` | `PressableProps except click handlers` | `None`  | ``                                                          |
 
 </div>

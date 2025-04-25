@@ -16,10 +16,10 @@ const config = {
   // This copyright info is used in /core/Footer.js and blog rss/atom feeds.
   scripts: [{ src: 'https://snack.expo.io/embed.js', defer: true }],
   themes: ['@docusaurus/theme-live-codeblock'],
-  plugins: ['./plugins/react-native-elements-web.js'],
+  plugins: ['./plugins/react-native-elements-web.js', './plugins/react-native-vector-icon-fix.js'],
   presets: [
     [
-      '@docusaurus/preset-classic',
+      'classic',
       {
         gtag: {
           trackingID: 'G-RW24X04H53',
@@ -40,6 +40,9 @@ const config = {
           },
           routeBasePath: 'docs',
           sidebarPath: require.resolve('./sidebars.ts'),
+          rehypePlugins: [
+            [require("rehype-raw"), { passThrough: ['mdxFlowExpression', 'mdxJsxFlowElement', 'mdxJsxTextElement', 'mdxTextExpression', 'mdxjsEsm'] }]
+          ],
           remarkPlugins: [require('./plugins/remark-snackplayer')],
           editUrl:
             'https://github.com/react-native-elements/react-native-elements/edit/next/website/',

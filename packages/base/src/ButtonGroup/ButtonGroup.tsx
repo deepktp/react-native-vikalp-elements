@@ -34,7 +34,7 @@ export interface ButtonGroupProps extends InlinePressableProps {
   /** Method to update Button Group Index. */
   onPress?(...args: any[]): void;
 
-  /** Array of buttons for component (required), if returning a component, must be an object with { element: componentName }. */
+  /** Array of buttons for component (required), if returning a component, must be an object with `{ element: componentName }`. */
   buttons?: (string | ButtonComponent | ButtonObject)[];
 
   /** Specify styling for main button container. */
@@ -70,7 +70,9 @@ export interface ButtonGroupProps extends InlinePressableProps {
   /** Function to set the opacity. */
   setOpacityTo?: (value: number) => void;
 
-  /** Update the styling of the interior border of the list of buttons. */
+  /** Update the styling of the interior border of the list of buttons.
+   * @type `{ color: string; width: number; }`
+   */
   innerBorderStyle?: {
     color?: string;
     width?: number;
