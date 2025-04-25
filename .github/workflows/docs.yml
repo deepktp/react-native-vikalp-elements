@@ -37,11 +37,13 @@ jobs:
         run: |
           git config user.name 'React Native vElements CI'
           git config user.email 'react-native-elements-ci@users.noreply.github.com'
-          git checkout -b docs-update
+          git fetch origin docs-update || true
+          git checkout -B docs-update origin/docs-update || git checkout -b docs-update
           cp -r ./website/build/* .
           git add .
           git commit -m "Update docs"
-          git push origin docs-update
+          git push --force-with-lease origin docs-update
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
