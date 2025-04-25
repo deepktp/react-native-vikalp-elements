@@ -12780,6 +12780,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"path@npm:^0.12.7":
+  version: 0.12.7
+  resolution: "path@npm:0.12.7"
+  dependencies:
+    process: "npm:^0.11.1"
+    util: "npm:^0.10.3"
+  checksum: 10/d49d101f9596613cf4cd1d4ebc4e64ba9a9df5d9cd75a410cfe87a88ce4bf0e2617ff44b92025376f7ecb02e88a6308b27f7f39d810f2335a5126f762487adfb
+  languageName: node
+  linkType: hard
+
 "picocolors@npm:^1.0.0":
   version: 1.0.0
   resolution: "picocolors@npm:1.0.0"
@@ -13860,7 +13870,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"process@npm:^0.11.10":
+"process@npm:^0.11.1, process@npm:^0.11.10":
   version: 0.11.10
   resolution: "process@npm:0.11.10"
   checksum: 10/dbaa7e8d1d5cf375c36963ff43116772a989ef2bb47c9bdee20f38fd8fc061119cf38140631cf90c781aca4d3f0f0d2c834711952b728953f04fd7d238f59f5b
@@ -14280,16 +14290,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-vector-icons@npm:^9.1.0":
-  version: 9.2.0
-  resolution: "react-native-vector-icons@npm:9.2.0"
+"react-native-vector-icons@npm:^10.1.0":
+  version: 10.2.0
+  resolution: "react-native-vector-icons@npm:10.2.0"
   dependencies:
     prop-types: "npm:^15.7.2"
     yargs: "npm:^16.1.1"
   bin:
+    fa-upgrade.sh: bin/fa-upgrade.sh
     fa5-upgrade: bin/fa5-upgrade.sh
+    fa6-upgrade: bin/fa6-upgrade.sh
     generate-icon: bin/generate-icon.js
-  checksum: 10/126c0a0ed17a2062dc099ba5b0909e674142f7fb5dabc672794a3b077cae16499ea8565ab03f8e211db8d32b8e09992410aa837222493a82d617a1bd9bbb561d
+  checksum: 10/ac3b05bb353807d0ed94256bd6de4291e8261afb320ce69c06270fba3be2ed3c7b3a81ecbda29191cfe906e89bf853d4b4f016465b6b56a428315c7b6630eff1
   languageName: node
   linkType: hard
 
@@ -15058,6 +15070,7 @@ __metadata:
     jest: "npm:^27.5.1"
     object.fromentries: "npm:^2.0.5"
     os-browserify: "npm:^0.3.0"
+    path: "npm:^0.12.7"
     path-browserify: "npm:^1.0.1"
     prettier: "npm:^2.6.1"
     prism-react-renderer: "npm:^1.3.1"
@@ -15068,7 +15081,7 @@ __metadata:
     react-native-elements: "npm:^3.4.2"
     react-native-ratings: "npm:^8.1.0"
     react-native-safe-area-context: "npm:^3.4.1"
-    react-native-vector-icons: "npm:^9.1.0"
+    react-native-vector-icons: "npm:^10.1.0"
     react-native-web: "npm:^0.17.7"
     react-native-web-linear-gradient: "npm:^1.1.2"
     react-view: "npm:^2.3.7"
@@ -16743,6 +16756,15 @@ __metadata:
   version: 1.0.2
   resolution: "util-deprecate@npm:1.0.2"
   checksum: 10/474acf1146cb2701fe3b074892217553dfcf9a031280919ba1b8d651a068c9b15d863b7303cb15bd00a862b498e6cf4ad7b4a08fb134edd5a6f7641681cb54a2
+  languageName: node
+  linkType: hard
+
+"util@npm:^0.10.3":
+  version: 0.10.4
+  resolution: "util@npm:0.10.4"
+  dependencies:
+    inherits: "npm:2.0.3"
+  checksum: 10/1200a1ca2b474758342b3a0c5261c56f14ef09ad7eeaec3e6f449f5776ecdfce09a153cad62652b823e74647cdcfd2918552eadd2434783dfb58dabc5061803a
   languageName: node
   linkType: hard
 

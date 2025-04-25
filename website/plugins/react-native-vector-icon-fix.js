@@ -1,12 +1,13 @@
+
+
 module.exports = function () {
     return {
-        name: 'react-native-vector-icon-fix',
+        name: 'custom-docusaurus-plugin',
         configureWebpack(config, isServer, utils) {
-            console.log('Configuring Webpack for react-native-vector-icon-fix...');
             return {
+                mergeStrategy: { 'resolve.extensions': 'replace' },
                 resolve: {
-                    mainFields: ['browser', 'module', 'main'],
-                    extensions: ['.wasm', '.mjs', '.web.js', '.js', '.jsx', '.ts', '.tsx', '.json'],
+                    extensions: ['.web.js', '.wasm', '.mjs', '.js', '.jsx', '.ts', '.tsx', '.json'],
                 },
             };
         },
