@@ -3,8 +3,8 @@ on:
   push:
     branches:
       - master
-    paths:
-      - 'website/**'
+    # paths:
+    #   - 'website/**'
   workflow_dispatch: # Allows manual triggering of the workflow
 
 jobs:
