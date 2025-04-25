@@ -3154,9 +3154,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rn-vui/base@npm:^5.0.1":
+"@rn-vui/base@file:../packages/base::locator=rne-website%40workspace%3A.":
   version: 5.0.1
-  resolution: "@rn-vui/base@npm:5.0.1"
+  resolution: "@rn-vui/base@file:../packages/base#../packages/base::hash=4c059a&locator=rne-website%40workspace%3A."
   dependencies:
     "@types/react-native-vector-icons": "npm:^6.4.10"
     color: "npm:^3.2.1"
@@ -3167,7 +3167,7 @@ __metadata:
   peerDependencies:
     react-native-safe-area-context: ">= 3.0.0"
     react-native-vector-icons: ">7.0.0"
-  checksum: 10/80943c57283400d16494340bae3a01c986086d7bcfaa6be4c7a0cc68a664e4723f1c2175e797a520843f8eb6d0576592a0261b872410fef096afa591467ed6e4
+  checksum: 10/2aa0027a419d99454acaca7ce7612b829a3bba36560853eaf9168211651416aad26fc4c67858807eef1e09287c5a6ab3c83b71f6f6931b55666fa886bfc90df8
   languageName: node
   linkType: hard
 
@@ -12472,7 +12472,7 @@ __metadata:
     "@docusaurus/preset-classic": "npm:^2.3.0"
     "@docusaurus/theme-live-codeblock": "npm:^2.3.0"
     "@docusaurus/types": "npm:^2.3.0"
-    "@rn-vui/base": "npm:^5.0.1"
+    "@rn-vui/base": "file:../packages/base"
     "@rneui/layout": "npm:^0.0.0-alpha.6"
     "@tsconfig/docusaurus": "npm:^1.0.4"
     "@types/assert": "npm:^1.5.6"
@@ -12504,7 +12504,7 @@ __metadata:
     react-native-web-linear-gradient: "npm:^1.1.2"
     react-view: "npm:^2.3.7"
     style-loader: "npm:^3.3.1"
-    typescript: "npm:^4.6.3"
+    typescript: "npm:^5.0.4"
   languageName: unknown
   linkType: soft
 
@@ -13703,23 +13703,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^4.6.3":
-  version: 4.8.4
-  resolution: "typescript@npm:4.8.4"
+"typescript@npm:^5.0.4":
+  version: 5.8.3
+  resolution: "typescript@npm:5.8.3"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 10/f985d8dd6ae815753d61cb81e434f3a4a5796ac52e423370fca6ad11bcd188df4013d82e3ba3b88c9746745b9341390ba68f862dc9d30bac6465e0699f2a795b
+  checksum: 10/65c40944c51b513b0172c6710ee62e951b70af6f75d5a5da745cb7fab132c09ae27ffdf7838996e3ed603bb015dadd099006658046941bd0ba30340cc563ae92
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A^4.6.3#optional!builtin<compat/typescript>":
-  version: 4.8.4
-  resolution: "typescript@patch:typescript@npm%3A4.8.4#optional!builtin<compat/typescript>::version=4.8.4&hash=1a91c8"
+"typescript@patch:typescript@npm%3A^5.0.4#optional!builtin<compat/typescript>":
+  version: 5.8.3
+  resolution: "typescript@patch:typescript@npm%3A5.8.3#optional!builtin<compat/typescript>::version=5.8.3&hash=5786d5"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 10/5d81fd8cf5152091a0c0b84ebc868de8433583072a340c4899e0fc7ad6a80314b880a1466868c9a6a1f640c3d1f2fe7f41f8c541b99d78c8b414263dfa27eba3
+  checksum: 10/b9b1e73dabac5dc730c041325dbd9c99467c1b0d239f1b74ec3b90d831384af3e2ba973946232df670519147eb51a2c20f6f96163cea2b359f03de1e2091cc4f
   languageName: node
   linkType: hard
 
