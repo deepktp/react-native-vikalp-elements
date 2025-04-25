@@ -5095,7 +5095,6 @@ __metadata:
     ora: "npm:5.4.1"
     react-docgen-typescript: "npm:^2.2.2"
     react-dom: "npm:18.0.0"
-    ts-node: "npm:^10.9.2"
     typescript: "npm:^4.6.4"
   languageName: unknown
   linkType: soft
