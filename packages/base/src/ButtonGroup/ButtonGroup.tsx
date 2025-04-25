@@ -165,19 +165,19 @@ export const ButtonGroup: RneFunctionComponent<ButtonGroupProps> = ({
               !vertical && styles.button,
               vertical && styles.verticalComponent,
               i !== buttons.length - 1 &&
-              (vertical
-                ? {
-                  borderBottomWidth: innerBorderWidth,
-                  borderBottomColor:
-                    (innerBorderStyle && innerBorderStyle.color) ||
-                    theme?.colors?.grey4,
-                }
-                : {
-                  borderRightWidth: innerBorderWidth,
-                  borderRightColor:
-                    (innerBorderStyle && innerBorderStyle.color) ||
-                    theme?.colors?.grey4,
-                }),
+                (vertical
+                  ? {
+                      borderBottomWidth: innerBorderWidth,
+                      borderBottomColor:
+                        (innerBorderStyle && innerBorderStyle.color) ||
+                        theme?.colors?.grey4,
+                    }
+                  : {
+                      borderRightWidth: innerBorderWidth,
+                      borderRightColor:
+                        (innerBorderStyle && innerBorderStyle.color) ||
+                        theme?.colors?.grey4,
+                    }),
               buttonContainerStyle,
             ])}
           >
@@ -224,9 +224,9 @@ export const ButtonGroup: RneFunctionComponent<ButtonGroupProps> = ({
                   isDisabled && styles.disabled,
                   isDisabled && disabledStyle,
                   isDisabled &&
-                  isSelected && {
-                    backgroundColor: theme?.colors?.disabled,
-                  },
+                    isSelected && {
+                      backgroundColor: theme?.colors?.disabled,
+                    },
                   isDisabled && isSelected && disabledSelectedStyle,
                 ])}
               >
