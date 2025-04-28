@@ -166,14 +166,14 @@ setup on your local machine:
 ### Setup
 
 1. Install [Node.js](https://nodejs.org/) and and [yarn](https://yarnpkg.com) if you have not already. (_We suggest
-   you to use node v14x_)
+   you to use node v18.x_)
 2. Fork the **react-native-elements** repo
-   [here](https://github.com/react-native-elements/react-native-elements)
+   [here](https://github.com/deepktp/react-native-vikalp-elements)
 3. Clone the forked repo
 
    ```bash
     git clone <your-forked-repo-url>
-    cd react-native-elements
+    cd react-native-vikalp-elements
    ```
 
    You have a file structure that looks like this:
@@ -196,6 +196,16 @@ setup on your local machine:
    ```bash
      yarn install
    ```
+
+   If you encounter an issue where your `yarn` version does not meet the requirements of the project, you can enable Corepack to manage the correct version of Yarn. Corepack is included by default with Node.js versions 16.10 and above.
+
+   To enable Corepack, run the following command:
+
+   ```bash
+   corepack enable
+   ```
+
+   This will ensure that the correct version of Yarn is used for the project.
 
 5. While developing, you can run the example app with Expo to test your changes:
 
