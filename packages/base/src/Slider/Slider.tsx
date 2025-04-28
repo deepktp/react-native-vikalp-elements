@@ -139,8 +139,8 @@ export interface SliderProps {
 
   /** Used to configure the animation parameters. These are the same parameters in the [Animated library](https://reactnative.dev/docs/animations.html). */
   animationConfig?:
-  | Animated.TimingAnimationConfig
-  | Animated.SpringAnimationConfig;
+    | Animated.TimingAnimationConfig
+    | Animated.SpringAnimationConfig;
 
   /** Apply style to the container of the slider.
    * @type Style
@@ -316,9 +316,9 @@ export const Slider: RneFunctionComponent<SliderProps> = ({
     (): Sizable =>
       allMeasured
         ? {
-          height: Math.max(0, thumbTouchSize.height - containerSize.height),
-          width: Math.max(0, thumbTouchSize.width - thumbSize.width),
-        }
+            height: Math.max(0, thumbTouchSize.height - containerSize.height),
+            width: Math.max(0, thumbTouchSize.width - thumbSize.width),
+          }
         : { height: 0, width: 0 },
     [
       allMeasured,
