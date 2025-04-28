@@ -33,6 +33,7 @@
     "plugins": [
       "expo-font",
       "expo-asset"
-    ]
+    ],
+    "newArchEnabled": true
   }
 }
