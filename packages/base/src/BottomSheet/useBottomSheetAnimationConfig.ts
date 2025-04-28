@@ -77,6 +77,22 @@ const useBottomSheetAnimationConfig = ({
 
   const onContentContainerLayout: ViewProps['onLayout'] = useCallback(
     (e) => {
+
+      /**
+       * !!! Warning !!!
+       * Following code block e.persist is added to mitigate event-pooling error
+       * if user open and closes bottom sheet too frequently then this error happens so we need to add check if e.native event is not null
+       * but that will throw a warning to add e.persist
+       *
+       * this is temporary fix until this is fixed in react native core.
+       *
+       * https://github.com/expo/expo/issues/19999
+       * https://github.com/facebook/react-native/issues/35599
+       *
+       */
+      if (e.nativeEvent) {
+        e.persist();
+      }
       setContentContainerHeight((prev) => {
         if (!prev && animationType !== 'none') {
           translateYValue.setValue(e.nativeEvent.layout.height);
