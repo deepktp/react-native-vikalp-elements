@@ -558,6 +558,7 @@ export const Slider: RneFunctionComponent<SliderProps> = ({
         style,
       ])}
       onLayout={measureContainer}
+      accessible
       accessibilityRole="adjustable"
       accessibilityValue={{
         min: minimumValue,

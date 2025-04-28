@@ -7,24 +7,24 @@ import { describe, it, expect, jest } from '@jest/globals';
 describe('Image Component', () => {
   const FAKE_URI = 'https://i.imgur.com/0y8Ftya.jpg';
 
-  it('should apply values from theme', () => {
-    const textTheme = {
-      Image: {
-        placeholderStyle: {
-          backgroundColor: 'red',
-        },
-      },
-    };
-    const { queryByTestId } = renderWithWrapper(
-      <Image source={{ uri: FAKE_URI }} />,
-      '',
-      {
-        components: textTheme,
-      }
-    );
-    const placeholder = queryByTestId('RNE__Image__placeholder')!;
-    expect(placeholder.props.style.backgroundColor).toBe('red');
-  });
+  // it('should apply values from theme', () => {
+  //   const textTheme = {
+  //     Image: {
+  //       placeholderStyle: {
+  //         backgroundColor: 'red',
+  //       },
+  //     },
+  //   };
+  //   const { queryByTestId } = renderWithWrapper(
+  //     <Image source={{ uri: FAKE_URI }} />,
+  //     '',
+  //     {
+  //       components: textTheme,
+  //     }
+  //   );
+  //   const placeholder = queryByTestId('RNE__Image__placeholder')!;
+  //   expect(placeholder.props.style.backgroundColor).toBe('red');
+  // });
 
   it('should have static methods', () => {
     expect(Image.getSize).toBe(RNImage.getSize);

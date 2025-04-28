@@ -247,6 +247,7 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
   return (
     <View
       {...rest}
+      accessible
       accessibilityRole="tablist"
       style={[
         variant === 'primary' && {

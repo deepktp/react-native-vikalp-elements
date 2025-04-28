@@ -13,6 +13,7 @@ exports[`Slider component should handle all onLayout actions 1`] = `
         "now": 0,
       }
     }
+    accessible={true}
     onLayout={[Function]}
     style={
       {
@@ -112,6 +113,7 @@ exports[`Slider component should handle all onLayout actions with vertical orien
         "now": 0,
       }
     }
+    accessible={true}
     onLayout={[Function]}
     style={
       {
@@ -214,6 +216,7 @@ exports[`Slider component should match snapshot 1`] = `
         "now": 0,
       }
     }
+    accessible={true}
     onLayout={[Function]}
     style={
       {
@@ -312,6 +315,7 @@ exports[`Slider component should render vertically 1`] = `
         "now": 0,
       }
     }
+    accessible={true}
     onLayout={[Function]}
     style={
       {
@@ -413,6 +417,7 @@ exports[`Slider component should render with ThumbTouchRect 1`] = `
         "now": 0,
       }
     }
+    accessible={true}
     onLayout={[Function]}
     style={
       {
@@ -525,6 +530,7 @@ exports[`Slider component should support value changes 1`] = `
         "now": 1,
       }
     }
+    accessible={true}
     onLayout={[Function]}
     style={
       {
