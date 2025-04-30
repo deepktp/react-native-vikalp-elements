@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkrne_website=self.webpackChunkrne_website||[]).push([[9067],{19187:e=>{e.exports=JSON.parse('{"tags":[{"label":"Contribution","permalink":"/docs/tags/contribution","count":1},{"label":"Open Source","permalink":"/docs/tags/open-source","count":1}]}')}}]);
