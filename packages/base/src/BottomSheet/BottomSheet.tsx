@@ -99,7 +99,6 @@ export const BottomSheet: RneFunctionComponent<BottomSheetProps> = ({
       {...modalProps}
       animationType="none"
     >
-
       <SafeAreaView
         style={StyleSheet.flatten([
           styles.safeAreaView,

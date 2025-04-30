@@ -77,7 +77,6 @@ const useBottomSheetAnimationConfig = ({
 
   const onContentContainerLayout: ViewProps['onLayout'] = useCallback(
     (e) => {
-
       /**
        * !!! Warning !!!
        * Following code block e.persist is added to mitigate event-pooling error
