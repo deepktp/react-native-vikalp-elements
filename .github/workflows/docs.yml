@@ -3,9 +3,10 @@ on:
   push:
     branches:
       - master
-    # paths:
-    #   - 'website/**'
-  workflow_dispatch: # Allows manual triggering of the workflow
+    paths:
+      - 'website/**'
+    
+  workflow_dispatch:
 
 jobs:
   docs:
@@ -33,23 +34,11 @@ jobs:
       - name: Build 🔧
         run: yarn docs-build
 
-      - name: Deploy to a branch for PR
-        run: |
-          git config user.name 'React Native vElements CI'
-          git config user.email 'react-native-elements-ci@users.noreply.github.com'
-          git fetch origin docs-update || true
-          git checkout -B docs-update origin/docs-update || git checkout -b docs-update
-          cp -r ./website/build/* .
-          git add .
-          git commit -m "Update docs"
-          git push --force-with-lease origin docs-update
-
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v5
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: 'Update docs'
-          branch: docs-update
-          title: 'Update Documentation'
-          body: 'This PR updates the documentation with the latest changes.'
-          base: gh-pages
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./website/build
+          user_name: 'React Native vElements CI'
+          user_email: 'react-native-elements-ci@users.noreply.github.com'
+          cname: https://thevikalpui.netlify.app
