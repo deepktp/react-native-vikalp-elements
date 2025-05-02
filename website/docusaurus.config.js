@@ -61,7 +61,7 @@ const config = {
     announcementBar: {
       id: 'support_us',
       content:
-        'If you like React Native vElements, give it a  <a target="_blank" rel="noopener noreferrer" href="https://github.com/react-native-elements/react-native-elements">star on GitHub!</a> ⭐' +
+        'If you like React Native vElements, give it a  <a target="_blank" rel="noopener noreferrer" href="https://github.com/deepktp/react-native-vikalp-elements">star on GitHub!</a> ⭐' +
         ' and join the <a target="_blank" rel="noopener noreferrer" href="https://discord.gg/e9RBHjkKHa">Discord server</a>!',
       backgroundColor: 'var(--navbar-background-color)',
       textColor: 'var(--ifm-navbar-link-color)', // Defaults to `#000`.
@@ -85,6 +85,7 @@ const config = {
           dropdownItemsAfter: [{ to: 'versions', label: 'All versions' }],
           // Do not add the link active class when browsing docs.
           dropdownActiveClassDisabled: true,
+
           docsPluginId: 'default',
         },
         // { to: 'docs/', label: 'Docs', position: 'right' },
@@ -93,30 +94,30 @@ const config = {
         { type: 'search', position: 'left' },
         {
           href: 'https://github.com/sponsors/react-native-elements',
-          // label: 'Sponsor',
+          html: '<span>Sponsor</span>',
           position: 'right',
-          className: 'header-github-sponsor-link',
+          className: 'header-navbar-link header-github-sponsor-link',
           'aria-label': 'GitHub Sponsor',
         },
         {
           href: 'https://twitter.com/rn_elements',
-          // label: 'Sponsor',
+          html: '<span>Twitter</span>',
           position: 'right',
-          className: 'header-twitter-link',
+          className: 'header-navbar-link header-twitter-link',
           'aria-label': 'Twitter',
         },
         {
           href: 'https://discord.gg/e9RBHjkKHa',
-          // label: 'Discord',
+          html: '<span>Discord</span>',
           position: 'right',
-          className: 'header-discord-link',
+          className: 'header-navbar-link header-discord-link',
           'aria-label': 'Discord server',
         },
         {
-          href: 'https://github.com/react-native-elements/react-native-elements',
-          // label: 'GitHub',
+          href: 'https://github.com/deepktp/react-native-vikalp-elements',
+          html: '<span>GitHub</span>',
           position: 'right',
-          className: 'header-github-link',
+          className: 'header-navbar-link header-github-link',
           'aria-label': 'GitHub repository',
         },
       ],
