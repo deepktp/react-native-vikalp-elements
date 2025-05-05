@@ -5,7 +5,7 @@ import {
 } from '@rn-vui/ratings';
 import { RneFunctionComponent } from '../helpers';
 
-export interface SwipeRatingProps extends RatingProps { }
+export interface SwipeRatingProps extends RatingProps {}
 
 /** Ratings are used to collect measurable feedback from users.
  * Use Rating over an Input where imagery can increase user interaction.
