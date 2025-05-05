@@ -15,7 +15,7 @@ export default () => {
           height: 3,
         }}
         scrollable
-        activeIndex={activeTabIndex}
+        value={activeTabIndex}
         onChange={setActiveTabIndex}
       >
         <TabBar.Item

@@ -29,7 +29,7 @@ export interface TabProps extends ViewProps, ParentProps {
   variant?: 'primary' | 'default';
 
   /** active index */
-  activeIndex?: number;
+  value?: number;
 
   /** Animation type */
   animationType?: 'timing' | 'spring';
@@ -89,7 +89,7 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
   theme = defaultTheme,
   children,
   scrollable = false,
-  onChange = () => {},
+  onChange = () => { },
   indicatorStyle,
   disableIndicator,
   variant = 'primary',
@@ -99,7 +99,7 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
   buttonStyle,
   titleStyle,
   containerStyle,
-  activeIndex = 0,
+  value: activeIndex = 0,
   animationType = 'spring',
   animationConfig = {},
   ...rest
@@ -111,7 +111,7 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
   const setIndicatorRerenderKey = React.useState<number>(0)[1]; //to force re-render the indicator
 
   const animate = React.useCallback(
-    (toValue: number, onDone: (_: number) => void = () => {}) => {
+    (toValue: number, onDone: (_: number) => void = () => { }) => {
       currentIndex.current = toValue;
       onIndexChangeRef.current?.(toValue);
       //currently we are ignoring the animationConfig types but we need to fix this
