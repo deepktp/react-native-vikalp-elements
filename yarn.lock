@@ -3988,6 +3988,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@rn-vui/base@workspace:packages/base"
   dependencies:
+    "@rn-vui/ratings": "npm:^0.4.1"
     "@types/color": "npm:^3.0.3"
     "@types/hoist-non-react-statics": "npm:^3.3.1"
     "@types/react-native-vector-icons": "npm:^6.4.10"
@@ -3995,7 +3996,6 @@ __metadata:
     deepmerge: "npm:^4.2.2"
     hoist-non-react-statics: "npm:^3.3.2"
     metro-react-native-babel-preset: "npm:^0.70.2"
-    react-native-ratings: "npm:^8.1.0"
     react-native-safe-area-context: "npm:4.14.0"
     react-native-size-matters: "npm:^0.4.0"
     react-native-vector-icons: "npm:^10.1.0"
@@ -4021,6 +4021,16 @@ __metadata:
     typescript: "npm:^4.6.4"
   languageName: unknown
   linkType: soft
+
+"@rn-vui/ratings@npm:^0.4.1":
+  version: 0.4.1
+  resolution: "@rn-vui/ratings@npm:0.4.1"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 10/af86d516409a8e444a45f2f6a545d5cbe5865ed9c1ab16df280b372c265ec259206f253844e2ee85dfe05d6527f5f919e6aaa50e9c148b407acf4142a176cbc7
+  languageName: node
+  linkType: hard
 
 "@rn-vui/themed@workspace:packages/themed":
   version: 0.0.0-use.local
@@ -15564,18 +15574,6 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: 10/64ab125c539ca8c275f5d305f5e11d366e6098d9e24e3cab25cbfd46a8d618fc3925ea86219972ccc63364e578384bb0120a72562312e596894a04ee0518a363
-  languageName: node
-  linkType: hard
-
-"react-native-ratings@npm:^8.1.0":
-  version: 8.1.0
-  resolution: "react-native-ratings@npm:8.1.0"
-  dependencies:
-    lodash: "npm:^4.17.15"
-  peerDependencies:
-    react: "*"
-    react-native: "*"
-  checksum: 10/618ad478f41b6d913a76342a5325510b57b2d6bc52994f50ea9070eb4d1d1191fecca01b7e4120b9f9d6e0bd84040584ff7cf43d3bb4142c5ea49dd275308ac8
   languageName: node
   linkType: hard
 
