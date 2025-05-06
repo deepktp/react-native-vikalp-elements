@@ -4,8 +4,8 @@
   <ShortName>React Native vElements</ShortName>
   <Description>Search React Native vElements</Description>
   <InputEncoding>UTF-8</InputEncoding>
-  <Image width="16" height="16" type="image/x-icon">https://thevikalpui.netlify.app/img/website/logo.png</Image>
-  <Url type="text/html" method="get" template="https://thevikalpui.netlify.app/search?q={searchTerms}"/>
-  <Url type="application/opensearchdescription+xml" rel="self" template="https://thevikalpui.netlify.app/opensearch.xml" />
-  <moz:SearchForm>https://thevikalpui.netlify.app/</moz:SearchForm>
+  <Image width="16" height="16" type="image/x-icon">https://rnvikalpelements.thevikalp.com/img/website/logo.png</Image>
+  <Url type="text/html" method="get" template="https://rnvikalpelements.thevikalp.com/search?q={searchTerms}"/>
+  <Url type="application/opensearchdescription+xml" rel="self" template="https://rnvikalpelements.thevikalp.com/opensearch.xml" />
+  <moz:SearchForm>https://rnvikalpelements.thevikalp.com/</moz:SearchForm>
 </OpenSearchDescription>
