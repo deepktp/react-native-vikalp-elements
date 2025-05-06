@@ -3984,7 +3984,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rn-vui/base@npm:5.0.1, @rn-vui/base@workspace:packages/base":
+"@rn-vui/base@npm:5.1.0, @rn-vui/base@workspace:packages/base":
   version: 0.0.0-use.local
   resolution: "@rn-vui/base@workspace:packages/base"
   dependencies:
@@ -4036,9 +4036,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@rn-vui/themed@workspace:packages/themed"
   dependencies:
-    "@rn-vui/base": "npm:5.0.1"
+    "@rn-vui/base": "npm:5.1.0"
   peerDependencies:
-    "@rn-vui/base": 5.0.1
+    "@rn-vui/base": 5.1.0
   languageName: unknown
   linkType: soft
 
