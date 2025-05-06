@@ -3763,19 +3763,29 @@ __metadata:
   linkType: hard
 
 "@rn-vui/base@file:../packages/base::locator=rne-website%40workspace%3A.":
-  version: 5.1.0
-  resolution: "@rn-vui/base@file:../packages/base#../packages/base::hash=54f91b&locator=rne-website%40workspace%3A."
+  version: 5.1.2
+  resolution: "@rn-vui/base@file:../packages/base#../packages/base::hash=4bb932&locator=rne-website%40workspace%3A."
   dependencies:
+    "@rn-vui/ratings": "npm:^0.4.3"
     "@types/react-native-vector-icons": "npm:^6.4.10"
     color: "npm:^3.2.1"
     deepmerge: "npm:^4.2.2"
     hoist-non-react-statics: "npm:^3.3.2"
-    react-native-ratings: "npm:^8"
     react-native-size-matters: "npm:^0.4.0"
   peerDependencies:
     react-native-safe-area-context: ">= 3.0.0"
     react-native-vector-icons: ">7.0.0"
-  checksum: 10/cb511b3a96efcc689bcc3cfdf7d5207285e1a74c069f4791d99659d2c5e56fc522da82db47162eeb8869ac2276ff69377612a435fc7826d948f146a7268ec6b8
+  checksum: 10/c91d9e09a1b13070f612d53cf9c8068192a24b9355e3d99d5e119790a6c858bc480bd779bf007f56e27bde0205a006095898db9ebfbd442c5e98d4cbf6180496
+  languageName: node
+  linkType: hard
+
+"@rn-vui/ratings@npm:^0.4.3":
+  version: 0.4.3
+  resolution: "@rn-vui/ratings@npm:0.4.3"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 10/67a2ed027d11978d3df8a83fafd7e7b19e819a03dac896d375fdd0fb7f92bcd4ae899c3eda6ed1637091d5cc4214ba1173face825d32574410961d16603d2a66
   languageName: node
   linkType: hard
 
@@ -14250,7 +14260,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-ratings@npm:^8, react-native-ratings@npm:^8.1.0":
+"react-native-ratings@npm:^8.1.0":
   version: 8.1.0
   resolution: "react-native-ratings@npm:8.1.0"
   dependencies:
