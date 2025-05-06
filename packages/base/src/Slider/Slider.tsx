@@ -436,7 +436,9 @@ export const Slider: RneFunctionComponent<SliderProps> = ({
     (e: GestureResponderEvent /* gestureState: Object */) => {
       // If the user presses on the thumb, become active
       const thumbHit = thumbHitTest(e);
-      if (thumbHit) {
+      if (disabled) {
+        return false;
+      } else if (thumbHit) {
         return true;
       } else if (allowTouchTrack) {
         setCurrentValue(getOnTouchValue(e));
@@ -452,6 +454,7 @@ export const Slider: RneFunctionComponent<SliderProps> = ({
       getOnTouchValue,
       setCurrentValue,
       thumbHitTest,
+      disabled,
     ]
   );
 
@@ -608,11 +611,11 @@ export const Slider: RneFunctionComponent<SliderProps> = ({
 
 const styles = StyleSheet.create({
   containerHorizontal: {
-    height: 40,
+    height: 50,
     justifyContent: 'center',
   },
   containerVertical: {
-    width: 40,
+    width: 50,
     flexDirection: 'column',
     alignItems: 'center',
   },

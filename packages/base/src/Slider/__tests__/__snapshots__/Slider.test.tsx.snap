@@ -17,7 +17,7 @@ exports[`Slider component should handle all onLayout actions 1`] = `
     onLayout={[Function]}
     style={
       {
-        "height": 40,
+        "height": 50,
         "justifyContent": "center",
       }
     }
@@ -119,7 +119,7 @@ exports[`Slider component should handle all onLayout actions with vertical orien
       {
         "alignItems": "center",
         "flexDirection": "column",
-        "width": 40,
+        "width": 50,
       }
     }
     testID="RNE__Slider_Container"
@@ -220,7 +220,7 @@ exports[`Slider component should match snapshot 1`] = `
     onLayout={[Function]}
     style={
       {
-        "height": 40,
+        "height": 50,
         "justifyContent": "center",
       }
     }
@@ -321,7 +321,7 @@ exports[`Slider component should render vertically 1`] = `
       {
         "alignItems": "center",
         "flexDirection": "column",
-        "width": 40,
+        "width": 50,
       }
     }
     testID="RNE__Slider_Container"
@@ -421,7 +421,7 @@ exports[`Slider component should render with ThumbTouchRect 1`] = `
     onLayout={[Function]}
     style={
       {
-        "height": 40,
+        "height": 50,
         "justifyContent": "center",
       }
     }
@@ -534,7 +534,7 @@ exports[`Slider component should support value changes 1`] = `
     onLayout={[Function]}
     style={
       {
-        "height": 40,
+        "height": 50,
         "justifyContent": "center",
       }
     }
