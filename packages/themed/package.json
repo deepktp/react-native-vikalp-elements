@@ -48,7 +48,7 @@
   "bugs": {
     "url": "https://github.com/deepktp/react-native-vikalp-elements/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A%22pkg%3A+themed%22+"
   },
-  "homepage": "https://react-native-velement.thevikalp.com/",
+  "homepage": "https://react-native-velements.thevikalp.com/",
   "collective": {
     "type": "opencollective",
     "url": "https://opencollective.com/react-native-elements",
