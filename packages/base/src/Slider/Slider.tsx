@@ -144,6 +144,7 @@ export interface SliderProps {
 
   /** Apply style to the container of the slider.
    * @type Style
+   * @default {}
    */
   containerStyle?: typeof styles;
 }
@@ -435,7 +436,9 @@ export const Slider: RneFunctionComponent<SliderProps> = ({
     (e: GestureResponderEvent /* gestureState: Object */) => {
       // If the user presses on the thumb, become active
       const thumbHit = thumbHitTest(e);
-      if (thumbHit) {
+      if (disabled) {
+        return false;
+      } else if (thumbHit) {
         return true;
       } else if (allowTouchTrack) {
         setCurrentValue(getOnTouchValue(e));
@@ -451,6 +454,7 @@ export const Slider: RneFunctionComponent<SliderProps> = ({
       getOnTouchValue,
       setCurrentValue,
       thumbHitTest,
+      disabled,
     ]
   );
 
@@ -471,7 +475,7 @@ export const Slider: RneFunctionComponent<SliderProps> = ({
   }, [debugTouchArea, getTouchOverflowSize]);
 
   const renderDebugThumbTouchRect = useCallback(
-    (thumbLeft: Animated.AnimatedInterpolation) => {
+    (thumbLeft: Animated.AnimatedInterpolation<number>) => {
       const thumbTouchRect = getThumbTouchRect();
       const positionStyle = {
         left: thumbLeft,
@@ -557,6 +561,7 @@ export const Slider: RneFunctionComponent<SliderProps> = ({
         style,
       ])}
       onLayout={measureContainer}
+      accessible
       accessibilityRole="adjustable"
       accessibilityValue={{
         min: minimumValue,
@@ -606,11 +611,11 @@ export const Slider: RneFunctionComponent<SliderProps> = ({
 
 const styles = StyleSheet.create({
   containerHorizontal: {
-    height: 40,
+    height: 50,
     justifyContent: 'center',
   },
   containerVertical: {
-    width: 40,
+    width: 50,
     flexDirection: 'column',
     alignItems: 'center',
   },

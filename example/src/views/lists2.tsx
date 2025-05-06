@@ -9,7 +9,7 @@ import {
   ListItemProps,
   Button,
   Switch,
-} from '@rneui/themed';
+} from '@rn-vui/themed';
 import { LinearGradient } from '../components/LinearGradient';
 import { Header } from '../components/header';
 import colors from '../config/colors';

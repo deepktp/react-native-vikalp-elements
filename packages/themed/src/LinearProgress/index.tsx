@@ -2,7 +2,7 @@ import { withTheme } from '../config';
 import {
   LinearProgress,
   LinearProgressProps,
-} from '@rneui/base/dist/LinearProgress/LinearProgress';
+} from '@rn-vui/base/dist/LinearProgress/LinearProgress';
 
 export { LinearProgress };
 export type { LinearProgressProps };
@@ -13,7 +13,7 @@ export type { LinearProgressProps };
  *
  * Usage ```<LinearProgress variant={LinearProgress.INDETERMINATE}  />```
  *
- * [API Documentation](https://reactnativeelements.com/docs/linearProgress)
+ * [API Documentation](https://thevikalpui.netlify.app/docs/linearProgress)
  */
 export default Object.assign(
   withTheme<LinearProgressProps>(LinearProgress, 'LinearProgress'),

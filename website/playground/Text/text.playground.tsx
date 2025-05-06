@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text } from '@rneui/base';
+import { Text } from '@rn-vui/base';
 import Playground from '../../src/components/Playground';
 import { useView, PropTypes } from 'react-view';
 
@@ -62,7 +62,7 @@ const TextPlayground = () => {
       Text,
     },
     imports: {
-      '@rneui/base': {
+      '@rn-vui/base': {
         named: ['Text'],
       },
     },

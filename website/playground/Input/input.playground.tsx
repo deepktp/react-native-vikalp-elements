@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { View } from 'react-native';
-import { Input } from '@rneui/base';
+import { Input } from '@rn-vui/base';
 import Icon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 import Playground from '../../src/components/Playground';
 import { useView, PropTypes } from 'react-view';
@@ -94,7 +94,7 @@ const InputPlayground = () => {
       Icon,
     },
     imports: {
-      '@rneui/base': {
+      '@rn-vui/base': {
         named: ['Input'],
       },
       'react-native-vector-icons/MaterialCommunityIcons': {

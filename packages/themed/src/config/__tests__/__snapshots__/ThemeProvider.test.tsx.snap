@@ -22,7 +22,18 @@ exports[`ThemeProvider render ThemeProvider 1`] = `
       accessibilityState={
         {
           "busy": false,
+          "checked": undefined,
           "disabled": false,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
         }
       }
       accessible={true}
@@ -92,7 +103,18 @@ exports[`ThemeProvider render ThemeProvider 1`] = `
       accessibilityState={
         {
           "busy": false,
+          "checked": undefined,
           "disabled": false,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
         }
       }
       accessible={true}
@@ -162,7 +184,18 @@ exports[`ThemeProvider render ThemeProvider 1`] = `
       accessibilityState={
         {
           "busy": false,
+          "checked": undefined,
           "disabled": false,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
         }
       }
       accessible={true}
@@ -232,7 +265,18 @@ exports[`ThemeProvider render ThemeProvider 1`] = `
       accessibilityState={
         {
           "busy": false,
+          "checked": undefined,
           "disabled": false,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
         }
       }
       accessible={true}

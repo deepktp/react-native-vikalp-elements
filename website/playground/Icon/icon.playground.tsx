@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { View } from 'react-native';
-import { Icon } from '@rneui/base';
+import { Icon } from '@rn-vui/base';
 
 import Playground from '../../src/components/Playground';
 import { useView, PropTypes } from 'react-view';
@@ -95,7 +95,7 @@ const IconPlayground = () => {
       Icon,
     },
     imports: {
-      '@rneui/base': {
+      '@rn-vui/base': {
         named: ['Icon'],
       },
     },

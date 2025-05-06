@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { View } from 'react-native';
 
 export interface PadViewProps {
+  children: React.ReactNode;
   Component: React.ComponentClass;
   pad: number;
 }

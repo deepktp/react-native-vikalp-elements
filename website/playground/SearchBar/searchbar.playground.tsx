@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SearchBar } from '@rneui/base';
+import { SearchBar } from '@rn-vui/base';
 import Playground from '../../src/components/Playground';
 import { useView, PropTypes } from 'react-view';
 
@@ -121,7 +121,7 @@ const SearchBarPlayground = () => {
       SearchBar,
     },
     imports: {
-      '@rneui/base': {
+      '@rn-vui/base': {
         named: ['SearchBar'],
       },
     },

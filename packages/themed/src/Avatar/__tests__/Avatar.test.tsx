@@ -3,6 +3,7 @@ import Avatar from '..';
 import { Image } from 'react-native';
 import { renderWithWrapper } from '../../../.ci/testHelper';
 import { CreateThemeOptions, FullTheme } from '../../config';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('Avatar Component', () => {
   it('should apply values from theme', () => {

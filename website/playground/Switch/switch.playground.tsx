@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Switch, defaultTheme as theme } from '@rneui/base';
+import { Switch, defaultTheme as theme } from '@rn-vui/base';
 import Playground from '../../src/components/Playground';
 import { useView, PropTypes } from 'react-view';
 
@@ -32,7 +32,7 @@ const SwitchPlayground = () => {
       Switch,
     },
     imports: {
-      '@rneui/base': {
+      '@rn-vui/base': {
         named: ['Switch'],
       },
     },

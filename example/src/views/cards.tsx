@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, ScrollView, StyleSheet, Image } from 'react-native';
-import { Text, Card, Button, Icon } from '@rneui/themed';
+import { Text, Card, Button, Icon } from '@rn-vui/themed';
 import { Header } from '../components/header';
 
 const users = [
@@ -83,7 +83,7 @@ const Cards: React.FunctionComponent<CardsComponentsProps> = () => {
               }}
             />
             <Text style={{ marginBottom: 10 }}>
-              The idea with React Native Elements is more about component
+              The idea with React Native vElements is more about component
               structure than actual design.
             </Text>
             <Button

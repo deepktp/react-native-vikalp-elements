@@ -1,6 +1,6 @@
 import { withTheme } from '../config';
-import { Badge, BadgeProps } from '@rneui/base/dist/Badge/Badge';
-import { withBadge } from '@rneui/base/dist/Badge/withBadge';
+import { Badge, BadgeProps } from '@rn-vui/base/dist/Badge/Badge';
+import { withBadge } from '@rn-vui/base/dist/Badge/withBadge';
 
 export { Badge, withBadge };
 export type { BadgeProps };

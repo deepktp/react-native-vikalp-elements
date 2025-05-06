@@ -2,7 +2,7 @@ import { withTheme } from '../config';
 import {
   PricingCard,
   PricingCardProps,
-} from '@rneui/base/dist/PricingCard/PricingCard';
+} from '@rn-vui/base/dist/PricingCard/PricingCard';
 
 export { PricingCard };
 export type { PricingCardProps };

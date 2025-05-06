@@ -425,6 +425,12 @@ sidebar
   }
 }
 
+@media (min-width: 996px) {
+  .header-navbar-link span {
+    display: none;
+  }
+}
+
 nav.menu {
   border-right: 1px solid var(--custom-border-color);
   padding: 0;
@@ -434,8 +440,8 @@ nav.menu {
   width: 21px;
 }
 
-.navbar-sidebar{
-  height: calc(100vh - 50px)
+.navbar-sidebar {
+  height: calc(100vh - 50px);
 }
 
 .navbar-sidebar__brand .navbar__brand {
@@ -461,7 +467,7 @@ nav.menu {
 }
 .menu__list-item svg,
 .navbar__link svg {
-  display: none;
+  /* display: none; */
 }
 
 .dropdown > .navbar__link:after {

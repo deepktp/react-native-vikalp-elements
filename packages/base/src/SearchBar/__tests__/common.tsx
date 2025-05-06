@@ -3,14 +3,15 @@ import { fireEvent } from '@testing-library/react-native';
 import { ActivityIndicator, Text, Pressable, View } from 'react-native';
 import { renderWithWrapper } from '../../../.ci/testHelper';
 import { Icon } from '../../Icon';
+import { it, expect, describe, beforeEach, jest } from '@jest/globals';
 
 const WrapperTestID = 'RNE__SearchBar-wrapper';
 const SearchBarTestID = 'RNE__SearchBar';
 
 export function commonTests(SearchBar) {
-  beforeEach(() => {
-    jest.resetModules();
-  });
+  // beforeEach(() => {
+  //   jest.resetModules();
+  // });
 
   it('should match snapshot', () => {
     const component = renderWithWrapper(<SearchBar />);
@@ -24,6 +25,9 @@ export function commonTests(SearchBar) {
         <SearchBar onClear={handler} />
       );
       const Wrapper = queryByTestId(SearchBarTestID);
+      if (!Wrapper) {
+        throw new Error('Wrapper not found');
+      }
       fireEvent(Wrapper, 'clear');
       expect(handler).toBeCalled();
     });
@@ -34,6 +38,9 @@ export function commonTests(SearchBar) {
         <SearchBar onFocus={handler} />
       );
       const Wrapper = queryByTestId(SearchBarTestID);
+      if (!Wrapper) {
+        throw new Error('Wrapper not found');
+      }
       fireEvent(Wrapper, 'focus');
       expect(handler).toBeCalled();
     });
@@ -44,6 +51,9 @@ export function commonTests(SearchBar) {
         <SearchBar onBlur={handler} />
       );
       const Wrapper = queryByTestId(SearchBarTestID);
+      if (!Wrapper) {
+        throw new Error('Wrapper not found');
+      }
       fireEvent(Wrapper, 'blur');
       expect(handler).toBeCalled();
     });
@@ -54,6 +64,9 @@ export function commonTests(SearchBar) {
         <SearchBar onChangeText={handler} />
       );
       const Wrapper = queryByTestId(SearchBarTestID);
+      if (!Wrapper) {
+        throw new Error('Wrapper not found');
+      }
       fireEvent.changeText(Wrapper, 'test');
       expect(handler).toBeCalled();
     });
@@ -71,6 +84,9 @@ export function commonTests(SearchBar) {
         />
       );
       const Wrapper = queryByTestId(WrapperTestID);
+      if (!Wrapper) {
+        throw new Error('Wrapper not found');
+      }
       const component = Wrapper.findByType(ActivityIndicator);
       expect(component.props.style.flex).toBe(1);
     });
@@ -81,6 +97,9 @@ export function commonTests(SearchBar) {
           <SearchBar searchIcon={{ size: 50 }} lightTheme />
         );
         const Wrapper = queryByTestId(WrapperTestID);
+        if (!Wrapper) {
+          throw new Error('Wrapper not found');
+        }
         const component = Wrapper.findByType(Icon);
         expect(component.props.size).toBe(50);
       });
@@ -90,6 +109,9 @@ export function commonTests(SearchBar) {
           <SearchBar searchIcon={<View />} round />
         );
         const Wrapper = queryByTestId(WrapperTestID);
+        if (!Wrapper) {
+          throw new Error('Wrapper not found');
+        }
         expect(Wrapper.findAllByType(View)).not.toBeNull();
       });
 
@@ -98,6 +120,9 @@ export function commonTests(SearchBar) {
           <SearchBar searchIcon={false} />
         );
         const Wrapper = queryByTestId(SearchBarTestID);
+        if (!Wrapper) {
+          throw new Error('Wrapper not found');
+        }
         expect(Wrapper.props.leftIcon).toBeFalsy();
       });
     });
@@ -112,6 +137,9 @@ export function commonTests(SearchBar) {
           />
         );
         const Wrapper = queryByTestId(WrapperTestID);
+        if (!Wrapper) {
+          throw new Error('Wrapper not found');
+        }
         const component = Wrapper.findByType(Icon);
         expect(component.props.color).toBe('black');
       });
@@ -121,6 +149,9 @@ export function commonTests(SearchBar) {
           <SearchBar clearIcon={<View />} />
         );
         const Wrapper = queryByTestId(WrapperTestID);
+        if (!Wrapper) {
+          throw new Error('Wrapper not found');
+        }
         expect(Wrapper.findAllByType(View)).not.toBeNull();
       });
 
@@ -129,6 +160,9 @@ export function commonTests(SearchBar) {
           <SearchBar clearIcon={false} />
         );
         const Wrapper = queryByTestId(WrapperTestID);
+        if (!Wrapper) {
+          throw new Error('Wrapper not found');
+        }
         expect(Wrapper.props.leftIcon).toBeFalsy();
       });
     });
@@ -143,6 +177,9 @@ export function commonPlatformTest(SearchBar) {
         <SearchBar onCancel={handler} />
       );
       const Wrapper = queryByTestId(SearchBarTestID);
+      if (!Wrapper) {
+        throw new Error('Wrapper not found');
+      }
       fireEvent(Wrapper, 'cancel');
       expect(handler).toBeCalled();
     });
@@ -169,6 +206,9 @@ export function commonPlatformTest(SearchBar) {
             <SearchBar cancelButtonProps={Props} />
           );
           const Wrapper = queryByTestId('RNE__SearchBar-cancelButton');
+          if (!Wrapper) {
+            throw new Error('Wrapper not found');
+          }
           expect(Wrapper.props.style).toMatchObject({
             elevation: 0,
           });
@@ -185,6 +225,9 @@ export function commonPlatformTest(SearchBar) {
             <SearchBar cancelButtonProps={{ disabled: true }} />
           );
           const Wrapper = queryByTestId('RNE__SearchBar-cancelButtonContainer');
+          if (!Wrapper) {
+            throw new Error('Wrapper not found');
+          }
           expect(Wrapper.findByType(Pressable).props.disabled).toBeTruthy();
         });
         it('cancelButtonProps disabled styles', () => {
@@ -198,6 +241,9 @@ export function commonPlatformTest(SearchBar) {
             />
           );
           const Wrapper = queryByTestId('RNE__SearchBar-cancelButton');
+          if (!Wrapper) {
+            throw new Error('Wrapper not found');
+          }
           expect(Wrapper.props.style).toMatchObject({
             backgroundColor: '#cdcdcd',
           });

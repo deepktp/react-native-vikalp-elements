@@ -2,6 +2,7 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { withBadge } from '../index';
 import { renderWithWrapper } from '../../../.ci/testHelper';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('withBadge HOC', () => {
   it('should render', () => {

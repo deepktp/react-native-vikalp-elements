@@ -1,4 +1,9 @@
-import React, { Component } from 'react';
+import React, {
+  useState,
+  useRef,
+  forwardRef,
+  useImperativeHandle,
+} from 'react';
 import {
   Pressable,
   LayoutAnimation,
@@ -13,6 +18,7 @@ import { Icon } from '../Icon';
 import { defaultTheme, renderNode } from '../helpers';
 import { Theme } from '../helpers';
 import { SearchBarIosProps } from './types';
+import { SearchBarRef } from './SearchBar';
 
 export type { SearchBarIosProps };
 
@@ -30,110 +36,100 @@ const defaultClearIcon = (theme: Theme) => ({
   color: theme?.colors?.platform?.ios?.grey,
 });
 
-type SearchBarState = {
-  hasFocus: boolean;
-  isEmpty: boolean;
-  cancelButtonWidth: number | null;
-};
-
-export class SearchBarIOS extends Component<SearchBarIosProps, SearchBarState> {
-  input!: TextInput;
-  static defaultProps = {
-    value: '',
-    cancelButtonTitle: 'Cancel',
-    loadingProps: {},
-    cancelButtonProps: {},
-    showLoading: false,
-    onClear: () => null,
-    onCancel: () => null,
-    onFocus: () => null,
-    onBlur: () => null,
-    onChangeText: () => null,
-    searchIcon: { name: 'search' },
-    clearIcon: { name: 'close-circle' },
-    showCancel: false,
-  };
-
-  constructor(props: SearchBarIosProps) {
-    super(props);
-    const { value } = props;
-    this.state = {
-      hasFocus: false,
-      isEmpty: value ? value === '' : true,
-      cancelButtonWidth: null,
-    };
-  }
-
-  focus = () => {
-    this.input.focus();
-  };
-
-  blur = () => {
-    this.input.blur();
-  };
-
-  clear = () => {
-    this.input.clear();
-    this.onChangeText('');
-    this.props.onClear();
-  };
-
-  cancel = () => {
-    this.onChangeText('');
-    if (this.props.showCancel) {
-      LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-      this.setState({ hasFocus: false });
-    }
-    setTimeout(() => {
-      this.blur();
-      this.props.onCancel();
-    }, 0);
-  };
-
-  onFocus: InputProps['onFocus'] = (event) => {
-    this.props.onFocus(event);
-    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-    this.setState({
-      hasFocus: true,
-      isEmpty: this.props.value === '',
-    });
-  };
-
-  onBlur: InputProps['onBlur'] = (event) => {
-    this.props.onBlur(event);
-    if (!this.props.showCancel) {
-      LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-      this.setState({
-        hasFocus: false,
-      });
-    }
-  };
-
-  onChangeText = (text: string) => {
-    this.props.onChangeText(text);
-    this.setState({ isEmpty: text === '' });
-  };
-
-  render() {
+const SearchBarIOS = forwardRef<SearchBarRef, SearchBarIosProps>(
+  (props, ref) => {
     const {
       theme = defaultTheme,
-      cancelButtonProps,
-      cancelButtonTitle,
-      clearIcon,
+      cancelButtonProps = {},
+      cancelButtonTitle = 'Cancel',
+      clearIcon = { name: 'close-circle' },
       containerStyle,
       leftIconContainerStyle,
       rightIconContainerStyle,
       inputContainerStyle,
       inputStyle,
       placeholderTextColor,
-      showLoading,
-      loadingProps,
-      searchIcon,
-      showCancel,
+      showLoading = false,
+      loadingProps = {},
+      searchIcon = { name: 'search' },
+      showCancel = false,
+      value = '',
+      onClear = () => null,
+      onCancel = () => null,
+      onFocus = () => null,
+      onBlur = () => null,
+      onChangeText = () => null,
       ...attributes
-    } = this.props;
-    const { hasFocus, isEmpty } = this.state;
+    } = props;
+
+    const inputRef = useRef<TextInput>(null);
+    const [hasFocus, setHasFocus] = useState(false);
+    const [isEmpty, setIsEmpty] = useState(value === '');
+    const [cancelButtonWidth, setCancelButtonWidth] = useState<number | null>(
+      null
+    );
+
+    useImperativeHandle(ref, () => ({
+      focus: () => inputRef.current?.focus(),
+      blur: () => inputRef.current?.blur(),
+      clear: () => {
+        inputRef.current?.clear();
+        handleChangeText('');
+        onClear();
+      },
+      cancel: () => {
+        handleChangeText('');
+        if (showCancel) {
+          LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+          setHasFocus(false);
+        }
+        setTimeout(() => {
+          inputRef.current?.blur();
+          onCancel();
+        }, 0);
+      },
+    }));
+
+    const handleFocus: InputProps['onFocus'] = (event) => {
+      onFocus(event);
+      LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+      setHasFocus(true);
+      setIsEmpty(value === '');
+    };
+
+    const handleBlur: InputProps['onBlur'] = (event) => {
+      onBlur(event);
+      if (!showCancel) {
+        LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+        setHasFocus(false);
+      }
+    };
+
+    const handleChangeText = (text: string) => {
+      onChangeText(text);
+      setIsEmpty(text === '');
+    };
+
+    const handleClear = () => {
+      inputRef.current?.clear();
+      handleChangeText('');
+      onClear();
+    };
+
+    const handleCancel = () => {
+      handleChangeText('');
+      if (showCancel) {
+        LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+        setHasFocus(false);
+      }
+      setTimeout(() => {
+        inputRef.current?.blur();
+        onCancel();
+      }, 0);
+    };
+
     const { style: loadingStyle, ...otherLoadingProps } = loadingProps;
+
     const {
       buttonStyle,
       buttonTextStyle,
@@ -157,13 +153,11 @@ export class SearchBarIOS extends Component<SearchBarIosProps, SearchBarState> {
           testID="RNE__SearchBar"
           renderErrorMessage={false}
           {...attributes}
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
-          onChangeText={this.onChangeText}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          onChangeText={handleChangeText}
           // @ts-ignore
-          ref={(input: TextInput) => {
-            this.input = input;
-          }}
+          ref={inputRef}
           inputStyle={StyleSheet.flatten([styles.input, inputStyle])}
           containerStyle={{
             paddingHorizontal: 0,
@@ -172,9 +166,7 @@ export class SearchBarIOS extends Component<SearchBarIosProps, SearchBarState> {
             styles.inputContainer,
             { backgroundColor: theme?.colors?.platform?.ios?.searchBg },
             hasFocus && {
-              marginRight: this.state.cancelButtonWidth
-                ? this.state.cancelButtonWidth
-                : 0,
+              marginRight: cancelButtonWidth ? cancelButtonWidth : 0,
             },
             inputContainerStyle,
           ])}
@@ -199,7 +191,7 @@ export class SearchBarIOS extends Component<SearchBarIosProps, SearchBarState> {
                 renderNode(Icon, clearIcon, {
                   ...defaultClearIcon(theme),
                   key: 'cancel',
-                  onPress: this.clear,
+                  onPress: handleClear,
                 })}
             </View>
           }
@@ -213,20 +205,18 @@ export class SearchBarIOS extends Component<SearchBarIosProps, SearchBarState> {
           style={StyleSheet.flatten([
             styles.cancelButtonContainer,
             {
-              opacity: this.state.cancelButtonWidth === null ? 0 : 1,
-              right: hasFocus
-                ? 0
-                : this.state.cancelButtonWidth && -this.state.cancelButtonWidth,
+              opacity: cancelButtonWidth === null ? 0 : 1,
+              right: hasFocus ? 0 : cancelButtonWidth && -cancelButtonWidth,
             },
           ])}
           onLayout={(event) =>
-            this.setState({ cancelButtonWidth: event.nativeEvent.layout.width })
+            setCancelButtonWidth(event.nativeEvent.layout.width)
           }
           testID="RNE__SearchBar-cancelButtonContainer"
         >
           <Pressable
             accessibilityRole="button"
-            onPress={this.cancel}
+            onPress={handleCancel}
             disabled={buttonDisabled}
             {...otherCancelButtonProps}
           >
@@ -254,7 +244,7 @@ export class SearchBarIOS extends Component<SearchBarIosProps, SearchBarState> {
       </View>
     );
   }
-}
+);
 
 const styles = StyleSheet.create({
   container: {
@@ -294,3 +284,5 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
 });
+
+export default SearchBarIOS;

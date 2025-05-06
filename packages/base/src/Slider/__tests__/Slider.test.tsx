@@ -1,6 +1,7 @@
 import React from 'react';
 import { Slider } from '../index';
 import { act, fireEvent, renderWithWrapper } from '../../../.ci/testHelper';
+import { describe, it, expect } from '@jest/globals';
 
 describe('Slider component', () => {
   it('should match snapshot', () => {

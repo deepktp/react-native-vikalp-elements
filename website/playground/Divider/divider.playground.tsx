@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Divider, defaultTheme as theme } from '@rneui/base';
+import { Divider, defaultTheme as theme } from '@rn-vui/base';
 
 import Playground from '../../src/components/Playground';
 import { useView, PropTypes } from 'react-view';
@@ -31,7 +31,7 @@ const DividerPlayground = () => {
       },
       subHeader: {
         type: PropTypes.String,
-        value: 'React native elements',
+        value: 'React Native vElements',
         description: 'Adds a sub-header next to divider.',
       },
       subHeaderStyle: {
@@ -54,7 +54,7 @@ const DividerPlayground = () => {
       Divider,
     },
     imports: {
-      '@rneui/base': {
+      '@rn-vui/base': {
         named: ['Divider'],
       },
     },

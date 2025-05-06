@@ -117,7 +117,18 @@ exports[`PricingCard component should match snapshot 1`] = `
           accessibilityState={
             {
               "busy": false,
+              "checked": undefined,
               "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
             }
           }
           accessible={true}
@@ -186,6 +197,7 @@ exports[`PricingCard component should match snapshot 1`] = `
                 >
                   <Text
                     allowFontScaling={false}
+                    selectable={false}
                     style={
                       [
                         {
@@ -356,7 +368,18 @@ exports[`PricingCard component should render with props 1`] = `
           accessibilityState={
             {
               "busy": false,
+              "checked": undefined,
               "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
             }
           }
           accessible={true}
@@ -425,6 +448,7 @@ exports[`PricingCard component should render with props 1`] = `
                 >
                   <Text
                     allowFontScaling={false}
+                    selectable={false}
                     style={
                       [
                         {

@@ -1,11 +1,15 @@
 {
   "expo": {
-    "name": "React Native Elements",
-    "owner": "rneui",
+    "name": "React Native vElements",
+    "owner": "rn-vui",
     "slug": "react-native-elements",
-    "description": "A demo app for React Native Elements UI Library",
+    "description": "A demo app for React Native vElements UI Library",
     "privacy": "public",
-    "platforms": ["ios", "android", "web"],
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
     "version": "4.0.0",
     "orientation": "default",
     "primaryColor": "#cccccc",
@@ -16,13 +20,20 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
     "userInterfaceStyle": "automatic",
     "android": {
-      "package": "com.rneui"
-    }
+      "package": "com.rn-vui"
+    },
+    "plugins": [
+      "expo-font",
+      "expo-asset"
+    ],
+    "newArchEnabled": true
   }
 }

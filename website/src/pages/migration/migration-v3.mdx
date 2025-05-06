@@ -8,22 +8,22 @@ To use the v4 version, you first need to update the package names:
 
 ```diff
 - import {} from 'react-native-elements'
-+ import {} from '@rneui/themed'
++ import {} from '@rn-vui/themed'
 ```
 
 You can install the packages from npm or yarn
 
 ```bash
-npm install @rneui/base @rneui/themed
+npm install @rn-vui/base @rn-vui/themed
 
 # or with yarn
-yarn add @rneui/base @rneui/themed
+yarn add @rn-vui/base @rn-vui/themed
 ```
 
 You can also make `alias` for package to help you with migration.
 
 ```bash
-yarn add react-native-elements@npm:@rneui/themed
+yarn add react-native-elements@npm:@rn-vui/themed
 ```
 
 ### Colors
@@ -40,7 +40,7 @@ const colors={
 
 ```diff
 - import { colors } from 'react-native-elements'
-+ import { lightColors, darkColors } from '@rneui/themed'
++ import { lightColors, darkColors } from '@rn-vui/themed'
 ```
 
 ### Theme
@@ -154,7 +154,7 @@ Since `useDark` is deprecated, you can switch `dark` and `light` themeColors usi
 Complete example of root of our application
 
 ```jsx
-import { ThemeProvider, Button, createTheme } from '@rneui/themed';
+import { ThemeProvider, Button, createTheme } from '@rn-vui/themed';
 
 const myTheme = createTheme({
   lightColors: {
@@ -178,7 +178,7 @@ const App = () => {
 You can use props for components while defining themes
 
 ```jsx
-import { createTheme } from '@rneui/themed';
+import { createTheme } from '@rn-vui/themed';
 
 const myTheme = createTheme({
   components: {

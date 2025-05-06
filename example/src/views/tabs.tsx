@@ -1,10 +1,10 @@
-import { Button, Tab as TabBar, TabView, Text } from '@rneui/themed';
+import { Button, Tab as TabBar, TabView, Text } from '@rn-vui/themed';
 import React, { useState } from 'react';
 import { ScrollView } from 'react-native';
 import { Header } from '../components/header';
 
 export default () => {
-  const [activeTabIndex, setActiveTabIndex] = useState<number>(0);
+  const [activeTabIndex, setActiveTabIndex] = useState<number>(5);
 
   return (
     <>
@@ -15,7 +15,7 @@ export default () => {
           height: 3,
         }}
         scrollable
-        activeIndex={activeTabIndex}
+        value={activeTabIndex}
         onChange={setActiveTabIndex}
       >
         <TabBar.Item
@@ -60,7 +60,7 @@ export default () => {
       >
         <TabView.Item style={{ backgroundColor: 'red', width: '100%' }}>
           <ScrollView>
-            <Button onPress={() => setActiveTabIndex(2)}>Jump to Tab 3</Button>
+            <Button onPress={() => setActiveTabIndex(4)}>Jump to Tab 4</Button>
             <Text h1>{Math.random()}</Text>
             <Text h1>Recent 0</Text>
             <Text h1>Recent 0</Text>

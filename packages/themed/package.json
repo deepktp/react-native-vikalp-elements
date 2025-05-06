@@ -1,6 +1,6 @@
 {
-  "name": "@rneui/themed",
-  "version": "5.0.0",
+  "name": "@rn-vui/themed",
+  "version": "5.1.3",
   "description": "Cross Platform React Native UI Toolkit",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -19,8 +19,13 @@
     "react",
     "native",
     "react native",
+    "React Native vElements",
     "react native elements",
+    "react native elements themed",
+    "react native themed",
+    "react native ui",
     "rneui",
+    "rn-vui",
     "themed",
     "react native ui",
     "react native components",
@@ -41,23 +46,23 @@
   "author": "RNE Core Team",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/react-native-elements/react-native-elements/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A%22pkg%3A+themed%22+"
+    "url": "https://github.com/deepktp/react-native-vikalp-elements/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A%22pkg%3A+themed%22+"
   },
-  "homepage": "https://reactnativeelements.com/",
+  "homepage": "https://react-native-velements.thevikalp.com/",
   "collective": {
     "type": "opencollective",
     "url": "https://opencollective.com/react-native-elements",
     "logo": "https://opencollective.com/react-native-elements/logo.txt"
   },
   "peerDependencies": {
-    "@rneui/base": "5.0.0"
+    "@rn-vui/base": "5.1.3"
   },
   "devDependencies": {
-    "@rneui/base": "5.0.0"
+    "@rn-vui/base": "5.1.3"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/react-native-elements/react-native-elements.git",
+    "url": "git+https://github.com/deepktp/react-native-vikalp-elements.git",
     "directory": "packages/themed"
   }
 }

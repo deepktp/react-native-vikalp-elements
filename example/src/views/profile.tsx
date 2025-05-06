@@ -9,7 +9,7 @@ import {
   Dimensions,
   StatusBar,
 } from 'react-native';
-import { Button } from '@rneui/themed';
+import { Button } from '@rn-vui/themed';
 import { LinearGradient } from '../components/LinearGradient';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -38,17 +38,17 @@ const CustomButton: React.FunctionComponent<CustomButtonProps> = (props) => {
       buttonStyle={
         selected
           ? {
-              backgroundColor: 'rgba(213, 100, 140, 1)',
-              borderRadius: 100,
-              width: 127,
-            }
+            backgroundColor: 'rgba(213, 100, 140, 1)',
+            borderRadius: 100,
+            width: 127,
+          }
           : {
-              borderWidth: 1,
-              borderColor: 'white',
-              borderRadius: 30,
-              width: 127,
-              backgroundColor: 'transparent',
-            }
+            borderWidth: 1,
+            borderColor: 'white',
+            borderRadius: 30,
+            width: 127,
+            backgroundColor: 'transparent',
+          }
       }
       containerStyle={{ marginRight: 10 }}
       onPress={() => setSelected(!selected)}

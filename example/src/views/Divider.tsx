@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Divider, useTheme } from '@rneui/themed';
+import { Text, Divider, useTheme } from '@rn-vui/themed';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { Header, SubHeader } from '../components/header';
 

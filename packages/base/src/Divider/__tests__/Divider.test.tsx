@@ -1,6 +1,7 @@
 import React from 'react';
 import { Divider } from '../index';
 import { renderWithWrapper } from '../../../.ci/testHelper';
+import { describe, it, expect } from '@jest/globals';
 
 describe('Divider Component', () => {
   it('should match snapshot', () => {

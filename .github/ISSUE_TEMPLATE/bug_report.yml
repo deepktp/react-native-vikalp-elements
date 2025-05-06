@@ -1,6 +1,6 @@
 name: 🐛 Bug report
 description: Create a report to help us improve
-labels: ["Needs Triage"]
+labels: ['Needs Triage']
 body:
   - type: markdown
     attributes:
@@ -50,13 +50,13 @@ body:
   - type: textarea
     attributes:
       label: Your Environment
-      description: Run `npx @rneui/envinfo` and paste the results.
+      description: Run `npx @rn-vui/envinfo` and paste the results.
       value: |
         <details>
-        <summary>`npx @rneui/envinfo`</summary>
+        <summary>`npx @rn-vui/envinfo`</summary>
 
               ```
-                Output from `npx @rneui/envinfo` goes here.
+                Output from `npx @rn-vui/envinfo` goes here.
               ```
 
         </details>

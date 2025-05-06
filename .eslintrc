@@ -1,5 +1,5 @@
 {
-  "extends": "@react-native-community",
+  "extends": "@react-native",
   "rules": {
     "react-native/no-inline-styles": 0,
     "@typescript-eslint/no-unused-vars": [
@@ -7,5 +7,9 @@
       { "ignoreRestSiblings": true }
     ],
     "no-console": ["error", { "allow": ["warn", "error"] }]
+  },
+  "parserOptions": {
+    "parser": "@babel/eslint-parser",
+    "requireConfigFile": false
   }
 }

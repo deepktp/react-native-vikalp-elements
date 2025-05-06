@@ -7,7 +7,7 @@ import {
   Icon,
   SearchBarProps,
   Switch,
-} from '@rneui/themed';
+} from '@rn-vui/themed';
 import { Header } from '../components/header';
 import { ThemeReducerContext } from '../helpers/ThemeReducer';
 

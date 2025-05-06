@@ -4,6 +4,7 @@ import { Input } from '../index';
 import { renderWithWrapper } from '../../../.ci/testHelper';
 import { fireEvent } from '@testing-library/react-native';
 import { Icon } from '../../Icon';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('Input component', () => {
   it('should match snapshot', () => {
