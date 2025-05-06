@@ -1,7 +1,6 @@
 {
   "name": "rn-vui",
   "displayName": "React Native vElements UI Toolkit",
-  "private": true,
   "packageManager": "yarn@4.5.2",
   "workspaces": {
     "packages": [
@@ -63,7 +62,7 @@
   "bugs": {
     "url": "https://github.com/deepktp/react-native-vikalp-elements/issues"
   },
-  "homepage": "https://thevikalpui.netlify.app/",
+  "homepage": "https://react-native-velements.thevikalp.com/",
   "collective": {
     "type": "opencollective",
     "url": "https://opencollective.com/react-native-elements",

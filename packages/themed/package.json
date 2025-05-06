@@ -1,6 +1,6 @@
 {
   "name": "@rn-vui/themed",
-  "version": "5.1.0",
+  "version": "5.1.3",
   "description": "Cross Platform React Native UI Toolkit",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -48,17 +48,17 @@
   "bugs": {
     "url": "https://github.com/deepktp/react-native-vikalp-elements/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A%22pkg%3A+themed%22+"
   },
-  "homepage": "https://thevikalpui.netlify.app/",
+  "homepage": "https://react-native-velements.thevikalp.com/",
   "collective": {
     "type": "opencollective",
     "url": "https://opencollective.com/react-native-elements",
     "logo": "https://opencollective.com/react-native-elements/logo.txt"
   },
   "peerDependencies": {
-    "@rn-vui/base": "5.1.0"
+    "@rn-vui/base": "5.1.3"
   },
   "devDependencies": {
-    "@rn-vui/base": "5.1.0"
+    "@rn-vui/base": "5.1.3"
   },
   "repository": {
     "type": "git",
