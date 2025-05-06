@@ -14,7 +14,7 @@ import { RneFunctionComponent } from '../helpers';
 
 export interface TabViewProps {
   /** Child position index value. */
-  activeIndex?: number;
+  value?: number;
 
   /** On Index Change Callback. */
   onChange?: (value: number) => any;
@@ -63,7 +63,7 @@ export interface TabViewProps {
 /** Tabs organize content across different screens, data sets, and other interactions.
  * TabView enables swipeable tabs. */
 export const TabViewBase: RneFunctionComponent<TabViewProps> = ({
-  activeIndex = 0,
+  value: activeIndex = 0,
   children,
   onChange = () => {},
   onSwipeStart = () => {},
