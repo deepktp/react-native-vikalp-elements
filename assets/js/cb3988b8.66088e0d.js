@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkrne_website=self.webpackChunkrne_website||[]).push([[1422],{52863:e=>{e.exports=JSON.parse('{"tag":{"label":"Open Source","permalink":"/docs/5.0.0/tags/open-source","allTagsPath":"/docs/5.0.0/tags","count":1,"items":[{"id":"repo/contributing","title":"","description":"","permalink":"/docs/5.0.0/contributing"}],"unlisted":false}}')}}]);
