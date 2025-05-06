@@ -13,7 +13,9 @@ import Play from "@site/playground/ButtonGroup/buttongroup.playground";
 
 <IconsStyle />
 
-ButtonGroup is a linear set of segments, each of which function as a button that can display a different view/or perform a different action. Use a ButtonGroup to offer choices that are closely related but mutually exclusive. This component inherits [all native TouchableHighlight and TouchableOpacity props that come with React Native TouchableHighlight or TouchableOpacity elements](https://reactnative.dev/docs/touchablehighlight.html).
+ButtonGroup is a linear set of segments, each of which function as a button that can display a different view/or perform a different action.
+Use a ButtonGroup to offer choices that are closely related but mutually exclusive.
+This component inherits [all native TouchableHighlight and TouchableOpacity props that come with React Native TouchableHighlight or TouchableOpacity elements](https://reactnative.dev/docs/touchablehighlight.html).
 
 <div class="row inline-flex-center">
   <div class="col col--3">
@@ -37,49 +39,6 @@ ButtonGroup is a linear set of segments, each of which function as a button that
 
 ## Usage
 
-### Icon
-
-```tsx live
-{
-  const [selectedIndex, setSelectedIndex] = React.useState(0);
-  return (
-    <ButtonGroup
-      buttonStyle={{ padding: 10 }}
-      selectedButtonStyle={{ backgroundColor: "#e2e2e2" }}
-      buttons={[
-        <Icon name="format-align-left" />,
-        <Icon name="format-align-center" />,
-        <Icon name="format-align-right" />,
-      ]}
-      selectedIndex={selectedIndex}
-      onPress={setSelectedIndex}
-    />
-  );
-}
-```
-
-### Multi Select
-
-```tsx live
-{
-  const [selectedIndex, setSelectedIndex] = React.useState([]);
-  return (
-    <ButtonGroup
-      selectMultiple
-      buttonStyle={{ padding: 10 }}
-      selectedButtonStyle={{ backgroundColor: "#e2e2e2" }}
-      buttons={[
-        <Icon name="format-bold" />,
-        <Icon name="format-italic" />,
-        <Icon name="format-underline" />,
-      ]}
-      selectedIndexes={selectedIndex}
-      onPress={setSelectedIndex}
-    />
-  );
-}
-```
-
 <Usage />
 
 ## Props
@@ -93,14 +52,14 @@ ButtonGroup is a linear set of segments, each of which function as a button that
 | `button`                    | object                                              |                   | Button for the component.                                                                                                            |
 | `buttonContainerStyle`      | View Style                                          |                   | Specify styling for button containers.                                                                                               |
 | `buttonStyle`               | View Style                                          |                   | Specify styling for button.                                                                                                          |
-| `buttons`                   | `(string` \| `ButtonComponent` \| `ButtonObject)[]` |                   | Array of buttons for component (required), if returning a component, must be an object with { element: componentName }.              |
+| `buttons`                   | `(string` \| `ButtonComponent` \| `ButtonObject)[]` |                   | Array of buttons for component (required), if returning a component, must be an object with `{ element: componentName }`.            |
 | `containerStyle`            | View Style                                          |                   | Specify styling for main button container.                                                                                           |
 | `disabled`                  | `boolean` \| `number[]`                             | `false`           | Controls if buttons are disabled. Setting `true` makes all of them disabled, while using an array only makes those indices disabled. |
 | `disabledSelectedStyle`     | View Style                                          |                   | Styling for each selected button when disabled.                                                                                      |
 | `disabledSelectedTextStyle` | Text Style                                          |                   | Styling for the text of each selected button when disabled.                                                                          |
 | `disabledStyle`             | View Style                                          |                   | Styling for each button when disabled.                                                                                               |
 | `disabledTextStyle`         | Text Style                                          |                   | Styling for the text of each button when disabled.                                                                                   |
-| `innerBorderStyle`          | { color?: string; width?: number; }                 |                   | Update the styling of the interior border of the list of buttons.                                                                    |
+| `innerBorderStyle`          | `{ color: string; width: number; }`                 |                   | Update the styling of the interior border of the list of buttons.                                                                    |
 | `onHideUnderlay`            | Function                                            |                   | Function called on hiding underlay.                                                                                                  |
 | `onLongPress`               | GestureResponderEventHandler                        |                   | Called when a long-tap gesture is detected.                                                                                          |
 | `onPress`                   | (...args: any[]) => void                            | `Function`        | Method to update Button Group Index.                                                                                                 |

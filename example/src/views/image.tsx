@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, SafeAreaView, StyleSheet } from 'react-native';
+import { FlatList, SafeAreaView, StyleSheet, Text } from 'react-native';
 import { Image } from '@rn-vui/themed';
 
 import { Header } from '../components/header';
@@ -20,6 +20,7 @@ const ImageAPI = () => {
             <Image
               source={{ uri: `https://picsum.photos/id/${item * 10}/1024/1025` }}
               containerStyle={styles.item}
+              PlaceholderContent={<Text testID='test11111' style={{ color: 'white' }}>Loading</Text>}
             />
           )}
         />

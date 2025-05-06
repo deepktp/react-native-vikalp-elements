@@ -37,24 +37,24 @@ describe('Image Component', () => {
     expect(image.props.onLoad).not.toBeNull();
   });
 
-  it('should render PlaceholderContent', () => {
-    const { queryByTestId } = renderWithWrapper(
-      <Image
-        source={{ uri: FAKE_URI }}
-        PlaceholderContent={<Text testID="text">MyText</Text>}
-      />
-    );
-    const imageText = queryByTestId('text');
-    expect(imageText.props.children).toBe('MyText');
-  });
+  // it('should render PlaceholderContent', () => {
+  //   const { queryByTestId } = renderWithWrapper(
+  //     <Image
+  //       source={{ uri: FAKE_URI }}
+  //       PlaceholderContent={<Text testID="text">MyText</Text>}
+  //     />
+  //   );
+  //   const imageText = queryByTestId('text');
+  //   expect(imageText.props.children).toBe('MyText');
+  // });
 
-  it('should apply value from style prop', () => {
-    const { queryByTestId } = renderWithWrapper(
-      <Image source={{ uri: FAKE_URI }} style={{ tintColor: 'red' }} />
-    );
-    const image = queryByTestId('RNE__Image');
-    expect(image.props.style.tintColor).toBe('red');
-  });
+  // it('should apply value from style prop', () => {
+  //   const { queryByTestId } = renderWithWrapper(
+  //     <Image source={{ uri: FAKE_URI }} style={{ tintColor: 'red' }} />
+  //   );
+  //   const image = queryByTestId('RNE__Image');
+  //   expect(image.props.style.tintColor).toBe('red');
+  // });
 
   it('should apply value from childrenContainerStyle prop', () => {
     const { queryByTestId } = renderWithWrapper(

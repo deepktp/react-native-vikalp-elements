@@ -54,6 +54,14 @@ jobs:
               }
             };
 
+            // Check if the issue has the "bug" label
+            const labels = issue?.labels?.map(label => label.name) || [];
+            const isBug = labels.includes('bug');
+
+            if (!isBug) {
+              return; // Exit if the issue is not labeled as "bug"
+            }
+
             if (hasRepro) {
               await addLabel('repro provided');
               await removeLabel('needs repro');

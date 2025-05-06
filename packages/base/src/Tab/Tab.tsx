@@ -29,7 +29,7 @@ export interface TabProps extends ViewProps, ParentProps {
   variant?: 'primary' | 'default';
 
   /** active index */
-  activeIndex?: number;
+  value?: number;
 
   /** Animation type */
   animationType?: 'timing' | 'spring';
@@ -99,7 +99,7 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
   buttonStyle,
   titleStyle,
   containerStyle,
-  activeIndex = 0,
+  value: activeIndex = 0,
   animationType = 'spring',
   animationConfig = {},
   ...rest
@@ -247,6 +247,7 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
   return (
     <View
       {...rest}
+      accessible
       accessibilityRole="tablist"
       style={[
         variant === 'primary' && {
