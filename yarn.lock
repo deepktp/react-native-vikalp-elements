@@ -3984,11 +3984,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rn-vui/base@npm:5.1.0, @rn-vui/base@workspace:packages/base":
+"@rn-vui/base@npm:5.1.1, @rn-vui/base@workspace:packages/base":
   version: 0.0.0-use.local
   resolution: "@rn-vui/base@workspace:packages/base"
   dependencies:
-    "@rn-vui/ratings": "npm:^0.4.1"
+    "@rn-vui/ratings": "npm:^0.4.3"
     "@types/color": "npm:^3.0.3"
     "@types/hoist-non-react-statics": "npm:^3.3.1"
     "@types/react-native-vector-icons": "npm:^6.4.10"
@@ -4017,18 +4017,18 @@ __metadata:
     lodash.orderby: "npm:^4.6.0"
     ora: "npm:5.4.1"
     react-docgen-typescript: "npm:^2.2.2"
-    react-dom: "npm:18.0.0"
-    typescript: "npm:^4.6.4"
+    react-dom: "npm:18.3.1"
+    typescript: "npm:^5.0.4"
   languageName: unknown
   linkType: soft
 
-"@rn-vui/ratings@npm:^0.4.1":
-  version: 0.4.1
-  resolution: "@rn-vui/ratings@npm:0.4.1"
+"@rn-vui/ratings@npm:^0.4.3":
+  version: 0.4.3
+  resolution: "@rn-vui/ratings@npm:0.4.3"
   peerDependencies:
     react: "*"
     react-native: "*"
-  checksum: 10/af86d516409a8e444a45f2f6a545d5cbe5865ed9c1ab16df280b372c265ec259206f253844e2ee85dfe05d6527f5f919e6aaa50e9c148b407acf4142a176cbc7
+  checksum: 10/67a2ed027d11978d3df8a83fafd7e7b19e819a03dac896d375fdd0fb7f92bcd4ae899c3eda6ed1637091d5cc4214ba1173face825d32574410961d16603d2a66
   languageName: node
   linkType: hard
 
@@ -4036,9 +4036,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@rn-vui/themed@workspace:packages/themed"
   dependencies:
-    "@rn-vui/base": "npm:5.1.0"
+    "@rn-vui/base": "npm:5.1.1"
   peerDependencies:
-    "@rn-vui/base": 5.1.0
+    "@rn-vui/base": 5.1.1
   languageName: unknown
   linkType: soft
 
@@ -15483,18 +15483,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:18.0.0":
-  version: 18.0.0
-  resolution: "react-dom@npm:18.0.0"
-  dependencies:
-    loose-envify: "npm:^1.1.0"
-    scheduler: "npm:^0.21.0"
-  peerDependencies:
-    react: ^18.0.0
-  checksum: 10/b02837ceb6639d56778a7199e4d32a3d5cedff5345e369035cb72aa6361428be299955b77d2b87080f353b3fc9d3cea63b4c845ded7231979256cfb8f05925a9
-  languageName: node
-  linkType: hard
-
 "react-dom@npm:18.3.1":
   version: 18.3.1
   resolution: "react-dom@npm:18.3.1"
@@ -16544,15 +16532,6 @@ __metadata:
   dependencies:
     loose-envify: "npm:^1.1.0"
   checksum: 10/862881c8d3ece854331516cc048e26a86af461e896ab412506a5b1ffcc82990a08445e0127545ab524df15f88c2a691d8505fc2226a9bddf99bf8a8425bdcc0e
-  languageName: node
-  linkType: hard
-
-"scheduler@npm:^0.21.0":
-  version: 0.21.0
-  resolution: "scheduler@npm:0.21.0"
-  dependencies:
-    loose-envify: "npm:^1.1.0"
-  checksum: 10/216dbe36490f8c3133eee8352061803c377de6eb80d4a8f7f290819a721a21135aba145db28ad3e34056115f1a8c0d7e1cd477cebd3d01f6d98e28cc31fc702a
   languageName: node
   linkType: hard
 
@@ -18368,16 +18347,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^4.6.4":
-  version: 4.9.5
-  resolution: "typescript@npm:4.9.5"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 10/458f7220ab11e0fc191514cc41be1707645ec9a8c2d609448a448e18c522cef9646f58728f6811185a4c35613dacdf6c98cf8965c88b3541d0288c47291e4300
-  languageName: node
-  linkType: hard
-
 "typescript@npm:^5.0.4":
   version: 5.8.3
   resolution: "typescript@npm:5.8.3"
@@ -18385,16 +18354,6 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 10/65c40944c51b513b0172c6710ee62e951b70af6f75d5a5da745cb7fab132c09ae27ffdf7838996e3ed603bb015dadd099006658046941bd0ba30340cc563ae92
-  languageName: node
-  linkType: hard
-
-"typescript@patch:typescript@npm%3A^4.6.4#optional!builtin<compat/typescript>":
-  version: 4.9.5
-  resolution: "typescript@patch:typescript@npm%3A4.9.5#optional!builtin<compat/typescript>::version=4.9.5&hash=289587"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 10/5659316360b5cc2d6f5931b346401fa534107b68b60179cf14970e27978f0936c1d5c46f4b5b8175f8cba0430f522b3ce355b4b724c0ea36ce6c0347fab25afd
   languageName: node
   linkType: hard
 

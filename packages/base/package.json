@@ -1,6 +1,6 @@
 {
   "name": "@rn-vui/base",
-  "version": "5.1.0",
+  "version": "5.1.1",
   "description": "Cross Platform React Native UI Toolkit",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -44,7 +44,7 @@
   },
   "homepage": "https://thevikalpui.netlify.app/",
   "dependencies": {
-    "@rn-vui/ratings": "^0.4.1",
+    "@rn-vui/ratings": "^0.4.3",
     "@types/react-native-vector-icons": "^6.4.10",
     "color": "^3.2.1",
     "deepmerge": "^4.2.2",
