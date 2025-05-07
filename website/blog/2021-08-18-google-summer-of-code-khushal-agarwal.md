@@ -1,7 +1,7 @@
 ---
 title: Google Summer of Code'21 Khushal Agarwal
 
-author: Khushal Agarwal
+author: khushal
 
 authorURL: https://github.com/khushal87
 ---
@@ -17,6 +17,8 @@ authorURL: https://github.com/khushal87
 </div>
 
 This summer, I was pleased to get selected for Google Summer of Code'21 under the organization [React Native vElements](https://github.com/react-native-elements). Working under the organization, my project was to **generate documentation automatically out of the UI components and present it in the Docusaurus website**.
+
+<!-- truncate -->
 
 <div  align="center">
 

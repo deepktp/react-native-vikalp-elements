@@ -126,6 +126,7 @@ const config = {
       theme: require('prism-react-renderer/themes/github'),
       darkTheme: require('prism-react-renderer/themes/shadesOfPurple'),
       defaultLanguage: 'typescript',
+      additionalLanguages: ['diff'],
     },
     algolia: {
       appId: 'RE3E65KUI0',
