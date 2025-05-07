@@ -1,6 +1,6 @@
 ## React Native vElements website
 
-https://thevikalpui.netlify.app/
+https://react-native-velements.thevikalp.com//
 
 ### Getting Started
 

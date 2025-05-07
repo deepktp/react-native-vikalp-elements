@@ -26,6 +26,8 @@ The **Google Summer of Code 2021** has been a fantastic and cheerful learning ex
 <img src='https://raw.githubusercontent.com/arpitBhalla/google-summer-of-code/master/assets//contri.png' width='900' />
 </div>
 
+<!-- truncate -->
+
 ## 🚘 Work Abstract
 
 ### Refactor components to use `Pressable` API [(#3170)](https://github.com/react-native-elements/react-native-elements/pull/3170)
