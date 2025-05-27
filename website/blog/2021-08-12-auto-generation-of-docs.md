@@ -1,7 +1,7 @@
 ---
 title: Auto-generation of Documentation Website
 
-author: Khushal Agarwal
+author: khushal
 
 authorURL: https://github.com/khushal87
 ---
@@ -19,6 +19,8 @@ This is a 2 step process:
 1. We take use of `react-docgen-typescript` which takes the input of the files for which we want to generate the documentation automatically. This gives in JSON as output. This JSON consists of all the details of the props including `type`, `name`, `description` and `defaultValue` and well as `description` of the components.
 
 2. As we use Docusaurus for our documentation website, the pages of the documentation should be in the format of Markdown. Therefore, there should be process where we can change the JSON data, which we get from `react-docgen-typescript` to a suitable Markdown format. For this we use, `json2md` which takes in the data and convert it to suitable markdown string. This is stored in the directory and is shown on the website.
+
+<!-- truncate -->
 
 #### How does this work
 
