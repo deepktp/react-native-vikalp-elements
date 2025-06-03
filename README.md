@@ -21,28 +21,27 @@ Cross Platform <a href="https://reactnative.dev">React Native</a> UI Toolkit
 
 <p align="center">
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square&color=0089E3"></a>
-  <a href="https://github.com/react-native-elements/react-native-elements"><img src="https://img.shields.io/github/stars/react-native-elements/react-native-elements?label=stars&logo&style=flat-square&color=0089E3"></a>
-  <a href="https://github.com/react-native-elements/react-native-elements/actions/workflows/bleeding-edge-dist.yml"><img src="https://img.shields.io/github/actions/workflow/status/react-native-elements/react-native-elements/bleeding-edge-dist.yml?branch=next&style=flat-square"></a>
+  <a href="https://github.com/deepktp/react-native-vikalp-elements"><img src="https://img.shields.io/github/stars/deepktp/react-native-vikalp-elements?label=stars&logo&style=flat-square&color=0089E3"></a>
+  <a href="https://github.com/deepktp/react-native-vikalp-elements/actions/workflows/bleeding-edge-dist.yml"><img src="https://img.shields.io/github/actions/workflow/status/deepktp/react-native-vikalp-elements/bleeding-edge-dist.yml?branch=next&style=flat-square"></a>
   <a href="https://github.com/prettier/prettier"><img src="https://img.shields.io/badge/styled_with-prettier-F7B93E.svg?style=flat-square"></a>
-  <a href="https://codecov.io/gh/react-native-elements/react-native-elements"><img src="https://img.shields.io/codecov/c/gh/react-native-elements/react-native-elements?color=F01F7A&style=flat-square"></a>
 </p>
 
 <div align="center">
   <a href="https://twitter.com/rn_elements"><img src="https://img.shields.io/twitter/follow/rn_elements?style=flat-square&label=Twitter&logo=TWITTER&color=0089E3"></a>
-  <a href="https://github.com/react-native-elements/react-native-elements/discussions"><img src="https://img.shields.io/github/discussions/react-native-elements/react-native-elements?label=Discussions&logo=github&style=flat-square"></a>
+  <a href="https://github.com/deepktp/react-native-vikalp-elements/discussions"><img src="https://img.shields.io/github/discussions/deepktp/react-native-vikalp-elements?label=Discussions&logo=github&style=flat-square"></a>
   <a href="https://discord.com/invite/e9RBHjkKHa"><img src="https://img.shields.io/badge/Join-Discord-5865F2?style=flat-square&logo=discord&logoColor=FFFFFF"></a>
 
 </div>
 
 <p align="center">
-  <a href="#backers"><img src="https://opencollective.com/react-native-elements/backers/badge.svg?style=flat-square&color=0089E3"></a>
-  <a href="#sponsors"><img src="https://opencollective.com/react-native-elements/sponsors/badge.svg?style=flat-square&color=0089E3&logo=opencollective"></a>
-  <a href="https://github.com/sponsors/react-native-elements"><img src="https://img.shields.io/github/sponsors/react-native-elements?label=Sponsor&logo=githubsponsors&style=flat-square"></a>
+  <a href="#"><img src="https://opencollective.com/react-native-elements/backers/badge.svg?style=flat-square&color=0089E3"></a>
+  <a href="#"><img src="https://opencollective.com/react-native-elements/sponsors/badge.svg?style=flat-square&color=0089E3&logo=opencollective"></a>
+  <a href="#"><img src="https://img.shields.io/github/sponsors/react-native-elements?label=Sponsor&logo=githubsponsors&style=flat-square"></a>
 </p>
 
 <div align="center">
 
-<a href="https://react-native-velements.thevikalp.com/">Getting Started 🚀</a> - <a href="https://react-native-velements.thevikalp.com//docs">Documentation 📚</a> - <a href="https://expo.dev/@rn-vui/react-native-elements">Expo demo </a> - <a href="https://react-native-velements.thevikalp.com//blog">Blog</a> - <a href="https://github.com/react-native-elements/react-native-elements/releases">Releases</a>
+<a href="https://react-native-velements.thevikalp.com/">Getting Started 🚀</a> - <a href="https://react-native-velements.thevikalp.com//docs">Documentation 📚</a> - <a href="https://expo.dev/@rn-vui/react-native-elements">Expo demo </a> - <a href="https://react-native-velements.thevikalp.com//blog">Blog</a> - <a href="https://github.com/deepktp/react-native-vikalp-elements/releases">Releases</a>
 
 </div>
 
@@ -91,7 +90,7 @@ Checkout the official
 on Expo which uses all of the React Native vElements components.
 
 If you are looking to contribute to the React Native vElements App,
-[here](https://github.com/react-native-elements/react-native-elements/tree/next/example) to
+[here](https://github.com/deepktp/react-native-vikalp-elements/tree/next/example) to
 view the implementation & Use this command to start example app locally
 
 ```bash
@@ -113,22 +112,22 @@ Interested in contributing to this repo? Check out our
 and submit a PR for a new feature/bug fix.
 
 A big shoutout to all our contributors! You could be here too!
-<a href="https://github.com/react-native-elements/react-native-elements/graphs/contributors">
-<img src="https://contrib.rocks/image?repo=react-native-elements/react-native-elements" />
+<a href="https://github.com/deepktp/react-native-vikalp-elements/graphs/contributors">
+<img src="https://contrib.rocks/image?repo=deepktp/react-native-vikalp-elements" />
 </a>
 
 ### First Contributors
 
 We encourage everyone to contribute & submit PR's especially first-time
 contributors. Look for the label `Good First Issue` on the issues. Click
-[here](https://github.com/react-native-elements/react-native-elements/labels/Good%20First%20Issue)
+[here](https://github.com/deepktp/react-native-vikalp-elements/labels/Good%20First%20Issue)
 to see them.
 
 If there is something you's like to see or request a new feature, please submit
 an
-[issue](https://github.com/react-native-elements/react-native-elements/issues/new)
+[issue](https://github.com/deepktp/react-native-vikalp-elements/issues/new)
 or a
-[pull request](https://github.com/react-native-elements/react-native-elements/pulls).
+[pull request](https://github.com/deepktp/react-native-vikalp-elements/pulls).
 
 ### Community
 
@@ -173,7 +172,7 @@ or a
 
 ## Sponsors
 
-Do you use React Native vElements in production? If so, consider supporting this project as it will allow the maintainers to dedicate more time to maintaining this project and also building new features for everyone. Also, your app or company's logo will show [on GitHub](https://github.com/react-native-elements/react-native-elements#sponsors) and link to your website - who doesn't want a little extra exposure? [Here's the info](https://opencollective.com/react-native-elements#sponsor). Check our sponsors on [website](https://react-native-velements.thevikalp.com//sponsor).
+Do you use React Native vElements in production? If so, consider supporting this project as it will allow the maintainers to dedicate more time to maintaining this project and also building new features for everyone. Also, your app or company's logo will show [on GitHub](https://github.com/deepktp/react-native-vikalp-elements#sponsors) and link to your website - who doesn't want a little extra exposure? [Here's the info](https://opencollective.com/react-native-elements#sponsor). Check our sponsors on [website](https://react-native-velements.thevikalp.com//sponsor).
 
 [![React Native vElements Backer](https://opencollective.com/react-native-elements/sponsor/0/avatar)](https://opencollective.com/react-native-elements/sponsor/0/website)
 [![React Native vElements Backer](https://opencollective.com/react-native-elements/sponsor/1/avatar)](https://opencollective.com/react-native-elements/sponsor/1/website)
