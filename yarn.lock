@@ -3988,7 +3988,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@rn-vui/base@workspace:packages/base"
   dependencies:
-    "@rn-vui/ratings": "npm:^0.4.3"
+    "@rn-vui/ratings": "npm:^0.5.0"
     "@types/color": "npm:^3.0.3"
     "@types/hoist-non-react-statics": "npm:^3.3.1"
     "@types/react-native-vector-icons": "npm:^6.4.10"
@@ -4022,13 +4022,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@rn-vui/ratings@npm:^0.4.3":
-  version: 0.4.3
-  resolution: "@rn-vui/ratings@npm:0.4.3"
+"@rn-vui/ratings@npm:^0.5.0":
+  version: 0.5.0
+  resolution: "@rn-vui/ratings@npm:0.5.0"
   peerDependencies:
     react: "*"
     react-native: "*"
-  checksum: 10/67a2ed027d11978d3df8a83fafd7e7b19e819a03dac896d375fdd0fb7f92bcd4ae899c3eda6ed1637091d5cc4214ba1173face825d32574410961d16603d2a66
+  checksum: 10/65b7dad752d5529045b5ac717dfc7b208055f12029a9bcf7a06fbc7480bf3ebf11bc75a61f29819734ce7efc9eaa3e0aed362b2a59d64a33a629ed1b6686f559
   languageName: node
   linkType: hard
 
