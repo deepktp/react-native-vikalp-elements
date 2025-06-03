@@ -41,4 +41,4 @@ jobs:
           publish_dir: ./website/build
           user_name: 'React Native vElements CI'
           user_email: 'react-native-elements-ci@users.noreply.github.com'
-          cname: https://thevikalpui.netlify.app
+          cname: https://react-native-velements.thevikalp.com/

@@ -6,6 +6,12 @@ arpitBhalla:
   email: arpitbhallay@proton.me
   twitter: arpitbhalla_
 
+khushal:
+  name: Khushal
+  title: GSoC'21 fellow
+  image_url: https://github.com/khushal87.png
+  url: https://github.com/khushal87
+
 flyingcircle:
   name: Jeremy Hamilton
   title: Maintainer
@@ -20,6 +26,13 @@ rneui:
 
 rn-vui:
   name: RNvE Core Team
-  title: React Native Elements
+  title: React Native Vikalp Elements
   url: http://twitter.com/rn_elements/
   image_url: https://github.com/rneui.png
+
+deepktp:
+  name: Deepak Yadav
+  title: Maintainer
+  url: https://github.com/deepktp
+  image_url: https://github.com/deepktp.png
+  email: 'deepktp7@gmail.com'

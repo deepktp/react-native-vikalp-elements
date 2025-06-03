@@ -1,6 +1,6 @@
 {
   "name": "@rn-vui/base",
-  "version": "5.1.3",
+  "version": "5.1.5",
   "description": "Cross Platform React Native UI Toolkit",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -44,7 +44,7 @@
   },
   "homepage": "https://react-native-velements.thevikalp.com/",
   "dependencies": {
-    "@rn-vui/ratings": "^0.4.3",
+    "@rn-vui/ratings": "^0.5.0",
     "@types/react-native-vector-icons": "^6.4.10",
     "color": "^3.2.1",
     "deepmerge": "^4.2.2",
