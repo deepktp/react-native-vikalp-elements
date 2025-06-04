@@ -53,8 +53,8 @@ This documentation is for Swipe Rating version.
 | `imageSize`             | number                                              | `50`              | The size of each rating image                                                                            |
 | `jumpValue`             | number                                              | `0 (not to jump)` | The number to jump per swipe                                                                             |
 | `minValue`              | number                                              | `0`               | The minimum value the user can select                                                                    |
-| `onFinishRating`        | Function                                            |                   | Callback method when the user finishes rating. Gives you the final rating value as a whole number        |
-| `onStartRating`         | Function                                            |                   | Callback method when the user starts rating.                                                             |
+| `onFinishRating`        | (value: number) => void                             |                   | Callback method when the user finishes rating. Gives you the final rating value as a whole number        |
+| `onStartRating`         | (value: number) => void                             |                   | Callback method when the user starts rating.                                                             |
 | `onSwipeRating`         | (value: number) => void                             |                   | Callback method when the user is swiping.                                                                |
 | `ratingBackgroundColor` | string                                              | `'white'`         | Pass in a custom background-fill-color for the rating icon; use this along with type='custom' prop above |
 | `ratingColor`           | string                                              | `'#f1c40f'`       | Pass in a custom fill-color for the rating icon; use this along with type='custom' prop above            |

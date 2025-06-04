@@ -3763,8 +3763,8 @@ __metadata:
   linkType: hard
 
 "@rn-vui/base@file:../packages/base::locator=rne-website%40workspace%3A.":
-  version: 5.1.5
-  resolution: "@rn-vui/base@file:../packages/base#../packages/base::hash=84f8b8&locator=rne-website%40workspace%3A."
+  version: 5.1.6
+  resolution: "@rn-vui/base@file:../packages/base#../packages/base::hash=f022d9&locator=rne-website%40workspace%3A."
   dependencies:
     "@rn-vui/ratings": "npm:^0.5.0"
     "@types/react-native-vector-icons": "npm:^6.4.10"
