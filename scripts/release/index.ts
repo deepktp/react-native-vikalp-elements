@@ -67,7 +67,7 @@ class Release {
     // if version bump is patch then update the version
     // is version bump is minor or major then create new version on website
 
-    if (semver.diff(oldVersion, newVersion) === 'patch') {
+    if (semver.diff(oldVersion, newVersion) === 'patch' || semver.diff(oldVersion, newVersion) === 'minor') {
       //need to rename website/versioned_docs/version-${oldVersion} to website/versioned_docs/version-${newVersion}
       const oldVersionPath = path.resolve(
         websiteRootPath,
@@ -148,6 +148,86 @@ class Release {
         );
         if (index !== -1) {
           versions[index] = newVersion;
+        } else {
+          // if oldVersion does not exist, add new version to the array
+          versions.unshift(newVersion);
+        }
+        // write the updated versions array to versions.json
+        fs.writeFileSync(versionsPath, JSON.stringify(versions, null, 2));
+      } else {
+        console.error(
+          `Versions path ${versionsPath} does not exist. Please check the path.`
+        );
+      }
+    } else if (semver.diff(oldVersion, newVersion) === 'major') {
+
+      //if major version bump then create new version on website
+      const newVersionPath = path.resolve(
+        websiteRootPath,
+        `versioned_docs/version-${newVersion}`
+      );
+      const newSidebarsPath = path.resolve(
+        websiteRootPath,
+        `versioned_sidebars/version-${newVersion}-sidebars.json`
+      );
+      const docsPath = path.resolve(websiteRootPath, 'docs');
+      //create new versioned_docs/version-${newVersion} and versioned_sidebars/version-${newVersion}-sidebars.json
+      if (!fs.existsSync(newVersionPath)) {
+        fs.mkdirSync(newVersionPath, { recursive: true });
+        console.log(`Created new versioned_docs/version-${newVersion}`);
+      }
+      if (!fs.existsSync(newSidebarsPath)) {
+        fs.writeFileSync(newSidebarsPath, '{}');
+        console.log(`Created new versioned_sidebars/version-${newVersion}-sidebars.json`);
+      }
+      //copy all files and folders from website/docs to website/versioned_docs/version-${newVersion}
+      if (fs.existsSync(docsPath)) {
+        fs.readdirSync(docsPath).forEach((file) => {
+          const srcPath = path.resolve(docsPath, file);
+          const destPath = path.resolve(newVersionPath, file);
+          if (fs.lstatSync(srcPath).isDirectory()) {
+            fs.mkdirSync(destPath, { recursive: true });
+            fs.readdirSync(srcPath).forEach((subFile) => {
+              fs.copyFileSync(
+                path.resolve(srcPath, subFile),
+                path.resolve(destPath, subFile)
+              );
+            });
+          } else {
+            fs.copyFileSync(srcPath, destPath);
+          }
+        });
+        console.log(`Copied docs to versioned_docs/version-${newVersion}`);
+      } else {
+        console.error(
+          `Docs path ${docsPath} does not exist. Please check the path.`
+        );
+      }
+      // update the version in website/versioned_sidebars/version-${newVersion}-sidebars.json to website/versioned_sidebars/version-${newVersion}-sidebars.json
+      const sidebarsPath = path.resolve(
+        websiteRootPath,
+        `versioned_sidebars/version-${newVersion}-sidebars.json`
+      );
+      if (fs.existsSync(sidebarsPath)) {
+        fs.writeFileSync(sidebarsPath, '{}');
+        console.log(
+          `Created new versioned_sidebars/version-${newVersion}-sidebars.json`
+        );
+      } else {
+        console.error(
+          `Sidebars path ${sidebarsPath} does not exist. Please check the path.`
+        );
+      }
+      // lastly update website/versions.json array
+      const versionsPath = path.resolve(websiteRootPath, 'versions.json');
+      if (fs.existsSync(versionsPath)) {
+        const versions = JSON.parse(fs.readFileSync(versionsPath, 'utf8'));
+        // check if current already exists in versions array and then skip else add new version
+        const index = versions.findIndex(
+          (version: string) => version === newVersion
+        );
+        if (index !== -1) {
+          return;
         } else {
           // if oldVersion does not exist, add new version to the array
           versions.unshift(newVersion);
