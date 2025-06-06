@@ -16,6 +16,7 @@ export const SpeedDialAction: RneFunctionComponent<SpeedDialActionProps> = ({
   placement,
   labelPressable,
   onPress,
+  testID,
   ...actionProps
 }) => {
   return (
@@ -34,6 +35,7 @@ export const SpeedDialAction: RneFunctionComponent<SpeedDialActionProps> = ({
         onPress={onPress}
         size="small"
         style={[actionProps.style]}
+        testID={testID}
       />
     </Pressable>
   );

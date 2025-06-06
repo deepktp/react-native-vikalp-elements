@@ -18,4 +18,15 @@ describe('Speed Dial Action', () => {
     fireEvent(title, 'press');
     expect(onPress).toHaveBeenCalled();
   });
+
+  it('should pass testID to FAB component', () => {
+    const { getByTestId } = renderWithWrapper(
+      <SpeedDial.Action
+        icon={{ name: 'delete', color: '#fff' }}
+        title="Delete"
+        testID="speed-dial-action"
+      />
+    );
+    expect(getByTestId('speed-dial-action')).toBeTruthy();
+  });
 });
