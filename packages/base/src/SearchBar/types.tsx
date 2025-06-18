@@ -12,15 +12,15 @@ import { InputProps } from '../Input';
 export type SearchBarAndroidProps = SearchBarBaseProps & {
   platform?: 'android';
   /**
-   * Clear Icon (platform: android only)
+   * Clear Icon `Only with 'platform' prop set to 'android'`
    */
   cancelIcon?: IconNode;
   /**
-   * Callback Function on cancel icon press (platform: android only)
+   * Callback Function on cancel icon press `Only with 'platform' prop set to 'android' or 'ios`
    */
   onCancel?: () => any;
   /**
-   * Callback Function on keyboard hides (platform: android only)
+   * Callback Function on keyboard hides `Only with 'platform' prop set to 'android'`
    */
   onKeyboardHide?: () => any;
 };
@@ -28,7 +28,7 @@ export type SearchBarAndroidProps = SearchBarBaseProps & {
 export type SearchBarIosProps = SearchBarBaseProps & {
   platform?: 'ios';
   /**
-   * Cancel Button Props (platform: ios only)
+   * Cancel Button Props `Only with 'platform' prop set to 'ios'`
    *
    */
   cancelButtonProps?: Partial<PressableProps> & {
@@ -39,29 +39,28 @@ export type SearchBarIosProps = SearchBarBaseProps & {
     buttonDisabledTextStyle?: StyleProp<ViewStyle>;
   };
   /**
-   * Cancel Button Title (platform: ios only)
+   * Cancel Button Title `Only with 'platform' prop set to 'ios'`
    */
   cancelButtonTitle?: string;
   /**
-   * Show cancel
+   * Show cancel `Only with 'platform' prop set to 'ios'`
    */
   showCancel?: boolean;
   /**
-   * Icon for search
+   * Icon for search `Only with 'platform' prop set to 'ios'`
    */
   searchIcon?: IconNode;
   /**
-   * Clear Icon (platform: ios only)
+   * Clear Icon `Only with 'platform' prop set to 'ios'`
    */
   clearIcon?: IconNode;
-  /**
-   * Callback Function on cancel icon press (platform: ios only)
-   */
+
   onCancel?: () => any;
 };
 
 export type SearchBarDefaultProps = SearchBarBaseProps & {
   /**
+   * `Warning: Some props are platform specific and will not work on other platform`
    * @default default
    */
   platform?: 'default';

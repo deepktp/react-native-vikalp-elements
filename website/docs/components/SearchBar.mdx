@@ -45,27 +45,27 @@ Includes all [Input](input#props) props.
 
 <div class='table-responsive'>
 
-| Name                      | Type                            | Default   | Description                            |
-| ------------------------- | ------------------------------- | --------- | -------------------------------------- |
-| `cancelButtonProps`       | Text Style                      |           |                                        |
-| `cancelButtonTitle`       | string                          |           |                                        |
-| `cancelIcon`              | IconNode                        |           |                                        |
-| `clearIcon`               | IconNode                        |           | Clear Icon                             |
-| `containerStyle`          | View Style                      |           | Style for container                    |
-| `inputContainerStyle`     | View Style                      |           | Style for input container              |
-| `inputStyle`              | Text Style                      |           | Input Style                            |
-| `leftIconContainerStyle`  | View Style                      |           | Left Icon Container Style              |
-| `lightTheme`              | boolean                         |           |                                        |
-| `loadingProps`            | ActivityIndicatorProps          |           | ActivityIndicatorProps                 |
-| `onCancel`                | `(() => any)` \| `(() => any)`  |           | Callback Function on cancel icon press |
-| `onClear`                 | Function                        |           |                                        |
-| `onKeyboardHide`          | Function                        |           | Callback Function on keyboard hides    |
-| `platform`                | `default` \| `android` \| `ios` | `default` |                                        |
-| `rightIconContainerStyle` | View Style                      |           | Right Icon Container Style             |
-| `round`                   | boolean                         |           |                                        |
-| `searchIcon`              | IconNode                        |           | Icon for search                        |
-| `showCancel`              | boolean                         |           | Show cancel                            |
-| `showLoading`             | boolean                         |           | Show loading                           |
+| Name                      | Type                            | Default   | Description                                                                                 |
+| ------------------------- | ------------------------------- | --------- | ------------------------------------------------------------------------------------------- |
+| `cancelButtonProps`       | Text Style                      |           | Cancel Button Props `Only with 'platform' prop set to 'ios'`                                |
+| `cancelButtonTitle`       | string                          |           | Cancel Button Title `Only with 'platform' prop set to 'ios'`                                |
+| `cancelIcon`              | IconNode                        |           | Clear Icon `Only with 'platform' prop set to 'android'`                                     |
+| `clearIcon`               | IconNode                        |           | Clear IconClear Icon `Only with 'platform' prop set to 'ios'`                               |
+| `containerStyle`          | View Style                      |           | Style for container                                                                         |
+| `inputContainerStyle`     | View Style                      |           | Style for input container                                                                   |
+| `inputStyle`              | Text Style                      |           | Input Style                                                                                 |
+| `leftIconContainerStyle`  | View Style                      |           | Left Icon Container Style                                                                   |
+| `lightTheme`              | boolean                         |           |                                                                                             |
+| `loadingProps`            | ActivityIndicatorProps          |           | ActivityIndicatorProps                                                                      |
+| `onCancel`                | `(() => any)` \| `(() => any)`  |           | Callback Function on cancel icon press `Only with 'platform' prop set to 'android' or 'ios` |
+| `onClear`                 | Function                        |           |                                                                                             |
+| `onKeyboardHide`          | Function                        |           | Callback Function on keyboard hides `Only with 'platform' prop set to 'android'`            |
+| `platform`                | `default` \| `android` \| `ios` | `default` | `Warning: Some props are platform specific and will not work on other platform`             |
+| `rightIconContainerStyle` | View Style                      |           | Right Icon Container Style                                                                  |
+| `round`                   | boolean                         |           |                                                                                             |
+| `searchIcon`              | IconNode                        |           | Icon for searchIcon for search `Only with 'platform' prop set to 'ios'`                     |
+| `showCancel`              | boolean                         |           | Show cancel `Only with 'platform' prop set to 'ios'`                                        |
+| `showLoading`             | boolean                         |           | Show loading                                                                                |
 
 </div>
 
