@@ -11,19 +11,26 @@ import { InputProps } from '../Input';
 
 export type SearchBarAndroidProps = SearchBarBaseProps & {
   platform?: 'android';
+  /**
+   * Clear Icon (platform: android only)
+   */
   cancelIcon?: IconNode;
   /**
-   * Callback Function on cancel icon press
+   * Callback Function on cancel icon press (platform: android only)
    */
   onCancel?: () => any;
   /**
-   * Callback Function on keyboard hides
+   * Callback Function on keyboard hides (platform: android only)
    */
   onKeyboardHide?: () => any;
 };
 
 export type SearchBarIosProps = SearchBarBaseProps & {
   platform?: 'ios';
+  /**
+   * Cancel Button Props (platform: ios only)
+   * 
+   */
   cancelButtonProps?: Partial<PressableProps> & {
     buttonStyle?: StyleProp<ViewStyle>;
     buttonTextStyle?: StyleProp<TextStyle>;
@@ -31,6 +38,9 @@ export type SearchBarIosProps = SearchBarBaseProps & {
     buttonDisabledStyle?: StyleProp<ViewStyle>;
     buttonDisabledTextStyle?: StyleProp<ViewStyle>;
   };
+  /**
+   * Cancel Button Title (platform: ios only)
+   */
   cancelButtonTitle?: string;
   /**
    * Show cancel
@@ -40,9 +50,12 @@ export type SearchBarIosProps = SearchBarBaseProps & {
    * Icon for search
    */
   searchIcon?: IconNode;
+  /**
+   * Clear Icon (platform: ios only)
+   */
   clearIcon?: IconNode;
   /**
-   * Callback Function on cancel icon press
+   * Callback Function on cancel icon press (platform: ios only)
    */
   onCancel?: () => any;
 };
