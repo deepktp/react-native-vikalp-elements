@@ -29,7 +29,7 @@ export type SearchBarIosProps = SearchBarBaseProps & {
   platform?: 'ios';
   /**
    * Cancel Button Props (platform: ios only)
-   * 
+   *
    */
   cancelButtonProps?: Partial<PressableProps> & {
     buttonStyle?: StyleProp<ViewStyle>;
