@@ -111,6 +111,7 @@ const SearchBarDefault = forwardRef<SearchBarRef, SearchBarDefaultProps>(
         <Input
           testID="RNE__SearchBar"
           renderErrorMessage={false}
+          value={value}
           {...attributes}
           onFocus={handleFocus}
           onBlur={handleBlur}
