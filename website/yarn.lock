@@ -3764,7 +3764,7 @@ __metadata:
 
 "@rn-vui/base@file:../packages/base::locator=rne-website%40workspace%3A.":
   version: 5.1.8
-  resolution: "@rn-vui/base@file:../packages/base#../packages/base::hash=34783a&locator=rne-website%40workspace%3A."
+  resolution: "@rn-vui/base@file:../packages/base#../packages/base::hash=cbd304&locator=rne-website%40workspace%3A."
   dependencies:
     "@rn-vui/ratings": "npm:^0.5.0"
     "@types/react-native-vector-icons": "npm:^6.4.10"
