@@ -152,6 +152,7 @@ const SearchBarIOS = forwardRef<SearchBarRef, SearchBarIosProps>(
         <Input
           testID="RNE__SearchBar"
           renderErrorMessage={false}
+          value={value}
           {...attributes}
           onFocus={handleFocus}
           onBlur={handleBlur}

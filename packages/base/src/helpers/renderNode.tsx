@@ -1,6 +1,7 @@
 import React from 'react';
 
 const renderNode = (Component: any, content: any, defaultProps: any = {}) => {
+  const { key, ...remainingDefaultProps } = defaultProps;
   if (content == null || content === false) {
     return null;
   }
@@ -12,17 +13,25 @@ const renderNode = (Component: any, content: any, defaultProps: any = {}) => {
   }
   // Just in case
   if (content === true) {
-    return <Component {...defaultProps} />;
+    return <Component key={key} {...remainingDefaultProps} />;
   }
   if (typeof content === 'string') {
     if (content.length === 0) {
       return null;
     }
-    return <Component {...defaultProps}>{content}</Component>;
+    return (
+      <Component key={key} {...remainingDefaultProps}>
+        {content}
+      </Component>
+    );
   }
   if (typeof content === 'number') {
-    return <Component {...defaultProps}>{content}</Component>;
+    return (
+      <Component key={key} {...remainingDefaultProps}>
+        {content}
+      </Component>
+    );
   }
-  return <Component {...defaultProps} {...content} />;
+  return <Component key={key} {...remainingDefaultProps} {...content} />;
 };
 export default renderNode;
