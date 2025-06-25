@@ -54,12 +54,8 @@
     "url": "https://opencollective.com/react-native-elements",
     "logo": "https://opencollective.com/react-native-elements/logo.txt"
   },
-  "peerDependencies": {
-    "@rn-vui/base": "5.1.8"
-  },
-  "devDependencies": {
-    "@rn-vui/base": "5.1.8"
-  },
+  "peerDependencies": {},
+  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/deepktp/react-native-vikalp-elements.git",
