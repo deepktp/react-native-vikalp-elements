@@ -3763,8 +3763,8 @@ __metadata:
   linkType: hard
 
 "@rn-vui/base@file:../packages/base::locator=rne-website%40workspace%3A.":
-  version: 5.1.6
-  resolution: "@rn-vui/base@file:../packages/base#../packages/base::hash=f022d9&locator=rne-website%40workspace%3A."
+  version: 5.1.7
+  resolution: "@rn-vui/base@file:../packages/base#../packages/base::hash=eaec9b&locator=rne-website%40workspace%3A."
   dependencies:
     "@rn-vui/ratings": "npm:^0.5.0"
     "@types/react-native-vector-icons": "npm:^6.4.10"
@@ -3775,6 +3775,7 @@ __metadata:
   peerDependencies:
     react-native-safe-area-context: ">= 3.0.0"
     react-native-vector-icons: ">7.0.0"
+  checksum: 10/18949daaeea538c68d6cd00a1891f143e7b77f876629e268cb9f8a8ae198babf60c24045fb89dd01902c69957e6af01df1bc591a1428cfee86bb8c17c1414330
   languageName: node
   linkType: hard
 
@@ -15064,6 +15065,7 @@ __metadata:
     "@docusaurus/tsconfig": "npm:3.7.0"
     "@docusaurus/types": "npm:3.7.0"
     "@rn-vui/base": "file:../packages/base"
+    "@rn-vui/ratings": "npm:^0.5.0"
     "@rneui/layout": "npm:^0.0.0-alpha.6"
     "@types/assert": "npm:^1.5.6"
     "@types/jest": "npm:^27.0.3"
