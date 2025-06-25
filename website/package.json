@@ -28,6 +28,7 @@
     "@docusaurus/theme-live-codeblock": "3.7.0",
     "@docusaurus/types": "3.7.0",
     "@rn-vui/base": "file:../packages/base",
+    "@rn-vui/ratings": "^0.5.0",
     "@rneui/layout": "^0.0.0-alpha.6",
     "assert": "^2.0.0",
     "buffer": "^6.0.3",
