@@ -136,6 +136,7 @@ const SearchBarAndroid = forwardRef<SearchBarRef, SearchBarAndroidProps>(
       >
         <Input
           testID="RNE__SearchBar"
+          value={value}
           renderErrorMessage={false}
           {...attributes}
           onFocus={handleFocus}

@@ -63,6 +63,7 @@ const Inputs: React.FunctionComponent<InputsComponentProps> = () => {
         </View>
         <SearchBarCustom
           placeholder="iOS searchbar"
+          value="Search"
           platform="ios"
           style={InputFieldsStyle}
           {...dummySearchBarProps}

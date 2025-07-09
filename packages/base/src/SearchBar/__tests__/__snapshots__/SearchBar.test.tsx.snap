@@ -133,6 +133,7 @@ exports[`SearchBar wrapper component should match snapshot 1`] = `
           }
           testID="RNE__SearchBar"
           underlineColorAndroid="transparent"
+          value=""
         />
         <View
           style={
@@ -300,6 +301,7 @@ exports[`SearchBar wrapper component should render an Android SearchBar 1`] = `
           }
           testID="RNE__SearchBar"
           underlineColorAndroid="transparent"
+          value=""
         />
         <View
           style={
@@ -474,6 +476,7 @@ exports[`SearchBar wrapper component should render an iOS SearchBar 1`] = `
           }
           testID="RNE__SearchBar"
           underlineColorAndroid="transparent"
+          value=""
         />
         <View
           style={
