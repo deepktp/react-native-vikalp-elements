@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Switch as S } from 'react-native';
-import { CheckBox, Icon, Switch, Text } from '@rneui/themed';
+import { CheckBox, Icon, Switch, Text } from '@rn-vui/themed';
 import { Header } from '../components/header';
 import { Stack } from '@rneui/layout';
 

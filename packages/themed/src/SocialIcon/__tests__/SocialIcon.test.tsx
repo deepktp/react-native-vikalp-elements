@@ -2,6 +2,7 @@ import React from 'react';
 import SocialIcon from '..';
 import { renderWithWrapper } from '../../../.ci/testHelper';
 import { Icon } from '../../Icon';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('SocialIcon component', () => {
   it('should apply values from theme', () => {

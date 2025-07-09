@@ -1,7 +1,7 @@
-import React from 'react';
-import { SearchBarIOS } from './SearchBar-ios';
-import { SearchBarAndroid } from './SearchBar-android';
-import { SearchBarDefault } from './SearchBar-default';
+import React, { forwardRef, useImperativeHandle, useRef } from 'react';
+import SearchBarIOS from './SearchBar-ios';
+import SearchBarAndroid from './SearchBar-android';
+import SearchBarDefault from './SearchBar-default';
 import { Theme } from '../helpers';
 import { SearchBarProps } from './types';
 
@@ -13,43 +13,29 @@ const SEARCH_BAR_COMPONENTS = {
 
 export type { SearchBarProps };
 
-export class SearchBar extends React.Component<
-  SearchBarProps & {
-    theme?: Theme;
-  }
-> {
-  searchBar!: SearchBarIOS;
-  static defaultProps = {
-    platform: 'default' as const,
-  };
+export type SearchBarRef = {
+  focus: () => void;
+  blur: () => void;
+  clear: () => void;
+  cancel: () => void;
+};
 
-  focus = () => {
-    this.searchBar.focus();
-  };
+export const SearchBar = forwardRef<
+  SearchBarRef,
+  SearchBarProps & { theme?: Theme }
+>((props, ref) => {
+  const { platform = 'default' } = props;
+  const searchBarRef = useRef<SearchBarRef>(null);
 
-  blur = () => {
-    this.searchBar.blur();
-  };
+  useImperativeHandle(ref, () => ({
+    focus: () => searchBarRef.current?.focus(),
+    blur: () => searchBarRef.current?.blur(),
+    clear: () => searchBarRef.current?.clear(),
+    cancel: () => searchBarRef.current?.cancel(),
+  }));
 
-  clear = () => {
-    this.searchBar.clear();
-  };
+  const Component: React.ElementType =
+    SEARCH_BAR_COMPONENTS[platform] || SearchBarDefault;
 
-  cancel = () => {
-    this.searchBar?.cancel();
-  };
-
-  render() {
-    const Component: typeof React.Component =
-      SEARCH_BAR_COMPONENTS[this.props.platform] || SearchBarDefault;
-
-    return (
-      <Component
-        ref={(ref: SearchBarIOS) => {
-          this.searchBar = ref;
-        }}
-        {...this.props}
-      />
-    );
-  }
-}
+  return <Component ref={searchBarRef} {...props} />;
+});

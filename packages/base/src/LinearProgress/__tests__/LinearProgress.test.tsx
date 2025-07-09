@@ -2,6 +2,7 @@ import React from 'react';
 import { LinearProgress } from '../index';
 import { renderWithWrapper, fireEvent, act } from '../../../.ci/testHelper';
 import { clamp } from '../LinearProgress';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('LinearProgress Component', () => {
   it('should clamp', () => {
@@ -83,7 +84,7 @@ describe('LinearProgress Component', () => {
     const progressBar = component.getByRole('progressbar');
     expect(progressBar.props).toMatchObject({
       accessibilityValue: {
-        now: 0.4,
+        now: 0, //this is to fix warning Loss of precision during arithmetic conversionLoss of precision during arithmetic conversion due to accessibilityValue need integer not float
         min: 0,
         max: 1,
       },

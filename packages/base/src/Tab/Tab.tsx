@@ -1,22 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
-  View,
   Animated,
-  StyleProp,
-  ViewStyle,
-  ViewProps,
-  StyleSheet,
+  Easing,
   ScrollView,
-  LayoutChangeEvent,
+  StyleProp,
+  StyleSheet,
+  View,
+  ViewProps,
+  ViewStyle,
 } from 'react-native';
-import { ParentProps } from './Tab.Item';
-import { defaultTheme, RneFunctionComponent } from '../helpers';
-import { TabItemProps } from './Tab.Item';
+import { RneFunctionComponent, defaultTheme } from '../helpers';
+import { ParentProps, TabItemProps } from './Tab.Item';
 
 export interface TabProps extends ViewProps, ParentProps {
-  /** Child position index value. */
-  value?: number;
-
   /** Makes Tab Scrolling */
   scrollable?: boolean;
 
@@ -31,6 +27,17 @@ export interface TabProps extends ViewProps, ParentProps {
 
   /** Define the background Variant. */
   variant?: 'primary' | 'default';
+
+  /** active index */
+  value?: number;
+
+  /** Animation type */
+  animationType?: 'timing' | 'spring';
+
+  /** Animation Config */
+  animationConfig?: Partial<
+    Animated.TimingAnimationConfig | Animated.SpringAnimationConfig
+  >;
 }
 
 /**
@@ -77,24 +84,50 @@ export interface TabProps extends ViewProps, ParentProps {
  *
 
  *  */
+
 export const TabBase: RneFunctionComponent<TabProps> = ({
   theme = defaultTheme,
   children,
-  value = 0,
   scrollable = false,
   onChange = () => {},
   indicatorStyle,
   disableIndicator,
-  variant = 'default',
+  variant = 'primary',
   style,
   dense,
   iconPosition,
   buttonStyle,
   titleStyle,
   containerStyle,
+  value: activeIndex = 0,
+  animationType = 'spring',
+  animationConfig = {},
   ...rest
 }) => {
-  const animationRef = React.useRef(new Animated.Value(0));
+  const translateX = React.useRef(new Animated.Value(0));
+  const currentIndex = React.useRef(0);
+  const onIndexChangeRef = React.useRef((value: number) => value);
+
+  const setIndicatorRerenderKey = React.useState<number>(0)[1]; //to force re-render the indicator
+
+  const animate = React.useCallback(
+    (toValue: number, onDone: (_: number) => void = () => {}) => {
+      currentIndex.current = toValue;
+      onIndexChangeRef.current?.(toValue);
+      //currently we are ignoring the animationConfig types but we need to fix this
+      Animated[animationType](translateX.current, {
+        //@ts-ignore
+        toValue: toValue,
+        useNativeDriver: true,
+        easing: Easing.inOut(Easing.ease),
+        duration: 150,
+        ...animationConfig,
+      }).start(() => {
+        onDone?.(toValue);
+      });
+    },
+    [animationConfig, animationType]
+  );
   const scrollViewRef = React.useRef<ScrollView>(null);
   const scrollViewPosition = React.useRef(0);
   const validChildren = React.useMemo(
@@ -102,9 +135,10 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
     [children]
   );
 
-  const tabItemPositions = React.useRef<
-    Array<{ position: number; width: number }>
-  >([]);
+  const tabItemPositions = React.useRef<{ position: number; width: number }[]>(
+    []
+  );
+
   const [tabContainerWidth, setTabContainerWidth] = React.useState(0);
 
   const scrollHandler = React.useCallback(
@@ -134,46 +168,93 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
     [tabContainerWidth]
   );
 
+  useEffect(() => {
+    if (
+      activeIndex !== currentIndex.current &&
+      tabContainerWidth > 0 &&
+      tabItemPositions.current.length > 0
+    ) {
+      //to force re-render the indicator we are using rerenderKey because on initial render the indicator is not visible
+      setIndicatorRerenderKey((prev) => prev + 1);
+      animate(activeIndex);
+    }
+    //tabContainerWidth is used so that we know that onLayout has completed also if there is any changes in tabs that get reflected.
+  }, [
+    activeIndex,
+    animate,
+    scrollHandler,
+    tabContainerWidth,
+    setIndicatorRerenderKey,
+  ]);
+
   React.useEffect(() => {
-    Animated.timing(animationRef.current, {
-      toValue: value as number,
-      useNativeDriver: true,
-      duration: 170,
-    }).start();
-    scrollable && requestAnimationFrame(() => scrollHandler(value));
-  }, [animationRef, scrollHandler, value, scrollable]);
+    if (onIndexChangeRef) {
+      onIndexChangeRef.current = (changedIndex) => {
+        scrollHandler(changedIndex);
+        onChange(changedIndex);
+        return changedIndex;
+      };
+    }
+  }, [onIndexChangeRef, scrollHandler, onChange]);
 
   const onScrollHandler = React.useCallback((event) => {
     scrollViewPosition.current = event.nativeEvent.contentOffset.x;
   }, []);
 
-  const indicatorTransitionInterpolate = React.useMemo(() => {
-    const countItems = validChildren.length;
-    if (countItems < 2 || !tabItemPositions.current.length) {
-      return 0;
-    }
-    const inputRange = Array.from(Array(countItems + 1).keys());
-    const outputRange = tabItemPositions.current.map(
-      ({ position }) => position
-    );
-    if (inputRange.length - 1 !== outputRange.length) {
-      return 0;
-    }
-    return animationRef.current.interpolate({
-      inputRange,
-      outputRange: [0, ...outputRange],
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [animationRef, validChildren, tabItemPositions.current.length]);
+  const indicatorWidth = tabItemPositions.current[activeIndex]?.width;
 
-  const WIDTH = React.useMemo(() => {
-    return tabItemPositions.current[value]?.width;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value, tabItemPositions.current.length]);
+  const indicatorTranslateX = () => {
+    const countItems = validChildren.length;
+
+    if (countItems < 2 || tabItemPositions.current.length !== countItems) {
+      return 0;
+    }
+
+    const { inputRange, outputRange } = tabItemPositions.current.reduce(
+      (prev, curr, index) => {
+        prev.inputRange.push(index);
+        prev.outputRange.push(
+          curr.position + curr.width / 2 - indicatorWidth / 2
+        );
+        return prev;
+      },
+      { inputRange: [], outputRange: [] }
+    );
+
+    return translateX.current.interpolate({
+      inputRange,
+      outputRange,
+      extrapolate: 'clamp',
+    });
+  };
+
+  const indicatorScaleX = () => {
+    const countItems = validChildren.length;
+    if (countItems < 2 || tabItemPositions.current.length !== countItems) {
+      return 0;
+    }
+
+    const inputRange = [];
+    const outputRange = [];
+
+    tabItemPositions.current.reduce((prev, curr, index) => {
+      inputRange.push(index);
+
+      outputRange.push(curr.width / prev.width);
+      return prev;
+    }, tabItemPositions.current[activeIndex]);
+
+    return translateX.current.interpolate({
+      inputRange,
+      outputRange,
+      extrapolate: 'extend',
+    });
+  };
 
   return (
     <View
       {...rest}
+      accessible
       accessibilityRole="tablist"
       style={[
         variant === 'primary' && {
@@ -216,7 +297,7 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
                       }
                     }
                   },
-                  active: index === value,
+                  active: index === activeIndex,
                   variant,
                   _parentProps: {
                     dense,
@@ -225,9 +306,9 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
                     containerStyle,
                     titleStyle,
                   },
-                }
-              );
-            })}
+                })}
+              </View>
+            ))}
             {!disableIndicator && (
               <Animated.View
                 style={[
@@ -235,11 +316,10 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
                   {
                     backgroundColor: theme?.colors?.secondary,
                     transform: [
-                      {
-                        translateX: indicatorTransitionInterpolate,
-                      },
+                      { translateX: indicatorTranslateX() },
+                      { scaleX: indicatorScaleX() },
                     ],
-                    width: WIDTH,
+                    width: indicatorWidth,
                   },
                   indicatorStyle,
                 ]}

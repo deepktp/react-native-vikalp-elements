@@ -5,58 +5,86 @@ exports[`BottomSheet Component renders correctly 1`] = `
   testID="wrapper"
 >
   <Modal
-    animationType="slide"
+    animationType="none"
     hardwareAccelerated={false}
     onRequestClose={[Function]}
     transparent={true}
     visible={true}
   >
-    <View
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        [
-          {
-            "bottom": 0,
-            "left": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-          },
-          undefined,
-        ]
-      }
-      testID="RNE__Overlay__backdrop"
-    />
     <RNCSafeAreaView
       edges={
-        [
-          "bottom",
-          "left",
-          "right",
-          "top",
-        ]
+        {
+          "bottom": "additive",
+          "left": "additive",
+          "right": "additive",
+          "top": "additive",
+        }
       }
       pointerEvents="box-none"
       style={
         {
-          "backgroundColor": "rgba(0,0,0,0.2)",
           "flex": 1,
           "flexDirection": "column-reverse",
+          "opacity": 0,
         }
       }
     >
-      <View>
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "backgroundColor": "rgba(0,0,0,0.2)",
+            "bottom": 0,
+            "left": 0,
+            "opacity": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          }
+        }
+        testID="RNE__Overlay__backdrop"
+      />
+      <View
+        collapsable={false}
+        onLayout={[Function]}
+        style={
+          {
+            "transform": [
+              {
+                "translateY": 0,
+              },
+            ],
+          }
+        }
+      >
         <RCTScrollView>
           <View>
             <View>

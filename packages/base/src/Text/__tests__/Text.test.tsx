@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text } from '..';
 import { renderWithWrapper } from '../../../.ci/testHelper';
+import { describe, it, expect } from '@jest/globals';
 
 describe('Text Component', () => {
   it('should match snapshot', () => {

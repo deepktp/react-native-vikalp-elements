@@ -1,6 +1,7 @@
 import React from 'react';
 import Triangle from '../components/Triangle';
 import { renderWithWrapper } from '../../../.ci/testHelper';
+import { describe, it, expect } from '@jest/globals';
 
 describe('Tooltip component', () => {
   it('should match snapshot ', () => {

@@ -49,6 +49,7 @@ exports[`Icon component should apply raised styles 1`] = `
       >
         <Text
           allowFontScaling={false}
+          selectable={false}
           style={
             [
               {
@@ -119,6 +120,7 @@ exports[`Icon component should apply reverse styles 1`] = `
       >
         <Text
           allowFontScaling={false}
+          selectable={false}
           style={
             [
               {
@@ -166,7 +168,19 @@ exports[`Icon component should render with icon type 1`] = `
       accessibilityRole="button"
       accessibilityState={
         {
+          "busy": undefined,
+          "checked": undefined,
           "disabled": false,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
         }
       }
       accessible={true}
@@ -198,6 +212,7 @@ exports[`Icon component should render with icon type 1`] = `
       >
         <Text
           allowFontScaling={false}
+          selectable={false}
           style={
             [
               {
@@ -218,7 +233,7 @@ exports[`Icon component should render with icon type 1`] = `
           }
           testID="RNE__ICON__Component"
         >
-          
+          
         </Text>
       </View>
     </View>
@@ -242,7 +257,19 @@ exports[`Icon component should set underlayColor to color when styles when under
       accessibilityRole="button"
       accessibilityState={
         {
+          "busy": undefined,
+          "checked": undefined,
           "disabled": false,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
         }
       }
       accessible={true}
@@ -271,6 +298,7 @@ exports[`Icon component should set underlayColor to color when styles when under
       >
         <Text
           allowFontScaling={false}
+          selectable={false}
           style={
             [
               {

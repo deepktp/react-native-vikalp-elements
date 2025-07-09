@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { DrawerNavigationProp } from '@react-navigation/drawer';
-import { Header as HeaderRNE, HeaderProps, Icon } from '@rneui/themed';
+import { Header as HeaderRNE, HeaderProps, Icon } from '@rn-vui/themed';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 type HeaderComponentProps = {
@@ -29,7 +29,7 @@ const Header: React.FunctionComponent<HeaderComponentProps> = (props) => {
 
   const docsNavigate = () => {
     Linking.openURL(
-      `https://reactnativeelements.com/docs/components/${props.view}`
+      `https://react-native-velements.thevikalp.com//docs/components/${props.view}`
     );
   };
 

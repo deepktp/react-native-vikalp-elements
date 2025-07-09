@@ -10,7 +10,15 @@ jobs:
 
     steps:
       - name: 🏗 Setup repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+
+      - name: Enable Corepack
+        run: corepack enable
+        shell: bash
+
+      - name: Enable Yarn with Corepack
+        run: corepack prepare yarn@stable --activate
+        shell: bash
 
       - name: Install dependencies
         uses: ./.github/actions/install
@@ -23,13 +31,13 @@ jobs:
       - name: Upgrade Expo
         working-directory: example
         run: |
-          npm --global install expo-cli@latest
-          npx expo upgrade --non-interactive
+          npm install expo@latest
+          npx expo install --fix
 
       - name: Config git
         run: |
-          git config --local user.email "104670806+rneui@users.noreply.github.com"
-          git config --local user.name "RNEUI"
+          git config --local user.email "76097094+deepktp@users.noreply.github.com"
+          git config --local user.name "deepktp"
 
       - name: Checkout
         run: |

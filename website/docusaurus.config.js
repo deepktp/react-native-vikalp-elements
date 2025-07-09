@@ -1,8 +1,8 @@
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'React Native Elements' /* title for your website */,
+  title: 'React Native vElements' /* title for your website */,
   tagline: 'Cross Platform React Native UI Toolkit',
-  url: 'https://reactnativeelements.com' /* your website url */,
+  url: 'https://react-native-velements.thevikalp.com/' /* your website url */,
   baseUrl: '/' /* base url for your project */,
   projectName: 'react-native-elements',
   organizationName: 'react-native-elements',
@@ -16,10 +16,10 @@ const config = {
   // This copyright info is used in /core/Footer.js and blog rss/atom feeds.
   scripts: [{ src: 'https://snack.expo.io/embed.js', defer: true }],
   themes: ['@docusaurus/theme-live-codeblock'],
-  plugins: ['./plugins/react-native-elements-web.js'],
+  plugins: ['./plugins/react-native-elements-web.js', './plugins/react-native-vector-icon-fix.js'],
   presets: [
     [
-      '@docusaurus/preset-classic',
+      'classic',
       {
         gtag: {
           trackingID: 'G-RW24X04H53',
@@ -40,6 +40,9 @@ const config = {
           },
           routeBasePath: 'docs',
           sidebarPath: require.resolve('./sidebars.ts'),
+          rehypePlugins: [
+            [require("rehype-raw"), { passThrough: ['mdxFlowExpression', 'mdxJsxFlowElement', 'mdxJsxTextElement', 'mdxTextExpression', 'mdxjsEsm'] }]
+          ],
           remarkPlugins: [require('./plugins/remark-snackplayer')],
           editUrl:
             'https://github.com/react-native-elements/react-native-elements/edit/next/website/',
@@ -58,7 +61,7 @@ const config = {
     announcementBar: {
       id: 'support_us',
       content:
-        'If you like React Native Elements, give it a  <a target="_blank" rel="noopener noreferrer" href="https://github.com/react-native-elements/react-native-elements">star on GitHub!</a> ⭐' +
+        'If you like React Native vElements, give it a  <a target="_blank" rel="noopener noreferrer" href="https://github.com/deepktp/react-native-vikalp-elements">star on GitHub!</a> ⭐' +
         ' and join the <a target="_blank" rel="noopener noreferrer" href="https://discord.gg/e9RBHjkKHa">Discord server</a>!',
       backgroundColor: 'var(--navbar-background-color)',
       textColor: 'var(--ifm-navbar-link-color)', // Defaults to `#000`.
@@ -69,9 +72,9 @@ const config = {
       disableSwitch: false,
     },
     navbar: {
-      title: 'React Native Elements',
+      title: 'React Native vElements',
       logo: {
-        alt: 'React Native Elements Logo',
+        alt: 'React Native vElements Logo',
         src: '/img/website/logo.png',
       },
       // hideOnScroll: true,
@@ -82,6 +85,7 @@ const config = {
           dropdownItemsAfter: [{ to: 'versions', label: 'All versions' }],
           // Do not add the link active class when browsing docs.
           dropdownActiveClassDisabled: true,
+
           docsPluginId: 'default',
         },
         // { to: 'docs/', label: 'Docs', position: 'right' },
@@ -90,30 +94,30 @@ const config = {
         { type: 'search', position: 'left' },
         {
           href: 'https://github.com/sponsors/react-native-elements',
-          // label: 'Sponsor',
+          html: '<span>Sponsor</span>',
           position: 'right',
-          className: 'header-github-sponsor-link',
+          className: 'header-navbar-link header-github-sponsor-link',
           'aria-label': 'GitHub Sponsor',
         },
         {
           href: 'https://twitter.com/rn_elements',
-          // label: 'Sponsor',
+          html: '<span>Twitter</span>',
           position: 'right',
-          className: 'header-twitter-link',
+          className: 'header-navbar-link header-twitter-link',
           'aria-label': 'Twitter',
         },
         {
           href: 'https://discord.gg/e9RBHjkKHa',
-          // label: 'Discord',
+          html: '<span>Discord</span>',
           position: 'right',
-          className: 'header-discord-link',
+          className: 'header-navbar-link header-discord-link',
           'aria-label': 'Discord server',
         },
         {
-          href: 'https://github.com/react-native-elements/react-native-elements',
-          // label: 'GitHub',
+          href: 'https://github.com/deepktp/react-native-vikalp-elements',
+          html: '<span>GitHub</span>',
           position: 'right',
-          className: 'header-github-link',
+          className: 'header-navbar-link header-github-link',
           'aria-label': 'GitHub repository',
         },
       ],
@@ -122,6 +126,7 @@ const config = {
       theme: require('prism-react-renderer/themes/github'),
       darkTheme: require('prism-react-renderer/themes/shadesOfPurple'),
       defaultLanguage: 'typescript',
+      additionalLanguages: ['diff'],
     },
     algolia: {
       appId: 'RE3E65KUI0',

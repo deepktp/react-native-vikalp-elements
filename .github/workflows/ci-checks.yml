@@ -5,46 +5,57 @@ on:
     branches:
       - next
     paths-ignore:
-      - ".github/**"
-      - ".website/**"
-      - ".example/**"
+      - '.github/**'
+      - '.website/**'
+      - '.example/**'
+
 jobs:
   test:
-    name: "check_unit_tests"
+    name: 'check_unit_tests'
     needs: install
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+
+      - name: Enable Corepack
+        run: corepack enable
+        shell: bash
+
+      - name: Enable Yarn with Corepack
+        run: corepack prepare yarn@stable --activate
+        shell: bash
+
       - name: Install dependencies
         uses: ./.github/actions/install
       - run: yarn test
-      - name: Upload Coverage
-        run: npx codecov --disable=gcov
+
   typescript:
-    name: "check_types"
+    name: 'check_types'
     needs: install
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Install dependencies
         uses: ./.github/actions/install
       - run: yarn typescript
+
   lint:
-    name: "check_lint"
+    name: 'check_lint'
     needs: install
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Install dependencies
         uses: ./.github/actions/install
       - run: yarn lint
       - run: yarn format
+
   docs-api:
-    name: "check_docs_api"
+    name: 'check_docs_api'
     needs: install
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Install dependencies
         uses: ./.github/actions/install
       - name: Build 🔧
@@ -54,9 +65,9 @@ jobs:
 
   # If dep changes this will cache them, else each job will try to update cache
   install:
-    name: "yarn_install"
+    name: 'yarn_install'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Install dependencies
         uses: ./.github/actions/install

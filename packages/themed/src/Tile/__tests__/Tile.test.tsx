@@ -2,6 +2,7 @@ import React from 'react';
 import Tile from '../index';
 import { renderWithWrapper } from '../../../.ci/testHelper';
 import { Text } from 'react-native';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('Tile component', () => {
   it('should render', () => {

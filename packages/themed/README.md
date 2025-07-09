@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://reactnativeelements.com/">
+  <a href="https://react-native-velements.thevikalp.com//">
     <img alt="react-native-elements" src="https://user-images.githubusercontent.com/5962998/65694309-a825f000-e043-11e9-8382-db0dba0851e3.png" width="200">
   </a>
 </p>
@@ -9,8 +9,8 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@rneui/themed"><img src="https://img.shields.io/npm/v/@rneui/themed.svg?style=flat-square"></a>
-   <a href="https://www.npmjs.com/package/@rneui/themed"><img src="https://img.shields.io/npm/dm/@rneui/themed.svg?style=flat-square"></a>
+  <a href="https://www.npmjs.com/package/@rn-vui/themed"><img src="https://img.shields.io/npm/v/@rn-vui/themed.svg?style=flat-square"></a>
+   <a href="https://www.npmjs.com/package/@rn-vui/themed"><img src="https://img.shields.io/npm/dm/@rn-vui/themed.svg?style=flat-square"></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square&color=0089E3"></a>
   <a href="https://github.com/react-native-elements/react-native-elements"><img src="https://img.shields.io/github/stars/react-native-elements/react-native-elements?label=stars&logo&style=flat-square&color=0089E3"></a>
 </p>
@@ -30,17 +30,17 @@
 
 <br />
 
-![React Native Elements UI Toolkit](https://user-images.githubusercontent.com/5962998/37248832-a7060286-24b1-11e8-94a8-847ab6ded4ec.png)
+![React Native vElements UI Toolkit](https://user-images.githubusercontent.com/5962998/37248832-a7060286-24b1-11e8-94a8-847ab6ded4ec.png)
 
 ## Installation
 
 ```bash
-npm install @rneui/themed
+npm install @rn-vui/themed
 ```
 
 Follow
-[these instructions](https://reactnativeelements.com/docs/)
-to install React Native Elements!
+[these instructions](https://react-native-velements.thevikalp.com//docs/)
+to install React Native vElements!
 
 ## Usage
 
@@ -48,7 +48,7 @@ Start using the components or try it on Snack
 [here](https://snack.expo.io/rJu6gJfBZ).
 
 ```js
-import { Button } from '@rneui/themed';
+import { Button } from '@rn-vui/themed';
 
 <Button />;
 ```
@@ -57,30 +57,30 @@ import { Button } from '@rneui/themed';
 
 As a cross platform UI Toolkit, you can now use RNE on the web & share your codebase between your React Native + React web apps. RNE components are rendered perfectly on browser. You can achieve this to target iOS, Android and Web by collaborating RNE and [React Native for Web](https://github.com/necolas/react-native-web).
 
-Click [here](https://reactnativeelements.com/blog/2018/12/13/react-native-web) for a full walkthrough using React Native Elements + React Native Web.
+Click [here](https://react-native-velements.thevikalp.com//blog/2018/12/13/react-native-web) for a full walkthrough using React Native vElements + React Native Web.
 
 ## Expo demo app
 
 Checkout the official
-[React Native Elements App](https://expo.dev/@rn_elements/react-native-elements)
-on Expo which uses all of the React Native Elements components.
+[React Native vElements App](https://expo.dev/@rn_elements/react-native-elements)
+on Expo which uses all of the React Native vElements components.
 
-If you are looking to contribute to the React Native Elements App, click
+If you are looking to contribute to the React Native vElements App, click
 [here](https://github.com/react-native-elements/react-native-elements/tree/next/example) to
 view the implementation & run the RNE expo app locally.
 
 ## VS Code Extension
 
-Install the [React Native Elements VS Code Extension](https://marketplace.visualstudio.com/items?itemName=rne.snippets) to speed up development.
+Install the [React Native vElements VS Code Extension](https://marketplace.visualstudio.com/items?itemName=rne.snippets) to speed up development.
 
 ## Documentation
 
-[View the full docs here](https://reactnativeelements.com/docs/overview)
+[View the full docs here](https://react-native-velements.thevikalp.com//docs/overview)
 
 ## Contributing
 
 Interested in contributing to this repo? Check out our
-[Contributing Guide](https://reactnativeelements.com/docs/contributing)
+[Contributing Guide](https://react-native-velements.thevikalp.com//docs/contributing)
 and submit a PR for a new feature/bug fix.
 
 A big shoutout to all our contributors! You could be here too!

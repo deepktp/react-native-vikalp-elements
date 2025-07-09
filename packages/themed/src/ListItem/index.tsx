@@ -2,43 +2,43 @@ import { withTheme } from '../config';
 import {
   ListItemProps,
   ListItemBase,
-} from '@rneui/base/dist/ListItem/ListItem';
+} from '@rn-vui/base/dist/ListItem/ListItem';
 import {
   ListItemContent,
   ListItemContentProps,
-} from '@rneui/base/dist/ListItem/ListItem.Content';
+} from '@rn-vui/base/dist/ListItem/ListItem.Content';
 import {
   ListItemChevron,
   ListItemChevronProps,
-} from '@rneui/base/dist/ListItem/ListItem.Chevron';
+} from '@rn-vui/base/dist/ListItem/ListItem.Chevron';
 import {
   ListItemInput,
   ListItemInputProps,
-} from '@rneui/base/dist/ListItem/ListItem.Input';
+} from '@rn-vui/base/dist/ListItem/ListItem.Input';
 import {
   ListItemCheckBox,
   ListItemCheckBoxProps,
-} from '@rneui/base/dist/ListItem/ListItem.CheckBox';
+} from '@rn-vui/base/dist/ListItem/ListItem.CheckBox';
 import {
   ListItemButtonGroup,
   ListItemButtonGroupProps,
-} from '@rneui/base/dist/ListItem/ListItem.ButtonGroup';
+} from '@rn-vui/base/dist/ListItem/ListItem.ButtonGroup';
 import {
   ListItemTitle,
   ListItemTitleProps,
-} from '@rneui/base/dist/ListItem/ListItem.Title';
+} from '@rn-vui/base/dist/ListItem/ListItem.Title';
 import {
   ListItemSubtitle,
   ListItemSubtitleProps,
-} from '@rneui/base/dist/ListItem/ListItem.Subtitle';
+} from '@rn-vui/base/dist/ListItem/ListItem.Subtitle';
 import {
   ListItemSwipeable,
   ListItemSwipeableProps,
-} from '@rneui/base/dist/ListItem/ListItem.Swipeable';
+} from '@rn-vui/base/dist/ListItem/ListItem.Swipeable';
 import {
   ListItemAccordion,
   ListItemAccordionProps,
-} from '@rneui/base/dist/ListItem/ListItem.Accordion';
+} from '@rn-vui/base/dist/ListItem/ListItem.Accordion';
 
 export type {
   ListItemAccordionProps,

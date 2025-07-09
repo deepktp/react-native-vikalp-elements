@@ -6,7 +6,7 @@ import {
   ListItem,
   Avatar,
   Text,
-} from '@rneui/themed';
+} from '@rn-vui/themed';
 import { View, StyleSheet } from 'react-native';
 import { Header } from '../components/header';
 

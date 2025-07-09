@@ -1,6 +1,6 @@
 import { Image as ImageNative } from 'react-native';
 import { withTheme } from '../config';
-import { Image, ImageProps } from '@rneui/base/dist/Image/Image';
+import { Image, ImageProps } from '@rn-vui/base/dist/Image/Image';
 
 export { Image };
 export type { ImageProps };

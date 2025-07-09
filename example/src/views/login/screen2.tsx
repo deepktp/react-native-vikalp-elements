@@ -14,7 +14,7 @@ import {
   TextInput,
   TextInputProps,
 } from 'react-native';
-import { Input, Button, Icon, InputProps } from '@rneui/themed';
+import { Input, Button, Icon, InputProps } from '@rn-vui/themed';
 import { LinearGradient } from '../../components/LinearGradient';
 
 // Enable LayoutAnimation on Android

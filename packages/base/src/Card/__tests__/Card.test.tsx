@@ -2,6 +2,7 @@ import React from 'react';
 import { Card } from '..';
 import { renderWithWrapper } from '../../../.ci/testHelper';
 import { Image } from '../../Image';
+import { describe, it, expect } from '@jest/globals';
 
 describe('Card Component', () => {
   it('should match snapshot', () => {

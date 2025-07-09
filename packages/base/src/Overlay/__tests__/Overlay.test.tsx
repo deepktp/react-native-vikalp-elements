@@ -2,6 +2,7 @@ import React from 'react';
 import { Text } from 'react-native';
 import { renderWithWrapper, fireEvent } from '../../../.ci/testHelper';
 import { Overlay } from '../index';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('Overlay', () => {
   it('should match snapshot', () => {

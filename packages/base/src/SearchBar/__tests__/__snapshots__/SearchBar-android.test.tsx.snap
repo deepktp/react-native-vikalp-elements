@@ -6,8 +6,8 @@ exports[`Android SearchBar component should match snapshot 1`] = `
 >
   <View
     style={
-      Object {
-        "backgroundColor": undefined,
+      {
+        "backgroundColor": "#ffffff",
         "paddingBottom": 8,
         "paddingTop": 8,
       }
@@ -16,7 +16,7 @@ exports[`Android SearchBar component should match snapshot 1`] = `
   >
     <View
       style={
-        Object {
+        {
           "paddingHorizontal": 0,
           "width": "100%",
         }
@@ -24,14 +24,15 @@ exports[`Android SearchBar component should match snapshot 1`] = `
       testID="RNE__Input__view-wrapper"
     >
       <View
+        collapsable={false}
         style={
-          Object {
+          {
             "alignItems": "center",
             "borderBottomWidth": 0,
             "borderColor": "#86939e",
             "flexDirection": "row",
-            "transform": Array [
-              Object {
+            "transform": [
+              {
                 "translateX": 0,
               },
             ],
@@ -41,7 +42,7 @@ exports[`Android SearchBar component should match snapshot 1`] = `
       >
         <View
           style={
-            Object {
+            {
               "alignItems": "center",
               "height": 40,
               "justifyContent": "center",
@@ -53,7 +54,7 @@ exports[`Android SearchBar component should match snapshot 1`] = `
         >
           <View
             style={
-              Object {
+              {
                 "overflow": "hidden",
               }
             }
@@ -62,20 +63,18 @@ exports[`Android SearchBar component should match snapshot 1`] = `
             <View
               accessibilityRole="button"
               android_ripple={
-                Object {
+                {
                   "borderless": false,
                   "color": "rgba(0, 0, 0, 0.3)",
                   "radius": -5,
                 }
               }
               disabled={false}
-              replaceTheme={[Function]}
               testID="RNE__ICON__CONTAINER_ACTION"
-              updateTheme={[Function]}
             >
               <View
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "backgroundColor": "transparent",
                     "justifyContent": "center",
@@ -85,21 +84,22 @@ exports[`Android SearchBar component should match snapshot 1`] = `
               >
                 <Text
                   allowFontScaling={false}
+                  selectable={false}
                   style={
-                    Array [
-                      Object {
-                        "color": "#242424",
+                    [
+                      {
+                        "color": "rgba(0, 0, 0, 0.54)",
                         "fontSize": 25,
                       },
-                      Object {
+                      {
                         "backgroundColor": "transparent",
                       },
-                      Object {
+                      {
                         "fontFamily": "Material Icons",
                         "fontStyle": "normal",
                         "fontWeight": "normal",
                       },
-                      Object {},
+                      {},
                     ]
                   }
                   testID="RNE__ICON__Component"
@@ -111,16 +111,13 @@ exports[`Android SearchBar component should match snapshot 1`] = `
           </View>
         </View>
         <TextInput
-          allowFontScaling={true}
           editable={true}
           onBlur={[Function]}
-          onCancel={[Function]}
           onChangeText={[Function]}
           onFocus={[Function]}
           placeholderTextColor="#86939e"
-          rejectResponderTermination={true}
           style={
-            Object {
+            {
               "color": "#242424",
               "flex": 1,
               "fontSize": 18,
@@ -134,7 +131,7 @@ exports[`Android SearchBar component should match snapshot 1`] = `
         />
         <View
           style={
-            Object {
+            {
               "alignItems": "center",
               "height": 40,
               "justifyContent": "center",
@@ -146,7 +143,7 @@ exports[`Android SearchBar component should match snapshot 1`] = `
         >
           <View
             style={
-              Object {
+              {
                 "flexDirection": "row",
               }
             }
@@ -155,7 +152,7 @@ exports[`Android SearchBar component should match snapshot 1`] = `
       </View>
       <Text
         style={
-          Object {
+          {
             "color": "#ff190c",
             "fontSize": 12,
             "height": 0,

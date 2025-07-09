@@ -2,6 +2,15 @@ import React from 'react';
 import { SearchBar } from '../index';
 import { renderWithWrapper } from '../../../.ci/testHelper';
 import { Keyboard } from 'react-native';
+import {
+  describe,
+  it,
+  expect,
+  beforeAll,
+  beforeEach,
+  afterAll,
+  jest,
+} from '@jest/globals';
 
 describe('SearchBar wrapper component', () => {
   it('should match snapshot', () => {

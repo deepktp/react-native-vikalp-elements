@@ -22,7 +22,7 @@ export type ComponentUsage = {
 
 export const usageGenParser = function parse(filePath: string) {
   const file = fs.readFileSync(filePath, 'utf8');
-  const fileName = path.basename(filePath).split('.');
+  const fileName = path.posix.basename(filePath).split('.');
   const fileKey = fileName.slice(0, fileName.length > 2 ? -2 : -1).join('');
 
   const component: ComponentUsage = {

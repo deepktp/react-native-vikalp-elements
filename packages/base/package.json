@@ -1,6 +1,6 @@
 {
-  "name": "@rneui/base",
-  "version": "4.0.0-rc.8",
+  "name": "@rn-vui/base",
+  "version": "5.1.7",
   "description": "Cross Platform React Native UI Toolkit",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -19,8 +19,8 @@
     "react",
     "native",
     "react native",
-    "react native elements",
-    "rneui",
+    "React Native vElements",
+    "rn-vui",
     "react native ui",
     "react native components",
     "ui library",
@@ -29,34 +29,34 @@
     "bootstrap"
   ],
   "scripts": {
-    "build": "tsc --composite false",
-    "test": "jest",
-    "test:update": "jest -u",
-    "test:ci": "jest --runInBand",
-    "test:watch": "jest --watch",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "clean-install": "rimraf node_modules && yarn"
+    "build": "yarn run -T tsc --composite false",
+    "test": "yarn run -T jest",
+    "test:update": "yarn run -T jest -u",
+    "test:ci": "yarn run -T jest --runInBand",
+    "test:watch": "yarn run -T jest --watch",
+    "lint": "yarn run -T eslint . --ext .js,.jsx,.ts,.tsx",
+    "clean-install": "yarn run -T rimraf node_modules && yarn"
   },
   "author": "RNE Core Team",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/react-native-elements/react-native-elements/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+-label%3A%22pkg%3A+circular-slider%22+-label%3A%22pkg%3A+themed%22+"
+    "url": "https://github.com/deepktp/react-native-vikalp-elements/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+-label%3A%22pkg%3A+circular-slider%22+-label%3A%22pkg%3A+themed%22+"
   },
-  "homepage": "https://reactnativeelements.com/",
+  "homepage": "https://react-native-velements.thevikalp.com/",
   "dependencies": {
+    "@rn-vui/ratings": "^0.5.0",
     "@types/react-native-vector-icons": "^6.4.10",
     "color": "^3.2.1",
     "deepmerge": "^4.2.2",
     "hoist-non-react-statics": "^3.3.2",
-    "react-native-ratings": "^8.1.0",
     "react-native-size-matters": "^0.4.0"
   },
   "devDependencies": {
     "@types/color": "^3.0.3",
     "@types/hoist-non-react-statics": "^3.3.1",
     "metro-react-native-babel-preset": "^0.70.2",
-    "react-native-safe-area-context": "4.4.1",
-    "react-native-vector-icons": "^7.1.0"
+    "react-native-safe-area-context": "4.14.0",
+    "react-native-vector-icons": "^10.1.0"
   },
   "peerDependencies": {
     "react-native-safe-area-context": ">= 3.0.0",
@@ -64,7 +64,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/react-native-elements/react-native-elements.git",
+    "url": "git+https://github.com/deepktp/react-native-vikalp-elements.git",
     "directory": "packages/base"
   }
 }

@@ -15,7 +15,7 @@ export interface SwitchProps extends NativeSwitchProps {
 /**
  * Switch represents user's decision of a process and indicates whether a state is on/off.
  * Switch is a controlled component that requires an `onValueChange` to update the `value` prop.
- * This renders a `boolean` value. React native elements provide you with additional `theme` and `color` support in the Switch Button.
+ * This renders a `boolean` value. React Native vElements provide you with additional `theme` and `color` support in the Switch Button.
  * @usage
  *
  *

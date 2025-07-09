@@ -1,6 +1,6 @@
 import React from 'react';
 import { FAB } from '..';
-import { usage, Stack, info } from '@rneui/doc-gen';
+import { usage, Stack, info } from '@rn-vui/doc-gen';
 
 info(
   'A floating action button (FAB) performs the primary, or most common, action on a screen.',

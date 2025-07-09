@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { FAB } from '@rneui/themed';
+import { FAB } from '@rn-vui/themed';
 import { Header } from '../components/header';
 
 export default () => {

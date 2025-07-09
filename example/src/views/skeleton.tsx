@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, ScrollView, StyleSheet } from 'react-native';
 import { Header } from '../components/header';
-import { Skeleton, Text } from '@rneui/themed';
+import { Skeleton, Text } from '@rn-vui/themed';
 import { LinearGradient } from 'expo-linear-gradient';
 
 const Avatars = () => {

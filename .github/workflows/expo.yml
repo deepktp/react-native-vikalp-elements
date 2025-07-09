@@ -9,13 +9,21 @@ jobs:
 
     steps:
       - name: 🏗 Setup repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+
+      - name: Enable Corepack
+        run: corepack enable
+        shell: bash
+
+      - name: Enable Yarn with Corepack
+        run: corepack prepare yarn@stable --activate
+        shell: bash
 
       - name: Install dependencies
         uses: ./.github/actions/install
 
       - name: 🏗 Setup Expo
-        uses: expo/expo-github-action@v7
+        uses: expo/expo-github-action@v8
         with:
           expo-version: latest
           token: ${{ secrets.EXPO_TOKEN }}

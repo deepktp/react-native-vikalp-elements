@@ -10,7 +10,7 @@ import {
  *
  * Usage ```<LinearProgress variant={LinearProgress.INDETERMINATE}  />```
  *
- * [API Documentation](https://reactnativeelements.com/docs/linearProgress)
+ * [API Documentation](https://react-native-velements.thevikalp.com//docs/linearProgress)
  */
 const LinearProgress = Object.assign(LinearProgressBase, {
   INDETERMINATE: 'indeterminate' as LinearProgressProps['variant'],

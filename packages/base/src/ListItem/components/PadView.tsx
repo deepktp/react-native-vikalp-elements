@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { View } from 'react-native';
 
 export interface PadViewProps {
+  children: React.ReactNode;
   Component: React.ComponentClass;
   pad: number;
 }
@@ -24,7 +25,9 @@ export const PadView: React.FC<PadViewProps> = ({
         (child, index) =>
           child && [
             child,
-            index !== length - 1 && <View style={{ paddingLeft: pad }} />,
+            index !== length - 1 && (
+              <View style={{ paddingLeft: pad }} key={`PadView-${index}`} />
+            ),
           ]
       )}
     </Container>

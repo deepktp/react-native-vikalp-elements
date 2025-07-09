@@ -1,6 +1,6 @@
-## React Native Elements website
+## React Native vElements website
 
-https://reactnativeelements.com/
+https://react-native-velements.thevikalp.com//
 
 ### Getting Started
 

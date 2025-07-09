@@ -2,6 +2,7 @@ import React from 'react';
 import LinearProgress from '../index';
 import { renderWithWrapper } from '../../../.ci/testHelper';
 import { CreateThemeOptions, FullTheme } from '../../config';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('LinearProgress Component', () => {
   it('should apply props from theme', () => {

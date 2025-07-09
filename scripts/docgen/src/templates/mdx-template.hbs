@@ -34,29 +34,27 @@ import Play from '@site/playground/{{title}}/{{id}}.playground';
 <TabItem value="npm">
   
 ```bash
-npm install @rneui/{{installation}}
+npm install @rn-vui/{{installation}}
 ```
 
 </TabItem>
 <TabItem value="yarn">
 
 ```bash
-yarn add @rneui/{{installation}}
+yarn add @rn-vui/{{installation}}
 ```
 
 </TabItem>
 </Tabs>
 {{/if}}
 
-{{!-- {{#if showUsage}} --}}
-## Usage
 
 <div class="row inline-flex-center" >
   <div class="col col--3">
     <h4>Import</h4>
   </div>
   <div class="col col--9">
-    <CodeBlock>{`import { {{parentComponent}} } from '@rneui/themed';`}</CodeBlock>
+    <CodeBlock>{`import { {{parentComponent}} } from '@rn-vui/themed';`}</CodeBlock>
   </div>
   <div class="col col--3">
     <h4>
@@ -71,14 +69,27 @@ yarn add @rneui/{{installation}}
   </div>
 </div>
 
+
+## Usage
+
 {{{usage}}}
 
 {{#if usageFileExists}}
 <Usage/>
 {{/if}}
 
+{{#if anatomy}}
 
-{{!-- {{/if}} --}}
+## Anatomy
+
+<div class="container">
+  <div class="row">
+    <div class="col col--6 col--offset-3">
+      <img src="/img/anatomy/{{id}}.png" alt="{{title}} anatomy" />
+    </div>
+  </div>
+</div>
+{{/if}}
 
 {{#if showProps}}
 ## Props

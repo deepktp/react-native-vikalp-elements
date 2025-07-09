@@ -3,6 +3,7 @@ import { ListItem } from '..';
 import { renderWithWrapper } from '../../../.ci/testHelper';
 import { Avatar, Icon } from '../..';
 import { TextInput } from 'react-native';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('ListItem component', () => {
   it('should match snapshot', () => {
@@ -105,7 +106,7 @@ describe('ListItem component', () => {
         isExpanded={false}
         icon={<Icon name="place" />}
         noRotation
-      ></ListItem.Accordion>,
+      />,
       'RNE__ListItem__Accordion__Icon'
     );
     expect(wrapper.props.style).toMatchObject({

@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   Animated,
-  Easing,
   PanResponder,
   View,
   StyleSheet,
@@ -9,6 +8,7 @@ import {
   GestureResponderEvent,
   StyleProp,
   ViewStyle,
+  Easing,
 } from 'react-native';
 import { RneFunctionComponent } from '../helpers';
 
@@ -63,21 +63,19 @@ export interface TabViewProps {
 /** Tabs organize content across different screens, data sets, and other interactions.
  * TabView enables swipeable tabs. */
 export const TabViewBase: RneFunctionComponent<TabViewProps> = ({
-  value = 0,
+  value: activeIndex = 0,
   children,
   onChange = () => {},
   onSwipeStart = () => {},
-  animationType = 'spring',
-  animationConfig = {},
   containerStyle,
   tabItemContainerStyle,
   disableSwipe = false,
   disableTransition = false,
   minSwipeRatio = 0.4,
   minSwipeSpeed = 1,
+  animationType = 'spring',
+  animationConfig = {},
 }) => {
-  const translateX = React.useRef(new Animated.Value(0));
-  const currentIndex = React.useRef(0);
   const [containerWidth, setContainerWidth] = React.useState(1);
 
   const childCount = React.useMemo(
@@ -85,14 +83,24 @@ export const TabViewBase: RneFunctionComponent<TabViewProps> = ({
     [children]
   );
 
+  const translateX = React.useRef(new Animated.Value(0));
+  const currentIndex = React.useRef(0);
+  const onIndexChangeRef = React.useRef((value: number) => value);
+
   const animate = React.useCallback(
-    (toValue: number) => {
+    (toValue: number, onDone: (_: number) => void = () => {}) => {
+      currentIndex.current = toValue;
+      onIndexChangeRef.current?.(toValue);
+      //currently we are ignoring the animationConfig types but we need to fix this
       Animated[animationType](translateX.current, {
-        toValue,
+        //@ts-ignore
+        toValue: toValue,
         useNativeDriver: true,
-        easing: Easing.ease,
+        easing: Easing.inOut(Easing.ease),
+        duration: 150,
         ...animationConfig,
       }).start();
+      onDone?.(toValue);
     },
     [animationConfig, animationType]
   );
@@ -103,10 +111,18 @@ export const TabViewBase: RneFunctionComponent<TabViewProps> = ({
       const shouldSwipe =
         Math.abs(position) > minSwipeRatio || Math.abs(vx) > minSwipeSpeed;
       currentIndex.current += shouldSwipe ? Math.sign(position) : 0;
+      // if (hue?.current) hue.current.setValue(currentIndex.current);
       animate(currentIndex.current);
       onChange(currentIndex.current);
     },
-    [animate, containerWidth, minSwipeRatio, minSwipeSpeed, onChange]
+    [
+      animate,
+      containerWidth,
+      currentIndex,
+      minSwipeRatio,
+      minSwipeSpeed,
+      onChange,
+    ]
   );
 
   const panResponder = React.useMemo(
@@ -135,15 +151,22 @@ export const TabViewBase: RneFunctionComponent<TabViewProps> = ({
         onPanResponderRelease: releaseResponder,
         onPanResponderTerminate: releaseResponder,
       }),
-    [childCount, containerWidth, onSwipeStart, releaseResponder]
+    [
+      childCount,
+      containerWidth,
+      onSwipeStart,
+      releaseResponder,
+      translateX,
+      currentIndex,
+    ]
   );
 
   React.useEffect(() => {
-    if (Number.isInteger(value) && value !== currentIndex.current) {
-      animate(value);
-      currentIndex.current = value;
+    if (Number.isInteger(activeIndex) && activeIndex !== currentIndex.current) {
+      animate(activeIndex);
+      currentIndex.current = activeIndex;
     }
-  }, [animate, value]);
+  }, [animate, activeIndex, currentIndex]);
 
   return (
     <View
@@ -162,7 +185,7 @@ export const TabViewBase: RneFunctionComponent<TabViewProps> = ({
             transform: [
               {
                 translateX: disableTransition
-                  ? -value * containerWidth
+                  ? -activeIndex * containerWidth
                   : translateX.current.interpolate({
                       inputRange: [0, 1],
                       outputRange: [0, -containerWidth],

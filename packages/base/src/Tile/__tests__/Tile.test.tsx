@@ -3,6 +3,7 @@ import { Tile } from '../index';
 import { renderWithWrapper } from '../../../.ci/testHelper';
 import { Image, Pressable } from 'react-native';
 import { Icon } from '../../Icon';
+import { describe, it, expect } from '@jest/globals';
 
 describe('Tile component', () => {
   it('should match snapshot', () => {
@@ -12,7 +13,7 @@ describe('Tile component', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render featured tile', () => {
+  it('should render featured tile', async () => {
     const { wrapper, queryByText } = renderWithWrapper(
       <Tile
         imageSrc={{ uri: 'http://google.com' }}
@@ -21,11 +22,11 @@ describe('Tile component', () => {
         caption="Some Caption Text"
       />
     );
-    expect(wrapper.findByType(Image).props.source).toMatchObject({
+    await expect(wrapper.findByType(Image).props.source).toMatchObject({
       uri: 'http://google.com',
     });
-    expect(queryByText('Hey React Native')).not.toBeNull();
-    expect(queryByText('Some Caption Text')).not.toBeNull();
+    await expect(queryByText('Hey React Native')).not.toBeNull();
+    await expect(queryByText('Some Caption Text')).not.toBeNull();
   });
 
   it('should render featured tile with icon', () => {

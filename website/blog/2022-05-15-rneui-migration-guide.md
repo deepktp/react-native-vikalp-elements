@@ -1,7 +1,7 @@
 ---
 title: React Native Elements 4.0
 
-authors: [arpitBhalla, rneui]
+authors: [arpitBhalla, rn-vui]
 ---
 
 <div align='center'>
@@ -17,3 +17,5 @@ React Native Elements v4 introduces many features including few new components, 
 ## Migration Guide
 
 Refer the [migration guide](/migration/migration-v3) to migrate from v3 to v4.
+
+<!-- truncate -->

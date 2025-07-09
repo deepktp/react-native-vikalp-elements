@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Overlay, Icon } from '@rneui/themed';
+import { Button, Overlay, Icon } from '@rn-vui/themed';
 import { View, Text, StyleSheet } from 'react-native';
 import { Header } from '../components/header';
 
@@ -24,7 +24,7 @@ const OverlayComponent: React.FunctionComponent<OverlayComponentProps> = () => {
       <Overlay isVisible={visible} onBackdropPress={toggleOverlay}>
         <Text style={styles.textPrimary}>Hello!</Text>
         <Text style={styles.textSecondary}>
-          Welcome to React Native Elements
+          Welcome to React Native vElements
         </Text>
         <Button
           icon={

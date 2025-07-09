@@ -144,6 +144,7 @@ export interface SliderProps {
 
   /** Apply style to the container of the slider.
    * @type Style
+   * @default {}
    */
   containerStyle?: typeof styles;
 }
@@ -151,10 +152,10 @@ export interface SliderProps {
 /** Sliders allow users to select a value from a fixed set of values using drag utility.*/
 export const Slider: RneFunctionComponent<SliderProps> = ({
   allowTouchTrack = false,
-  animateTransitions,
-  animationConfig,
+  animateTransitions = false,
+  animationConfig = {},
   animationType = 'timing',
-  containerStyle,
+  containerStyle = styles,
   debugTouchArea = false,
   disabled,
   maximumTrackTintColor = '#b3b3b3',
@@ -170,7 +171,7 @@ export const Slider: RneFunctionComponent<SliderProps> = ({
   thumbProps,
   thumbStyle,
   thumbTintColor = 'red',
-  thumbTouchSize = { height: THUMB_SIZE, width: THUMB_SIZE },
+  thumbTouchSize = { width: THUMB_SIZE, height: THUMB_SIZE },
   trackStyle,
   value: _propValue = 0,
   ...other
@@ -435,7 +436,9 @@ export const Slider: RneFunctionComponent<SliderProps> = ({
     (e: GestureResponderEvent /* gestureState: Object */) => {
       // If the user presses on the thumb, become active
       const thumbHit = thumbHitTest(e);
-      if (thumbHit) {
+      if (disabled) {
+        return false;
+      } else if (thumbHit) {
         return true;
       } else if (allowTouchTrack) {
         setCurrentValue(getOnTouchValue(e));
@@ -451,6 +454,7 @@ export const Slider: RneFunctionComponent<SliderProps> = ({
       getOnTouchValue,
       setCurrentValue,
       thumbHitTest,
+      disabled,
     ]
   );
 
@@ -471,7 +475,7 @@ export const Slider: RneFunctionComponent<SliderProps> = ({
   }, [debugTouchArea, getTouchOverflowSize]);
 
   const renderDebugThumbTouchRect = useCallback(
-    (thumbLeft: Animated.AnimatedInterpolation) => {
+    (thumbLeft: Animated.AnimatedInterpolation<number>) => {
       const thumbTouchRect = getThumbTouchRect();
       const positionStyle = {
         left: thumbLeft,
@@ -557,11 +561,12 @@ export const Slider: RneFunctionComponent<SliderProps> = ({
         style,
       ])}
       onLayout={measureContainer}
+      accessible
       accessibilityRole="adjustable"
       accessibilityValue={{
         min: minimumValue,
         max: maximumValue,
-        now: getCurrentValue(),
+        now: Math.floor(getCurrentValue()),
       }}
     >
       <View
@@ -604,28 +609,13 @@ export const Slider: RneFunctionComponent<SliderProps> = ({
   );
 };
 
-Slider.defaultProps = {
-  value: 0,
-  minimumValue: 0,
-  maximumValue: 1,
-  step: 0,
-  minimumTrackTintColor: '#3f3f3f',
-  maximumTrackTintColor: '#b3b3b3',
-  allowTouchTrack: false,
-  thumbTintColor: 'red',
-  thumbTouchSize: { width: THUMB_SIZE, height: THUMB_SIZE },
-  debugTouchArea: false,
-  animationType: 'timing',
-  orientation: 'horizontal',
-};
-
 const styles = StyleSheet.create({
   containerHorizontal: {
-    height: 40,
+    height: 50,
     justifyContent: 'center',
   },
   containerVertical: {
-    width: 40,
+    width: 50,
     flexDirection: 'column',
     alignItems: 'center',
   },

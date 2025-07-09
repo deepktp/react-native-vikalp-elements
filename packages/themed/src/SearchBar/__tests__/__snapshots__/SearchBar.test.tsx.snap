@@ -84,6 +84,7 @@ exports[`SearchBar wrapper component should apply values from theme 1`] = `
               >
                 <Text
                   allowFontScaling={false}
+                  selectable={false}
                   style={
                     [
                       {
@@ -112,7 +113,6 @@ exports[`SearchBar wrapper component should apply values from theme 1`] = `
         <TextInput
           editable={true}
           onBlur={[Function]}
-          onCancel={[Function]}
           onChangeText={[Function]}
           onFocus={[Function]}
           placeholder="Enter search term"

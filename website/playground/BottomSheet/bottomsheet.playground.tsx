@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { View } from 'react-native';
-import { BottomSheet, Text } from '@rneui/base';
+import { BottomSheet, Text } from '@rn-vui/base';
 
 import Playground from '../../src/components/Playground';
 import { useView, PropTypes } from 'react-view';
@@ -29,7 +29,7 @@ const BottomSheetPlayground = () => {
       Text,
     },
     imports: {
-      '@rneui/base': {
+      '@rn-vui/base': {
         named: ['BottomSheet', 'Text'],
       },
     },

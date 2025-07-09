@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar } from '@rneui/base';
+import { Avatar } from '@rn-vui/base';
 import Playground from '../../src/components/Playground';
 import { useView, PropTypes } from 'react-view';
 
@@ -107,7 +107,7 @@ const AvatarPlay = () => {
       Avatar,
     },
     imports: {
-      '@rneui/base': {
+      '@rn-vui/base': {
         named: ['Avatar'],
       },
     },

@@ -1,8 +1,10 @@
 import { transform, types as t } from '@babel/core';
 import dedent from 'dedent';
 import glob from 'fast-glob';
-import { join, dirname } from 'path';
+import { posix, dirname } from 'path';
 import fs from 'fs';
+
+const join = posix.join;
 
 export const tabify = (str: string) => {
   return transform(`<>\n${str}\n</>`, {
@@ -69,7 +71,7 @@ export const tabify = (str: string) => {
                       }),
                     ]
                   );
-                  path.replaceWith(element);
+                  path.posix.replaceWith(element);
                 }
               }
             },

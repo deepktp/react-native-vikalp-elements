@@ -1,9 +1,9 @@
-# Contributing to React Native Elements
+# Contributing to React Native vElements
 
 Thanks for taking the time to checkout this project and being willing to
 contribute!
 
-Here are some of some of ways you can help:
+Here are some of the ways you can help:
 
 - [Reporting Bugs](#reporting-bugs)
 - [Suggesting a feature](#suggesting-a-feature)
@@ -13,7 +13,7 @@ Here are some of some of ways you can help:
 
 ## Reporting Bugs
 
-React Native Elements has over 9000 users actively developing and using this
+React Native vElements has over 9000 users actively developing and using this
 library in their projects. With that many use cases, bugs are sure to come up
 from time to time. When you think you've found a bug, here's what to do:
 
@@ -31,7 +31,7 @@ from time to time. When you think you've found a bug, here's what to do:
    is to solve the issue.
 
 3. If there are no other issues like yours, then create a new one. New issues
-   come with a issue template, so make sure to fill out as much information as
+   come with an issue template, so make sure to fill out as much information as
    possible. If possible, please also provide a [snack](https://snack.expo.io/)
    demonstrating the issue.
 
@@ -42,8 +42,8 @@ guide.
 ## Suggesting a feature
 
 Have a cool idea for a component? Think you can implement an existing feature
-better? Go ahead and open and issue, describe what you want to accomplish and
-lastly, why you think React Native Elements would benefit from it.
+better? Go ahead and open an issue, describe what you want to accomplish and
+lastly, why you think React Native vElements would benefit from it.
 
 A few things to consider/add:
 
@@ -58,7 +58,7 @@ A few things to consider/add:
 ## Responding to Issues
 
 When someone posts an issue, a maintainer might not be able to respond right
-away. Or a person may post and issue that has incomplete information. As a
+away. Or a person may post an issue that has incomplete information. As a
 contributor you can help by answering the issue yourself if you know the cause
 of it, or help the maintainers by making sure all the information necessary
 to validate the issue is there.
@@ -73,7 +73,7 @@ version we release.
 The easiest way to contribute to a particular doc is through the Edit button on
 the page. It'll take you directly to the exact file for that page on the repo.
 
-Since all documents are versioned, it might be bit tricky to find which file
+Since all documents are versioned, it might be a bit tricky to find which file
 needs changing. You can use the rule below to figure out which file you need to
 edit.
 
@@ -117,7 +117,7 @@ If I added docs for `Avatar.md` and it was our ever first release say `0.19.0`,
 when releasing that version it'll create
 `/website/versioned_docs/version-0.19.0/avatar.md`.
 
-Now if I go to release `0.20.0` and didn't change `/docs/Avatar.md`, then
+Now, if I go to release `0.20.0` and didn't change `/docs/Avatar.md`, then
 they'll be **no** `/website/versioned_docs/version-0.20.0/avatar.md`. Docusaurus
 will simply point to the old version from `0.19.0`.
 
@@ -143,11 +143,11 @@ Be sure to check out the documentation over at
 
 ## Implementing Bug Fixes and Improvements
 
-If you wish to submit a pull request for a new feature or issue then this is
-guide for you. On GitHub, we extensively use labels to reflect the content and
+If you wish to submit a pull request for a new feature or issue then this
+guide is for you. On GitHub, we extensively use labels to reflect the content and
 status of issues.
 
-For all issues that are bugs check
+For all issues that are bugs, check
 [here](https://github.com/react-native-elements/react-native-elements/issues?utf8=✓&q=is%3Aissue+is%3Aopen+label%3A%22%3Aboom%3A++Bug%22+-label%3A%22✅+Fixed+-+Next+Release%22+-label%3A%22📥+PR+Submitted%22).
 
 Improvements are separated into two categories:
@@ -166,14 +166,14 @@ setup on your local machine:
 ### Setup
 
 1. Install [Node.js](https://nodejs.org/) and and [yarn](https://yarnpkg.com) if you have not already. (_We suggest
-   you to use node v14x_)
+   you to use node v18.x_)
 2. Fork the **react-native-elements** repo
-   [here](https://github.com/react-native-elements/react-native-elements)
+   [here](https://github.com/deepktp/react-native-vikalp-elements)
 3. Clone the forked repo
 
    ```bash
     git clone <your-forked-repo-url>
-    cd react-native-elements
+    cd react-native-vikalp-elements
    ```
 
    You have a file structure that looks like this:
@@ -196,6 +196,16 @@ setup on your local machine:
    ```bash
      yarn install
    ```
+
+   If you encounter an issue where your `yarn` version does not meet the requirements of the project, you can enable Corepack to manage the correct version of Yarn. Corepack is included by default with Node.js versions 16.10 and above.
+
+   To enable Corepack, run the following command:
+
+   ```bash
+   corepack enable
+   ```
+
+   This will ensure that the correct version of Yarn is used for the project.
 
 5. While developing, you can run the example app with Expo to test your changes:
 
