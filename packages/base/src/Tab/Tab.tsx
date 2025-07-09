@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import {
   Animated,
   Easing,
+  LayoutChangeEvent,
   ScrollView,
   StyleProp,
   StyleSheet,
@@ -146,7 +147,7 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
       if (tabItemPositions.current.length > currValue) {
         const tab = tabItemPositions.current[currValue];
         const { position, width } = tab;
-  
+
         const scrollViewWidth = tabContainerWidth;
         const tabCenter = position + width / 2;
         let scrollX = tabCenter - scrollViewWidth / 2;
@@ -155,11 +156,11 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
             (acc, item) => acc + item.width,
             0
           ) - scrollViewWidth;
-  
+
         scrollX = Math.max(0, Math.min(scrollX, maxScroll));
-    
+
         scrollViewRef.current?.scrollTo({
-          x: currValue === 0 ? 0 :scrollX,
+          x: currValue === 0 ? 0 : scrollX,
           y: 0,
           animated: true,
         });
@@ -291,7 +292,9 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
                       let cumulativePosition = 0;
                       for (let i = 0; i < validChildren.length; i++) {
                         const item = tabItemPositions.current[i];
-                        if (!item) continue;
+                        if (!item) {
+                          continue;
+                        }
                         item.position = cumulativePosition;
                         cumulativePosition += item.width;
                       }
@@ -306,9 +309,9 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
                     containerStyle,
                     titleStyle,
                   },
-                })}
-              </View>
-            ))}
+                }
+              );
+            })}
             {!disableIndicator && (
               <Animated.View
                 style={[
