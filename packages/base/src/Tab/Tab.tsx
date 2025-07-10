@@ -90,7 +90,7 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
   theme = defaultTheme,
   children,
   scrollable = false,
-  onChange = () => { },
+  onChange = () => {},
   indicatorStyle,
   disableIndicator,
   variant = 'primary',
@@ -112,7 +112,7 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
   const setIndicatorRerenderKey = React.useState<number>(0)[1]; //to force re-render the indicator
 
   const animate = React.useCallback(
-    (toValue: number, onDone: (_: number) => void = () => { }) => {
+    (toValue: number, onDone: (_: number) => void = () => {}) => {
       currentIndex.current = toValue;
       onIndexChangeRef.current?.(toValue);
       //currently we are ignoring the animationConfig types but we need to fix this
@@ -152,10 +152,8 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
         const tabCenter = position + width / 2;
         let scrollX = tabCenter - scrollViewWidth / 2;
         const maxScroll =
-          tabItemPositions.current.reduce(
-            (acc, item) => acc + item.width,
-            0
-          ) - scrollViewWidth;
+          tabItemPositions.current.reduce((acc, item) => acc + item.width, 0) -
+          scrollViewWidth;
 
         scrollX = Math.max(0, Math.min(scrollX, maxScroll));
 
@@ -288,7 +286,10 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
                       position: 0,
                       width,
                     };
-                    if (tabItemPositions.current.filter(Boolean).length === validChildren.length) {
+                    if (
+                      tabItemPositions.current.filter(Boolean).length ===
+                      validChildren.length
+                    ) {
                       let cumulativePosition = 0;
                       for (let i = 0; i < validChildren.length; i++) {
                         const item = tabItemPositions.current[i];
