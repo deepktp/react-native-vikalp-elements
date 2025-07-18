@@ -34,6 +34,7 @@ const BottomSheetComponent: React.FunctionComponent<
         animationDuration={300}
         onBackdropPress={() => setIsVisible(false)}
         isVisible={isVisible}
+        edges={{bottom: "off"}}
       >
         {list.map((l, i) => (
           <ListItem
