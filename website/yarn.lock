@@ -3728,63 +3728,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pnpm/config.env-replace@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "@pnpm/config.env-replace@npm:1.1.0"
-  checksum: 10/fabe35cede1b72ad12877b8bed32f7c2fcd89e94408792c4d69009b886671db7988a2132bc18b7157489d2d0fd4266a06c9583be3d2e10c847bf06687420cb2a
-  languageName: node
-  linkType: hard
-
-"@pnpm/network.ca-file@npm:^1.0.1":
-  version: 1.0.2
-  resolution: "@pnpm/network.ca-file@npm:1.0.2"
+"@rneui/base@file:../packages/base::locator=rne-website%40workspace%3A.":
+  version: 4.0.0-rc.8
+  resolution: "@rneui/base@file:../packages/base#../packages/base::hash=902c90&locator=rne-website%40workspace%3A."
   dependencies:
-    graceful-fs: "npm:4.2.10"
-  checksum: 10/d8d0884646500576bd5390464d13db1bb9a62e32a1069293e5bddb2ad8354b354b7e2d2a35e12850025651e795e6a80ce9e601c66312504667b7e3ee7b52becc
-  languageName: node
-  linkType: hard
-
-"@pnpm/npm-conf@npm:^2.1.0":
-  version: 2.3.1
-  resolution: "@pnpm/npm-conf@npm:2.3.1"
-  dependencies:
-    "@pnpm/config.env-replace": "npm:^1.1.0"
-    "@pnpm/network.ca-file": "npm:^1.0.1"
-    config-chain: "npm:^1.1.11"
-  checksum: 10/44fbb0b166eee3e3631ef0e92b1bed6489aa6975e3e722c16577cc0181b81374f5ae90c6e4da183c8160f996e6b4863325525b00542f42d1b757b51ef62bc4e7
-  languageName: node
-  linkType: hard
-
-"@polka/url@npm:^1.0.0-next.24":
-  version: 1.0.0-next.29
-  resolution: "@polka/url@npm:1.0.0-next.29"
-  checksum: 10/69ca11ab15a4ffec7f0b07fcc4e1f01489b3d9683a7e1867758818386575c60c213401259ba3705b8a812228d17e2bfd18e6f021194d943fff4bca389c9d4f28
-  languageName: node
-  linkType: hard
-
-"@rn-vui/base@file:../packages/base::locator=rne-website%40workspace%3A.":
-  version: 5.1.8
-  resolution: "@rn-vui/base@file:../packages/base#../packages/base::hash=cbd304&locator=rne-website%40workspace%3A."
-  dependencies:
-    "@rn-vui/ratings": "npm:^0.5.0"
-    "@types/react-native-vector-icons": "npm:^6.4.10"
-    color: "npm:^3.2.1"
-    deepmerge: "npm:^4.2.2"
-    hoist-non-react-statics: "npm:^3.3.2"
-    react-native-size-matters: "npm:^0.4.0"
+    "@types/react-native-vector-icons": ^6.4.10
+    color: ^3.2.1
+    deepmerge: ^4.2.2
+    hoist-non-react-statics: ^3.3.2
+    react-native-ratings: ^8.1.0
+    react-native-size-matters: ^0.4.0
   peerDependencies:
     react-native-safe-area-context: ">= 3.0.0"
     react-native-vector-icons: ">7.0.0"
-  languageName: node
-  linkType: hard
-
-"@rn-vui/ratings@npm:^0.5.0":
-  version: 0.5.0
-  resolution: "@rn-vui/ratings@npm:0.5.0"
-  peerDependencies:
-    react: "*"
-    react-native: "*"
-  checksum: 10/65b7dad752d5529045b5ac717dfc7b208055f12029a9bcf7a06fbc7480bf3ebf11bc75a61f29819734ce7efc9eaa3e0aed362b2a59d64a33a629ed1b6686f559
+  checksum: e0678ac67e70a5d67c40b13a4c5f123d0cd8373bd793cd0debbe0039448fe1535258d17aa011f2e34e8f2de50f7b55c981eb20a6f28da30729ec73cbcc4c6109
   languageName: node
   linkType: hard
 
