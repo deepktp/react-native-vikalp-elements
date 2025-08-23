@@ -3763,8 +3763,8 @@ __metadata:
   linkType: hard
 
 "@rn-vui/base@npm:*":
-  version: 5.1.9
-  resolution: "@rn-vui/base@npm:5.1.9"
+  version: 5.1.10
+  resolution: "@rn-vui/base@npm:5.1.10"
   dependencies:
     "@rn-vui/ratings": "npm:^0.5.0"
     "@types/react-native-vector-icons": "npm:^6.4.10"
@@ -3775,7 +3775,7 @@ __metadata:
   peerDependencies:
     react-native-safe-area-context: ">= 3.0.0"
     react-native-vector-icons: ">7.0.0"
-  checksum: 10/d6d0dabc5dd3d94bd8ceff49260f5423deba787e93a3fa61f2a58e6ad5e50a52d1a793391f30461126ecd7f3024cb830d410056cf1b52b7746ac911d38436b2e
+  checksum: 10/73a778eee435a0ee7daaae14d18c3af4b0c9a1d64811b07b5708bc4b86167355ea5476ecef61ef1073b92a385958f5dd0dbb30d42df78e8d7e1375b7607113de
   languageName: node
   linkType: hard
 
