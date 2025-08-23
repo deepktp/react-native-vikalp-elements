@@ -6,6 +6,9 @@ Make sure that you have completed [Step 3](../installation#install-react-native-
 
 Overlay Modal that displays content from the bottom of the screen.
 
+**Note:** Bottom Sheet Supports [Safe Area View Props](https://appandflow.github.io/react-native-safe-area-context/api/safe-area-view). You can remove bottom safe area padding by adding prop `edges={{bottom: 'off'}}`.
+
+
 ```SnackPlayer name=RNE BottomSheet
 import React, { useState } from 'react';
 import { BottomSheet, Button, ListItem } from '@rn-vui/themed';
