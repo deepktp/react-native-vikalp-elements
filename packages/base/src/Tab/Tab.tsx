@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import {
   Animated,
   Easing,
+  LayoutChangeEvent,
   ScrollView,
   StyleProp,
   StyleSheet,
@@ -143,16 +144,21 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
 
   const scrollHandler = React.useCallback(
     (currValue: number) => {
-      if (tabItemPositions.current.length >= currValue + 1) {
-        const itemPosition = tabItemPositions.current[currValue].position;
-        const itemWidth = tabItemPositions.current[currValue].width;
-        const tabContainerCurrentWidth = tabContainerWidth;
+      if (tabItemPositions.current.length > currValue) {
+        const tab = tabItemPositions.current[currValue];
+        const { position, width } = tab;
 
-        const scrollX =
-          itemPosition + itemWidth / 2 - tabContainerCurrentWidth / 2;
+        const scrollViewWidth = tabContainerWidth;
+        const tabCenter = position + width / 2;
+        let scrollX = tabCenter - scrollViewWidth / 2;
+        const maxScroll =
+          tabItemPositions.current.reduce((acc, item) => acc + item.width, 0) -
+          scrollViewWidth;
+
+        scrollX = Math.max(0, Math.min(scrollX, maxScroll));
 
         scrollViewRef.current?.scrollTo({
-          x: scrollX,
+          x: currValue === 0 ? 0 : scrollX,
           y: 0,
           animated: true,
         });
@@ -269,24 +275,31 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
         }),
         children: (
           <>
-            {validChildren.map((child, index) => (
-              <View
-                key={index}
-                style={{
-                  flex: 1,
-                  flexDirection: 'column',
-                }}
-                onLayout={({ nativeEvent: { layout } }) => {
-                  tabItemPositions.current[index] = {
-                    position: layout.x,
-                    width: layout.width,
-                  };
-                }}
-              >
-                {React.cloneElement(child as React.ReactElement<TabItemProps>, {
-                  onPress: () => {
-                    animate(index); //setActiveIndex removed second parameter
-                    onChange?.(index);
+            {validChildren.map((child, index) => {
+              return React.cloneElement(
+                child as React.ReactElement<TabItemProps>,
+                {
+                  onPress: () => onChange(index),
+                  onLayout: (event: LayoutChangeEvent) => {
+                    const { width } = event.nativeEvent.layout;
+                    tabItemPositions.current[index] = {
+                      position: 0,
+                      width,
+                    };
+                    if (
+                      tabItemPositions.current.filter(Boolean).length ===
+                      validChildren.length
+                    ) {
+                      let cumulativePosition = 0;
+                      for (let i = 0; i < validChildren.length; i++) {
+                        const item = tabItemPositions.current[i];
+                        if (!item) {
+                          continue;
+                        }
+                        item.position = cumulativePosition;
+                        cumulativePosition += item.width;
+                      }
+                    }
                   },
                   active: index === activeIndex,
                   variant,
@@ -297,9 +310,9 @@ export const TabBase: RneFunctionComponent<TabProps> = ({
                     containerStyle,
                     titleStyle,
                   },
-                })}
-              </View>
-            ))}
+                }
+              );
+            })}
             {!disableIndicator && (
               <Animated.View
                 style={[

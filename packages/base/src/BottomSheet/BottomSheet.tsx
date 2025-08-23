@@ -11,11 +11,14 @@ import {
   Animated,
   Easing,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import {
+  SafeAreaView,
+  SafeAreaViewProps,
+} from 'react-native-safe-area-context';
 import { RneFunctionComponent } from '../helpers';
 import useBottomSheetAnimationConfig from './useBottomSheetAnimationConfig';
 
-export interface BottomSheetProps {
+export interface BottomSheetProps extends SafeAreaViewProps {
   /** Style of the bottom sheet's container. Use this to change the color of the underlay. */
   containerStyle?: StyleProp<ViewStyle>;
 
