@@ -3,3 +3,4 @@ website/**
 **/dist/**
 **/__tests__/**
 **/CHANGELOG.md
+node_modules/**

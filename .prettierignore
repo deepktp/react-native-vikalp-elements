@@ -2,3 +2,5 @@ coverage
 **/coverage
 **/dist
 **/CHANGELOG.md
+node_modules/**
+website/**
