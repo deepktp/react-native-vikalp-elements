@@ -18,13 +18,12 @@ function CustomContentComponent(
   //   updateTheme({ mode: colorScheme === 'dark' ? 'dark' : 'light' });
   // }, [colorScheme, updateTheme]);
   return (
-    <SafeAreaView
+    <View
       style={{
         flex: 1,
         height: '100%',
-        backgroundColor: theme?.colors?.grey5,
+        // backgroundColor: theme?.colors?.grey5,
       }}
-      edges={['right', 'left', 'bottom']}
     >
       <View
         style={{
@@ -74,7 +73,7 @@ function CustomContentComponent(
       <View style={{ marginLeft: 10, width: '100%' }}>
         <DrawerItemList {...props} />
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
 
