@@ -41,20 +41,9 @@ function RootNavigator() {
   const { theme } = useTheme();
 
   return (
-    <NavigationContainer
-      theme={{
-        colors: {
-          background: theme?.colors.background,
-          primary: '',
-          card: '',
-          text: '',
-          border: '',
-          notification: '',
-        },
-        dark: theme.mode === 'dark',
-      }}
-    >
+    <NavigationContainer>
       <Drawer.Navigator
+        id={undefined}
         drawerContent={DrawerNavigator}
         screenOptions={{
           headerShown: false,
