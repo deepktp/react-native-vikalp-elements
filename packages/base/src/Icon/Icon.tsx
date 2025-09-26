@@ -155,6 +155,10 @@ export const Icon: RneFunctionComponent<IconProps> = ({
     [size]
   );
 
+  if(IconComponent === null){
+    return null;
+  }
+
   return (
     <View
       testID={testID}
