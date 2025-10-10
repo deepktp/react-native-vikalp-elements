@@ -101,7 +101,7 @@ exports[`Default SearchBar component should match snapshot 1`] = `
                         "backgroundColor": "transparent",
                       },
                       {
-                        "fontFamily": "Material Icons",
+                        "fontFamily": "MaterialIcons-Regular",
                         "fontStyle": "normal",
                         "fontWeight": "normal",
                       },

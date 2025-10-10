@@ -370,7 +370,7 @@ exports[`Header Component should render left component by passing a config throu
                       "backgroundColor": "transparent",
                     },
                     {
-                      "fontFamily": "Material Icons",
+                      "fontFamily": "MaterialIcons-Regular",
                       "fontStyle": "normal",
                       "fontWeight": "normal",
                     },
@@ -510,7 +510,7 @@ exports[`Header Component should render right component by passing a config thro
                       "backgroundColor": "transparent",
                     },
                     {
-                      "fontFamily": "Material Icons",
+                      "fontFamily": "MaterialIcons-Regular",
                       "fontStyle": "normal",
                       "fontWeight": "normal",
                     },

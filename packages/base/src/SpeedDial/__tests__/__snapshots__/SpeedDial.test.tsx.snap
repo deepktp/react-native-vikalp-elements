@@ -299,7 +299,7 @@ exports[`Speed Dial Component should match snapshot 1`] = `
                                 "backgroundColor": "transparent",
                               },
                               {
-                                "fontFamily": "Material Icons",
+                                "fontFamily": "MaterialIcons-Regular",
                                 "fontStyle": "normal",
                                 "fontWeight": "normal",
                               },
@@ -529,7 +529,7 @@ exports[`Speed Dial Component should match snapshot 1`] = `
                                 "backgroundColor": "transparent",
                               },
                               {
-                                "fontFamily": "Material Icons",
+                                "fontFamily": "MaterialIcons-Regular",
                                 "fontStyle": "normal",
                                 "fontWeight": "normal",
                               },
@@ -685,7 +685,7 @@ exports[`Speed Dial Component should match snapshot 1`] = `
                             "backgroundColor": "transparent",
                           },
                           {
-                            "fontFamily": "Material Icons",
+                            "fontFamily": "MaterialIcons-Regular",
                             "fontStyle": "normal",
                             "fontWeight": "normal",
                           },

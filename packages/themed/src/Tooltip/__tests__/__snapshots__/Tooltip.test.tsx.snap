@@ -44,7 +44,6 @@ exports[`Tooltip component should exhibit default tooltip toggle behavior when "
     </View>
     <Modal
       animationType="fade"
-      hardwareAccelerated={false}
       onShow={[Function]}
       transparent={true}
       visible={true}

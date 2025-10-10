@@ -104,7 +104,7 @@ exports[`Accessory Component should uses Icon 1`] = `
                     "backgroundColor": "transparent",
                   },
                   {
-                    "fontFamily": "Material Icons",
+                    "fontFamily": "MaterialIcons-Regular",
                     "fontStyle": "normal",
                     "fontWeight": "normal",
                   },
