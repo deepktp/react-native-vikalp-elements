@@ -74,7 +74,7 @@ export interface HeaderProps extends ViewProps {
   rightContainerStyle?: StyleProp<ViewStyle>;
 
   /** Add children component to the header. */
-  children?: JSX.Element | JSX.Element[];
+  children?: React.ReactElement | React.ReactElement[];
 
   /** Elevation for header */
   elevated?: boolean;
