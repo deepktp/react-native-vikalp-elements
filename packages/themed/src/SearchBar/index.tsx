@@ -16,6 +16,6 @@ export type {
 };
 
 export default withTheme<SearchBarProps>(
-  SearchBar as any,
+  SearchBar as unknown as React.ComponentType<SearchBarProps>,
   'SearchBar'
 );

@@ -20,7 +20,7 @@
     "docs-build": "yarn docs-build-api && cd website && yarn run build",
     "example:start": "yarn workspace react-native-vikalp-elements start",
     "format": "prettier --check ./packages",
-    "lint-staged": "lint-staged",
+    "lint-staged": "lint-staged && yarn typescript",
     "lint": "eslint ./packages --ext .js,.jsx,.ts,.tsx",
     "postinstall": "husky install",
     "test": "yarn workspaces foreach -Ap run test",
@@ -71,8 +71,7 @@
   "lint-staged": {
     "packages/**/*.{ts,tsx}": [
       "eslint --fix",
-      "prettier --write",
-      "tsc --noEmit --composite false"
+      "prettier --write"
     ],
     "packages/**/*.{js,jsx}": [
       "eslint --fix",
