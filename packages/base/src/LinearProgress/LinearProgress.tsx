@@ -54,7 +54,7 @@ export const LinearProgress: RneFunctionComponent<LinearProgressProps> = ({
     new Animated.Value(0)
   );
 
-  const intermediate = React.useRef<Animated.CompositeAnimation>();
+  const intermediate = React.useRef<Animated.CompositeAnimation>(null);
 
   const startAnimation = React.useCallback(() => {
     if (variant === 'indeterminate') {
@@ -65,7 +65,9 @@ export const LinearProgress: RneFunctionComponent<LinearProgressProps> = ({
         isInteraction: false,
       });
       transition.setValue(0);
-      Animated.loop(intermediate.current).start();
+      if (intermediate.current) {
+        Animated.loop(intermediate.current).start();
+      }
     } else {
       Animated.timing(transition, {
         duration: typeof animation !== 'boolean' ? animation.duration : 1000,
