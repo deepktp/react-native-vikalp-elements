@@ -18,19 +18,20 @@ describe('Tooltip component', () => {
   it('should call onPress', () => {
     const openFn = jest.fn();
     const Info = () => <Text>Info here</Text>;
-    const { wrapper, queryByTestId } = renderWithWrapper(
+    const { queryByText } = renderWithWrapper(
       <Tooltip height={100} onOpen={openFn} width={200} popover={<Info />}>
         <Text>Press me</Text>
       </Tooltip>
     );
-    const tooltip = wrapper.findAllByType(Pressable)[0];
-    fireEvent.press(tooltip);
+    const pressableElement = queryByText('Press me');
+    expect(pressableElement).toBeTruthy();
+    fireEvent.press(pressableElement!);
     expect(openFn).toBeCalledTimes(1);
   });
 
   it('should display tooltip onLongPress', () => {
     const Info = () => <Text>Info here</Text>;
-    const { wrapper } = renderWithWrapper(
+    const { getAllByText, queryByTestId } = renderWithWrapper(
       <Tooltip
         height={100}
         width={200}
@@ -41,8 +42,11 @@ describe('Tooltip component', () => {
         <Text>Press me</Text>
       </Tooltip>
     );
-    fireEvent(wrapper.findAllByType(Pressable)[0], 'onLongPress');
-    expect(wrapper.findByType(Info)).toBeTruthy();
+    // Get first occurrence (the actual trigger, not the highlighted copy)
+    const pressableElements = getAllByText('Press me');
+    fireEvent(pressableElements[0], 'onLongPress');
+    // Tooltip popover should be visible
+    expect(queryByTestId('tooltipPopoverContainer')).toBeTruthy();
   });
 
   it('should not render pointer if tooltip is close', () => {
@@ -62,7 +66,7 @@ describe('Tooltip component', () => {
 
   it('should return children for Falsy toggleOnPress', () => {
     const Info = () => <Text>Info here</Text>;
-    const { wrapper } = renderWithWrapper(
+    const { getAllByText, queryByTestId } = renderWithWrapper(
       <Tooltip
         height={100}
         width={200}
@@ -73,15 +77,17 @@ describe('Tooltip component', () => {
         <Text>Press me</Text>
       </Tooltip>
     );
-    const tooltip = wrapper.findAllByType(Pressable)[0];
-    fireEvent.press(tooltip);
-    expect(wrapper.findByType(Info)).toBeTruthy();
+    // Get first occurrence (the actual trigger, not the highlighted copy)
+    const pressableElements = getAllByText('Press me');
+    fireEvent.press(pressableElements[0]);
+    // Info should still be visible since toggleOnPress is false
+    expect(queryByTestId('tooltipPopoverContainer')).toBeTruthy();
   });
 
   it('should exhibit default tooltip toggle behavior when "closeOnlyOnBackdropPress" is false', () => {
     const fn = jest.fn();
     const Info = () => <Text>Info here</Text>;
-    const { wrapper, toJSON } = renderWithWrapper(
+    const { getAllByText, toJSON } = renderWithWrapper(
       <Tooltip
         visible
         onClose={fn}
@@ -93,12 +99,11 @@ describe('Tooltip component', () => {
         <Text>Press me</Text>
       </Tooltip>
     );
-    const modalComponent = wrapper.findByType(Modal);
-    expect(modalComponent.props.visible).toBeTruthy();
     expect(toJSON()).toMatchSnapshot();
     // Check if tooltip hides when touching again anywhere
-    const tooltip = wrapper.findAllByType(Pressable)[0];
-    fireEvent.press(tooltip);
+    // Get first occurrence (the actual trigger, not the highlighted copy)
+    const pressableElements = getAllByText('Press me');
+    fireEvent.press(pressableElements[0]);
     expect(fn).toBeCalledTimes(1);
   });
 
