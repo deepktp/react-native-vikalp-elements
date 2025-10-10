@@ -10,8 +10,8 @@ import {
   ColorValue,
 } from 'react-native';
 import {
-  IconButtonProps,
-  IconProps as VectorIconProps,
+  type IconButtonProps,
+  type IconProps as VectorIconProps,
 } from 'react-native-vector-icons/Icon';
 import Color from 'color';
 import getIconType from '../helpers/getIconType';
@@ -155,7 +155,7 @@ export const Icon: RneFunctionComponent<IconProps> = ({
     [size]
   );
 
-  if(IconComponent === null){
+  if (IconComponent === null) {
     return null;
   }
 

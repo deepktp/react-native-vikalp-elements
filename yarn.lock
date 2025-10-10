@@ -4879,10 +4879,8 @@ __metadata:
     metro-react-native-babel-preset: "npm:^0.70.2"
     react-native-safe-area-context: "npm:4.14.0"
     react-native-size-matters: "npm:^0.4.0"
-    react-native-vector-icons: "npm:^10.1.0"
   peerDependencies:
     react-native-safe-area-context: ">= 3.0.0"
-    react-native-vector-icons: ">7.0.0"
   languageName: unknown
   linkType: soft
 
@@ -14376,7 +14374,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
+"prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -14693,21 +14691,6 @@ __metadata:
   peerDependencies:
     react-native: "*"
   checksum: 10/65dac50cad8d03bd046c62e327edf1c162c650fa3320613343bb978ca4b83c8e4e61b0f528502a154a1d4e4baa6dc296799a57737177e3d3c77b64750f5d8076
-  languageName: node
-  linkType: hard
-
-"react-native-vector-icons@npm:^10.1.0":
-  version: 10.2.0
-  resolution: "react-native-vector-icons@npm:10.2.0"
-  dependencies:
-    prop-types: "npm:^15.7.2"
-    yargs: "npm:^16.1.1"
-  bin:
-    fa-upgrade.sh: bin/fa-upgrade.sh
-    fa5-upgrade: bin/fa5-upgrade.sh
-    fa6-upgrade: bin/fa6-upgrade.sh
-    generate-icon: bin/generate-icon.js
-  checksum: 10/ac3b05bb353807d0ed94256bd6de4291e8261afb320ce69c06270fba3be2ed3c7b3a81ecbda29191cfe906e89bf853d4b4f016465b6b56a428315c7b6630eff1
   languageName: node
   linkType: hard
 
@@ -18019,7 +18002,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yargs@npm:^16.1.1, yargs@npm:^16.2.0":
+"yargs@npm:^16.2.0":
   version: 16.2.0
   resolution: "yargs@npm:16.2.0"
   dependencies:
