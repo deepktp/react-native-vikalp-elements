@@ -29,6 +29,11 @@ jobs:
         uses: ./.github/actions/install
       - run: yarn test
 
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
   typescript:
     name: 'check_types'
     needs: install
