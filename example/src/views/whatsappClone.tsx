@@ -41,7 +41,7 @@ const WhatsappClone: React.FunctionComponent = () => {
           </Text>
           <Icon name="search" color="white" style={styles.icon} />
           <Icon
-            name="md-ellipsis-vertical"
+            name="ellipsis-vertical"
             style={styles.icon}
             type="ionicon"
             color="white"

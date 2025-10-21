@@ -72,7 +72,7 @@ const BadgeComponent = () => {
             />
           </View>
           {/* @ts-ignore */}
-          <BadgedIcon type="ionicon" name="ios-chatbubbles" />
+          <BadgedIcon type="ionicon" name="chatbubble-ellipses" />
           <View>
             <Avatar
               rounded
