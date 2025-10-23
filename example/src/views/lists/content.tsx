@@ -180,7 +180,7 @@ const ListContent = (props: ListContentType) => {
               marginHorizontal: 10,
             }}
           >
-            <Icon name="md-person-add" type="ionicon" color="gray" size={20} />
+            <Icon name="person-add" type="ionicon" color="gray" size={20} />
           </View>
         </View>
       </View>

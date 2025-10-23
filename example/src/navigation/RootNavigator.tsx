@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useTheme as  useNavigationTheme } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Tab, useTheme } from '@rn-vui/themed';
 import DrawerNavigator from './DrawerNavigator';
@@ -34,32 +34,23 @@ import Tabs from '../views/tabs';
 import Badge from '../views/badge';
 import WhatsappClone from '../views/whatsappClone';
 import Divider from '../views/Divider';
+import { useNavigation } from 'expo-router';
 
 const Drawer = createDrawerNavigator();
 
 function RootNavigator() {
   const { theme } = useTheme();
-
+``
   return (
     <NavigationContainer
-      theme={{
-        colors: {
-          background: theme?.colors.background,
-          primary: '',
-          card: '',
-          text: '',
-          border: '',
-          notification: '',
-        },
-        dark: theme.mode === 'dark',
-      }}
     >
       <Drawer.Navigator
+        id={undefined}
         drawerContent={DrawerNavigator}
         screenOptions={{
           headerShown: false,
           drawerStyle: {
-            backgroundColor: theme?.colors?.grey4,
+            backgroundColor: theme?.colors?.white,
             width: '80%',
           },
           drawerActiveTintColor: theme?.colors?.secondary,

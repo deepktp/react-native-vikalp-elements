@@ -1,39 +1,48 @@
 {
   "expo": {
-    "name": "React Native vElements",
-    "owner": "rn-vui",
-    "slug": "react-native-elements",
-    "description": "A demo app for React Native vElements UI Library",
-    "privacy": "public",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
-    "version": "4.0.0",
-    "orientation": "default",
-    "primaryColor": "#cccccc",
+    "name": "react-native-vikalp-elements",
+    "slug": "react-native-vikalp-elements",
+    "version": "1.0.0",
+    "orientation": "portrait",
     "icon": "./assets/icons/icon.png",
-    "splash": {
-      "image": "./assets/icons/loading.png"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "scheme": "reactnativevikalpelements",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
     "ios": {
       "supportsTablet": true
     },
-    "userInterfaceStyle": "automatic",
     "android": {
-      "package": "com.rn-vui"
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/icons/icon.png",
+        "backgroundImage": "./assets/icons/icon.png",
+        "monochromeImage": "./assets/icons/icon.png"
+      },
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/icons/icon.png"
     },
     "plugins": [
-      "expo-font",
-      "expo-asset"
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/icons/splash-icon.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#ffffff",
+          "dark": {
+            "backgroundColor": "#000000"
+          }
+        }
+      ]
     ],
-    "newArchEnabled": true
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
   }
 }

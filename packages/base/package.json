@@ -30,10 +30,10 @@
   ],
   "scripts": {
     "build": "yarn run -T tsc --composite false",
-    "test": "yarn run -T jest",
-    "test:update": "yarn run -T jest -u",
-    "test:ci": "yarn run -T jest --runInBand",
-    "test:watch": "yarn run -T jest --watch",
+    "test": "yarn run -T jest  --coverage",
+    "test:update": "yarn run -T jest -u  --coverage",
+    "test:ci": "yarn run -T jest --runInBand  --coverage",
+    "test:watch": "yarn run -T jest --watch  --coverage",
     "lint": "yarn run -T eslint . --ext .js,.jsx,.ts,.tsx",
     "clean-install": "yarn run -T rimraf node_modules && yarn"
   },
