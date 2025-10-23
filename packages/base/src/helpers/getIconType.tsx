@@ -38,11 +38,27 @@ const iconSets: Record<string, () => IconModule | null> = {
       return null;
     }
   },
+  
   'material-community': () => {
+    /**
+   * 
+   * @deprecated
+   * Deprecated: "material-community" has been renamed to "material-design-icons". Please update your code to use "material-design-icons" instead. Support for "material-community" will be removed in a future version.
+   * 
+   */
+    console.warn('Warning: "material-community" is deprecated. Use "material-design-icons" instead.');
     try {
-      return require('@react-native-vector-icons/material-community').default;
+      return require('@react-native-vector-icons/material-design-icons').default;
     } catch {
-      console.warn('Material Community icon set is not available. Please install "@react-native-vector-icons/material-community" to use it.');
+      console.warn('Material Design Icons icon set is not available. Please install "@react-native-vector-icons/material-design-icons" to use it.');
+      return null;
+    }
+  },
+  'material-design': () => {
+    try {
+      return require('@react-native-vector-icons/material-design-icons').default;
+    } catch {
+      console.warn('Material Design Icons icon set is not available. Please install "@react-native-vector-icons/material-design-icons" to use it.');
       return null;
     }
   },

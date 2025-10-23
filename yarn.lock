@@ -4494,6 +4494,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native-vector-icons/ant-design@npm:^12.3.0":
+  version: 12.3.0
+  resolution: "@react-native-vector-icons/ant-design@npm:12.3.0"
+  dependencies:
+    "@react-native-vector-icons/common": "npm:^12.3.0"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 10/23bc8e200e902211422f5c9fdfb16de57258a9b1f32752cbdb5ead623416c4b89f8f2f86eb57bd6f1ca15ee6b15d4657e591194a65d2d4c4709170185a108700
+  languageName: node
+  linkType: hard
+
 "@react-native-vector-icons/common@npm:^12.3.0":
   version: 12.3.0
   resolution: "@react-native-vector-icons/common@npm:12.3.0"
@@ -4523,6 +4535,30 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: 10/5447fe8bc05333d508137d5b8df36fd9fab55784b013dac3802ef20964e0719513145d4d5dde3a183dc0b1866f3488bd4119c77f6c950a3bfe7fec0baf994e10
+  languageName: node
+  linkType: hard
+
+"@react-native-vector-icons/ionicons@npm:^12.3.0":
+  version: 12.3.0
+  resolution: "@react-native-vector-icons/ionicons@npm:12.3.0"
+  dependencies:
+    "@react-native-vector-icons/common": "npm:^12.3.0"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 10/da342a72ef599de1d897e8fe1acee50d58b95c7c253fd26f4a831fd5488d2826a636fb259e8b5970ab45e9e85790cffd3552837a025b0f2310f571f71effcbeb
+  languageName: node
+  linkType: hard
+
+"@react-native-vector-icons/material-design-icons@npm:^12.3.0":
+  version: 12.3.0
+  resolution: "@react-native-vector-icons/material-design-icons@npm:12.3.0"
+  dependencies:
+    "@react-native-vector-icons/common": "npm:^12.3.0"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 10/f2619ad003d7f4ccaa9d3abb6424ee7ea5489066c8e783ff4d06a4d712853606b4b51f1bd6b13522cf9773cbcf9a5ae5e9bd7a0413caba7e8684402466bd3fab
   languageName: node
   linkType: hard
 
@@ -14699,7 +14735,10 @@ __metadata:
   resolution: "react-native-vikalp-elements@workspace:example"
   dependencies:
     "@expo/metro-runtime": "npm:~6.1.2"
+    "@react-native-vector-icons/ant-design": "npm:^12.3.0"
     "@react-native-vector-icons/fontawesome": "npm:^12.3.0"
+    "@react-native-vector-icons/ionicons": "npm:^12.3.0"
+    "@react-native-vector-icons/material-design-icons": "npm:^12.3.0"
     "@react-native-vector-icons/material-icons": "npm:^12.3.0"
     "@react-navigation/bottom-tabs": "npm:^7.4.0"
     "@react-navigation/drawer": "npm:^7.5.8"

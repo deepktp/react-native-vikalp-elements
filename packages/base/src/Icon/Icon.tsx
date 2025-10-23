@@ -23,9 +23,15 @@ import {
   RneFunctionComponent,
 } from '../helpers';
 
+/** 
+ * @deprecated Use 'material-design' instead.
+ */
+export type DeprecatedMaterialCommunity = 'material-community';
+
 export type IconType =
   | 'material'
-  | 'material-community'
+  | DeprecatedMaterialCommunity
+  | 'material-design'
   | 'simple-line-icon'
   | 'zocial'
   | 'font-awesome'
