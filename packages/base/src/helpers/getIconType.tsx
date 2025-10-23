@@ -11,78 +11,133 @@ export const registerCustomIconType = (id: string, customIcon: IconModule) => {
 };
 
 /**
- * Helper to safely require an icon set.
+ * Lazily load icon sets using static requires with try-catch
  */
-const loadIconSet = (pkg: string, label: string): IconModule | null => {
-  try {
-    return require(pkg);
-  } catch {
-    console.warn(
-      `${label} icon set is not available. Please install "${pkg}" to use it.`
-    );
-    return null;
-  }
-};
-
-/**
- * Mapping between IconType values and their corresponding package names.
- */
-const iconMap: Record<string, { pkg: string; label: string }> = {
-  zocial: { pkg: '@react-native-vector-icons/zocial', label: 'Zocial' },
-  octicon: { pkg: '@react-native-vector-icons/octicons', label: 'Octicons' },
-  material: {
-    pkg: '@react-native-vector-icons/material-icons',
-    label: 'Material',
+const iconSets: Record<string, () => IconModule | null> = {
+  zocial: () => {
+    try {
+      return require('@react-native-vector-icons/zocial').default;
+    } catch {
+      console.warn('Zocial icon set is not available. Please install "@react-native-vector-icons/zocial" to use it.');
+      return null;
+    }
   },
-  'material-community': {
-    pkg: '@react-native-vector-icons/material-community',
-    label: 'Material Community',
+  octicon: () => {
+    try {
+      return require('@react-native-vector-icons/octicons').default;
+    } catch {
+      console.warn('Octicons icon set is not available. Please install "@react-native-vector-icons/octicons" to use it.');
+      return null;
+    }
   },
-  ionicon: { pkg: '@react-native-vector-icons/ionicons', label: 'Ionicons' },
-  foundation: {
-    pkg: '@react-native-vector-icons/foundation',
-    label: 'Foundation',
+  material: () => {
+    try {
+      return require('@react-native-vector-icons/material-icons').default;
+    } catch {
+      console.warn('Material icon set is not available. Please install "@react-native-vector-icons/material-icons" to use it.');
+      return null;
+    }
   },
-  evilicon: {
-    pkg: '@react-native-vector-icons/evil-icons',
-    label: 'EvilIcons',
+  'material-community': () => {
+    try {
+      return require('@react-native-vector-icons/material-community').default;
+    } catch {
+      console.warn('Material Community icon set is not available. Please install "@react-native-vector-icons/material-community" to use it.');
+      return null;
+    }
   },
-  entypo: { pkg: '@react-native-vector-icons/entypo', label: 'Entypo' },
-  'font-awesome': {
-    pkg: '@react-native-vector-icons/fontawesome',
-    label: 'FontAwesome',
+  ionicon: () => {
+    try {
+      return require('@react-native-vector-icons/ionicons').default;
+    } catch {
+      console.warn('Ionicons icon set is not available. Please install "@react-native-vector-icons/ionicons" to use it.');
+      return null;
+    }
   },
-  fa: { pkg: '@react-native-vector-icons/fontawesome', label: 'FontAwesome' },
-  'font-awesome-5': {
-    pkg: '@react-native-vector-icons/fontawesome5',
-    label: 'FontAwesome5',
+  foundation: () => {
+    try {
+      return require('@react-native-vector-icons/foundation').default;
+    } catch {
+      console.warn('Foundation icon set is not available. Please install "@react-native-vector-icons/foundation" to use it.');
+      return null;
+    }
   },
-  'fa-5': {
-    pkg: '@react-native-vector-icons/fontawesome5',
-    label: 'FontAwesome5',
+  evilicon: () => {
+    try {
+      return require('@react-native-vector-icons/evil-icons').default;
+    } catch {
+      console.warn('EvilIcons icon set is not available. Please install "@react-native-vector-icons/evil-icons" to use it.');
+      return null;
+    }
   },
-  'font-awesome-6': {
-    pkg: '@react-native-vector-icons/fontawesome6',
-    label: 'FontAwesome6',
+  entypo: () => {
+    try {
+      return require('@react-native-vector-icons/entypo').default;
+    } catch {
+      console.warn('Entypo icon set is not available. Please install "@react-native-vector-icons/entypo" to use it.');
+      return null;
+    }
   },
-  'fa-6': {
-    pkg: '@react-native-vector-icons/fontawesome6',
-    label: 'FontAwesome6',
+  'font-awesome': () => {
+    try {
+      return require('@react-native-vector-icons/fontawesome').default;
+    } catch {
+      console.warn('FontAwesome icon set is not available. Please install "@react-native-vector-icons/fontawesome" to use it.');
+      return null;
+    }
   },
-  'simple-line-icon': {
-    pkg: '@react-native-vector-icons/simple-line-icons',
-    label: 'SimpleLineIcons',
+  fa: () => iconSets['font-awesome'](),
+  'font-awesome-5': () => {
+    try {
+      return require('@react-native-vector-icons/fontawesome5').default;
+    } catch {
+      console.warn('FontAwesome5 icon set is not available. Please install "@react-native-vector-icons/fontawesome5" to use it.');
+      return null;
+    }
   },
-  feather: { pkg: '@react-native-vector-icons/feather', label: 'Feather' },
-  antdesign: {
-    pkg: '@react-native-vector-icons/ant-design',
-    label: 'AntDesign',
+  'fa-5': () => iconSets['font-awesome-5'](),
+  'font-awesome-6': () => {
+    try {
+      return require('@react-native-vector-icons/fontawesome6').default;
+    } catch {
+      console.warn('FontAwesome6 icon set is not available. Please install "@react-native-vector-icons/fontawesome6" to use it.');
+      return null;
+    }
   },
-  'ant-design': {
-    pkg: '@react-native-vector-icons/ant-design',
-    label: 'AntDesign',
+  'fa-6': () => iconSets['font-awesome-6'](),
+  'simple-line-icon': () => {
+    try {
+      return require('@react-native-vector-icons/simple-line-icons').default;
+    } catch {
+      console.warn('SimpleLineIcons icon set is not available. Please install "@react-native-vector-icons/simple-line-icons" to use it.');
+      return null;
+    }
   },
-  fontisto: { pkg: '@react-native-vector-icons/fontisto', label: 'Fontisto' },
+  feather: () => {
+    try {
+      return require('@react-native-vector-icons/feather').default;
+    } catch {
+      console.warn('Feather icon set is not available. Please install "@react-native-vector-icons/feather" to use it.');
+      return null;
+    }
+  },
+  antdesign: () => {
+    try {
+      return require('@react-native-vector-icons/ant-design').default;
+    } catch {
+      console.warn('AntDesign icon set is not available. Please install "@react-native-vector-icons/ant-design" to use it.');
+      return null;
+    }
+  },
+  'ant-design': () => iconSets['antdesign'](),
+  fontisto: () => {
+    try {
+      return require('@react-native-vector-icons/fontisto').default;
+    } catch {
+      console.warn('Fontisto icon set is not available. Please install "@react-native-vector-icons/fontisto" to use it.');
+      return null;
+    }
+  },
 };
 
 /**
@@ -95,12 +150,12 @@ export default function getIcon(type: IconType): IconModule | null {
     return customIcons[type];
   }
 
-  // if icon type exists in map, load it
-  const config = iconMap[type];
-  if (config) {
-    return loadIconSet(config.pkg, config.label);
+  // if icon type exists in iconSets, load it
+  const loader = iconSets[type];
+  if (loader) {
+    return loader();
   }
 
   // fallback: material icons
-  return loadIconSet('@react-native-vector-icons/material-icons', 'Material');
+  return iconSets.material();
 }
