@@ -1,0 +1,27 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Renovate config for React Native Yarn monorepo with Lerna — all updates disabled.",
+  "extends": ["config:recommended"],
+  "enabled": true,
+  "ignoreDeps": ["*"],
+  "packageRules": [
+    {
+      "matchManagers": ["npm", "yarn", "lerna", "github-actions", "dockerfile"],
+      "matchPackagePatterns": [".*"],
+      "enabled": false
+    }
+  ],
+  "prCreation": "none",
+  "rebaseWhen": "never",
+  "automerge": false,
+  "branchConcurrentLimit": 0,
+  "lockFileMaintenance": {
+    "enabled": false
+  },
+  "dependencyDashboard": false,
+  "ignorePaths": [
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/build/**"
+  ]
+}
