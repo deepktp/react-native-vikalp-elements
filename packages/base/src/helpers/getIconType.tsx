@@ -18,7 +18,9 @@ const iconSets: Record<string, () => IconModule | null> = {
     try {
       return require('@react-native-vector-icons/zocial').default;
     } catch {
-      console.warn('Zocial icon set is not available. Please install "@react-native-vector-icons/zocial" to use it.');
+      console.warn(
+        'Zocial icon set is not available. Please install "@react-native-vector-icons/zocial" to use it.'
+      );
       return null;
     }
   },
@@ -26,7 +28,9 @@ const iconSets: Record<string, () => IconModule | null> = {
     try {
       return require('@react-native-vector-icons/octicons').default;
     } catch {
-      console.warn('Octicons icon set is not available. Please install "@react-native-vector-icons/octicons" to use it.');
+      console.warn(
+        'Octicons icon set is not available. Please install "@react-native-vector-icons/octicons" to use it.'
+      );
       return null;
     }
   },
@@ -34,31 +38,41 @@ const iconSets: Record<string, () => IconModule | null> = {
     try {
       return require('@react-native-vector-icons/material-icons').default;
     } catch {
-      console.warn('Material icon set is not available. Please install "@react-native-vector-icons/material-icons" to use it.');
+      console.warn(
+        'Material icon set is not available. Please install "@react-native-vector-icons/material-icons" to use it.'
+      );
       return null;
     }
   },
-  
+
   'material-community': () => {
     /**
-   * 
-   * @deprecated
-   * Deprecated: "material-community" has been renamed to "material-design-icons". Please update your code to use "material-design-icons" instead. Support for "material-community" will be removed in a future version.
-   * 
-   */
-    console.warn('Warning: "material-community" is deprecated. Use "material-design-icons" instead.');
+     *
+     * @deprecated
+     * Deprecated: "material-community" has been renamed to "material-design-icons". Please update your code to use "material-design-icons" instead. Support for "material-community" will be removed in a future version.
+     *
+     */
+    console.warn(
+      'Warning: "material-community" is deprecated. Use "material-design-icons" instead.'
+    );
     try {
-      return require('@react-native-vector-icons/material-design-icons').default;
+      return require('@react-native-vector-icons/material-design-icons')
+        .default;
     } catch {
-      console.warn('Material Design Icons icon set is not available. Please install "@react-native-vector-icons/material-design-icons" to use it.');
+      console.warn(
+        'Material Design Icons icon set is not available. Please install "@react-native-vector-icons/material-design-icons" to use it.'
+      );
       return null;
     }
   },
   'material-design': () => {
     try {
-      return require('@react-native-vector-icons/material-design-icons').default;
+      return require('@react-native-vector-icons/material-design-icons')
+        .default;
     } catch {
-      console.warn('Material Design Icons icon set is not available. Please install "@react-native-vector-icons/material-design-icons" to use it.');
+      console.warn(
+        'Material Design Icons icon set is not available. Please install "@react-native-vector-icons/material-design-icons" to use it.'
+      );
       return null;
     }
   },
@@ -66,7 +80,9 @@ const iconSets: Record<string, () => IconModule | null> = {
     try {
       return require('@react-native-vector-icons/ionicons').default;
     } catch {
-      console.warn('Ionicons icon set is not available. Please install "@react-native-vector-icons/ionicons" to use it.');
+      console.warn(
+        'Ionicons icon set is not available. Please install "@react-native-vector-icons/ionicons" to use it.'
+      );
       return null;
     }
   },
@@ -74,7 +90,9 @@ const iconSets: Record<string, () => IconModule | null> = {
     try {
       return require('@react-native-vector-icons/foundation').default;
     } catch {
-      console.warn('Foundation icon set is not available. Please install "@react-native-vector-icons/foundation" to use it.');
+      console.warn(
+        'Foundation icon set is not available. Please install "@react-native-vector-icons/foundation" to use it.'
+      );
       return null;
     }
   },
@@ -82,7 +100,9 @@ const iconSets: Record<string, () => IconModule | null> = {
     try {
       return require('@react-native-vector-icons/evil-icons').default;
     } catch {
-      console.warn('EvilIcons icon set is not available. Please install "@react-native-vector-icons/evil-icons" to use it.');
+      console.warn(
+        'EvilIcons icon set is not available. Please install "@react-native-vector-icons/evil-icons" to use it.'
+      );
       return null;
     }
   },
@@ -90,7 +110,9 @@ const iconSets: Record<string, () => IconModule | null> = {
     try {
       return require('@react-native-vector-icons/entypo').default;
     } catch {
-      console.warn('Entypo icon set is not available. Please install "@react-native-vector-icons/entypo" to use it.');
+      console.warn(
+        'Entypo icon set is not available. Please install "@react-native-vector-icons/entypo" to use it.'
+      );
       return null;
     }
   },
@@ -98,7 +120,9 @@ const iconSets: Record<string, () => IconModule | null> = {
     try {
       return require('@react-native-vector-icons/fontawesome').default;
     } catch {
-      console.warn('FontAwesome icon set is not available. Please install "@react-native-vector-icons/fontawesome" to use it.');
+      console.warn(
+        'FontAwesome icon set is not available. Please install "@react-native-vector-icons/fontawesome" to use it.'
+      );
       return null;
     }
   },
@@ -107,7 +131,9 @@ const iconSets: Record<string, () => IconModule | null> = {
     try {
       return require('@react-native-vector-icons/fontawesome5').default;
     } catch {
-      console.warn('FontAwesome5 icon set is not available. Please install "@react-native-vector-icons/fontawesome5" to use it.');
+      console.warn(
+        'FontAwesome5 icon set is not available. Please install "@react-native-vector-icons/fontawesome5" to use it.'
+      );
       return null;
     }
   },
@@ -116,7 +142,9 @@ const iconSets: Record<string, () => IconModule | null> = {
     try {
       return require('@react-native-vector-icons/fontawesome6').default;
     } catch {
-      console.warn('FontAwesome6 icon set is not available. Please install "@react-native-vector-icons/fontawesome6" to use it.');
+      console.warn(
+        'FontAwesome6 icon set is not available. Please install "@react-native-vector-icons/fontawesome6" to use it.'
+      );
       return null;
     }
   },
@@ -125,7 +153,9 @@ const iconSets: Record<string, () => IconModule | null> = {
     try {
       return require('@react-native-vector-icons/simple-line-icons').default;
     } catch {
-      console.warn('SimpleLineIcons icon set is not available. Please install "@react-native-vector-icons/simple-line-icons" to use it.');
+      console.warn(
+        'SimpleLineIcons icon set is not available. Please install "@react-native-vector-icons/simple-line-icons" to use it.'
+      );
       return null;
     }
   },
@@ -133,7 +163,9 @@ const iconSets: Record<string, () => IconModule | null> = {
     try {
       return require('@react-native-vector-icons/feather').default;
     } catch {
-      console.warn('Feather icon set is not available. Please install "@react-native-vector-icons/feather" to use it.');
+      console.warn(
+        'Feather icon set is not available. Please install "@react-native-vector-icons/feather" to use it.'
+      );
       return null;
     }
   },
@@ -141,7 +173,9 @@ const iconSets: Record<string, () => IconModule | null> = {
     try {
       return require('@react-native-vector-icons/ant-design').default;
     } catch {
-      console.warn('AntDesign icon set is not available. Please install "@react-native-vector-icons/ant-design" to use it.');
+      console.warn(
+        'AntDesign icon set is not available. Please install "@react-native-vector-icons/ant-design" to use it.'
+      );
       return null;
     }
   },
@@ -150,7 +184,9 @@ const iconSets: Record<string, () => IconModule | null> = {
     try {
       return require('@react-native-vector-icons/fontisto').default;
     } catch {
-      console.warn('Fontisto icon set is not available. Please install "@react-native-vector-icons/fontisto" to use it.');
+      console.warn(
+        'Fontisto icon set is not available. Please install "@react-native-vector-icons/fontisto" to use it.'
+      );
       return null;
     }
   },
