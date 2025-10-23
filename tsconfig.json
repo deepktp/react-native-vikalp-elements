@@ -1,30 +1,32 @@
 {
-  "Display": "React Native vElements",
+  "display": "React Native vElements",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
       "@rn-vui/*": ["./packages/*/src"],
       "@rn-vui/base/dist/*": ["./packages/base/src/*"]
     },
-    "removeComments": true,
-    "composite": false, // Set composite to false
-    "declaration": true,
-    "allowUnreachableCode": false,
-    "allowUnusedLabels": false,
-    "esModuleInterop": true,
+    "strict": false,
+    "noImplicitReturns": false,
+    "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
-    "jsx": "react",
-    "lib": ["esnext", "dom"],
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+
+    "jsx": "react-jsx",                   
+    "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "node",
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitReturns": true,
-    "noImplicitUseStrict": false,
-    "noStrictGenericChecks": false,
+    "declaration": true,
+    "composite": false,
+    "removeComments": true,
     "resolveJsonModule": true,
-    "skipLibCheck": true, // Skip type checking for node_modules
-    "target": "ES6",
-    "allowJs": true
+    "allowJs": true,
+    "lib": ["esnext"],     
+    "types": ["react", "react-native"],
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false
   },
   "exclude": [
     "website",
@@ -33,7 +35,7 @@
     "packages/*/coverage/**",
     "packages/*/dist/**",
     "packages/*/*.config.js",
-    "node_modules", // Ensure node_modules is excluded
+    "node_modules",
     "**/node_modules"
   ]
 }
