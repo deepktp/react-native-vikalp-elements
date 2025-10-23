@@ -41,7 +41,6 @@ exports[`Slider component should handle all onLayout actions 1`] = `
           "backgroundColor": "#3f3f3f",
           "borderRadius": 2,
           "height": 4,
-          "marginTop": -20,
           "position": "absolute",
           "width": 150,
         }
@@ -144,7 +143,6 @@ exports[`Slider component should handle all onLayout actions with vertical orien
           "borderRadius": 2,
           "flex": 1,
           "height": 150,
-          "marginLeft": -20,
           "position": "absolute",
           "width": 4,
         }
