@@ -5,7 +5,6 @@ exports[`Dialog Component should render without any children 1`] = `
   testID="wrapper"
 >
   <Modal
-    hardwareAccelerated={false}
     onRequestClose={[Function]}
     testID="Internal__Overlay"
     transparent={true}
