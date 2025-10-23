@@ -16,6 +16,7 @@ jobs:
         id: sha
         uses: actions/github-script@v4
         with:
+          github-token: ${{ secrets.RNVE_BOT_TOKEN }}
           result-encoding: string
           script: |
             const { owner, repo } = context.issue;
@@ -70,7 +71,7 @@ jobs:
         if: ${{ success() }}
         uses: actions/github-script@v4
         with:
-          github-token: ${{ secrets.RNE_BOT_TOKEN }}
+          github-token: ${{ secrets.RNVE_BOT_TOKEN }}
           script: |
             github.issues.createComment({
               issue_number: ${{github.event.inputs.pr}},
@@ -83,7 +84,7 @@ jobs:
         if: ${{ failure() }}
         uses: actions/github-script@v4
         with:
-          github-token: ${{ secrets.RNE_BOT_TOKEN }}
+          github-token: ${{ secrets.RNVE_BOT_TOKEN }}
           script: |
             github.issues.createComment({
               issue_number: ${{github.event.inputs.pr}},
