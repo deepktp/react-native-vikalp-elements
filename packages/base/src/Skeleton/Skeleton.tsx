@@ -52,7 +52,7 @@ export const Skeleton: RneFunctionComponent<SkeletonProps> = ({
   ...rest
 }) => {
   const animationRef = useRef(new Animated.Value(0));
-  const animationLoop = useRef<Animated.CompositeAnimation>();
+  const animationLoop = useRef<Animated.CompositeAnimation>(null);
 
   const [layoutWidth, setLayoutWidth] = React.useState<number>(0);
 
@@ -67,7 +67,9 @@ export const Skeleton: RneFunctionComponent<SkeletonProps> = ({
       }),
     });
     animationRef.current.setValue(0);
-    Animated.loop(animationLoop.current).start();
+    if (animationLoop.current) {
+      Animated.loop(animationLoop.current).start();
+    }
   }, []);
 
   return (
