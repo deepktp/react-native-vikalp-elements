@@ -18,7 +18,7 @@
 
 
 <script src="https://snack.expo.io/embed.js" defer="defer"></script><link rel="stylesheet" href="/assets/css/styles.b7a2dcbf.css">
-<script src="/assets/js/runtime~main.d69ebbac.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.433d5c80.js" defer="defer"></script>
 <script src="/assets/js/main.728d6a87.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -31,24 +31,26 @@ They are also used for displaying information.</p>
 <p>Hint: use <strong>reverse</strong> to make your icon look like a button</p>
 </blockquote>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="available-icon-sets">Available Icon Sets<a href="#available-icon-sets" class="hash-link" aria-label="Direct link to Available Icon Sets" title="Direct link to Available Icon Sets">​</a></h2>
-<p>The icon sets in React Native Elements are made possible through
-<a href="https://github.com/oblador/react-native-vector-icons" target="_blank" rel="noopener noreferrer">react-native-vector-icons</a>.</p>
-<p>The current list of available icons sets are:</p>
+<p>The icon sets in React Native Elements are now powered by modular icon packages from
+<a href="https://github.com/oblador/react-native-vector-icons" target="_blank" rel="noopener noreferrer">react-native-vector-icons</a>.
+The original <code>react-native-vector-icons</code> library has been deprecated, and we now use individual packages for each icon set to reduce bundle size and improve performance.</p>
+<p>To use an icon set, you need to install the corresponding package:</p>
 <ul>
-<li><a href="http://ant.design/components/icon/" target="_blank" rel="noopener noreferrer">antdesign</a></li>
-<li><a href="http://www.entypo.com/" target="_blank" rel="noopener noreferrer">entypo</a></li>
-<li><a href="http://evil-icons.io/" target="_blank" rel="noopener noreferrer">evilicon</a></li>
-<li><a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer">feather</a></li>
-<li><a href="https://fontawesome.com/v4.7.0/" target="_blank" rel="noopener noreferrer">font-awesome</a></li>
-<li><a href="https://fontawesome.com/" target="_blank" rel="noopener noreferrer">font-awesome-5</a></li>
-<li><a href="https://www.fontisto.com/icons" target="_blank" rel="noopener noreferrer">fontisto</a></li>
-<li><a href="http://zurb.com/playground/foundation-icon-fonts-3" target="_blank" rel="noopener noreferrer">foundation</a></li>
-<li><a href="http://ionicons.com/" target="_blank" rel="noopener noreferrer">ionicon</a></li>
-<li><a href="https://material.io/tools/icons" target="_blank" rel="noopener noreferrer">material</a></li>
-<li><a href="https://materialdesignicons.com/" target="_blank" rel="noopener noreferrer">material-community</a></li>
-<li><a href="https://octicons.github.com/" target="_blank" rel="noopener noreferrer">octicon</a></li>
-<li><a href="https://simplelineicons.github.io/" target="_blank" rel="noopener noreferrer">simple-line-icon</a></li>
-<li><a href="http://weloveiconfonts.com/" target="_blank" rel="noopener noreferrer">zocial</a></li>
+<li><a href="http://ant.design/components/icon/" target="_blank" rel="noopener noreferrer">antdesign</a> - <code>@react-native-vector-icons/ant-design</code></li>
+<li><a href="http://www.entypo.com/" target="_blank" rel="noopener noreferrer">entypo</a> - <code>@react-native-vector-icons/entypo</code></li>
+<li><a href="http://evil-icons.io/" target="_blank" rel="noopener noreferrer">evilicon</a> - <code>@react-native-vector-icons/evil-icons</code></li>
+<li><a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer">feather</a> - <code>@react-native-vector-icons/feather</code></li>
+<li><a href="https://fontawesome.com/v4.7.0/" target="_blank" rel="noopener noreferrer">font-awesome</a> - <code>@react-native-vector-icons/fontawesome</code></li>
+<li><a href="https://fontawesome.com/" target="_blank" rel="noopener noreferrer">font-awesome-5</a> - <code>@react-native-vector-icons/fontawesome5</code></li>
+<li><a href="https://fontawesome.com/" target="_blank" rel="noopener noreferrer">font-awesome-6</a> - <code>@react-native-vector-icons/fontawesome6</code></li>
+<li><a href="https://www.fontisto.com/icons" target="_blank" rel="noopener noreferrer">fontisto</a> - <code>@react-native-vector-icons/fontisto</code></li>
+<li><a href="http://zurb.com/playground/foundation-icon-fonts-3" target="_blank" rel="noopener noreferrer">foundation</a> - <code>@react-native-vector-icons/foundation</code></li>
+<li><a href="http://ionicons.com/" target="_blank" rel="noopener noreferrer">ionicon</a> - <code>@react-native-vector-icons/ionicons</code></li>
+<li><a href="https://material.io/tools/icons" target="_blank" rel="noopener noreferrer">material</a> - <code>@react-native-vector-icons/material-icons</code></li>
+<li><a href="https://materialdesignicons.com/" target="_blank" rel="noopener noreferrer">material-community</a> - <code>@react-native-vector-icons/material-design-icons</code> (use <code>material-design</code> as type)</li>
+<li><a href="https://octicons.github.com/" target="_blank" rel="noopener noreferrer">octicon</a> - <code>@react-native-vector-icons/octicons</code></li>
+<li><a href="https://simplelineicons.github.io/" target="_blank" rel="noopener noreferrer">simple-line-icon</a> - <code>@react-native-vector-icons/simple-line-icons</code></li>
+<li><a href="http://weloveiconfonts.com/" target="_blank" rel="noopener noreferrer">zocial</a> - <code>@react-native-vector-icons/zocial</code></li>
 </ul>
 <p>To check all the supported icons, visit <a href="https://oblador.github.io/react-native-vector-icons/" target="_blank" rel="noopener noreferrer">react-native-vector-icons directory</a></p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="custom-icon-fonts">Custom Icon Fonts<a href="#custom-icon-fonts" class="hash-link" aria-label="Direct link to Custom Icon Fonts" title="Direct link to Custom Icon Fonts">​</a></h2>
@@ -58,7 +60,7 @@ following the
 <a href="https://github.com/oblador/react-native-vector-icons#custom-fonts" target="_blank" rel="noopener noreferrer"> instructions for creating a custom font here</a>.
 Also, you can use <a href="http://fontello.com/" target="_blank" rel="noopener noreferrer">Fontello</a> to generate custom icon
 fonts.</p>
-<div class="snack-player" data-snack-name="RNE Icon" data-snack-description="Example usage" data-snack-code="import%20React%20from%20&#x27;react&#x27;%3B%0D%0Aimport%20%7B%20View%2C%20Text%20%7D%20from%20&#x27;react-native&#x27;%3B%0D%0Aimport%20%7B%20Icon%20%7D%20from%20&#x27;%40rn-vui%2Fthemed&#x27;%3B%0D%0A%0D%0Aexport%20default%20()%20%3D%3E%20%7B%0D%0Areturn%20(%0D%0A%20%20%3C%3E%0D%0A%20%20%20%20%3CView%0D%0A%20%20%20%20%20%20style%3D%7B%7B%0D%0A%20%20%20%20%20%20%20%20alignItems%3A%20&#x27;center&#x27;%2C%0D%0A%20%20%20%20%20%20%20%20paddingVertical%3A%205%2C%0D%0A%20%20%20%20%20%20%20%20flexGrow%3A%201%2C%0D%0A%20%20%20%20%20%20%7D%7D%0D%0A%20%20%20%20%3E%0D%0A%20%20%20%20%20%20%3CIcon%0D%0A%20%20%20%20%20%20%20%20name%3D&#x27;rowing&#x27;%20%2F%3E%0D%0A%0D%0A%20%20%20%20%20%20%3CIcon%0D%0A%20%20%20%20%20%20%20%20name%3D&#x27;g-translate&#x27;%0D%0A%20%20%20%20%20%20%20%20color%3D&#x27;%2300aced&#x27;%20%2F%3E%0D%0A%0D%0A%20%20%20%20%20%20%3CIcon%0D%0A%20%20%20%20%20%20%20%20name%3D&#x27;sc-telegram&#x27;%0D%0A%20%20%20%20%20%20%20%20type%3D&#x27;evilicon&#x27;%0D%0A%20%20%20%20%20%20%20%20color%3D&#x27;%23517fa4&#x27;%0D%0A%20%20%20%20%20%20%2F%3E%0D%0A%0D%0A%20%20%20%20%20%20%3CIcon%0D%0A%20%20%20%20%20%20%20%20reverse%0D%0A%20%20%20%20%20%20%20%20name%3D&#x27;ios-american-football&#x27;%0D%0A%20%20%20%20%20%20%20%20type%3D&#x27;ionicon&#x27;%0D%0A%20%20%20%20%20%20%20%20color%3D&#x27;%23517fa4&#x27;%0D%0A%20%20%20%20%20%20%2F%3E%0D%0A%0D%0A%20%20%20%20%20%20%3CIcon%0D%0A%20%20%20%20%20%20%20%20raised%0D%0A%20%20%20%20%20%20%20%20name%3D&#x27;heartbeat&#x27;%0D%0A%20%20%20%20%20%20%20%20type%3D&#x27;font-awesome&#x27;%0D%0A%20%20%20%20%20%20%20%20color%3D&#x27;%23f50&#x27;%0D%0A%20%20%20%20%20%20%20%20onPress%3D%7B()%20%3D%3E%20console.log(&#x27;hello&#x27;)%7D%20%2F%3E%0D%0A%20%20%20%20%3C%2FView%3E%0D%0A%20%20%3C%2F%3E%0D%0A)%3B%0D%0A%7D%3B" data-snack-dependencies="@rn-vui/themed,@rn-vui/base" data-snack-platform="web" data-snack-supported-platforms="ios,android,web" data-snack-theme="light" data-snack-preview="true" data-snack-loading="lazy"></div>
+<div class="snack-player" data-snack-name="RNE Icon" data-snack-description="Example usage" data-snack-code="import%20React%20from%20&#x27;react&#x27;%3B%0D%0Aimport%20%7B%20View%2C%20Text%20%7D%20from%20&#x27;react-native&#x27;%3B%0D%0Aimport%20%7B%20Icon%20%7D%20from%20&#x27;%40rn-vui%2Fthemed&#x27;%3B%0D%0A%0D%0Aexport%20default%20()%20%3D%3E%20%7B%0D%0Areturn%20(%0D%0A%20%20%3C%3E%0D%0A%20%20%20%20%3CView%0D%0A%20%20%20%20%20%20style%3D%7B%7B%0D%0A%20%20%20%20%20%20%20%20alignItems%3A%20&#x27;center&#x27;%2C%0D%0A%20%20%20%20%20%20%20%20paddingVertical%3A%205%2C%0D%0A%20%20%20%20%20%20%20%20flexGrow%3A%201%2C%0D%0A%20%20%20%20%20%20%7D%7D%0D%0A%20%20%20%20%3E%0D%0A%20%20%20%20%20%20%3CIcon%0D%0A%20%20%20%20%20%20%20%20name%3D&#x27;rowing&#x27;%20%2F%3E%0D%0A%0D%0A%20%20%20%20%20%20%3CIcon%0D%0A%20%20%20%20%20%20%20%20name%3D&#x27;g-translate&#x27;%0D%0A%20%20%20%20%20%20%20%20color%3D&#x27;%2300aced&#x27;%20%2F%3E%0D%0A%0D%0A%20%20%20%20%20%20%3CIcon%0D%0A%20%20%20%20%20%20%20%20name%3D&#x27;sc-telegram&#x27;%0D%0A%20%20%20%20%20%20%20%20type%3D&#x27;evilicon&#x27;%0D%0A%20%20%20%20%20%20%20%20color%3D&#x27;%23517fa4&#x27;%0D%0A%20%20%20%20%20%20%2F%3E%0D%0A%0D%0A%20%20%20%20%20%20%3CIcon%0D%0A%20%20%20%20%20%20%20%20reverse%0D%0A%20%20%20%20%20%20%20%20name%3D&#x27;american-football&#x27;%0D%0A%20%20%20%20%20%20%20%20type%3D&#x27;ionicon&#x27;%0D%0A%20%20%20%20%20%20%20%20color%3D&#x27;%23517fa4&#x27;%0D%0A%20%20%20%20%20%20%2F%3E%0D%0A%0D%0A%20%20%20%20%20%20%3CIcon%0D%0A%20%20%20%20%20%20%20%20raised%0D%0A%20%20%20%20%20%20%20%20name%3D&#x27;heartbeat&#x27;%0D%0A%20%20%20%20%20%20%20%20type%3D&#x27;font-awesome&#x27;%0D%0A%20%20%20%20%20%20%20%20color%3D&#x27;%23f50&#x27;%0D%0A%20%20%20%20%20%20%20%20onPress%3D%7B()%20%3D%3E%20console.log(&#x27;hello&#x27;)%7D%20%2F%3E%0D%0A%20%20%20%20%3C%2FView%3E%0D%0A%20%20%3C%2F%3E%0D%0A)%3B%0D%0A%7D%3B" data-snack-dependencies="@rn-vui/themed,@rn-vui/base" data-snack-platform="web" data-snack-supported-platforms="ios,android,web" data-snack-theme="light" data-snack-preview="true" data-snack-loading="lazy"></div>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="props">Props<a href="#props" class="hash-link" aria-label="Direct link to Props" title="Direct link to Props">​</a></h2>
 <div class="theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>note</div><div class="admonitionContent_BuS1"><p>Includes all <a href="https://reactnative.dev/docs/text#props" target="_blank" rel="noopener noreferrer">Text</a> props.</p></div></div>
 <div class="table-responsive">
