@@ -8,8 +8,8 @@
   "compilerOptions": {
     "allowJs": true,
     "outDir": "dist",
-    "declaration": false,
-    "composite": false,
+    "declaration": true,
+    "composite": true,
     "rootDir": "src",
     "skipLibCheck": true,
     "jsx": "react",
