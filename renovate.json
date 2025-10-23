@@ -5,10 +5,8 @@
     "config:recommended"
   ],
 
-  // Keep Renovate active but silent (no PRs or updates)
   "enabled": true,
 
-  // Detect Yarn workspaces and Lerna packages
   "npmClient": "yarn",
   "monorepo": {
     "enabled": true
@@ -18,10 +16,8 @@
   },
   "rangeStrategy": "replace",
 
-  // Do not modify or update dependencies
   "ignoreDeps": ["*"],
 
-  // Disable all update behaviors for all managers
   "packageRules": [
     {
       "matchManagers": ["npm", "yarn", "lerna", "github-actions", "dockerfile"],
@@ -30,25 +26,20 @@
     }
   ],
 
-  // Prevent PRs, branches, or commits
   "branchConcurrentLimit": 0,
   "prCreation": "none",
   "rebaseWhen": "never",
   "commitMessagePrefix": "[skip renovate]",
 
-  // Disable all automerge and lockfile maintenance
   "automerge": false,
   "lockFileMaintenance": {
     "enabled": false
   },
 
-  // Don't update monorepo package versions (like babel monorepo, expo monorepo)
   "ignorePresets": ["group:monorepos"],
 
-  // Keep logs clean
   "logLevel": "warn",
 
-  // Optional: exclude internal packages from analysis (optional safety)
   "ignorePaths": [
     "**/node_modules/**",
     "**/dist/**",
