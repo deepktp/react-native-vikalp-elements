@@ -101,7 +101,7 @@ exports[`SearchBar wrapper component should match snapshot 1`] = `
                         "backgroundColor": "transparent",
                       },
                       {
-                        "fontFamily": "Material Icons",
+                        "fontFamily": "MaterialIcons-Regular",
                         "fontStyle": "normal",
                         "fontWeight": "normal",
                       },
@@ -267,7 +267,7 @@ exports[`SearchBar wrapper component should render an Android SearchBar 1`] = `
                         "backgroundColor": "transparent",
                       },
                       {
-                        "fontFamily": "Material Icons",
+                        "fontFamily": "MaterialIcons-Regular",
                         "fontStyle": "normal",
                         "fontWeight": "normal",
                       },
@@ -451,7 +451,7 @@ exports[`SearchBar wrapper component should render an iOS SearchBar 1`] = `
                   }
                   testID="RNE__ICON__Component"
                 >
-                  
+                  
                 </Text>
               </View>
             </View>

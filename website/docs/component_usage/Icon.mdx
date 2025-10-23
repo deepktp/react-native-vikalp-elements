@@ -4,25 +4,27 @@
 
 ## Available Icon Sets
 
-The icon sets in React Native Elements are made possible through
+The icon sets in React Native Elements are now powered by modular icon packages from
 [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons).
+The original `react-native-vector-icons` library has been deprecated, and we now use individual packages for each icon set to reduce bundle size and improve performance.
 
-The current list of available icons sets are:
+To use an icon set, you need to install the corresponding package:
 
-- [antdesign](http://ant.design/components/icon/)
-- [entypo](http://www.entypo.com/)
-- [evilicon](http://evil-icons.io/)
-- [feather](https://feathericons.com/)
-- [font-awesome](https://fontawesome.com/v4.7.0/)
-- [font-awesome-5](https://fontawesome.com/)
-- [fontisto](https://www.fontisto.com/icons)
-- [foundation](http://zurb.com/playground/foundation-icon-fonts-3)
-- [ionicon](http://ionicons.com/)
-- [material](https://material.io/tools/icons)
-- [material-community](https://materialdesignicons.com/)
-- [octicon](https://octicons.github.com/)
-- [simple-line-icon](https://simplelineicons.github.io/)
-- [zocial](http://weloveiconfonts.com/)
+- [antdesign](http://ant.design/components/icon/) - `@react-native-vector-icons/ant-design`
+- [entypo](http://www.entypo.com/) - `@react-native-vector-icons/entypo`
+- [evilicon](http://evil-icons.io/) - `@react-native-vector-icons/evil-icons`
+- [feather](https://feathericons.com/) - `@react-native-vector-icons/feather`
+- [font-awesome](https://fontawesome.com/v4.7.0/) - `@react-native-vector-icons/fontawesome`
+- [font-awesome-5](https://fontawesome.com/) - `@react-native-vector-icons/fontawesome5`
+- [font-awesome-6](https://fontawesome.com/) - `@react-native-vector-icons/fontawesome6`
+- [fontisto](https://www.fontisto.com/icons) - `@react-native-vector-icons/fontisto`
+- [foundation](http://zurb.com/playground/foundation-icon-fonts-3) - `@react-native-vector-icons/foundation`
+- [ionicon](http://ionicons.com/) - `@react-native-vector-icons/ionicons`
+- [material](https://material.io/tools/icons) - `@react-native-vector-icons/material-icons`
+- [material-community](https://materialdesignicons.com/) - `@react-native-vector-icons/material-design-icons` (use `material-design` as type)
+- [octicon](https://octicons.github.com/) - `@react-native-vector-icons/octicons`
+- [simple-line-icon](https://simplelineicons.github.io/) - `@react-native-vector-icons/simple-line-icons`
+- [zocial](http://weloveiconfonts.com/) - `@react-native-vector-icons/zocial`
 
 To check all the supported icons, visit [react-native-vector-icons directory](https://oblador.github.io/react-native-vector-icons/)
 
@@ -65,7 +67,7 @@ return (
 
       <Icon
         reverse
-        name='ios-american-football'
+        name='american-football'
         type='ionicon'
         color='#517fa4'
       />

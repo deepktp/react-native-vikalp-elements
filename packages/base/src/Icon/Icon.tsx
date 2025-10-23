@@ -10,8 +10,8 @@ import {
   ColorValue,
 } from 'react-native';
 import {
-  IconButtonProps,
-  IconProps as VectorIconProps,
+  type IconButtonProps,
+  type IconProps as VectorIconProps,
 } from 'react-native-vector-icons/Icon';
 import Color from 'color';
 import getIconType from '../helpers/getIconType';
@@ -23,9 +23,15 @@ import {
   RneFunctionComponent,
 } from '../helpers';
 
+/**
+ * @deprecated Use 'material-design' instead.
+ */
+export type DeprecatedMaterialCommunity = 'material-community';
+
 export type IconType =
   | 'material'
-  | 'material-community'
+  | DeprecatedMaterialCommunity
+  | 'material-design'
   | 'simple-line-icon'
   | 'zocial'
   | 'font-awesome'
@@ -154,6 +160,10 @@ export const Icon: RneFunctionComponent<IconProps> = ({
     }),
     [size]
   );
+
+  if (IconComponent === null) {
+    return null;
+  }
 
   return (
     <View
