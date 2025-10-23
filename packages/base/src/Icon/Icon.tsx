@@ -23,7 +23,7 @@ import {
   RneFunctionComponent,
 } from '../helpers';
 
-/** 
+/**
  * @deprecated Use 'material-design' instead.
  */
 export type DeprecatedMaterialCommunity = 'material-community';

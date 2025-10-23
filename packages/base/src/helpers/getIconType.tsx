@@ -145,7 +145,7 @@ const iconSets: Record<string, () => IconModule | null> = {
       return null;
     }
   },
-  'ant-design': () => iconSets['antdesign'](),
+  'ant-design': () => iconSets.antdesign(),
   fontisto: () => {
     try {
       return require('@react-native-vector-icons/fontisto').default;
