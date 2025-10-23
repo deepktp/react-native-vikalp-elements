@@ -6,8 +6,8 @@
     "declaration": false,
     "composite": false,
     "rootDir": "src",
-    "jsx": "react",            
-    "esModuleInterop": true, 
+    "jsx": "react",
+    "esModuleInterop": true
   },
   "include": ["src/**/*.tsx", "src/**/*.ts", "src/index.ts"],
   "exclude": [

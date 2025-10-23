@@ -13,7 +13,7 @@
     "rootDir": "src",
     "skipLibCheck": true,
     "jsx": "react",
-    "esModuleInterop": true,
+    "esModuleInterop": true
   },
   "include": ["src/**/*.tsx", "src/**/*.ts", "src/index.ts"],
   "exclude": [
@@ -27,4 +27,3 @@
     "src/**/*.usage.tsx"
   ]
 }
-
