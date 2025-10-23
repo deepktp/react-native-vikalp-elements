@@ -1,0 +1,152 @@
+name: Publish Pre-release to NPM
+
+on:
+  # Auto-publish when PR is merged to next
+  pull_request:
+    types: [closed]
+    branches:
+      - next
+  
+  # Manual trigger for other branches
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to publish from'
+        required: true
+        default: 'next'
+
+jobs:
+  publish:
+    # Only run if PR was merged (not just closed) OR manually triggered
+    if: |
+      (github.event_name == 'pull_request' && github.event.pull_request.merged == true) ||
+      github.event_name == 'workflow_dispatch'
+    
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Determine branch and version tag
+        id: branch
+        run: |
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            BRANCH="${{ github.event.inputs.branch }}"
+          else
+            BRANCH="${{ github.event.pull_request.base.ref }}"
+          fi
+          
+          echo "name=$BRANCH" >> $GITHUB_OUTPUT
+          
+          # Set version tag: 'bleeding-edge' for next branch, 'branchName-date' for others
+          if [ "$BRANCH" == "next" ]; then
+            echo "is_bleeding_edge=true" >> $GITHUB_OUTPUT
+            echo "version_tag=bleeding-edge" >> $GITHUB_OUTPUT
+          else
+            echo "is_bleeding_edge=false" >> $GITHUB_OUTPUT
+            echo "version_tag=$BRANCH-$(date +'%Y%m%d')" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Git checkout
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ steps.branch.outputs.name }}
+          fetch-depth: 0
+
+      - name: Enable Corepack
+        run: corepack enable
+        shell: bash
+
+      - name: Enable Yarn with Corepack
+        run: corepack prepare yarn@stable --activate
+        shell: bash
+
+      - name: Install dependencies
+        uses: ./.github/actions/install
+
+      - name: Build packages
+        run: yarn build
+
+      - name: Configure NPM
+        run: |
+          npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
+          npm whoami
+
+      - name: Publish packages to NPM
+        id: publish
+        run: |
+          BRANCH_NAME="${{ steps.branch.outputs.name }}"
+          VERSION_TAG="${{ steps.branch.outputs.version_tag }}"
+          
+          for pkg in $(find ./packages -mindepth 1 -maxdepth 1 -type d -printf '%f\n'); do
+            echo "📦 Publishing @rn-vui/$pkg"
+            
+            cd packages/$pkg
+            
+            # Get current version from package.json
+            CURRENT_VERSION=$(node -p "require('./package.json').version")
+            BASE_VERSION=$(echo $CURRENT_VERSION | sed 's/-.*$//')
+            
+            # Create prerelease version
+            NEW_VERSION="${BASE_VERSION}-${VERSION_TAG}"
+            
+            echo "Version: $NEW_VERSION"
+            
+            # Update package.json version
+            npm version $NEW_VERSION --no-git-tag-version
+            
+            # Publish with appropriate tag
+            if [ "${{ steps.branch.outputs.is_bleeding_edge }}" == "true" ]; then
+              npm publish --tag bleeding-edge --access public
+            else
+              npm publish --tag $BRANCH_NAME --access public
+            fi
+            
+            cd ../..
+          done
+          
+          echo "published_version=${BASE_VERSION}-${VERSION_TAG}" >> $GITHUB_OUTPUT
+
+      - name: Update documentation (bleeding-edge only)
+        if: steps.branch.outputs.is_bleeding_edge == 'true'
+        uses: ./.github/actions/install
+        with:
+          install_website: true
+
+      - name: Build and deploy docs (bleeding-edge only)
+        if: steps.branch.outputs.is_bleeding_edge == 'true'
+        run: yarn docs-build
+
+      - name: Deploy docs to gh-pages (bleeding-edge only)
+        if: steps.branch.outputs.is_bleeding_edge == 'true'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./website/build
+          user_name: 'React Native vElements CI'
+          user_email: 'react-native-elements-ci@users.noreply.github.com'
+          cname: https://react-native-velements.thevikalp.com/
+
+      - name: Comment on PR (if merged)
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const versionTag = '${{ steps.branch.outputs.version_tag }}';
+            const isBleedingEdge = '${{ steps.branch.outputs.is_bleeding_edge }}' === 'true';
+            const version = '${{ steps.publish.outputs.published_version }}';
+            
+            let body = `🎉 Pre-release published to NPM! \n\n`;
+            
+            if (isBleedingEdge) {
+              body += `**Version:** \`${version}\`\n\n**Install with:**\n\`\`\`bash\nnpm i @rn-vui/base@bleeding-edge @rn-vui/themed@bleeding-edge\n\`\`\`\n\n📚 **Documentation updated!**`;
+            } else {
+              const branch = '${{ steps.branch.outputs.name }}';
+              body += `**Version:** \`${version}\`\n\n**Install with:**\n\`\`\`bash\nnpm i @rn-vui/base@${branch} @rn-vui/themed@${branch}\n\`\`\``;
+            }
+            
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: body,
+            });
