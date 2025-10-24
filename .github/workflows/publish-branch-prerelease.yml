@@ -52,25 +52,6 @@ jobs:
       - name: Build packages
         run: yarn build
 
-      - name: Verify build before publish
-        run: |
-          echo "=== Checking built Slider.js for Platform.select ==="
-          echo "Current branch: $(git rev-parse --abbrev-ref HEAD)"
-          
-          if [ -f packages/base/dist/Slider/Slider.js ]; then
-            if grep -q "Platform.select" packages/base/dist/Slider/Slider.js; then
-              echo "❌ Platform.select found in build - this is OLD code!"
-              echo "Build contains code from wrong branch."
-              grep -n "Platform.select" packages/base/dist/Slider/Slider.js | head -3
-            else
-              echo "✅ Platform.select not found - correct branch code!"
-            fi
-          else
-            echo "⚠️  Slider.js not found in dist, skipping check"
-          fi
-          exit 1
-
-
       - name: Configure NPM
         run: |
           npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
