@@ -37,20 +37,30 @@ jobs:
       - name: Git checkout
         uses: actions/checkout@v3
         with:
-          ref: ${{ steps.branch_name.outputs.name }}
+          ref: refs/heads/${{ steps.branch_name.outputs.name }}
           fetch-depth: 0
+          clean: true
 
       - name: Verify checked out branch and show commit info
         run: |
-          echo "=== Current Branch ==="
-          git branch --show-current
+          echo "=== Git Status ==="
+          git status
           echo ""
-          echo "=== Latest Commit ==="
-          git log -1 --oneline
+          echo "=== Current Branch/Ref ==="
+          git rev-parse --abbrev-ref HEAD
           echo ""
-          echo "=== Working Directory ==="
-          pwd
-          ls -la
+          echo "=== Current Commit ==="
+          git log -1 --format="%H %s"
+          echo ""
+          echo "=== Remote Info ==="
+          git log -1 --format="%H %s" origin/${{ steps.branch_name.outputs.name }}
+          echo ""
+          echo "=== Are they the same? ==="
+          if [ "$(git rev-parse HEAD)" = "$(git rev-parse origin/${{ steps.branch_name.outputs.name }})" ]; then
+            echo "✅ YES - Checked out correct commit"
+          else
+            echo "❌ NO - Mismatch!"
+          fi
 
       - name: Determine version tag
         id: branch
@@ -83,14 +93,20 @@ jobs:
         run: |
           echo "=== Checking SOURCE Slider.tsx for TRACK_STYLE ==="
           if grep -q "TRACK_STYLE" packages/base/src/Slider/Slider.tsx; then
-            echo "⚠️  TRACK_STYLE found in SOURCE - this is OLD code"
+            echo "❌ TRACK_STYLE found in SOURCE - this is OLD code!"
+            echo "This means the wrong branch was checked out."
             grep -n "TRACK_STYLE" packages/base/src/Slider/Slider.tsx | head -5
+            exit 1
           else
             echo "✅ TRACK_STYLE not in source - correct branch!"
           fi
 
       - name: Clean previous build
-        run: yarn clean-build
+        run: |
+          echo "Cleaning dist folders..."
+          rm -rf packages/base/dist
+          rm -rf packages/themed/dist
+          echo "✅ Build folders cleaned"
 
       - name: Build packages
         run: yarn build
