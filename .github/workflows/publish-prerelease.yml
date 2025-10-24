@@ -40,6 +40,18 @@ jobs:
           ref: ${{ steps.branch_name.outputs.name }}
           fetch-depth: 0
 
+      - name: Verify checked out branch and show commit info
+        run: |
+          echo "=== Current Branch ==="
+          git branch --show-current
+          echo ""
+          echo "=== Latest Commit ==="
+          git log -1 --oneline
+          echo ""
+          echo "=== Working Directory ==="
+          pwd
+          ls -la
+
       - name: Determine version tag
         id: branch
         run: |
@@ -70,6 +82,17 @@ jobs:
       - name: Build packages
         run: yarn build
 
+      - name: Verify build output
+        run: |
+          echo "=== Build Output for @rn-vui/base ==="
+          ls -la packages/base/dist/ | head -20
+          echo ""
+          echo "=== Sample file content (first component) ==="
+          find packages/base/dist -name "*.js" -type f | head -1 | xargs head -50
+          echo ""
+          echo "=== Build Output for @rn-vui/themed ==="
+          ls -la packages/themed/dist/ | head -20
+
       - name: Configure NPM
         run: |
           npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
@@ -94,9 +117,16 @@ jobs:
             NEW_VERSION="${BASE_VERSION}-${VERSION_TAG}"
             
             echo "Version: $NEW_VERSION"
+            echo "Current directory: $(pwd)"
+            echo "Files to be published:"
+            ls -la dist/ | head -10
             
             # Update package.json version
             npm version $NEW_VERSION --no-git-tag-version
+            
+            # Dry run first to see what will be published
+            echo "=== Dry run output ==="
+            npm publish --dry-run --tag test 2>&1 | grep -A 5 "package size"
             
             # Publish with appropriate tag
             if [ "${{ steps.branch.outputs.is_bleeding_edge }}" == "true" ]; then
@@ -104,6 +134,8 @@ jobs:
             else
               npm publish --tag $BRANCH_NAME --access public
             fi
+            
+            echo "✅ Published @rn-vui/$pkg@$NEW_VERSION"
             
             cd ../..
           done
