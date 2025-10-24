@@ -29,24 +29,37 @@ jobs:
         id: branch_name
         run: |
           if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
-            echo "name=${{ github.event.inputs.branch }}" >> $GITHUB_OUTPUT
+            BRANCH="${{ github.event.inputs.branch }}"
           else
-            echo "name=${{ github.event.pull_request.base.ref }}" >> $GITHUB_OUTPUT
+            BRANCH="${{ github.event.pull_request.base.ref }}"
           fi
+          echo "name=$BRANCH" >> $GITHUB_OUTPUT
+          echo "📍 Will checkout branch: $BRANCH"
 
-      - name: Git checkout
+      - name: Git checkout (initial)
         uses: actions/checkout@v4
         with:
-          ref: ${{ steps.branch_name.outputs.name }}
           fetch-depth: 0
           clean: true
 
-      - name: Force reset to correct branch tip
+      - name: Fetch and force checkout correct branch
         run: |
-          echo "=== Fetching and resetting to branch tip ==="
-          git fetch origin ${{ steps.branch_name.outputs.name }}
-          git reset --hard origin/${{ steps.branch_name.outputs.name }}
-          echo "✅ Reset complete"
+          echo "=== Fetching all remotes ==="
+          git fetch --all --prune
+          
+          BRANCH="${{ steps.branch_name.outputs.name }}"
+          echo "=== Target branch: $BRANCH ==="
+          
+          echo "=== Available remote branches ==="
+          git branch -r | grep "$BRANCH" || echo "Branch not found in remotes!"
+          
+          echo "=== Checking out origin/$BRANCH ==="
+          git checkout -B "$BRANCH" "origin/$BRANCH"
+          
+          echo "=== Force reset to remote tip ==="
+          git reset --hard "origin/$BRANCH"
+          
+          echo "✅ Checkout complete"
 
       - name: Verify checked out branch and show commit info
         run: |
