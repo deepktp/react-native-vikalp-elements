@@ -87,8 +87,16 @@ jobs:
           echo "=== Build Output for @rn-vui/base ==="
           ls -la packages/base/dist/ | head -20
           echo ""
-          echo "=== Sample file content (first component) ==="
-          find packages/base/dist -name "*.js" -type f | head -1 | xargs head -50
+          echo "=== Checking Slider.js for branch-specific code ==="
+          if [ -f packages/base/dist/Slider/Slider.js ]; then
+            if grep -q "TRACK_STYLE" packages/base/dist/Slider/Slider.js; then
+              echo "⚠️  TRACK_STYLE found in build (old code or different branch)"
+              echo "First occurrence context:"
+              grep -B 2 -A 2 "TRACK_STYLE" packages/base/dist/Slider/Slider.js | head -10
+            else
+              echo "✅ TRACK_STYLE not found - slider-alignment-fix code confirmed!"
+            fi
+          fi
           echo ""
           echo "=== Build Output for @rn-vui/themed ==="
           ls -la packages/themed/dist/ | head -20
