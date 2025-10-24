@@ -13,7 +13,7 @@ runs:
   using: composite
   steps:
     - uses: actions/checkout@v2
-      if: inputs.skip_checkout != 'true'
+      if: ${{ inputs.skip_checkout != 'true' }}
 
     - name: Setup Node.js Environment
       uses: actions/setup-node@v2
