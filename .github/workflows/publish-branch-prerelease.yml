@@ -37,10 +37,18 @@ jobs:
         run: corepack prepare yarn@stable --activate
         shell: bash
 
-      - name: Install dependencies
-        uses: ./.github/actions/install
+      - name: Cache root dependencies
+        uses: actions/cache@v4
+        id: root_cache
         with:
-          skip_checkout: 'true'
+          path: node_modules
+          key: ${{ runner.os }}-rne-cache-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-rne-cache-${{ hashFiles('yarn.lock') }}
+
+      - name: Install root dependencies
+        if: steps.root_cache.outputs.cache-hit != 'true'
+        run: yarn install
 
       - name: Clean previous build
         run: |
