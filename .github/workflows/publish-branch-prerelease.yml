@@ -55,6 +55,8 @@ jobs:
       - name: Verify build before publish
         run: |
           echo "=== Checking built Slider.js for Platform.select ==="
+          echo "Current branch: $(git rev-parse --abbrev-ref HEAD)"
+          
           if [ -f packages/base/dist/Slider/Slider.js ]; then
             if grep -q "Platform.select" packages/base/dist/Slider/Slider.js; then
               echo "❌ Platform.select found in build - this is OLD code!"
