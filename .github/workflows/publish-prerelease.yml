@@ -35,11 +35,18 @@ jobs:
           fi
 
       - name: Git checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
-          ref: refs/heads/${{ steps.branch_name.outputs.name }}
+          ref: ${{ steps.branch_name.outputs.name }}
           fetch-depth: 0
           clean: true
+
+      - name: Force reset to correct branch tip
+        run: |
+          echo "=== Fetching and resetting to branch tip ==="
+          git fetch origin ${{ steps.branch_name.outputs.name }}
+          git reset --hard origin/${{ steps.branch_name.outputs.name }}
+          echo "✅ Reset complete"
 
       - name: Verify checked out branch and show commit info
         run: |
@@ -52,14 +59,15 @@ jobs:
           echo "=== Current Commit ==="
           git log -1 --format="%H %s"
           echo ""
-          echo "=== Remote Info ==="
-          git log -1 --format="%H %s" origin/${{ steps.branch_name.outputs.name }}
+          echo "=== Last 3 commits on this branch ==="
+          git log -3 --oneline
           echo ""
-          echo "=== Are they the same? ==="
-          if [ "$(git rev-parse HEAD)" = "$(git rev-parse origin/${{ steps.branch_name.outputs.name }})" ]; then
-            echo "✅ YES - Checked out correct commit"
+          echo "=== Verifying working tree matches commit ==="
+          if git diff-index --quiet HEAD --; then
+            echo "✅ Working tree is clean and matches HEAD"
           else
-            echo "❌ NO - Mismatch!"
+            echo "❌ WARNING: Working tree has uncommitted changes!"
+            git status --short
           fi
 
       - name: Determine version tag
