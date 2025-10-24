@@ -79,6 +79,19 @@ jobs:
       - name: Install dependencies
         uses: ./.github/actions/install
 
+      - name: Verify source code before build
+        run: |
+          echo "=== Checking SOURCE Slider.tsx for TRACK_STYLE ==="
+          if grep -q "TRACK_STYLE" packages/base/src/Slider/Slider.tsx; then
+            echo "⚠️  TRACK_STYLE found in SOURCE - this is OLD code"
+            grep -n "TRACK_STYLE" packages/base/src/Slider/Slider.tsx | head -5
+          else
+            echo "✅ TRACK_STYLE not in source - correct branch!"
+          fi
+
+      - name: Clean previous build
+        run: yarn clean-build
+
       - name: Build packages
         run: yarn build
 
