@@ -109,6 +109,8 @@ jobs:
 
       - name: Install dependencies
         uses: ./.github/actions/install
+        with:
+          skip_checkout: 'true'
 
       - name: Verify source code before build
         run: |
@@ -204,6 +206,7 @@ jobs:
         if: steps.branch.outputs.is_bleeding_edge == 'true'
         uses: ./.github/actions/install
         with:
+          skip_checkout: 'true'
           install_website: true
 
       - name: Build and deploy docs (bleeding-edge only)
