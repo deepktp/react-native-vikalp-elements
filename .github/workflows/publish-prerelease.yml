@@ -25,31 +25,79 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Determine branch and version tag
-        id: branch
+      - name: Determine branch to checkout
+        id: branch_name
         run: |
           if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
             BRANCH="${{ github.event.inputs.branch }}"
           else
             BRANCH="${{ github.event.pull_request.base.ref }}"
           fi
+          echo "name=$BRANCH" >> $GITHUB_OUTPUT
+          echo "📍 Will checkout branch: $BRANCH"
+
+      - name: Git checkout (initial)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          clean: true
+
+      - name: Fetch and force checkout correct branch
+        run: |
+          echo "=== Fetching all remotes ==="
+          git fetch --all --prune
+          
+          BRANCH="${{ steps.branch_name.outputs.name }}"
+          echo "=== Target branch: $BRANCH ==="
+          
+          echo "=== Available remote branches ==="
+          git branch -r | grep "$BRANCH" || echo "Branch not found in remotes!"
+          
+          echo "=== Checking out origin/$BRANCH ==="
+          git checkout -B "$BRANCH" "origin/$BRANCH"
+          
+          echo "=== Force reset to remote tip ==="
+          git reset --hard "origin/$BRANCH"
+          
+          echo "✅ Checkout complete"
+
+      - name: Verify checked out branch and show commit info
+        run: |
+          echo "=== Git Status ==="
+          git status
+          echo ""
+          echo "=== Current Branch/Ref ==="
+          git rev-parse --abbrev-ref HEAD
+          echo ""
+          echo "=== Current Commit ==="
+          git log -1 --format="%H %s"
+          echo ""
+          echo "=== Last 3 commits on this branch ==="
+          git log -3 --oneline
+          echo ""
+          echo "=== Verifying working tree matches commit ==="
+          if git diff-index --quiet HEAD --; then
+            echo "✅ Working tree is clean and matches HEAD"
+          else
+            echo "❌ WARNING: Working tree has uncommitted changes!"
+            git status --short
+          fi
+
+      - name: Determine version tag
+        id: branch
+        run: |
+          BRANCH="${{ steps.branch_name.outputs.name }}"
           
           echo "name=$BRANCH" >> $GITHUB_OUTPUT
           
-          # Set version tag: 'bleeding-edge' for next branch, 'branchName-date' for others
+          # Set version tag: 'bleeding-edge' for next branch, 'branchName-date-time' for others
           if [ "$BRANCH" == "next" ]; then
             echo "is_bleeding_edge=true" >> $GITHUB_OUTPUT
             echo "version_tag=bleeding-edge" >> $GITHUB_OUTPUT
           else
             echo "is_bleeding_edge=false" >> $GITHUB_OUTPUT
-            echo "version_tag=$BRANCH-$(date +'%Y%m%d')" >> $GITHUB_OUTPUT
+            echo "version_tag=$BRANCH-$(date +'%Y%m%d-%H%M')" >> $GITHUB_OUTPUT
           fi
-
-      - name: Git checkout
-        uses: actions/checkout@v3
-        with:
-          ref: ${{ steps.branch.outputs.name }}
-          fetch-depth: 0
 
       - name: Enable Corepack
         run: corepack enable
@@ -61,9 +109,49 @@ jobs:
 
       - name: Install dependencies
         uses: ./.github/actions/install
+        with:
+          skip_checkout: 'true'
+
+      - name: Verify source code before build
+        run: |
+          echo "=== Checking SOURCE Slider.tsx for TRACK_STYLE ==="
+          if grep -q "TRACK_STYLE" packages/base/src/Slider/Slider.tsx; then
+            echo "❌ TRACK_STYLE found in SOURCE - this is OLD code!"
+            echo "This means the wrong branch was checked out."
+            grep -n "TRACK_STYLE" packages/base/src/Slider/Slider.tsx | head -5
+            exit 1
+          else
+            echo "✅ TRACK_STYLE not in source - correct branch!"
+          fi
+
+      - name: Clean previous build
+        run: |
+          echo "Cleaning dist folders..."
+          rm -rf packages/base/dist
+          rm -rf packages/themed/dist
+          echo "✅ Build folders cleaned"
 
       - name: Build packages
         run: yarn build
+
+      - name: Verify build output
+        run: |
+          echo "=== Build Output for @rn-vui/base ==="
+          ls -la packages/base/dist/ | head -20
+          echo ""
+          echo "=== Checking Slider.js for branch-specific code ==="
+          if [ -f packages/base/dist/Slider/Slider.js ]; then
+            if grep -q "TRACK_STYLE" packages/base/dist/Slider/Slider.js; then
+              echo "⚠️  TRACK_STYLE found in build (old code or different branch)"
+              echo "First occurrence context:"
+              grep -B 2 -A 2 "TRACK_STYLE" packages/base/dist/Slider/Slider.js | head -10
+            else
+              echo "✅ TRACK_STYLE not found - slider-alignment-fix code confirmed!"
+            fi
+          fi
+          echo ""
+          echo "=== Build Output for @rn-vui/themed ==="
+          ls -la packages/themed/dist/ | head -20
 
       - name: Configure NPM
         run: |
@@ -89,9 +177,16 @@ jobs:
             NEW_VERSION="${BASE_VERSION}-${VERSION_TAG}"
             
             echo "Version: $NEW_VERSION"
+            echo "Current directory: $(pwd)"
+            echo "Files to be published:"
+            ls -la dist/ | head -10
             
             # Update package.json version
             npm version $NEW_VERSION --no-git-tag-version
+            
+            # Dry run first to see what will be published
+            echo "=== Dry run output ==="
+            npm publish --dry-run --tag test 2>&1 | grep -A 5 "package size"
             
             # Publish with appropriate tag
             if [ "${{ steps.branch.outputs.is_bleeding_edge }}" == "true" ]; then
@@ -99,6 +194,8 @@ jobs:
             else
               npm publish --tag $BRANCH_NAME --access public
             fi
+            
+            echo "✅ Published @rn-vui/$pkg@$NEW_VERSION"
             
             cd ../..
           done
@@ -109,6 +206,7 @@ jobs:
         if: steps.branch.outputs.is_bleeding_edge == 'true'
         uses: ./.github/actions/install
         with:
+          skip_checkout: 'true'
           install_website: true
 
       - name: Build and deploy docs (bleeding-edge only)
