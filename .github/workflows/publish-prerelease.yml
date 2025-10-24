@@ -25,31 +25,36 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Determine branch and version tag
-        id: branch
+      - name: Determine branch to checkout
+        id: branch_name
         run: |
           if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
-            BRANCH="${{ github.event.inputs.branch }}"
+            echo "name=${{ github.event.inputs.branch }}" >> $GITHUB_OUTPUT
           else
-            BRANCH="${{ github.event.pull_request.base.ref }}"
-          fi
-          
-          echo "name=$BRANCH" >> $GITHUB_OUTPUT
-          
-          # Set version tag: 'bleeding-edge' for next branch, 'branchName-date' for others
-          if [ "$BRANCH" == "next" ]; then
-            echo "is_bleeding_edge=true" >> $GITHUB_OUTPUT
-            echo "version_tag=bleeding-edge" >> $GITHUB_OUTPUT
-          else
-            echo "is_bleeding_edge=false" >> $GITHUB_OUTPUT
-            echo "version_tag=$BRANCH-$(date +'%Y%m%d')" >> $GITHUB_OUTPUT
+            echo "name=${{ github.event.pull_request.base.ref }}" >> $GITHUB_OUTPUT
           fi
 
       - name: Git checkout
         uses: actions/checkout@v3
         with:
-          ref: ${{ steps.branch.outputs.name }}
+          ref: ${{ steps.branch_name.outputs.name }}
           fetch-depth: 0
+
+      - name: Determine version tag
+        id: branch
+        run: |
+          BRANCH="${{ steps.branch_name.outputs.name }}"
+          
+          echo "name=$BRANCH" >> $GITHUB_OUTPUT
+          
+          # Set version tag: 'bleeding-edge' for next branch, 'branchName-date-time' for others
+          if [ "$BRANCH" == "next" ]; then
+            echo "is_bleeding_edge=true" >> $GITHUB_OUTPUT
+            echo "version_tag=bleeding-edge" >> $GITHUB_OUTPUT
+          else
+            echo "is_bleeding_edge=false" >> $GITHUB_OUTPUT
+            echo "version_tag=$BRANCH-$(date +'%Y%m%d-%H%M')" >> $GITHUB_OUTPUT
+          fi
 
       - name: Enable Corepack
         run: corepack enable
