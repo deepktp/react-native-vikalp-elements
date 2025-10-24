@@ -14,52 +14,20 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Git checkout (initial)
+      - name: Git checkout target branch
         uses: actions/checkout@v4
         with:
+          ref: ${{ github.event.inputs.branch }}
           fetch-depth: 0
           clean: true
 
-      - name: Fetch and force checkout target branch
-        run: |
-          echo "=== Fetching all remotes ==="
-          git fetch --all --prune
-          
-          BRANCH="${{ github.event.inputs.branch }}"
-          echo "=== Target branch: $BRANCH ==="
-          
-          echo "=== Available remote branches ==="
-          git branch -r | grep "$BRANCH" || echo "Branch not found in remotes!"
-          
-          echo "=== Checking out origin/$BRANCH ==="
-          git checkout -B "$BRANCH" "origin/$BRANCH"
-          
-          echo "=== Force reset to remote tip ==="
-          git reset --hard "origin/$BRANCH"
-          
-          echo "✅ Checkout complete"
-
       - name: Verify checked out branch and commit
         run: |
-          echo "=== Git Status ==="
-          git status
-          echo ""
-          echo "=== Current Branch/Ref ==="
+          echo "=== Current Branch ==="
           git rev-parse --abbrev-ref HEAD
           echo ""
           echo "=== Current Commit ==="
           git log -1 --format="%H %s"
-          echo ""
-          echo "=== Last 3 commits on this branch ==="
-          git log -3 --oneline
-          echo ""
-          echo "=== Verifying working tree matches commit ==="
-          if git diff-index --quiet HEAD --; then
-            echo "✅ Working tree is clean and matches HEAD"
-          else
-            echo "❌ WARNING: Working tree has uncommitted changes!"
-            git status --short
-          fi
 
       - name: Enable Corepack
         run: corepack enable
@@ -74,17 +42,6 @@ jobs:
         with:
           skip_checkout: 'true'
 
-      - name: Verify source code before build (optional check)
-        continue-on-error: true
-        run: |
-          echo "=== Source code verification ==="
-          echo "Current working directory: $(pwd)"
-          echo "Git branch: $(git rev-parse --abbrev-ref HEAD)"
-          echo "Git commit: $(git log -1 --oneline)"
-          echo ""
-          echo "Sample source files:"
-          ls -la packages/base/src/Slider/ 2>/dev/null || echo "Slider directory not found"
-
       - name: Clean previous build
         run: |
           echo "Cleaning dist folders..."
@@ -95,13 +52,22 @@ jobs:
       - name: Build packages
         run: yarn build
 
-      - name: Verify build output
+      - name: Verify build before publish
         run: |
-          echo "=== Build Output for @rn-vui/base ==="
-          ls -la packages/base/dist/ | head -20
-          echo ""
-          echo "=== Build Output for @rn-vui/themed ==="
-          ls -la packages/themed/dist/ | head -20
+          echo "=== Checking built Slider.js for Platform.select ==="
+          if [ -f packages/base/dist/Slider/Slider.js ]; then
+            if grep -q "Platform.select" packages/base/dist/Slider/Slider.js; then
+              echo "❌ Platform.select found in build - this is OLD code!"
+              echo "Build contains code from wrong branch."
+              grep -n "Platform.select" packages/base/dist/Slider/Slider.js | head -3
+            else
+              echo "✅ Platform.select not found - correct branch code!"
+            fi
+          else
+            echo "⚠️  Slider.js not found in dist, skipping check"
+          fi
+          exit 1
+
 
       - name: Configure NPM
         run: |
@@ -127,16 +93,9 @@ jobs:
             NEW_VERSION="${BASE_VERSION}-${VERSION_TAG}"
             
             echo "Version: $NEW_VERSION"
-            echo "Current directory: $(pwd)"
-            echo "Files to be published:"
-            ls -la dist/ | head -10
             
             # Update package.json version
             npm version $NEW_VERSION --no-git-tag-version
-            
-            # Dry run first to see what will be published
-            echo "=== Dry run output ==="
-            npm publish --dry-run --tag test 2>&1 | grep -A 5 "package size"
             
             # Publish with branch name as tag
             npm publish --tag $BRANCH_NAME --access public

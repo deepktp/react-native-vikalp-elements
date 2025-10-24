@@ -24,10 +24,7 @@ jobs:
 
       - name: Verify checked out branch
         run: |
-          echo "=== Git Status ==="
-          git status
-          echo ""
-          echo "=== Current Branch/Ref ==="
+          echo "=== Current Branch ==="
           git rev-parse --abbrev-ref HEAD
           echo ""
           echo "=== Current Commit ==="
@@ -56,14 +53,6 @@ jobs:
       - name: Build packages
         run: yarn build
 
-      - name: Verify build output
-        run: |
-          echo "=== Build Output for @rn-vui/base ==="
-          ls -la packages/base/dist/ | head -20
-          echo ""
-          echo "=== Build Output for @rn-vui/themed ==="
-          ls -la packages/themed/dist/ | head -20
-
       - name: Configure NPM
         run: |
           npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
@@ -85,16 +74,9 @@ jobs:
             NEW_VERSION="${BASE_VERSION}-bleeding-edge"
             
             echo "Version: $NEW_VERSION"
-            echo "Current directory: $(pwd)"
-            echo "Files to be published:"
-            ls -la dist/ | head -10
             
             # Update package.json version
             npm version $NEW_VERSION --no-git-tag-version
-            
-            # Dry run first to see what will be published
-            echo "=== Dry run output ==="
-            npm publish --dry-run --tag test 2>&1 | grep -A 5 "package size"
             
             # Publish with bleeding-edge tag
             npm publish --tag bleeding-edge --access public
