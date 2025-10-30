@@ -1,0 +1,118 @@
+name: Publish Branch Pre-release to NPM
+
+on:
+  # Manual trigger for any branch
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to publish from'
+        required: true
+        default: 'next'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Git checkout target branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.branch }}
+          fetch-depth: 0
+          clean: true
+
+      - name: Verify checked out branch and commit
+        run: |
+          echo "=== Current Branch ==="
+          git rev-parse --abbrev-ref HEAD
+          echo ""
+          echo "=== Current Commit ==="
+          git log -1 --format="%H %s"
+
+      - name: Enable Corepack
+        run: corepack enable
+        shell: bash
+
+      - name: Enable Yarn with Corepack
+        run: corepack prepare yarn@stable --activate
+        shell: bash
+
+      - name: Cache root dependencies
+        uses: actions/cache@v4
+        id: root_cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-rne-cache-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-rne-cache-${{ hashFiles('yarn.lock') }}
+
+      - name: Install root dependencies
+        if: steps.root_cache.outputs.cache-hit != 'true'
+        run: yarn install
+
+      - name: Clean previous build
+        run: |
+          echo "Cleaning dist folders..."
+          rm -rf packages/base/dist
+          rm -rf packages/themed/dist
+          echo "✅ Build folders cleaned"
+
+      - name: Build packages
+        run: yarn build
+
+      - name: Configure NPM
+        run: |
+          npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
+          npm whoami
+
+      - name: Publish packages to NPM
+        id: publish
+        run: |
+          BRANCH_NAME="${{ github.event.inputs.branch }}"
+          VERSION_TAG="$BRANCH_NAME-$(date +'%Y%m%d-%H%M')"
+          
+          for pkg in $(find ./packages -mindepth 1 -maxdepth 1 -type d -printf '%f\n'); do
+            echo "📦 Publishing @rn-vui/$pkg"
+            
+            cd packages/$pkg
+            
+            # Get current version from package.json
+            CURRENT_VERSION=$(node -p "require('./package.json').version")
+            BASE_VERSION=$(echo $CURRENT_VERSION | sed 's/-.*$//')
+            
+            # Create prerelease version
+            NEW_VERSION="${BASE_VERSION}-${VERSION_TAG}"
+            
+            echo "Version: $NEW_VERSION"
+            
+            # Update package.json version
+            npm version $NEW_VERSION --no-git-tag-version
+            
+            # Publish with branch name as tag
+            npm publish --tag $BRANCH_NAME --access public
+            
+            echo "✅ Published @rn-vui/$pkg@$NEW_VERSION"
+            
+            cd ../..
+          done
+          
+          echo "published_version=${BASE_VERSION}-${VERSION_TAG}" >> $GITHUB_OUTPUT
+          echo "branch_name=${BRANCH_NAME}" >> $GITHUB_OUTPUT
+
+      - name: Create summary
+        run: |
+          echo "## 🎉 Pre-release Published Successfully!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Branch:** \`${{ github.event.inputs.branch }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Version:** \`${{ steps.publish.outputs.published_version }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Install with:" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`bash" >> $GITHUB_STEP_SUMMARY
+          echo "npm i @rn-vui/base@${{ steps.publish.outputs.branch_name }} @rn-vui/themed@${{ steps.publish.outputs.branch_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "or" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`bash" >> $GITHUB_STEP_SUMMARY
+          echo "yarn add @rn-vui/base@${{ steps.publish.outputs.branch_name }} @rn-vui/themed@${{ steps.publish.outputs.branch_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY

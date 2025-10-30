@@ -20,6 +20,7 @@ jobs:
         id: sha
         uses: actions/github-script@v6
         with:
+          github-token: ${{ secrets.RNVE_BOT_TOKEN }}
           result-encoding: string
           script: |
             const { owner, repo } = context.issue;

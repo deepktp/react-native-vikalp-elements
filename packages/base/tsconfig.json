@@ -1,11 +1,13 @@
 {
   "extends": "../../tsconfig",
   "compilerOptions": {
-    "allowJs": true /* Allow javascript files to be compiled. */,
+    "allowJs": true,
     "outDir": "dist",
     "declaration": true,
     "composite": true,
-    "rootDir": "src"
+    "rootDir": "src",
+    "jsx": "react",
+    "esModuleInterop": true
   },
   "include": ["src/**/*.tsx", "src/**/*.ts", "src/index.ts"],
   "exclude": [

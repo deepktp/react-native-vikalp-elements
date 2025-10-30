@@ -1,0 +1,132 @@
+name: Publish Bleeding Edge to NPM
+
+on:
+  # Auto-publish when PR is merged to next
+  pull_request:
+    types: [closed]
+    branches:
+      - next
+
+jobs:
+  publish:
+    # Only run if PR was merged (not just closed)
+    if: github.event.pull_request.merged == true
+    
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v4
+        with:
+          ref: next
+          fetch-depth: 0
+          clean: true
+
+      - name: Verify checked out branch
+        run: |
+          echo "=== Current Branch ==="
+          git rev-parse --abbrev-ref HEAD
+          echo ""
+          echo "=== Current Commit ==="
+          git log -1 --format="%H %s"
+
+      - name: Enable Corepack
+        run: corepack enable
+        shell: bash
+
+      - name: Enable Yarn with Corepack
+        run: corepack prepare yarn@stable --activate
+        shell: bash
+
+      - name: Install dependencies
+        uses: ./.github/actions/install
+        with:
+          skip_checkout: 'true'
+
+      - name: Clean previous build
+        run: |
+          echo "Cleaning dist folders..."
+          rm -rf packages/base/dist
+          rm -rf packages/themed/dist
+          echo "✅ Build folders cleaned"
+
+      - name: Build packages
+        run: yarn build
+
+      - name: Configure NPM
+        run: |
+          npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
+          npm whoami
+
+      - name: Publish packages to NPM
+        id: publish
+        run: |
+          for pkg in $(find ./packages -mindepth 1 -maxdepth 1 -type d -printf '%f\n'); do
+            echo "📦 Publishing @rn-vui/$pkg"
+            
+            cd packages/$pkg
+            
+            # Get current version from package.json
+            CURRENT_VERSION=$(node -p "require('./package.json').version")
+            BASE_VERSION=$(echo $CURRENT_VERSION | sed 's/-.*$//')
+            
+            # Create bleeding-edge version
+            NEW_VERSION="${BASE_VERSION}-bleeding-edge"
+            
+            echo "Version: $NEW_VERSION"
+            
+            # Update package.json version
+            npm version $NEW_VERSION --no-git-tag-version
+            
+            # Publish with bleeding-edge tag
+            npm publish --tag bleeding-edge --access public
+            
+            echo "✅ Published @rn-vui/$pkg@$NEW_VERSION"
+            
+            cd ../..
+          done
+          
+          echo "published_version=${BASE_VERSION}-bleeding-edge" >> $GITHUB_OUTPUT
+
+      - name: Update documentation
+        uses: ./.github/actions/install
+        with:
+          skip_checkout: 'true'
+          install_website: true
+
+      - name: Build docs
+        run: yarn docs-build
+
+      - name: Deploy docs to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./website/build
+          user_name: 'React Native vElements CI'
+          user_email: 'react-native-elements-ci@users.noreply.github.com'
+          cname: https://react-native-velements.thevikalp.com/
+
+      - name: Comment on PR
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const version = '${{ steps.publish.outputs.published_version }}';
+            
+            const body = `🎉 Bleeding-edge pre-release published to NPM!
+            
+            **Version:** \`${version}\`
+            
+            **Install with:**
+            \`\`\`bash
+            npm i @rn-vui/base@bleeding-edge @rn-vui/themed@bleeding-edge
+            \`\`\`
+            
+            📚 **Documentation updated at https://react-native-velements.thevikalp.com/**`;
+            
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: body,
+            });
