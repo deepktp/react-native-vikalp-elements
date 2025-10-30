@@ -30,14 +30,14 @@ usage(
 usage('Icon', '', () => (
   <>
     <ListItem>
-      <Icon name="inbox" type="material-community" color="grey" />
+      <Icon name="inbox" type="material-design" color="grey" />
       <ListItem.Content>
         <ListItem.Title>Inbox</ListItem.Title>
       </ListItem.Content>
       <ListItem.Chevron />
     </ListItem>
     <ListItem>
-      <Icon name="trash-can-outline" type="material-community" color="grey" />
+      <Icon name="trash-can-outline" type="material-design" color="grey" />
       <ListItem.Content>
         <ListItem.Title>Trash</ListItem.Title>
       </ListItem.Content>
@@ -175,7 +175,7 @@ usage(
           type="clear"
           icon={{
             name: 'archive-outline',
-            type: 'material-community',
+            type: 'material-design',
           }}
           onPress={action}
         />
@@ -213,7 +213,7 @@ usage(
         <ListItem bottomDivider>
           <ListItem.CheckBox
             // Use ThemeProvider to change the defaults of the checkbox
-            iconType="material-community"
+            iconType="material-design"
             checkedIcon="checkbox-marked"
             uncheckedIcon="checkbox-blank-outline"
             checked={checked[0]}

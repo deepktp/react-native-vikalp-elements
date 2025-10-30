@@ -45,7 +45,7 @@ export const ListItemAccordion: RneFunctionComponent<
 > = ({
   children,
   isExpanded = false,
-  icon = <Icon name={'chevron-down'} type="material-community" />,
+  icon = <Icon name={'chevron-down'} type="material-design" />,
   expandIcon,
   content,
   leftRotate = false,

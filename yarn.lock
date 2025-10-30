@@ -4526,6 +4526,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native-vector-icons/feather@npm:^12.3.0":
+  version: 12.3.0
+  resolution: "@react-native-vector-icons/feather@npm:12.3.0"
+  dependencies:
+    "@react-native-vector-icons/common": "npm:^12.3.0"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 10/4a32c13a1ac8dc4464b16b97e46e87c57d7ac556deecb82aa6f447fe732927fd3efff9a0082e2533da939d3d0d33acc64b188e047f4439f9b48192307f96bbf1
+  languageName: node
+  linkType: hard
+
 "@react-native-vector-icons/fontawesome@npm:^12.3.0":
   version: 12.3.0
   resolution: "@react-native-vector-icons/fontawesome@npm:12.3.0"
@@ -4571,6 +4583,18 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: 10/a27097b89a0975af1ecd697ee4ce8f4b753373d2d12acae217153534747a60bf29aa640ef36714d70b11c6c08dfcbc68f809e2c0156332a27c29f1889bfdad64
+  languageName: node
+  linkType: hard
+
+"@react-native-vector-icons/octicons@npm:^20.3.0":
+  version: 20.3.0
+  resolution: "@react-native-vector-icons/octicons@npm:20.3.0"
+  dependencies:
+    "@react-native-vector-icons/common": "npm:^12.3.0"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 10/981b9cf7713d2bafc80cb58bd802678b996f7276a0cd4ccac0f47dc2ab7d1741e94e749d963113aa36ab58eab21415e6c72aaa5e1eea24ea80b278386cd7e767
   languageName: node
   linkType: hard
 
@@ -4905,6 +4929,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@rn-vui/base@workspace:packages/base"
   dependencies:
+    "@react-native-vector-icons/feather": "npm:^12.3.0"
+    "@react-native-vector-icons/fontawesome": "npm:^12.3.0"
+    "@react-native-vector-icons/ionicons": "npm:^12.3.0"
+    "@react-native-vector-icons/material-design-icons": "npm:^12.3.0"
+    "@react-native-vector-icons/material-icons": "npm:^12.3.0"
+    "@react-native-vector-icons/octicons": "npm:^20.3.0"
     "@rn-vui/ratings": "npm:^0.5.0"
     "@types/color": "npm:^3.0.3"
     "@types/hoist-non-react-statics": "npm:^3.3.1"

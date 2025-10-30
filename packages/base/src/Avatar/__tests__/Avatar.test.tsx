@@ -121,7 +121,7 @@ describe('Avatar Component', () => {
           source={{ uri: 'https://i.imgur.com/0y8Ftya.jpg' }}
           icon={{
             name: 'home',
-            type: 'material-community',
+            type: 'material-design',
           }}
           iconStyle={{
             backgroundColor: 'red',
@@ -130,7 +130,7 @@ describe('Avatar Component', () => {
       );
       expect(wrapper.findByType(Icon).props).toMatchObject({
         name: 'home',
-        type: 'material-community',
+        type: 'material-design',
         style: { backgroundColor: 'red' },
       });
     });
