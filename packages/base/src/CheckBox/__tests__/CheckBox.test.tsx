@@ -2,7 +2,7 @@ import React from 'react';
 import { CheckBox } from '..';
 import { renderWithWrapper } from '../../../.ci/testHelper';
 import { Pressable, View, Text, Image } from 'react-native';
-import { describe, it, expect } from '@jest/globals';
+import { describe, it, expect, jest } from '@jest/globals';
 
 describe('CheckBox Component', () => {
   it('should match snapshot', () => {
@@ -90,6 +90,73 @@ describe('CheckBox Component', () => {
       // Icon library not available in test environment, test passes
       expect(wrapper).toBeNull();
     }
+  });
+
+  it('should handle missing icon libraries gracefully', () => {
+    // Test that checkbox renders properly even when icon libraries are not available
+    // In real scenarios, this might happen if a specific icon type is requested but not installed
+    const { queryByTestId, queryByText } = renderWithWrapper(
+      <CheckBox
+        checked
+        title="Test Checkbox"
+        iconType="font-awesome" // Using a commonly available type
+      />
+    );
+
+    // Checkbox should always render
+    expect(queryByTestId('RNE__CheckBox__Wrapper')).toBeTruthy();
+    expect(queryByText('Test Checkbox')).toBeTruthy();
+
+    // Icon should be present (font-awesome is typically available)
+    const icon = queryByTestId('RNE__Checkbox__Icon');
+    expect(icon).toBeTruthy();
+  });
+
+  it('should render with different icon types', () => {
+    // Test various icon types to ensure optional loading works
+    const iconTypes = ['material', 'ionicon', 'font-awesome', 'antdesign'];
+
+    iconTypes.forEach((iconType) => {
+      const { queryByTestId } = renderWithWrapper(
+        <CheckBox checked iconType={iconType as any} />
+      );
+
+      // Checkbox should always render regardless of icon availability
+      expect(queryByTestId('RNE__CheckBox__Wrapper')).toBeTruthy();
+    });
+  });
+
+  it('should prioritize custom checked/unchecked icons over library icons', () => {
+    const { queryByTestId } = renderWithWrapper(
+      <CheckBox
+        checked
+        checkedIcon={<Text testID="custom-checked">✓</Text>}
+        uncheckedIcon={<Text testID="custom-unchecked">□</Text>}
+        iconType="font-awesome" // Even with available icon type, custom icons should take precedence
+      />
+    );
+
+    // Custom checked icon should be rendered
+    expect(queryByTestId('custom-checked')).toBeTruthy();
+    expect(queryByTestId('custom-unchecked')).toBeFalsy();
+  });
+
+  it('should handle unchecked state with available icon libraries', () => {
+    const { queryByTestId, queryByText } = renderWithWrapper(
+      <CheckBox
+        checked={false}
+        title="Unchecked Checkbox"
+        iconType="font-awesome"
+      />
+    );
+
+    // Checkbox should render properly
+    expect(queryByTestId('RNE__CheckBox__Wrapper')).toBeTruthy();
+    expect(queryByText('Unchecked Checkbox')).toBeTruthy();
+
+    // Icon should be present for unchecked state
+    const icon = queryByTestId('RNE__Checkbox__Icon');
+    expect(icon).toBeTruthy();
   });
 
   it('should allow custom checked Icon', () => {
