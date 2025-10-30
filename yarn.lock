@@ -4961,7 +4961,7 @@ __metadata:
     handlebars: "npm:^4.7.7"
     lodash.orderby: "npm:^4.6.0"
     ora: "npm:5.4.1"
-    react-docgen-typescript: "npm:^2.2.2"
+    react-docgen-typescript: "npm:^2.4.0"
     react-dom: "npm:18.3.1"
     typescript: "npm:^5.0.4"
   languageName: unknown
@@ -14611,6 +14611,15 @@ __metadata:
   peerDependencies:
     typescript: ">= 4.3.x"
   checksum: 10/081fc3a876f53b9eeffcff357e5b6c190db799d50edcf11b187857d8cb8cce28000ed777ed16dd52a1c955f332612ef6b1f02cf8adcbcb084b8da9ff1ae5fd13
+  languageName: node
+  linkType: hard
+
+"react-docgen-typescript@npm:^2.4.0":
+  version: 2.4.0
+  resolution: "react-docgen-typescript@npm:2.4.0"
+  peerDependencies:
+    typescript: ">= 4.3.x"
+  checksum: 10/81e45bc012150dee50a9919a44597a436d45168f7a83febbbfef134c07e71c1a2f09fb6e1fc040f18bd6747f37b46d463a2b4a30177f6137e4ff49570bcaf253
   languageName: node
   linkType: hard
 

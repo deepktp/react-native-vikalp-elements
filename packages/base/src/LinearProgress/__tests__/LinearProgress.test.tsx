@@ -1,7 +1,7 @@
 import React from 'react';
 import { LinearProgress } from '../index';
 import { renderWithWrapper, fireEvent, act } from '../../../.ci/testHelper';
-import { clamp } from '../LinearProgress';
+import { clamp } from '../../utils/math';
 import { describe, it, expect, jest } from '@jest/globals';
 
 describe('LinearProgress Component', () => {
