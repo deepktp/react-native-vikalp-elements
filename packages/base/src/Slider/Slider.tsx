@@ -11,12 +11,12 @@ import {
   Animated,
   Easing,
   PanResponder,
-  Platform,
   ViewStyle,
   StyleProp,
   GestureResponderEvent,
   PanResponderGestureState,
   LayoutChangeEvent,
+  Platform,
 } from 'react-native';
 import { RneFunctionComponent } from '../helpers';
 import { Rect } from './components/Rect';
@@ -24,7 +24,6 @@ import { SliderThumb } from './components/SliderThumb';
 
 const TRACK_SIZE = 4;
 const THUMB_SIZE = 40;
-const TRACK_STYLE = Platform.select({ web: 0, default: -1 });
 const DEFAULT_ANIMATION_CONFIGS = {
   spring: {
     friction: 7,
@@ -52,7 +51,7 @@ const getBoundedValue = (
 const handlePanResponderRequestEnd = () => false;
 
 // Should we become active when the user moves a touch over the thumb?
-const handleMoveShouldSetPanResponder = () => !TRACK_STYLE;
+const handleMoveShouldSetPanResponder = () => Platform.OS !== 'web';
 
 type Sizable = {
   width: number;
@@ -502,21 +501,12 @@ export const Slider: RneFunctionComponent<SliderProps> = ({
           thumbStart,
           thumbSize.height / 2
         );
-        minimumTrackStyle.marginLeft = trackSize.width * TRACK_STYLE;
       } else {
         minimumTrackStyle.width = Animated.add(thumbStart, thumbSize.width / 2);
-        minimumTrackStyle.marginTop = trackSize.height * TRACK_STYLE;
       }
       return minimumTrackStyle;
     },
-    [
-      allMeasured,
-      isVertical,
-      thumbSize.height,
-      thumbSize.width,
-      trackSize.height,
-      trackSize.width,
-    ]
+    [allMeasured, isVertical, thumbSize.height, thumbSize.width]
   );
 
   const panResponder = useMemo(
