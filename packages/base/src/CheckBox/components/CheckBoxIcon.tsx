@@ -54,6 +54,12 @@ export const CheckBoxIcon: RneFunctionComponent<CheckBoxIconProps> = ({
   const VectorIcon = iconType
     ? getIconType(iconType)
     : getIconType('font-awesome');
+
+  // If icon type is not available (e.g., in tests), return a fallback
+  if (VectorIcon === null) {
+    return null;
+  }
+
   return (
     <VectorIcon
       testID="RNE__Checkbox__Icon"

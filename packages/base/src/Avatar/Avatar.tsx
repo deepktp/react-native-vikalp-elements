@@ -160,7 +160,7 @@ const AvatarIcon = ({
       color={icon.color || 'white'}
       name={icon.name || 'account'}
       size={icon.size || iconSize}
-      type={icon.type || 'material-community'}
+      type={icon.type || 'material-design'}
     />
   );
 };

@@ -8,6 +8,7 @@ import {
   TextStyle,
   Pressable,
   ColorValue,
+  Text,
 } from 'react-native';
 import {
   type IconButtonProps,
@@ -162,7 +163,7 @@ export const Icon: RneFunctionComponent<IconProps> = ({
   );
 
   if (IconComponent === null) {
-    return null;
+    return <Text style={{ fontSize: 24 }}>☒</Text>;
   }
 
   return (

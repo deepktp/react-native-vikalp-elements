@@ -19,7 +19,7 @@
     "handlebars": "^4.7.7",
     "lodash.orderby": "^4.6.0",
     "ora": "5.4.1",
-    "react-docgen-typescript": "^2.2.2",
+    "react-docgen-typescript": "^2.4.0",
     "react-dom": "18.3.1",
     "typescript": "^5.0.4"
   }

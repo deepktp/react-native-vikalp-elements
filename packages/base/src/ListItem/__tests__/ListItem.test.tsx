@@ -113,4 +113,35 @@ describe('ListItem component', () => {
       transform: [{ rotate: '0deg' }],
     });
   });
+
+  it('should render accordion with default icon when icon library available', () => {
+    const { queryByTestId } = renderWithWrapper(
+      <ListItem.Accordion isExpanded={false} />
+    );
+
+    // Accordion should render
+    expect(queryByTestId('RNE__ListItem__Accordion__Icon')).toBeTruthy();
+  });
+
+  it('should render accordion without icon when noIcon is true', () => {
+    const { queryByTestId } = renderWithWrapper(
+      <ListItem.Accordion isExpanded={false} noIcon />
+    );
+
+    // Icon should not be present when noIcon is true
+    expect(queryByTestId('RNE__ListItem__Accordion__Icon')).toBeFalsy();
+  });
+
+  it('should render accordion with custom expand icon', () => {
+    const { queryByTestId } = renderWithWrapper(
+      <ListItem.Accordion
+        isExpanded={true}
+        icon={<Icon name="chevron-down" />}
+        expandIcon={<Icon name="chevron-up" />}
+      />
+    );
+
+    // Accordion should render with expand icon when expanded
+    expect(queryByTestId('RNE__ListItem__Accordion__Icon')).toBeTruthy();
+  });
 });

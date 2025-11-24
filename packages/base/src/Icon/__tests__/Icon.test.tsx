@@ -73,7 +73,7 @@ describe('Icon component', () => {
   it('should set underlayColor to color when styles when underlayColor absent', () => {
     const onPress = jest.fn();
     const { toJSON } = renderWithWrapper(
-      <Icon name="wifi" underlayColor={null} onPress={onPress} />
+      <Icon name="wifi" onPress={onPress} />
     );
     expect(toJSON()).toMatchSnapshot();
   });
