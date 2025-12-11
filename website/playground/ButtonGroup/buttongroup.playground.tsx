@@ -20,7 +20,7 @@ const ButtonGroupPlayground = () => {
       Component: {
         type: PropTypes.ReactNode,
         description:
-          'React Native Component	TouchableOpacity (ios) or TouchableNativeFeedback (android)',
+          'React Native Component	TouchableOpacity',
         value: null,
       },
       containerStyle: { type: PropTypes.Object, value: `{}` },

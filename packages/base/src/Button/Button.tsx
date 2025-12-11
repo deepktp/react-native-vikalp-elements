@@ -1,4 +1,3 @@
-import Color from 'color';
 import React, { useCallback, useEffect, useMemo } from 'react';
 import {
   ActivityIndicator,
@@ -8,8 +7,6 @@ import {
   StyleSheet,
   Text,
   TextStyle,
-  TouchableNativeFeedback,
-  TouchableNativeFeedbackProps,
   TouchableOpacity,
   TouchableOpacityProps,
   View,
@@ -42,9 +39,7 @@ const positionStyle = {
   right: 'row-reverse',
 };
 
-export interface ButtonProps
-  extends TouchableOpacityProps,
-    TouchableNativeFeedbackProps {
+export interface ButtonProps extends TouchableOpacityProps {
   /** Add button title. */
   title?: string | React.ReactElement<{}>;
 
@@ -171,12 +166,7 @@ export const Button: RneFunctionComponent<ButtonProps> = ({
   );
 
   // Refactor to Pressable
-  const TouchableComponentInternal =
-    TouchableComponent ||
-    Platform.select({
-      android: linearGradientProps ? TouchableOpacity : TouchableNativeFeedback,
-      default: TouchableOpacity,
-    });
+  const TouchableComponentInternal = TouchableComponent || TouchableOpacity;
 
   const titleStyle: StyleProp<TextStyle> = useMemo(
     () =>
@@ -202,14 +192,6 @@ export const Button: RneFunctionComponent<ButtonProps> = ({
       uppercase,
     ]
   );
-
-  const background =
-    Platform.OS === 'android' && Platform.Version >= 21
-      ? TouchableNativeFeedback.Ripple(
-          Color(titleStyle?.color?.toString()).alpha(0.32).rgb().string(),
-          false
-        )
-      : undefined;
 
   const loadingProps: ActivityIndicatorProps = useMemo(
     () => ({
@@ -252,7 +234,6 @@ export const Button: RneFunctionComponent<ButtonProps> = ({
         accessibilityRole="button"
         accessibilityState={accessibilityState}
         disabled={disabled}
-        background={background}
         {...rest}
       >
         <ViewComponent

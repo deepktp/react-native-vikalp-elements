@@ -87,7 +87,7 @@ export interface TileProps extends PressableProps {
 }
 
 /** Tiles like Cards, are a convenient way to display related content about a single subject.
- * Also receives all [TouchableNativeFeedback](http://reactnative.dev/docs/touchablenativefeedback.html#props) (Android) or [TouchableOpacity](http://reactnative.dev/docs/touchableopacity.html#props) (iOS) props. */
+ * Also receives all [TouchableOpacity](http://reactnative.dev/docs/touchableopacity.html#props) props. */
 export const Tile: RneFunctionComponent<TileProps> = ({
   featured,
   imageSrc,
