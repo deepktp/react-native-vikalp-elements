@@ -4,7 +4,6 @@ import {
   StatusBar,
   StyleSheet,
   View,
-  ImageBackground,
   StyleProp,
   TextProps,
   ViewProps,
@@ -15,7 +14,11 @@ import {
   ViewStyle,
 } from 'react-native';
 import { SafeAreaView, Edge } from 'react-native-safe-area-context';
-import { defaultTheme, RneFunctionComponent } from '../helpers';
+import {
+  BackgroundImage,
+  defaultTheme,
+  RneFunctionComponent,
+} from '../helpers';
 import { Children } from './components/HeaderChildren';
 import { HeaderIcon } from './components/HeaderIcon';
 
@@ -26,7 +29,7 @@ export interface HeaderProps extends ViewProps {
    *
    * @default View
    */
-  ViewComponent?: typeof React.Component;
+  ViewComponent?: typeof React.Component | React.FunctionComponent<any>;
 
   /** Displays a linear gradient. See [usage](#lineargradient-usage). */
   linearGradientProps?: Object;
@@ -106,7 +109,7 @@ export const Header: RneFunctionComponent<HeaderProps> = ({
   linearGradientProps,
   ViewComponent = linearGradientProps || !backgroundImage
     ? View
-    : ImageBackground,
+    : BackgroundImage,
   theme = defaultTheme,
   elevated,
   edges = ['left', 'top', 'right'],
