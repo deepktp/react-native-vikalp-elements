@@ -3,6 +3,7 @@ import { Tile } from '../index';
 import { renderWithWrapper } from '../../../.ci/testHelper';
 import { Image, Pressable } from 'react-native';
 import { Icon } from '../../Icon';
+import { BackgroundImage } from '../../helpers';
 import { describe, it, expect } from '@jest/globals';
 
 describe('Tile component', () => {
@@ -27,6 +28,26 @@ describe('Tile component', () => {
     });
     await expect(queryByText('Hey React Native')).not.toBeNull();
     await expect(queryByText('Some Caption Text')).not.toBeNull();
+  });
+
+  it('should use a custom background image behind the featured tile title', () => {
+    const { wrapper, getByText } = renderWithWrapper(
+      <Tile
+        featured
+        ImageComponent={BackgroundImage}
+        imageSrc={{ uri: 'https://example.com/image.png' }}
+        title="Featured title"
+        width={80}
+        height={40}
+      />
+    );
+
+    expect(wrapper.findByType(Image).props.style).toMatchObject({
+      position: 'absolute',
+      width: 80,
+      height: 40,
+    });
+    expect(getByText('Featured title')).toBeTruthy();
   });
 
   it('should render featured tile with icon', () => {

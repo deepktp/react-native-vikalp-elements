@@ -80,7 +80,7 @@ export interface TileProps extends PressableProps {
   /** Custom ImageComponent for Tile.
    * @default RNE Image
    */
-  ImageComponent?: typeof React.Component;
+  ImageComponent?: typeof React.Component | React.FunctionComponent<any>;
 
   /** Children */
   children?: React.ReactNode;

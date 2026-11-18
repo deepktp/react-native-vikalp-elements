@@ -60,20 +60,15 @@ exports[`FeaturedTitle component should match snapshot 1`] = `
           }
         }
         style={
-          [
-            {
-              "bottom": 0,
-              "left": 0,
-              "position": "absolute",
-              "right": 0,
-              "top": 0,
-            },
-            {
-              "height": 600,
-              "width": 750,
-            },
-            undefined,
-          ]
+          {
+            "bottom": 0,
+            "height": 600,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+            "width": 750,
+          }
         }
       />
       <View

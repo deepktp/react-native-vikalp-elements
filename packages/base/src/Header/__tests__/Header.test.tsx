@@ -1,6 +1,6 @@
 import React from 'react';
 import { Header } from '../index';
-import { Button, ImageBackground, StatusBar, View } from 'react-native';
+import { Button, Image, Platform, StatusBar, View } from 'react-native';
 import { renderWithWrapper } from '../../../.ci/testHelper';
 import { describe, it, expect, jest } from '@jest/globals';
 
@@ -115,7 +115,7 @@ describe('Header Component', () => {
     const { wrapper } = renderWithWrapper(
       <Header backgroundImage={{ uri: 'http://google.com' }} />
     );
-    expect(wrapper.findByType(ImageBackground).props.source).toEqual({
+    expect(wrapper.findByType(Image).props.source).toEqual({
       uri: 'http://google.com',
     });
   });
@@ -127,8 +127,30 @@ describe('Header Component', () => {
         backgroundImageStyle={{ opacity: 0.1 }}
       />
     );
-    expect(wrapper.findByType(ImageBackground).props.imageStyle).toMatchObject({
+    expect(wrapper.findByType(Image).props.style).toMatchObject({
       opacity: 0.1,
     });
   });
+
+  it.each([
+    { imageStyle: undefined, zIndex: -1 },
+    { imageStyle: { zIndex: 2 }, zIndex: 2 },
+  ])(
+    'should use background z-index $zIndex on web',
+    ({ imageStyle, zIndex }) => {
+      const platform = jest.replaceProperty(Platform, 'OS', 'web');
+      try {
+        const { wrapper } = renderWithWrapper(
+          <Header
+            backgroundImage={{ uri: 'https://example.com/image.png' }}
+            backgroundImageStyle={imageStyle}
+          />
+        );
+
+        expect(wrapper.findByType(Image).props.style).toMatchObject({ zIndex });
+      } finally {
+        platform.restore();
+      }
+    }
+  );
 });
